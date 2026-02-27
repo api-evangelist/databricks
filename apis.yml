@@ -1,50 +1,49 @@
 aid: databricks
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/databricks/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/databricks/refs/heads/main/apis.yml
 apis:
-  - aid: databricks:databricks
-    name: Databricks
-    tags:
-      - Data
-      - Analytics
-      - Visualize
-    humanURL: ' https://www.databricks.com'
-    properties:
-      - url: ' https://www.databricks.com'
-        type: Documentation
-    description: >-
-      Databricks is a cloud-based data platform that simplifies and accelerates
-      the process of preparing and analyzing large volumes of data. The platform
-      integrates with popular data sources and tools, allowing data engineers
-      and data scientists to collaborate and work more efficiently. Databricks
-      offers powerful features such as data visualization, machine learning, and
-      real-time analytics, helping organizations make data-driven decisions and
-      improve their business outcomes. The platform is designed to handle
-      complex data workflows and optimize performance, enabling businesses to
-      extract valuable insights from their data quickly and effectively.
-name: Databricks
-tags:
+- aid: databricks:databricks
+  name: Databricks
+  tags:
   - Data
   - Analytics
   - Visualize
+  humanURL: ' https://www.databricks.com'
+  properties:
+  - url: ' https://www.databricks.com'
+    type: Documentation
+  description: Databricks is a cloud-based data platform that simplifies and accelerates the process of preparing and analyzing large volumes of data. The platform integrates with popular data sources and tools, allowing data engineers and data scientists to collaborate and work more efficiently. Databricks offers powerful features such as data visualization, machine learning, and real-time analytics, helping organizations make data-driven decisions and improve their business outcomes. The platform is designed to handle complex data workflows and optimize performance, enabling businesses to extract valuable insights from their data quickly and effectively.
+name: Databricks
+tags:
+- Analytics
+- Apache Spark
+- Big Data
+- Cloud Computing
+- Data
+- Data Analytics
+- Machine Learning
+- Visualize
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://www.databricks.com/en-website-assets/static/f9f2b15ae456c41f7d2e5b303c8c6c6e/databricks-logo.svg
 access: 3rd-Party
 created: '2025-01-14'
 modified: '2025-03-01'
 position: Consumer
-description: >-
-  Databricks is a data and AI company that offers a unified analytics platform
-  that enables organizations to ingest, process, analyze, and visualize large
-  amounts of data in real time. Their platform is built on top of Apache Spark,
-  an open-source distributed computing system, and provides tools for data
-  engineering, machine learning, and business intelligence. Databricks helps
-  companies accelerate their data-driven insights and decision-making by
-  providing a scalable and collaborative environment for data scientists,
-  engineers, and analysts to work together efficiently. By leveraging
-  Databricks, organizations can unlock the full potential of their data and
-  drive innovation across their business.
+description: Collection of Databricks REST APIs for managing workspaces, clusters, jobs, and data operations
 maintainers:
-  - FN: Kin Lane
-    email: info@apievangelist.com
+- FN: Kin Lane
+  email: info@apievangelist.com
+- name: Databricks
+  email: support@databricks.com
+  url: https://www.databricks.com/
 specificationVersion: '0.19'
+common:
+- url: https://docs.databricks.com/dev-tools/auth.html
+  type: Authentication
+- url: https://docs.databricks.com/getting-started/index.html
+  type: Getting Started
+- url: https://docs.databricks.com/dev-tools/sdks.html
+  type: SDKs
+- url: https://status.databricks.com/
+  type: Status Page
+- url: https://help.databricks.com/
+  type: Support

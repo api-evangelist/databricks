@@ -1,5 +1,5 @@
 # Databricks (databricks)
-Databricks is a data and AI company that offers a unified analytics platform that enables organizations to ingest, process, analyze, and visualize large amounts of data in real time. Their platform is built on top of Apache Spark, an open-source distributed computing system, and provides tools for data engineering, machine learning, and business intelligence. Databricks helps companies accelerate their data-driven insights and decision-making by providing a scalable and collaborative environment for data scientists, engineers, and analysts to work together efficiently. By leveraging Databricks, organizations can unlock the full potential of their data and drive innovation across their business.
+Collection of Databricks REST APIs for managing workspaces, clusters, jobs, and data operations
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/databricks/refs/heads/main/apis.yml)
 
@@ -11,7 +11,7 @@ Databricks is a data and AI company that offers a unified analytics platform tha
 
 ## Tags:
 
- - Data, Analytics, Visualize
+ - Analytics, Apache Spark, Big Data, Cloud Computing, Data, Data Analytics, Machine Learning, Visualize
 
 ## Timestamps
 
@@ -34,9 +34,19 @@ Databricks is a cloud-based data platform that simplifies and accelerates the pr
 
 - [Documentation]( https://www.databricks.com)
 
+## Common Properties
+
+- [Authentication](https://docs.databricks.com/dev-tools/auth.html)
+- [Getting Started](https://docs.databricks.com/getting-started/index.html)
+- [SDKs](https://docs.databricks.com/dev-tools/sdks.html)
+- [Status Page](https://status.databricks.com/)
+- [Support](https://help.databricks.com/)
+
 ## Maintainers
 
 **FN:** Kin Lane
 
 **Email:** info@apievangelist.com
+**FN:** Databricks
 
+**Email:** support@databricks.com
