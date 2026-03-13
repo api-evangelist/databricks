@@ -1,0 +1,450 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/databricks/refs/heads/main/json-schema/databricks-cluster-schema.json",
+  "title": "Databricks Cluster",
+  "description": "Schema representing a Databricks cluster, which is a managed cloud resource for running data engineering and data science workloads on Apache Spark. Clusters can be configured with fixed or autoscaling worker counts, various node types, and cloud-provider-specific attributes.",
+  "type": "object",
+  "properties": {
+    "cluster_id": {
+      "type": "string",
+      "description": "The unique identifier assigned to the cluster by Databricks. This ID is generated during cluster creation and is used to reference the cluster in all subsequent API calls.",
+      "examples": ["1234-567890-abcde123"]
+    },
+    "cluster_name": {
+      "type": "string",
+      "description": "A human-readable name for the cluster. This does not need to be unique within the workspace.",
+      "examples": ["my-data-cluster"]
+    },
+    "spark_version": {
+      "type": "string",
+      "description": "The Databricks Runtime version of the cluster, which determines the versions of Apache Spark, Scala, Java, Python, R, and installed libraries. Use the Runtime Versions API to retrieve available versions.",
+      "examples": ["14.3.x-scala2.12", "15.4.x-scala2.12", "14.3.x-photon-scala2.12"]
+    },
+    "node_type_id": {
+      "type": "string",
+      "description": "The cloud provider instance type for worker nodes. Determines the compute and memory resources available to each worker.",
+      "examples": ["i3.xlarge", "Standard_DS3_v2", "n1-standard-4"]
+    },
+    "driver_node_type_id": {
+      "type": ["string", "null"],
+      "description": "The cloud provider instance type for the Spark driver node. If not specified, defaults to the same value as node_type_id.",
+      "examples": ["i3.2xlarge"]
+    },
+    "num_workers": {
+      "type": "integer",
+      "description": "The number of worker nodes in a fixed-size cluster. A cluster has one Spark driver and num_workers executors. Set to 0 for a single-node cluster where the driver acts as both driver and worker.",
+      "minimum": 0,
+      "examples": [2, 8]
+    },
+    "autoscale": {
+      "type": ["object", "null"],
+      "description": "Autoscaling configuration. When set, num_workers is ignored and the cluster dynamically scales between min_workers and max_workers based on workload.",
+      "properties": {
+        "min_workers": {
+          "type": "integer",
+          "description": "The minimum number of workers the cluster can scale down to when underutilized.",
+          "minimum": 0
+        },
+        "max_workers": {
+          "type": "integer",
+          "description": "The maximum number of workers the cluster can scale up to under heavy load.",
+          "minimum": 1
+        }
+      },
+      "required": ["min_workers", "max_workers"]
+    },
+    "state": {
+      "type": "string",
+      "description": "The current state of the cluster in its lifecycle.",
+      "enum": [
+        "PENDING",
+        "RUNNING",
+        "RESTARTING",
+        "RESIZING",
+        "TERMINATING",
+        "TERMINATED",
+        "ERROR",
+        "UNKNOWN"
+      ]
+    },
+    "state_message": {
+      "type": "string",
+      "description": "A human-readable message providing additional information about the current cluster state, such as the reason for termination."
+    },
+    "start_time": {
+      "type": "integer",
+      "description": "The time when the cluster was started, represented as epoch milliseconds (Unix timestamp in milliseconds).",
+      "format": "int64"
+    },
+    "terminated_time": {
+      "type": "integer",
+      "description": "The time when the cluster was terminated, represented as epoch milliseconds.",
+      "format": "int64"
+    },
+    "last_state_loss_time": {
+      "type": "integer",
+      "description": "The time when the cluster driver last lost its state, represented as epoch milliseconds. This occurs when the driver node is lost or restarted.",
+      "format": "int64"
+    },
+    "last_activity_time": {
+      "type": "integer",
+      "description": "The time of the last user activity on the cluster, used for auto-termination calculations. Represented as epoch milliseconds.",
+      "format": "int64"
+    },
+    "last_restarted_time": {
+      "type": "integer",
+      "description": "The time when the cluster was last restarted, represented as epoch milliseconds.",
+      "format": "int64"
+    },
+    "creator_user_name": {
+      "type": "string",
+      "description": "The email address of the user who created the cluster.",
+      "format": "email"
+    },
+    "cluster_source": {
+      "type": "string",
+      "description": "The source that initiated the creation of this cluster.",
+      "enum": [
+        "UI",
+        "API",
+        "JOB",
+        "MODELS",
+        "PIPELINE",
+        "PIPELINE_MAINTENANCE",
+        "SQL",
+        "SOME_OTHER_SOURCE"
+      ]
+    },
+    "spark_conf": {
+      "type": "object",
+      "description": "A map of Spark configuration key-value pairs that override the default Spark configuration values for this cluster.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "examples": [
+        {
+          "spark.databricks.cluster.profile": "serverless",
+          "spark.speculation": "true"
+        }
+      ]
+    },
+    "custom_tags": {
+      "type": "object",
+      "description": "Additional tags applied to the cluster resources. Tags are propagated to the underlying cloud provider instances for cost tracking and resource management.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "examples": [
+        {
+          "team": "data-engineering",
+          "environment": "production"
+        }
+      ]
+    },
+    "spark_env_vars": {
+      "type": "object",
+      "description": "Environment variables set for all Spark processes running on this cluster. Use the syntax {{secrets/scope/key}} to reference Databricks secrets.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "autotermination_minutes": {
+      "type": "integer",
+      "description": "The number of minutes of inactivity after which the cluster is automatically terminated. A value of 0 disables auto-termination. Default is 120 minutes.",
+      "minimum": 0,
+      "default": 120
+    },
+    "enable_elastic_disk": {
+      "type": "boolean",
+      "description": "Whether autoscaling local storage is enabled. When enabled, Databricks monitors disk usage on Spark workers and automatically attaches additional disks when needed."
+    },
+    "instance_pool_id": {
+      "type": ["string", "null"],
+      "description": "The ID of the instance pool to use for cluster nodes. Instance pools reduce cluster start time by maintaining idle, ready-to-use instances."
+    },
+    "policy_id": {
+      "type": ["string", "null"],
+      "description": "The ID of the cluster policy applied to this cluster. Cluster policies constrain configuration settings and enforce organizational governance."
+    },
+    "enable_local_disk_encryption": {
+      "type": "boolean",
+      "description": "Whether data stored on local disks is encrypted."
+    },
+    "data_security_mode": {
+      "type": "string",
+      "description": "The data security mode of the cluster, which determines how data access is controlled.",
+      "enum": [
+        "NONE",
+        "SINGLE_USER",
+        "USER_ISOLATION",
+        "LEGACY_TABLE_ACL",
+        "LEGACY_PASSTHROUGH",
+        "LEGACY_SINGLE_USER",
+        "LEGACY_SINGLE_USER_STANDARD"
+      ]
+    },
+    "single_user_name": {
+      "type": ["string", "null"],
+      "description": "The user name (email) of the single user when data_security_mode is SINGLE_USER.",
+      "format": "email"
+    },
+    "runtime_engine": {
+      "type": "string",
+      "description": "The runtime engine to use. PHOTON enables the Photon vectorized query engine for significantly faster performance on SQL and DataFrame workloads.",
+      "enum": ["STANDARD", "PHOTON"]
+    },
+    "aws_attributes": {
+      "type": ["object", "null"],
+      "description": "AWS-specific attributes for clusters running on Amazon Web Services.",
+      "properties": {
+        "first_on_demand": {
+          "type": "integer",
+          "description": "The number of nodes to place on on-demand instances before using spot instances."
+        },
+        "availability": {
+          "type": "string",
+          "enum": ["SPOT", "ON_DEMAND", "SPOT_WITH_FALLBACK"],
+          "description": "The availability type for the cluster instances."
+        },
+        "zone_id": {
+          "type": "string",
+          "description": "The AWS availability zone identifier."
+        },
+        "instance_profile_arn": {
+          "type": "string",
+          "description": "The IAM instance profile ARN for the cluster EC2 instances."
+        },
+        "spot_bid_price_percent": {
+          "type": "integer",
+          "description": "The max bid price for spot instances as a percentage of the on-demand price.",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "ebs_volume_type": {
+          "type": "string",
+          "enum": ["GENERAL_PURPOSE_SSD", "THROUGHPUT_OPTIMIZED_HDD"]
+        },
+        "ebs_volume_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ebs_volume_size": {
+          "type": "integer",
+          "description": "The size of each EBS volume in GiB."
+        }
+      }
+    },
+    "azure_attributes": {
+      "type": ["object", "null"],
+      "description": "Azure-specific attributes for clusters running on Microsoft Azure.",
+      "properties": {
+        "first_on_demand": {
+          "type": "integer"
+        },
+        "availability": {
+          "type": "string",
+          "enum": ["SPOT_AZURE", "ON_DEMAND_AZURE", "SPOT_WITH_FALLBACK_AZURE"]
+        },
+        "spot_bid_max_price": {
+          "type": "number",
+          "description": "The max bid price for Azure spot instances. -1 means the price is up to the on-demand price."
+        }
+      }
+    },
+    "gcp_attributes": {
+      "type": ["object", "null"],
+      "description": "GCP-specific attributes for clusters running on Google Cloud Platform.",
+      "properties": {
+        "use_preemptible_executors": {
+          "type": "boolean"
+        },
+        "google_service_account": {
+          "type": "string"
+        },
+        "availability": {
+          "type": "string",
+          "enum": ["GCP_PREEMPTIBLE", "GCP_ON_DEMAND"]
+        }
+      }
+    },
+    "init_scripts": {
+      "type": "array",
+      "description": "Initialization scripts that run on each node when the cluster starts. Scripts can be stored in workspace files, Unity Catalog volumes, or DBFS.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "workspace": {
+            "type": "object",
+            "properties": {
+              "destination": {
+                "type": "string",
+                "description": "Workspace file path of the init script."
+              }
+            }
+          },
+          "volumes": {
+            "type": "object",
+            "properties": {
+              "destination": {
+                "type": "string",
+                "description": "Unity Catalog volume path of the init script."
+              }
+            }
+          },
+          "dbfs": {
+            "type": "object",
+            "properties": {
+              "destination": {
+                "type": "string",
+                "description": "DBFS path of the init script (deprecated)."
+              }
+            },
+            "deprecated": true
+          }
+        }
+      }
+    },
+    "default_tags": {
+      "type": "object",
+      "description": "Default tags automatically applied by Databricks, including Vendor, Creator, ClusterName, and ClusterId.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "termination_reason": {
+      "type": ["object", "null"],
+      "description": "The reason the cluster was terminated, including error codes and parameters.",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "A machine-readable code indicating the termination reason."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of termination (e.g., CLIENT_ERROR, CLOUD_FAILURE)."
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional parameters providing details about the termination."
+        }
+      }
+    },
+    "driver": {
+      "type": ["object", "null"],
+      "description": "Information about the Spark driver node.",
+      "properties": {
+        "private_ip": {
+          "type": "string",
+          "description": "The private IP address of the driver node."
+        },
+        "public_dns": {
+          "type": "string",
+          "description": "The public DNS name of the driver node."
+        },
+        "node_id": {
+          "type": "string",
+          "description": "The Databricks node identifier."
+        },
+        "instance_id": {
+          "type": "string",
+          "description": "The cloud provider instance ID."
+        },
+        "start_timestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "host_private_ip": {
+          "type": "string"
+        }
+      }
+    },
+    "executors": {
+      "type": "array",
+      "description": "Information about the Spark executor (worker) nodes.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "private_ip": {
+            "type": "string"
+          },
+          "public_dns": {
+            "type": "string"
+          },
+          "node_id": {
+            "type": "string"
+          },
+          "instance_id": {
+            "type": "string"
+          },
+          "start_timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "host_private_ip": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "jdbc_port": {
+      "type": "integer",
+      "description": "The port number on the driver node that serves JDBC/ODBC connections."
+    },
+    "spark_context_id": {
+      "type": "integer",
+      "description": "The canonical Spark context identifier for this cluster.",
+      "format": "int64"
+    },
+    "ssh_public_keys": {
+      "type": "array",
+      "description": "SSH public keys added to each Spark node in this cluster for SSH access.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "disk_spec": {
+      "type": ["object", "null"],
+      "description": "Disk specifications for the cluster nodes.",
+      "properties": {
+        "disk_count": {
+          "type": "integer",
+          "description": "The number of disks attached to each node."
+        },
+        "disk_size": {
+          "type": "integer",
+          "description": "The size of each disk in GiB."
+        },
+        "disk_type": {
+          "type": "object",
+          "properties": {
+            "azure_disk_volume_type": {
+              "type": "string"
+            },
+            "ebs_volume_type": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "cluster_log_status": {
+      "type": ["object", "null"],
+      "description": "Status of cluster log delivery.",
+      "properties": {
+        "last_attempted": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The timestamp of the last log delivery attempt."
+        },
+        "last_exception": {
+          "type": "string",
+          "description": "The exception message if the last delivery attempt failed."
+        }
+      }
+    }
+  },
+  "required": ["cluster_name", "spark_version", "node_type_id"]
+}
