@@ -44,7 +44,7 @@ paths:
   /2.0/clusters/create:
     post:
       operationId: createCluster
-      summary: Create a new cluster
+      summary: Databricks Create a new cluster
       description: >-
         Creates a new Spark cluster. This method acquires new instances from the
         cloud provider and starts the Spark driver and worker processes. The
@@ -84,7 +84,7 @@ paths:
   /2.0/clusters/list:
     get:
       operationId: listClusters
-      summary: List all clusters
+      summary: Databricks List all clusters
       description: >-
         Returns information about all clusters in the workspace, including
         terminated clusters. Clusters are ordered by cluster_id.
@@ -116,7 +116,7 @@ paths:
   /2.0/clusters/get:
     get:
       operationId: getCluster
-      summary: Get cluster details
+      summary: Databricks Get cluster details
       description: >-
         Retrieves detailed information about a cluster, including its current
         state, configuration, and runtime properties.
@@ -147,7 +147,7 @@ paths:
   /2.0/clusters/start:
     post:
       operationId: startCluster
-      summary: Start a terminated cluster
+      summary: Databricks Start a terminated cluster
       description: >-
         Starts a terminated cluster given its cluster_id. This is similar to
         creating a cluster except it uses the configuration of the previously
@@ -178,7 +178,7 @@ paths:
   /2.0/clusters/restart:
     post:
       operationId: restartCluster
-      summary: Restart a cluster
+      summary: Databricks Restart a cluster
       description: >-
         Restarts a Spark cluster given its cluster_id. If the cluster is not in
         a RUNNING state, nothing happens.
@@ -208,7 +208,7 @@ paths:
   /2.0/clusters/delete:
     post:
       operationId: terminateCluster
-      summary: Terminate a cluster
+      summary: Databricks Terminate a cluster
       description: >-
         Terminates a Spark cluster given its cluster_id. The cluster is removed
         after being terminated. Use the permanent-delete endpoint if you want to
@@ -239,7 +239,7 @@ paths:
   /2.0/clusters/permanent-delete:
     post:
       operationId: permanentDeleteCluster
-      summary: Permanently delete a cluster
+      summary: Databricks Permanently delete a cluster
       description: >-
         Permanently deletes a Spark cluster. If the cluster is running, it is
         terminated and resources are asynchronously removed. If the cluster is
@@ -271,7 +271,7 @@ paths:
   /2.0/clusters/edit:
     post:
       operationId: editCluster
-      summary: Edit cluster configuration
+      summary: Databricks Edit cluster configuration
       description: >-
         Edits the configuration of a cluster to match the provided attributes.
         The cluster must be in a RUNNING or TERMINATED state. If the cluster is
@@ -296,7 +296,7 @@ paths:
   /2.0/clusters/events:
     post:
       operationId: listClusterEvents
-      summary: List cluster events
+      summary: Databricks List cluster events
       description: >-
         Retrieves a list of events about the activity of a cluster. Events are
         returned in reverse chronological order. This endpoint can be used to
@@ -398,7 +398,7 @@ paths:
   /2.1/jobs/create:
     post:
       operationId: createJob
-      summary: Create a new job
+      summary: Databricks Create a new job
       description: >-
         Creates a new job with the provided settings. The job can be configured
         with a single task or multiple tasks with dependencies forming a
@@ -434,7 +434,7 @@ paths:
   /2.1/jobs/list:
     get:
       operationId: listJobs
-      summary: List all jobs
+      summary: Databricks List all jobs
       description: >-
         Retrieves a list of jobs in the workspace. Results are paginated and can
         be filtered by name.
@@ -494,7 +494,7 @@ paths:
   /2.1/jobs/get:
     get:
       operationId: getJob
-      summary: Get a job
+      summary: Databricks Get a job
       description: >-
         Retrieves the details of a single job, including its settings, creator,
         and run history summary.
@@ -526,7 +526,7 @@ paths:
   /2.1/jobs/update:
     post:
       operationId: updateJob
-      summary: Partially update a job
+      summary: Databricks Partially update a job
       description: >-
         Add, update, or remove specific settings of an existing job. Use
         reset to overwrite all settings.
@@ -565,7 +565,7 @@ paths:
   /2.1/jobs/delete:
     post:
       operationId: deleteJob
-      summary: Delete a job
+      summary: Databricks Delete a job
       description: >-
         Deletes a job and all its associated runs. The job is permanently removed
         and cannot be recovered.
@@ -596,7 +596,7 @@ paths:
   /2.1/jobs/run-now:
     post:
       operationId: runJobNow
-      summary: Trigger a job run
+      summary: Databricks Trigger a job run
       description: >-
         Triggers an immediate run of a job. One run is triggered for each call.
         Runs triggered by run-now are considered triggered runs. Parameters can
@@ -686,7 +686,7 @@ paths:
   /2.1/jobs/runs/list:
     get:
       operationId: listJobRuns
-      summary: List job runs
+      summary: Databricks List job runs
       description: >-
         Lists runs from most recently started to least. Results are paginated.
         Runs can be filtered by job, active state, and completion status.
@@ -786,7 +786,7 @@ paths:
   /2.1/jobs/runs/get:
     get:
       operationId: getJobRun
-      summary: Get a job run
+      summary: Databricks Get a job run
       description: >-
         Retrieves the metadata of a run, including start time, end time,
         status, and task details.
@@ -830,7 +830,7 @@ paths:
   /2.1/jobs/runs/cancel:
     post:
       operationId: cancelJobRun
-      summary: Cancel a job run
+      summary: Databricks Cancel a job run
       description: >-
         Cancels an active run. The run is canceled asynchronously, and the
         request returns immediately. The canceled run transitions to a
@@ -862,7 +862,7 @@ paths:
   /2.1/jobs/runs/get-output:
     get:
       operationId: getJobRunOutput
-      summary: Get run output
+      summary: Databricks Get run output
       description: >-
         Retrieves the output and metadata of a single task run. This endpoint
         can be used for notebook, JAR, Python, and Spark submit task outputs.
@@ -909,7 +909,7 @@ paths:
   /2.0/workspace/list:
     get:
       operationId: listWorkspaceObjects
-      summary: List workspace objects
+      summary: Databricks List workspace objects
       description: >-
         Lists the contents of a directory in the workspace, or the object if it
         is not a directory. If the input path does not exist, a
@@ -957,7 +957,7 @@ paths:
   /2.0/workspace/get-status:
     get:
       operationId: getWorkspaceObjectStatus
-      summary: Get workspace object status
+      summary: Databricks Get workspace object status
       description: >-
         Gets the status of an object or a directory in the workspace. If the
         object does not exist, a RESOURCE_DOES_NOT_EXIST error is returned.
@@ -988,7 +988,7 @@ paths:
   /2.0/workspace/export:
     get:
       operationId: exportWorkspaceObject
-      summary: Export a workspace object
+      summary: Databricks Export a workspace object
       description: >-
         Exports a notebook or the contents of an entire directory. Notebooks
         can be exported in SOURCE, HTML, JUPYTER, or DBC format.
@@ -1052,7 +1052,7 @@ paths:
   /2.0/workspace/import:
     post:
       operationId: importWorkspaceObject
-      summary: Import a workspace object
+      summary: Databricks Import a workspace object
       description: >-
         Imports a notebook or the contents of an entire directory. If the object
         already exists and overwrite is set to false, a
@@ -1115,7 +1115,7 @@ paths:
   /2.0/workspace/delete:
     post:
       operationId: deleteWorkspaceObject
-      summary: Delete a workspace object
+      summary: Databricks Delete a workspace object
       description: >-
         Deletes an object or a directory and optionally all of its contents. If
         the path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned.
@@ -1156,7 +1156,7 @@ paths:
   /2.0/workspace/mkdirs:
     post:
       operationId: createWorkspaceDirectory
-      summary: Create a directory
+      summary: Databricks Create a directory
       description: >-
         Creates the given directory and necessary parent directories if they
         do not exist. If there is an object (not a directory) at any prefix
