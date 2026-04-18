@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "AwsAttributes",
+  "type": "object",
+  "properties": {
+    "first_on_demand": {
+      "type": "integer"
+    },
+    "availability": {
+      "type": "string"
+    },
+    "zone_id": {
+      "type": "string"
+    },
+    "instance_profile_arn": {
+      "type": "string"
+    },
+    "spot_bid_price_percent": {
+      "type": "integer"
+    },
+    "ebs_volume_type": {
+      "type": "string"
+    },
+    "ebs_volume_count": {
+      "type": "integer"
+    },
+    "ebs_volume_size": {
+      "type": "integer"
+    }
+  }
+}

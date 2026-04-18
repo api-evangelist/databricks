@@ -34,6 +34,28 @@ apis:
         type: OpenAPI
       - url: json-schema/databricks-cluster-schema.json
         type: JSONSchema
+      - url: json-schema/databricks-create-cluster-request-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-edit-cluster-request-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-cluster-details-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-spark-node-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-auto-scale-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-aws-attributes-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-azure-attributes-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-gcp-attributes-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-init-script-info-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-cluster-event-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-error-response-schema.json
+        type: JSONSchema
       - url: json-ld/databricks-context.jsonld
         type: JSONLD
     description: The Databricks Clusters API allows you to create, start, edit, list, terminate, and delete clusters. Clusters are managed cloud resources that enable you to run data engineering and data science workloads on Apache Spark in the cloud. The API provides programmatic control over cluster lifecycle management, configuration, and monitoring.
@@ -51,6 +73,30 @@ apis:
       - url: openapi/databricks-openapi.yml
         type: OpenAPI
       - url: json-schema/databricks-job-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-create-job-request-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-task-settings-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-job-cluster-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-job-email-notifications-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-webhook-notifications-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-cron-schedule-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-git-source-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-library-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-access-control-request-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-job-settings-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-run-schema.json
+        type: JSONSchema
+      - url: json-schema/databricks-run-task-schema.json
         type: JSONSchema
       - url: json-ld/databricks-context.jsonld
         type: JSONLD
@@ -78,6 +124,8 @@ apis:
         type: Documentation
       - url: openapi/databricks-openapi.yml
         type: OpenAPI
+      - url: json-schema/databricks-workspace-object-schema.json
+        type: JSONSchema
       - url: json-ld/databricks-context.jsonld
         type: JSONLD
     description: The Databricks Workspace API allows you to list, import, export, and delete notebooks, folders, and libraries in a Databricks workspace. It provides programmatic access to manage workspace objects, enabling automation of notebook deployment and workspace organization.
@@ -682,7 +730,7 @@ type: Index
 image: https://www.databricks.com/en-website-assets/static/f9f2b15ae456c41f7d2e5b303c8c6c6e/databricks-logo.svg
 access: 3rd-Party
 created: '2025-01-14'
-modified: '2026-03-16'
+modified: '2026-04-18'
 position: Consumer
 description: >-
   Collection of Databricks REST APIs for managing workspaces, clusters, jobs, and
@@ -702,7 +750,7 @@ common:
   - url: https://docs.databricks.com/dev-tools/sdks.html
     type: SDKs
   - url: https://status.databricks.com/
-    type: Status Page
+    type: StatusPage
   - url: https://help.databricks.com/
     type: Support
   - url: https://docs.databricks.com/api/workspace/introduction
@@ -714,35 +762,36 @@ common:
   - url: https://www.databricks.com/try-databricks
     type: Sign Up
   - url: https://www.databricks.com/legal/privacynotice
-    type: Privacy Policy
+    type: PrivacyPolicy
   - url: https://www.databricks.com/legal/terms-of-use
-    type: Terms of Service
+    type: TermsOfService
   - url: https://www.databricks.com/trust
     type: Security
   - url: https://docs.databricks.com/aws/en/resources/limits
-    type: Rate Limits
+    type: RateLimits
   - url: https://docs.databricks.com/aws/en/release-notes/
-    type: Change Log
+    type: ChangeLog
   - url: https://www.databricks.com/blog
     type: Blog
   - url: https://community.databricks.com/
-    type: Community
+    type: Support
+    title: Community Forum
   - url: https://github.com/databricks
-    type: GitHub Organization
+    type: GitHubOrganization
   - url: https://github.com/databricks/databricks-sdk-py
-    type: Python SDK
+    type: SDK
+    title: Python SDK
   - url: https://github.com/databricks/databricks-sdk-go
-    type: Go SDK
+    type: SDK
+    title: Go SDK
   - url: https://github.com/databricks/cli
     type: CLI
   - url: https://docs.databricks.com/aws/en/dev-tools/cli
     type: Documentation
   - url: https://twitter.com/databricks
-    type: X (Twitter)
+    type: X
   - url: https://www.linkedin.com/company/databricks
     type: LinkedIn
-  - url: https://www.databricks.com/
-    type: Website
   - url: https://login.databricks.com/
     type: Login
   - url: https://www.databricks.com/company/contact
@@ -752,19 +801,23 @@ common:
   - url: https://customer-academy.databricks.com/learn
     type: Academy
   - url: https://github.com/databricks/databricks-sdk-java
-    type: Java SDK
+    type: SDK
+    title: Java SDK
   - url: https://github.com/databricks/databricks-sql-python
-    type: Python SQL SDK
+    type: SDK
+    title: Python SQL SDK
   - url: https://github.com/databricks/terraform-provider-databricks
-    type: Terraform Provider
+    type: SDK
+    title: Terraform Provider
   - url: https://docs.databricks.com/aws/en/reference/mlflow-api
-    type: MLflow API Reference
+    type: APIReference
+    title: MLflow API Reference
   - url: https://www.databricks.com/trust/security-features
-    type: Security Documentation
+    type: Security
   - url: https://docs.databricks.com/aws/en/dev-tools/auth
-    type: Authentication Documentation
+    type: Authentication
   - url: https://api-docs.databricks.com/
-    type: API Reference Documentation
+    type: APIReference
   - url: openapi/databricks-openapi.yml
     type: OpenAPI
   - url: json-schema/databricks-cluster-schema.json
@@ -773,3 +826,47 @@ common:
     type: JSONSchema
   - url: json-ld/databricks-context.jsonld
     type: JSONLD
+  - url: rules/databricks-spectral-rules.yml
+    type: SpectralRules
+  - url: capabilities/data-engineering.yaml
+    type: NaftikoCapability
+  - type: Features
+    data:
+      - name: Unified Data Lakehouse
+        description: Combine data warehousing and data lake capabilities in a single, open platform built on Delta Lake.
+      - name: Serverless Compute
+        description: Auto-scaling serverless SQL warehouses and compute that eliminate infrastructure management.
+      - name: Unity Catalog
+        description: Unified governance for data and AI assets with fine-grained access control and lineage tracking.
+      - name: Delta Live Tables
+        description: Declarative ETL framework for building reliable, maintainable data processing pipelines.
+      - name: Mosaic AI
+        description: Integrated AI platform for building, deploying, and monitoring machine learning and generative AI models.
+      - name: Vector Search
+        description: Built-in vector similarity search for RAG applications and AI-powered retrieval.
+      - name: Delta Sharing
+        description: Open protocol for secure cross-organization data sharing without data copying.
+  - type: UseCases
+    data:
+      - name: Data Engineering
+        description: Build and orchestrate ETL pipelines with Delta Live Tables and multi-task workflows.
+      - name: Data Warehousing
+        description: Run analytical SQL queries on lakehouse data with serverless SQL warehouses.
+      - name: Machine Learning
+        description: Train, track, and deploy ML models with MLflow experiment tracking and model registry.
+      - name: Real-Time Analytics
+        description: Process streaming data with structured streaming and serve results through online tables.
+      - name: Data Governance
+        description: Govern data assets across the organization with Unity Catalog metadata management.
+  - type: Integrations
+    data:
+      - name: Apache Spark
+        description: Native integration with Apache Spark for distributed data processing at scale.
+      - name: Delta Lake
+        description: Built on Delta Lake open format for ACID transactions and time travel on data lakes.
+      - name: MLflow
+        description: Open-source platform for managing the complete machine learning lifecycle.
+      - name: Terraform
+        description: Infrastructure-as-code provider for automating Databricks workspace provisioning.
+      - name: dbt
+        description: Integration with dbt for SQL-based data transformation workflows.

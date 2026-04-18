@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CreateJobRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "array"
+    },
+    "job_clusters": {
+      "type": "array"
+    },
+    "notification_settings": {
+      "type": "object"
+    },
+    "timeout_seconds": {
+      "type": "integer"
+    },
+    "continuous": {
+      "type": "object"
+    },
+    "trigger": {
+      "type": "object"
+    },
+    "max_concurrent_runs": {
+      "type": "integer"
+    },
+    "tags": {
+      "type": "object"
+    },
+    "format": {
+      "type": "string"
+    },
+    "queue": {
+      "type": "object"
+    },
+    "parameters": {
+      "type": "array"
+    },
+    "run_as": {
+      "type": "object"
+    },
+    "access_control_list": {
+      "type": "array"
+    }
+  }
+}

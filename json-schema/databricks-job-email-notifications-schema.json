@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JobEmailNotifications",
+  "type": "object",
+  "properties": {
+    "on_start": {
+      "type": "array",
+      "description": "Email addresses to notify when a run starts."
+    },
+    "on_success": {
+      "type": "array",
+      "description": "Email addresses to notify when a run succeeds."
+    },
+    "on_failure": {
+      "type": "array",
+      "description": "Email addresses to notify when a run fails."
+    },
+    "on_duration_warning_threshold_exceeded": {
+      "type": "array"
+    },
+    "no_alert_for_skipped_runs": {
+      "type": "boolean"
+    }
+  }
+}

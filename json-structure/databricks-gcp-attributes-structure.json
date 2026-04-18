@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GcpAttributes",
+  "type": "object",
+  "properties": {
+    "use_preemptible_executors": {
+      "type": "boolean"
+    },
+    "google_service_account": {
+      "type": "string"
+    },
+    "availability": {
+      "type": "string"
+    }
+  }
+}

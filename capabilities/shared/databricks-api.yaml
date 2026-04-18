@@ -1,0 +1,422 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Databricks REST API"
+  description: "Consumed definition for the Databricks REST API covering clusters, jobs, and workspace management."
+  tags:
+    - Databricks
+    - Data Engineering
+    - Apache Spark
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      DATABRICKS_TOKEN: DATABRICKS_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: databricks-api
+      baseUri: https://adb-example.azuredatabricks.net/api
+      description: "Databricks REST API for cluster, job, and workspace management."
+      authentication:
+        type: bearer
+        token: "{{DATABRICKS_TOKEN}}"
+      resources:
+        - name: clusters
+          path: /2.0/clusters
+          description: "Cluster lifecycle management."
+          operations:
+            - name: create-cluster
+              method: POST
+              description: "Create a new Spark cluster."
+              body:
+                type: json
+                data:
+                  cluster_name: "{{tools.cluster_name}}"
+                  spark_version: "{{tools.spark_version}}"
+                  node_type_id: "{{tools.node_type_id}}"
+                  num_workers: "{{tools.num_workers}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-clusters
+              method: GET
+              description: "List all clusters in the workspace."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-cluster
+              method: GET
+              description: "Get details of a specific cluster."
+              inputParameters:
+                - name: cluster_id
+                  in: query
+                  type: string
+                  required: true
+                  description: "The cluster ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: start-cluster
+              method: POST
+              description: "Start a terminated cluster."
+              body:
+                type: json
+                data:
+                  cluster_id: "{{tools.cluster_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: restart-cluster
+              method: POST
+              description: "Restart an active cluster."
+              body:
+                type: json
+                data:
+                  cluster_id: "{{tools.cluster_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: terminate-cluster
+              method: POST
+              description: "Terminate a running cluster."
+              body:
+                type: json
+                data:
+                  cluster_id: "{{tools.cluster_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: permanent-delete-cluster
+              method: POST
+              description: "Permanently delete a cluster."
+              body:
+                type: json
+                data:
+                  cluster_id: "{{tools.cluster_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: edit-cluster
+              method: POST
+              description: "Edit an existing cluster's configuration."
+              body:
+                type: json
+                data:
+                  cluster_id: "{{tools.cluster_id}}"
+                  cluster_name: "{{tools.cluster_name}}"
+                  spark_version: "{{tools.spark_version}}"
+                  node_type_id: "{{tools.node_type_id}}"
+                  num_workers: "{{tools.num_workers}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-cluster-events
+              method: POST
+              description: "List events for a cluster."
+              body:
+                type: json
+                data:
+                  cluster_id: "{{tools.cluster_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: jobs
+          path: /2.1/jobs
+          description: "Job lifecycle management."
+          operations:
+            - name: create-job
+              method: POST
+              description: "Create a new job."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  tasks: "{{tools.tasks}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-jobs
+              method: GET
+              description: "List all jobs."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-job
+              method: GET
+              description: "Get a specific job."
+              inputParameters:
+                - name: job_id
+                  in: query
+                  type: string
+                  required: true
+                  description: "The job ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-job
+              method: POST
+              description: "Update a job."
+              body:
+                type: json
+                data:
+                  job_id: "{{tools.job_id}}"
+                  new_settings: "{{tools.new_settings}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-job
+              method: POST
+              description: "Delete a job."
+              body:
+                type: json
+                data:
+                  job_id: "{{tools.job_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: run-job-now
+              method: POST
+              description: "Trigger a job run."
+              body:
+                type: json
+                data:
+                  job_id: "{{tools.job_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-job-runs
+              method: GET
+              description: "List runs for a job."
+              inputParameters:
+                - name: job_id
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by job ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-job-run
+              method: GET
+              description: "Get details of a specific run."
+              inputParameters:
+                - name: run_id
+                  in: query
+                  type: string
+                  required: true
+                  description: "The run ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: cancel-job-run
+              method: POST
+              description: "Cancel a running job."
+              body:
+                type: json
+                data:
+                  run_id: "{{tools.run_id}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: workspace
+          path: /2.0/workspace
+          description: "Workspace object management."
+          operations:
+            - name: list-workspace-objects
+              method: GET
+              description: "List objects in a workspace directory."
+              inputParameters:
+                - name: path
+                  in: query
+                  type: string
+                  required: true
+                  description: "The workspace path."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-workspace-object-status
+              method: GET
+              description: "Get status of a workspace object."
+              inputParameters:
+                - name: path
+                  in: query
+                  type: string
+                  required: true
+                  description: "The workspace path."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: export-workspace-object
+              method: GET
+              description: "Export a workspace object."
+              inputParameters:
+                - name: path
+                  in: query
+                  type: string
+                  required: true
+                  description: "The workspace path."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: import-workspace-object
+              method: POST
+              description: "Import a workspace object."
+              body:
+                type: json
+                data:
+                  path: "{{tools.path}}"
+                  content: "{{tools.content}}"
+                  format: "{{tools.format}}"
+                  language: "{{tools.language}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-workspace-object
+              method: POST
+              description: "Delete a workspace object."
+              body:
+                type: json
+                data:
+                  path: "{{tools.path}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: mcp
+      port: 9100
+      namespace: databricks-mcp
+      transport: http
+      tools:
+        - name: list-clusters
+          description: "List all clusters."
+          hints:
+            readOnly: true
+          call: "databricks-api.list-clusters"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-cluster
+          description: "Create a new cluster."
+          hints:
+            readOnly: false
+          call: "databricks-api.create-cluster"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-cluster
+          description: "Get cluster details."
+          hints:
+            readOnly: true
+          call: "databricks-api.get-cluster"
+          with:
+            cluster_id: "tools.cluster_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: terminate-cluster
+          description: "Terminate a cluster."
+          hints:
+            destructive: true
+          call: "databricks-api.terminate-cluster"
+          with:
+            cluster_id: "tools.cluster_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-jobs
+          description: "List all jobs."
+          hints:
+            readOnly: true
+          call: "databricks-api.list-jobs"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-job
+          description: "Create a new job."
+          hints:
+            readOnly: false
+          call: "databricks-api.create-job"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-job-now
+          description: "Trigger a job run."
+          hints:
+            readOnly: false
+          call: "databricks-api.run-job-now"
+          with:
+            job_id: "tools.job_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-job-runs
+          description: "List runs for a job."
+          hints:
+            readOnly: true
+          call: "databricks-api.list-job-runs"
+          with:
+            job_id: "tools.job_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-workspace-objects
+          description: "List workspace objects."
+          hints:
+            readOnly: true
+          call: "databricks-api.list-workspace-objects"
+          with:
+            path: "tools.path"
+          outputParameters:
+            - type: object
+              mapping: "$."

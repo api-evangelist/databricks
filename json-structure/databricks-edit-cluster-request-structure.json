@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EditClusterRequest",
+  "type": "object",
+  "properties": {
+    "cluster_id": {
+      "type": "string"
+    },
+    "cluster_name": {
+      "type": "string"
+    },
+    "spark_version": {
+      "type": "string"
+    },
+    "node_type_id": {
+      "type": "string"
+    },
+    "driver_node_type_id": {
+      "type": "string"
+    },
+    "num_workers": {
+      "type": "integer"
+    },
+    "spark_conf": {
+      "type": "object"
+    },
+    "custom_tags": {
+      "type": "object"
+    },
+    "spark_env_vars": {
+      "type": "object"
+    },
+    "autotermination_minutes": {
+      "type": "integer"
+    },
+    "enable_elastic_disk": {
+      "type": "boolean"
+    },
+    "instance_pool_id": {
+      "type": "string"
+    },
+    "policy_id": {
+      "type": "string"
+    },
+    "data_security_mode": {
+      "type": "string"
+    },
+    "single_user_name": {
+      "type": "string"
+    },
+    "runtime_engine": {
+      "type": "string"
+    }
+  }
+}

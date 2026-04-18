@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateJobRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the job."
+    },
+    "tasks": {
+      "type": "array",
+      "description": "A list of task specifications to be executed by this job. For single-task jobs, use the top-level task fields instead."
+    },
+    "job_clusters": {
+      "type": "array",
+      "description": "A list of job cluster specifications that can be shared and reused by tasks in this job."
+    },
+    "notification_settings": {
+      "type": "object"
+    },
+    "timeout_seconds": {
+      "type": "integer",
+      "description": "Maximum allowed duration for the job. If exceeded, the job is set to a TIMED_OUT life cycle state. 0 means no timeout."
+    },
+    "continuous": {
+      "type": "object",
+      "description": "Continuous job settings for streaming workloads."
+    },
+    "trigger": {
+      "type": "object",
+      "description": "Trigger settings for file arrival-based jobs."
+    },
+    "max_concurrent_runs": {
+      "type": "integer",
+      "description": "Maximum number of concurrent runs for the job. Setting to 1 ensures only one run at a time."
+    },
+    "tags": {
+      "type": "object",
+      "description": "Tags for the job."
+    },
+    "format": {
+      "type": "string",
+      "description": "The format of the job."
+    },
+    "queue": {
+      "type": "object",
+      "description": "Queue settings for the job."
+    },
+    "parameters": {
+      "type": "array",
+      "description": "Job-level parameter definitions."
+    },
+    "run_as": {
+      "type": "object",
+      "description": "Identity to run the job as."
+    },
+    "access_control_list": {
+      "type": "array"
+    }
+  }
+}

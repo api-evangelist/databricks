@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkspaceObject",
+  "type": "object",
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "The type of the workspace object."
+    },
+    "path": {
+      "type": "string",
+      "description": "The absolute path of the object in the workspace."
+    },
+    "language": {
+      "type": "string",
+      "description": "The language of the notebook, if applicable. Only present for notebook objects."
+    },
+    "object_id": {
+      "type": "integer",
+      "description": "The unique identifier of the object."
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "The creation time in epoch milliseconds."
+    },
+    "modified_at": {
+      "type": "integer",
+      "description": "The last modified time in epoch milliseconds."
+    },
+    "resource_id": {
+      "type": "string",
+      "description": "Unique identifier for SCIM compliance."
+    },
+    "size": {
+      "type": "integer",
+      "description": "The file size in bytes (for FILE objects)."
+    }
+  }
+}

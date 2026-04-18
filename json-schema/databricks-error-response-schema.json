@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ErrorResponse",
+  "type": "object",
+  "properties": {
+    "error_code": {
+      "type": "string",
+      "description": "A machine-readable error code."
+    },
+    "message": {
+      "type": "string",
+      "description": "A human-readable error message."
+    }
+  }
+}

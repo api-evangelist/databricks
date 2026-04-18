@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Run",
+  "type": "object",
+  "properties": {
+    "job_id": {
+      "type": "integer"
+    },
+    "run_id": {
+      "type": "integer",
+      "description": "The canonical identifier of the run."
+    },
+    "run_name": {
+      "type": "string"
+    },
+    "number_in_job": {
+      "type": "integer"
+    },
+    "original_attempt_run_id": {
+      "type": "integer"
+    },
+    "state": {
+      "type": "object"
+    },
+    "tasks": {
+      "type": "array"
+    },
+    "job_clusters": {
+      "type": "array"
+    },
+    "cluster_spec": {
+      "type": "object"
+    },
+    "cluster_instance": {
+      "type": "object"
+    },
+    "start_time": {
+      "type": "integer",
+      "description": "The start time of the run in epoch milliseconds."
+    },
+    "setup_duration": {
+      "type": "integer",
+      "description": "Setup duration in milliseconds."
+    },
+    "execution_duration": {
+      "type": "integer",
+      "description": "Execution duration in milliseconds."
+    },
+    "cleanup_duration": {
+      "type": "integer",
+      "description": "Cleanup duration in milliseconds."
+    },
+    "end_time": {
+      "type": "integer",
+      "description": "End time in epoch milliseconds."
+    },
+    "trigger": {
+      "type": "string"
+    },
+    "run_type": {
+      "type": "string"
+    },
+    "attempt_number": {
+      "type": "integer"
+    },
+    "creator_user_name": {
+      "type": "string"
+    },
+    "run_page_url": {
+      "type": "string",
+      "description": "URL of the run page in the Databricks workspace."
+    },
+    "format": {
+      "type": "string"
+    }
+  }
+}

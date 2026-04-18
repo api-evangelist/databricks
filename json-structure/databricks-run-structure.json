@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Run",
+  "type": "object",
+  "properties": {
+    "job_id": {
+      "type": "integer"
+    },
+    "run_id": {
+      "type": "integer"
+    },
+    "run_name": {
+      "type": "string"
+    },
+    "number_in_job": {
+      "type": "integer"
+    },
+    "original_attempt_run_id": {
+      "type": "integer"
+    },
+    "state": {
+      "type": "object"
+    },
+    "tasks": {
+      "type": "array"
+    },
+    "job_clusters": {
+      "type": "array"
+    },
+    "cluster_spec": {
+      "type": "object"
+    },
+    "cluster_instance": {
+      "type": "object"
+    },
+    "start_time": {
+      "type": "integer"
+    },
+    "setup_duration": {
+      "type": "integer"
+    },
+    "execution_duration": {
+      "type": "integer"
+    },
+    "cleanup_duration": {
+      "type": "integer"
+    },
+    "end_time": {
+      "type": "integer"
+    },
+    "trigger": {
+      "type": "string"
+    },
+    "run_type": {
+      "type": "string"
+    },
+    "attempt_number": {
+      "type": "integer"
+    },
+    "creator_user_name": {
+      "type": "string"
+    },
+    "run_page_url": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    }
+  }
+}

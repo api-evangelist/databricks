@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GitSource",
+  "type": "object",
+  "properties": {
+    "git_url": {
+      "type": "string",
+      "description": "URL of the Git repository."
+    },
+    "git_provider": {
+      "type": "string",
+      "description": "The Git provider."
+    },
+    "git_branch": {
+      "type": "string",
+      "description": "Branch to use."
+    },
+    "git_tag": {
+      "type": "string",
+      "description": "Tag to use."
+    },
+    "git_commit": {
+      "type": "string",
+      "description": "Commit hash to use."
+    }
+  }
+}

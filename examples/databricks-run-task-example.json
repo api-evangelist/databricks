@@ -1,0 +1,20 @@
+{
+  "run_id": "500123",
+  "task_key": "example_value",
+  "description": "A sample description.",
+  "state": "example_value",
+  "depends_on": [],
+  "existing_cluster_id": "500123",
+  "notebook_task": "example_value",
+  "spark_jar_task": "example_value",
+  "spark_python_task": "example_value",
+  "sql_task": "example_value",
+  "start_time": 10,
+  "setup_duration": 10,
+  "execution_duration": 10,
+  "cleanup_duration": 10,
+  "end_time": 10,
+  "cluster_instance": "example_value",
+  "attempt_number": 10,
+  "libraries": []
+}

@@ -1,0 +1,10 @@
+{
+  "first_on_demand": 10,
+  "availability": "example_value",
+  "zone_id": "500123",
+  "instance_profile_arn": "example_value",
+  "spot_bid_price_percent": 10,
+  "ebs_volume_type": "example_value",
+  "ebs_volume_count": 10,
+  "ebs_volume_size": 10
+}

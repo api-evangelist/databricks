@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AutoScale",
+  "type": "object",
+  "description": "Autoscaling configuration. When set, num_workers is ignored and the cluster scales between min_workers and max_workers.",
+  "properties": {
+    "min_workers": {
+      "type": "integer",
+      "description": "The minimum number of workers the cluster can scale down to."
+    },
+    "max_workers": {
+      "type": "integer",
+      "description": "The maximum number of workers the cluster can scale up to."
+    }
+  }
+}

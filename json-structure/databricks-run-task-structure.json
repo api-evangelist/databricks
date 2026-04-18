@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RunTask",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "integer"
+    },
+    "task_key": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "state": {
+      "type": "object"
+    },
+    "depends_on": {
+      "type": "array"
+    },
+    "existing_cluster_id": {
+      "type": "string"
+    },
+    "notebook_task": {
+      "type": "object"
+    },
+    "spark_jar_task": {
+      "type": "object"
+    },
+    "spark_python_task": {
+      "type": "object"
+    },
+    "sql_task": {
+      "type": "object"
+    },
+    "start_time": {
+      "type": "integer"
+    },
+    "setup_duration": {
+      "type": "integer"
+    },
+    "execution_duration": {
+      "type": "integer"
+    },
+    "cleanup_duration": {
+      "type": "integer"
+    },
+    "end_time": {
+      "type": "integer"
+    },
+    "cluster_instance": {
+      "type": "object"
+    },
+    "attempt_number": {
+      "type": "integer"
+    },
+    "libraries": {
+      "type": "array"
+    }
+  }
+}

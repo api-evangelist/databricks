@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EditClusterRequest",
+  "type": "object",
+  "properties": {
+    "cluster_id": {
+      "type": "string",
+      "description": "The unique identifier of the cluster to edit."
+    },
+    "cluster_name": {
+      "type": "string",
+      "description": "The new name for the cluster."
+    },
+    "spark_version": {
+      "type": "string",
+      "description": "The runtime version."
+    },
+    "node_type_id": {
+      "type": "string",
+      "description": "The node type for worker nodes."
+    },
+    "driver_node_type_id": {
+      "type": "string",
+      "description": "The node type for the Spark driver."
+    },
+    "num_workers": {
+      "type": "integer",
+      "description": "Number of worker nodes."
+    },
+    "spark_conf": {
+      "type": "object"
+    },
+    "custom_tags": {
+      "type": "object"
+    },
+    "spark_env_vars": {
+      "type": "object"
+    },
+    "autotermination_minutes": {
+      "type": "integer"
+    },
+    "enable_elastic_disk": {
+      "type": "boolean"
+    },
+    "instance_pool_id": {
+      "type": "string"
+    },
+    "policy_id": {
+      "type": "string"
+    },
+    "data_security_mode": {
+      "type": "string"
+    },
+    "single_user_name": {
+      "type": "string"
+    },
+    "runtime_engine": {
+      "type": "string"
+    }
+  }
+}

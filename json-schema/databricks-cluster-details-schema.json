@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClusterDetails",
+  "type": "object",
+  "properties": {
+    "cluster_id": {
+      "type": "string",
+      "description": "The unique identifier of the cluster."
+    },
+    "cluster_name": {
+      "type": "string",
+      "description": "The human-readable name of the cluster."
+    },
+    "spark_version": {
+      "type": "string",
+      "description": "The runtime version of the cluster."
+    },
+    "node_type_id": {
+      "type": "string",
+      "description": "The node type for worker nodes."
+    },
+    "driver_node_type_id": {
+      "type": "string",
+      "description": "The node type for the Spark driver."
+    },
+    "num_workers": {
+      "type": "integer",
+      "description": "Number of worker nodes."
+    },
+    "state": {
+      "type": "string",
+      "description": "The current state of the cluster."
+    },
+    "state_message": {
+      "type": "string",
+      "description": "A message about the state of the cluster."
+    },
+    "start_time": {
+      "type": "integer",
+      "description": "The time the cluster was started in epoch milliseconds."
+    },
+    "terminated_time": {
+      "type": "integer",
+      "description": "The time the cluster was terminated in epoch milliseconds."
+    },
+    "last_state_loss_time": {
+      "type": "integer",
+      "description": "The time when the cluster driver last lost its state in epoch milliseconds."
+    },
+    "last_activity_time": {
+      "type": "integer",
+      "description": "The time of the last user activity on the cluster."
+    },
+    "last_restarted_time": {
+      "type": "integer",
+      "description": "The time the cluster was last restarted."
+    },
+    "creator_user_name": {
+      "type": "string",
+      "description": "The email of the user who created the cluster."
+    },
+    "cluster_source": {
+      "type": "string",
+      "description": "The source that created the cluster."
+    },
+    "spark_conf": {
+      "type": "object",
+      "description": "Spark configuration key-value pairs."
+    },
+    "custom_tags": {
+      "type": "object",
+      "description": "Tags applied to the cluster."
+    },
+    "spark_env_vars": {
+      "type": "object"
+    },
+    "autotermination_minutes": {
+      "type": "integer",
+      "description": "Auto-termination idle timeout in minutes."
+    },
+    "enable_elastic_disk": {
+      "type": "boolean"
+    },
+    "instance_pool_id": {
+      "type": "string"
+    },
+    "policy_id": {
+      "type": "string"
+    },
+    "data_security_mode": {
+      "type": "string"
+    },
+    "single_user_name": {
+      "type": "string"
+    },
+    "runtime_engine": {
+      "type": "string"
+    },
+    "default_tags": {
+      "type": "object",
+      "description": "Default tags applied by Databricks."
+    },
+    "cluster_log_status": {
+      "type": "object"
+    },
+    "termination_reason": {
+      "type": "object"
+    },
+    "disk_spec": {
+      "type": "object"
+    },
+    "executors": {
+      "type": "array"
+    },
+    "jdbc_port": {
+      "type": "integer",
+      "description": "Port on the driver for JDBC/ODBC connections."
+    },
+    "spark_context_id": {
+      "type": "integer",
+      "description": "The canonical Spark context identifier."
+    }
+  }
+}

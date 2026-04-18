@@ -1,0 +1,16 @@
+{
+  "name": "Example Title",
+  "tasks": [],
+  "job_clusters": [],
+  "notification_settings": "example_value",
+  "timeout_seconds": 10,
+  "continuous": "example_value",
+  "trigger": "example_value",
+  "max_concurrent_runs": 10,
+  "tags": "example_value",
+  "format": "example_value",
+  "queue": "example_value",
+  "parameters": [],
+  "run_as": "example_value",
+  "access_control_list": []
+}

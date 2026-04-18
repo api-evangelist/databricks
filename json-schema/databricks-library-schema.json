@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Library",
+  "type": "object",
+  "properties": {
+    "jar": {
+      "type": "string",
+      "description": "URI of a JAR to install."
+    },
+    "egg": {
+      "type": "string",
+      "description": "URI of an egg to install (deprecated)."
+    },
+    "whl": {
+      "type": "string",
+      "description": "URI of a wheel to install."
+    },
+    "pypi": {
+      "type": "object"
+    },
+    "maven": {
+      "type": "object"
+    },
+    "cran": {
+      "type": "object"
+    },
+    "requirements": {
+      "type": "string",
+      "description": "Path to a requirements.txt file."
+    }
+  }
+}

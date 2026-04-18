@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateClusterRequest",
+  "type": "object",
+  "properties": {
+    "cluster_name": {
+      "type": "string",
+      "description": "A human-readable name for the cluster. This does not need to be unique."
+    },
+    "spark_version": {
+      "type": "string",
+      "description": "The runtime version of the cluster. You can retrieve a list of available runtime versions using the Runtime Versions API."
+    },
+    "node_type_id": {
+      "type": "string",
+      "description": "The node type for worker nodes. This field determines the cloud provider instance type."
+    },
+    "driver_node_type_id": {
+      "type": "string",
+      "description": "The node type for the Spark driver. If not specified, defaults to the same value as node_type_id."
+    },
+    "num_workers": {
+      "type": "integer",
+      "description": "Number of worker nodes for a fixed-size cluster. A cluster has one Spark driver and num_workers executors. Set to 0 for a single-node cluster."
+    },
+    "spark_conf": {
+      "type": "object",
+      "description": "A map of Spark configuration key-value pairs. These override the default Spark configuration values."
+    },
+    "custom_tags": {
+      "type": "object",
+      "description": "Additional tags for cluster resources. Tags are propagated to the cloud provider for cost tracking."
+    },
+    "spark_env_vars": {
+      "type": "object",
+      "description": "Environment variables for all Spark processes. Use {{secrets/scope/key}} to reference secrets."
+    },
+    "autotermination_minutes": {
+      "type": "integer",
+      "description": "Minutes of inactivity after which the cluster is automatically terminated. 0 disables auto-termination."
+    },
+    "enable_elastic_disk": {
+      "type": "boolean",
+      "description": "Whether to autoscale local storage. When enabled, Databricks monitors disk usage and attaches additional disks as needed."
+    },
+    "instance_pool_id": {
+      "type": "string",
+      "description": "The optional ID of the instance pool to use for cluster nodes."
+    },
+    "policy_id": {
+      "type": "string",
+      "description": "The ID of the cluster policy to apply. Cluster policies constrain the configuration settings."
+    },
+    "enable_local_disk_encryption": {
+      "type": "boolean",
+      "description": "Whether to encrypt data on local disks."
+    },
+    "runtime_engine": {
+      "type": "string",
+      "description": "The runtime engine. PHOTON enables the Photon vectorized query engine for faster performance."
+    },
+    "data_security_mode": {
+      "type": "string",
+      "description": "Data security mode for the cluster."
+    },
+    "single_user_name": {
+      "type": "string",
+      "description": "The user name (email) of the single user for SINGLE_USER access mode."
+    },
+    "init_scripts": {
+      "type": "array",
+      "description": "Init scripts to run when the cluster starts."
+    },
+    "ssh_public_keys": {
+      "type": "array",
+      "description": "SSH public keys to add to each Spark node."
+    }
+  }
+}

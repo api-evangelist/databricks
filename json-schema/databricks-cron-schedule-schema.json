@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CronSchedule",
+  "type": "object",
+  "properties": {
+    "quartz_cron_expression": {
+      "type": "string",
+      "description": "A Quartz cron expression describing the schedule. See http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html"
+    },
+    "timezone_id": {
+      "type": "string",
+      "description": "A Java timezone ID. The schedule is resolved relative to this timezone."
+    },
+    "pause_status": {
+      "type": "string",
+      "description": "Whether the schedule is paused."
+    }
+  }
+}

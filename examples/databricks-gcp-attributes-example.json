@@ -1,0 +1,5 @@
+{
+  "use_preemptible_executors": true,
+  "google_service_account": "example_value",
+  "availability": "example_value"
+}
