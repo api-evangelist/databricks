@@ -1,0 +1,113 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Databricks
+providerId: databricks
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Data Lakehouse
+  - ML
+  - Analytics
+description: Databricks Lakehouse pricing in DBU (Databricks Unit) per second. Rates vary by compute type
+  and cloud.
+sources:
+  - https://www.databricks.com/product/pricing
+plans:
+  - id: databricks-jobs-compute
+    name: Jobs Compute
+    type: usage-based
+    description: ~$0.07-$0.15/DBU. Cheapest workload type.
+    entries:
+      - label: Per DBU
+        name: dbu
+        type: metered
+        metric: DBU
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 0.07-0.15
+        userMultiplied: false
+    elements:
+      - name: Cost-effective for production
+      - name: Headless jobs
+      - name: Best for scheduled workloads
+  - id: databricks-all-purpose-compute
+    name: All-Purpose Compute
+    type: usage-based
+    description: ~$0.55/DBU. Interactive notebook access.
+    entries:
+      - label: Per DBU
+        name: dbu
+        type: metered
+        metric: DBU
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.55'
+        userMultiplied: false
+    elements:
+      - name: Interactive notebooks
+      - name: Higher cost for interactivity
+      - name: Best for development
+  - id: databricks-sql-serverless
+    name: SQL Serverless
+    type: usage-based
+    description: ~$0.70/DBU. Includes Azure VM cost.
+    entries:
+      - label: Per DBU
+        name: dbu
+        type: metered
+        metric: DBU
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.70'
+        userMultiplied: false
+    elements:
+      - name: Infrastructure included in rate
+      - name: BI tool queries
+      - name: Auto-scaling
+  - id: databricks-serverless-jobs
+    name: Serverless Jobs Compute
+    type: usage-based
+    description: $0.35-$0.40/DBU. No infrastructure cost.
+    entries:
+      - label: Per DBU
+        name: dbu
+        type: metered
+        metric: DBU
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 0.35-0.40
+        userMultiplied: false
+    elements:
+      - name: Eliminates infra costs
+      - name: Premium over standard Jobs
+  - id: databricks-enterprise
+    name: Enterprise (Tier-Based)
+    type: enterprise
+    description: Standard / Premium / Enterprise editions on AWS; Standard / Premium on Azure (retiring
+      Oct 2026).
+    entries:
+      - label: Annual contract (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Standard tier (legacy on Azure)
+      - name: Premium tier (default on new AWS/GCP)
+      - name: 'Enterprise (AWS only): HIPAA, FedRAMP'
+      - name: Committed Use Contracts available

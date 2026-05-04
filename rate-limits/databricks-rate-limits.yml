@@ -1,0 +1,39 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Databricks
+providerId: databricks
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Data Lakehouse
+description: Databricks REST API rate limits per workspace.
+sources:
+  - https://www.databricks.com/product/pricing
+  - https://docs.databricks.com/dev-tools/api/latest/index.html
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: REST API (default)
+    scope: workspace
+    metric: requests_per_second
+    limit: 30
+    timeFrame: second per IP
+  - name: Jobs API run-now
+    scope: workspace
+    metric: requests_per_second
+    limit: 10
+    timeFrame: second
+  - name: Workspace Files
+    scope: workspace
+    metric: requests_per_second
+    limit: 100
+    timeFrame: second
+  - name: DBSQL Statement Execution
+    scope: warehouse
+    metric: concurrent_queries
+    limit: varies by warehouse size
