@@ -859,6 +859,40 @@ created: '2025-01-14'
 modified: '2026-05-04'
 position: Consumer
 description: Collection of Databricks REST APIs for managing workspaces, clusters, jobs, and data operations.
+integrations:
+  - name: Databricks
+  - name: Fivetran
+  - name: Hevo Data
+  - name: Informatica
+  - name: Rivery
+  - name: RudderStack
+  - name: Snowplow
+  - name: dbt Labs
+  - name: Matillion
+  - name: Prophecy
+  - name: Alteryx
+  - name: Dataiku
+  - name: John Snow Labs
+  - name: Labelbox
+  - name: SuperAnnotate
+  - name: Hex
+  - name: Power BI
+  - name: Preset
+  - name: Qlik
+  - name: Sigma Computing
+  - name: Tableau
+  - name: ThoughtSpot
+  - name: Census
+  - name: Hightouch
+  - name: Hunters
+  - name: Privacera
+  - name: Anomalo
+  - name: erwin
+  - name: Lightup
+  - name: Monte Carlo
+  - name: Precisely
+  - name: AtScale
+  - name: Stardog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
@@ -1000,3 +1034,5 @@ common:
         description: Infrastructure-as-code provider for automating Databricks workspace provisioning.
       - name: dbt
         description: Integration with dbt for SQL-based data transformation workflows.
+  - type: Integrations
+    url: https://docs.databricks.com/aws/en/integrations
