@@ -12,7 +12,7 @@ apis:
       - url: ' https://www.databricks.com'
         type: Documentation
       - url: https://docs.databricks.com/api/workspace/introduction
-        type: API Reference
+        type: APIReference
     description: Databricks is a cloud-based data platform that simplifies and accelerates the process
       of preparing and analyzing large volumes of data. The platform integrates with popular data sources
       and tools, allowing data engineers and data scientists to collaborate and work more efficiently.
@@ -904,7 +904,7 @@ common:
   - url: https://docs.databricks.com/dev-tools/auth.html
     type: Authentication
   - url: https://docs.databricks.com/getting-started/index.html
-    type: Getting Started
+    type: GettingStarted
   - url: https://docs.databricks.com/dev-tools/sdks.html
     type: SDKs
   - url: https://status.databricks.com/
@@ -912,13 +912,13 @@ common:
   - url: https://help.databricks.com/
     type: Support
   - url: https://docs.databricks.com/api/workspace/introduction
-    type: API Reference
+    type: APIReference
   - url: https://docs.databricks.com/aws/en/reference/api
     type: Documentation
   - url: https://www.databricks.com/product/pricing
     type: Pricing
   - url: https://www.databricks.com/try-databricks
-    type: Sign Up
+    type: SignUp
   - url: https://www.databricks.com/legal/privacynotice
     type: PrivacyPolicy
   - url: https://www.databricks.com/legal/terms-of-use
