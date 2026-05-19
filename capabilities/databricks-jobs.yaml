@@ -1,0 +1,535 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Databricks REST API — Jobs
+  description: 'Databricks REST API — Jobs. 10 operations. Lead operation: Databricks Create a New Job. Self-contained Naftiko
+    capability covering one Databricks business surface.'
+  tags:
+  - Databricks
+  - Jobs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DATABRICKS_API_KEY: DATABRICKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: databricks-jobs
+    baseUri: https://{workspace_host}/api
+    description: Databricks REST API — Jobs business capability. Self-contained, no shared references.
+    resources:
+    - name: 2.1-jobs-create
+      path: /2.1/jobs/create
+      operations:
+      - name: createjob
+        method: POST
+        description: Databricks Create a New Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.1-jobs-delete
+      path: /2.1/jobs/delete
+      operations:
+      - name: deletejob
+        method: POST
+        description: Databricks Delete a Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.1-jobs-get
+      path: /2.1/jobs/get
+      operations:
+      - name: getjob
+        method: GET
+        description: Databricks Get a Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: job_id
+          in: query
+          type: integer
+          description: The canonical identifier of the job to retrieve.
+          required: true
+    - name: 2.1-jobs-list
+      path: /2.1/jobs/list
+      operations:
+      - name: listjobs
+        method: GET
+        description: Databricks List All Jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: The number of jobs to return. This value must be greater than 0 and less than or equal to 25. The default
+            value is 20.
+        - name: offset
+          in: query
+          type: integer
+          description: The offset of the first job to return.
+        - name: name
+          in: query
+          type: string
+          description: A filter on the list based on the exact (case-insensitive) job name.
+        - name: expand_tasks
+          in: query
+          type: boolean
+          description: Whether to include task and cluster details in the response.
+    - name: 2.1-jobs-run-now
+      path: /2.1/jobs/run-now
+      operations:
+      - name: runjobnow
+        method: POST
+        description: Databricks Trigger a Job Run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.1-jobs-runs-cancel
+      path: /2.1/jobs/runs/cancel
+      operations:
+      - name: canceljobrun
+        method: POST
+        description: Databricks Cancel a Job Run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.1-jobs-runs-get
+      path: /2.1/jobs/runs/get
+      operations:
+      - name: getjobrun
+        method: GET
+        description: Databricks Get a Job Run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: run_id
+          in: query
+          type: integer
+          description: The canonical identifier of the run.
+          required: true
+        - name: include_history
+          in: query
+          type: boolean
+          description: Whether to include the repair history in the response.
+        - name: include_resolved_values
+          in: query
+          type: boolean
+          description: Whether to include resolved parameter values in the response.
+    - name: 2.1-jobs-runs-get-output
+      path: /2.1/jobs/runs/get-output
+      operations:
+      - name: getjobrunoutput
+        method: GET
+        description: Databricks Get Run Output
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: run_id
+          in: query
+          type: integer
+          description: The canonical identifier of the run.
+          required: true
+    - name: 2.1-jobs-runs-list
+      path: /2.1/jobs/runs/list
+      operations:
+      - name: listjobruns
+        method: GET
+        description: Databricks List Job Runs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: job_id
+          in: query
+          type: integer
+          description: The job for which to list runs. If omitted, lists runs for all jobs.
+        - name: active_only
+          in: query
+          type: boolean
+          description: If true, only active runs are included in the results; otherwise lists both active and completed runs.
+        - name: completed_only
+          in: query
+          type: boolean
+          description: If true, only completed runs are included in the results.
+        - name: offset
+          in: query
+          type: integer
+          description: The offset of the first run to return.
+        - name: limit
+          in: query
+          type: integer
+          description: The number of runs to return (max 25).
+        - name: run_type
+          in: query
+          type: string
+          description: The type of runs to return.
+        - name: expand_tasks
+          in: query
+          type: boolean
+          description: Whether to include task details in each run.
+        - name: start_time_from
+          in: query
+          type: integer
+          description: Filter runs started after this time (epoch milliseconds).
+        - name: start_time_to
+          in: query
+          type: integer
+          description: Filter runs started before this time (epoch milliseconds).
+    - name: 2.1-jobs-update
+      path: /2.1/jobs/update
+      operations:
+      - name: updatejob
+        method: POST
+        description: Databricks Partially Update a Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.DATABRICKS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: databricks-jobs-rest
+    port: 8080
+    description: REST adapter for Databricks REST API — Jobs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/2-1/jobs/create
+      name: 2-1-jobs-create
+      description: REST surface for 2.1-jobs-create.
+      operations:
+      - method: POST
+        name: createjob
+        description: Databricks Create a New Job
+        call: databricks-jobs.createjob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/delete
+      name: 2-1-jobs-delete
+      description: REST surface for 2.1-jobs-delete.
+      operations:
+      - method: POST
+        name: deletejob
+        description: Databricks Delete a Job
+        call: databricks-jobs.deletejob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/get
+      name: 2-1-jobs-get
+      description: REST surface for 2.1-jobs-get.
+      operations:
+      - method: GET
+        name: getjob
+        description: Databricks Get a Job
+        call: databricks-jobs.getjob
+        with:
+          job_id: rest.job_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/list
+      name: 2-1-jobs-list
+      description: REST surface for 2.1-jobs-list.
+      operations:
+      - method: GET
+        name: listjobs
+        description: Databricks List All Jobs
+        call: databricks-jobs.listjobs
+        with:
+          limit: rest.limit
+          offset: rest.offset
+          name: rest.name
+          expand_tasks: rest.expand_tasks
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/run-now
+      name: 2-1-jobs-run-now
+      description: REST surface for 2.1-jobs-run-now.
+      operations:
+      - method: POST
+        name: runjobnow
+        description: Databricks Trigger a Job Run
+        call: databricks-jobs.runjobnow
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/runs/cancel
+      name: 2-1-jobs-runs-cancel
+      description: REST surface for 2.1-jobs-runs-cancel.
+      operations:
+      - method: POST
+        name: canceljobrun
+        description: Databricks Cancel a Job Run
+        call: databricks-jobs.canceljobrun
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/runs/get
+      name: 2-1-jobs-runs-get
+      description: REST surface for 2.1-jobs-runs-get.
+      operations:
+      - method: GET
+        name: getjobrun
+        description: Databricks Get a Job Run
+        call: databricks-jobs.getjobrun
+        with:
+          run_id: rest.run_id
+          include_history: rest.include_history
+          include_resolved_values: rest.include_resolved_values
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/runs/get-output
+      name: 2-1-jobs-runs-get-output
+      description: REST surface for 2.1-jobs-runs-get-output.
+      operations:
+      - method: GET
+        name: getjobrunoutput
+        description: Databricks Get Run Output
+        call: databricks-jobs.getjobrunoutput
+        with:
+          run_id: rest.run_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/runs/list
+      name: 2-1-jobs-runs-list
+      description: REST surface for 2.1-jobs-runs-list.
+      operations:
+      - method: GET
+        name: listjobruns
+        description: Databricks List Job Runs
+        call: databricks-jobs.listjobruns
+        with:
+          job_id: rest.job_id
+          active_only: rest.active_only
+          completed_only: rest.completed_only
+          offset: rest.offset
+          limit: rest.limit
+          run_type: rest.run_type
+          expand_tasks: rest.expand_tasks
+          start_time_from: rest.start_time_from
+          start_time_to: rest.start_time_to
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-1/jobs/update
+      name: 2-1-jobs-update
+      description: REST surface for 2.1-jobs-update.
+      operations:
+      - method: POST
+        name: updatejob
+        description: Databricks Partially Update a Job
+        call: databricks-jobs.updatejob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: databricks-jobs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Databricks REST API — Jobs. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: databricks-create-new-job
+      description: Databricks Create a New Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-jobs.createjob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-delete-job
+      description: Databricks Delete a Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-jobs.deletejob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-get-job
+      description: Databricks Get a Job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: databricks-jobs.getjob
+      with:
+        job_id: tools.job_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-list-all-jobs
+      description: Databricks List All Jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: databricks-jobs.listjobs
+      with:
+        limit: tools.limit
+        offset: tools.offset
+        name: tools.name
+        expand_tasks: tools.expand_tasks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-trigger-job-run
+      description: Databricks Trigger a Job Run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-jobs.runjobnow
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-cancel-job-run
+      description: Databricks Cancel a Job Run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-jobs.canceljobrun
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-get-job-run
+      description: Databricks Get a Job Run
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: databricks-jobs.getjobrun
+      with:
+        run_id: tools.run_id
+        include_history: tools.include_history
+        include_resolved_values: tools.include_resolved_values
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-get-run-output
+      description: Databricks Get Run Output
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: databricks-jobs.getjobrunoutput
+      with:
+        run_id: tools.run_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-list-job-runs
+      description: Databricks List Job Runs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: databricks-jobs.listjobruns
+      with:
+        job_id: tools.job_id
+        active_only: tools.active_only
+        completed_only: tools.completed_only
+        offset: tools.offset
+        limit: tools.limit
+        run_type: tools.run_type
+        expand_tasks: tools.expand_tasks
+        start_time_from: tools.start_time_from
+        start_time_to: tools.start_time_to
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-partially-update-job
+      description: Databricks Partially Update a Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-jobs.updatejob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

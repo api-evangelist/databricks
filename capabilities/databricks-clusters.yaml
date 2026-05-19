@@ -1,0 +1,415 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Databricks REST API — Clusters
+  description: 'Databricks REST API — Clusters. 9 operations. Lead operation: Databricks Create a New Cluster. Self-contained
+    Naftiko capability covering one Databricks business surface.'
+  tags:
+  - Databricks
+  - Clusters
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DATABRICKS_API_KEY: DATABRICKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: databricks-clusters
+    baseUri: https://{workspace_host}/api
+    description: Databricks REST API — Clusters business capability. Self-contained, no shared references.
+    resources:
+    - name: 2.0-clusters-create
+      path: /2.0/clusters/create
+      operations:
+      - name: createcluster
+        method: POST
+        description: Databricks Create a New Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.0-clusters-delete
+      path: /2.0/clusters/delete
+      operations:
+      - name: terminatecluster
+        method: POST
+        description: Databricks Terminate a Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.0-clusters-edit
+      path: /2.0/clusters/edit
+      operations:
+      - name: editcluster
+        method: POST
+        description: Databricks Edit Cluster Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.0-clusters-events
+      path: /2.0/clusters/events
+      operations:
+      - name: listclusterevents
+        method: POST
+        description: Databricks List Cluster Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.0-clusters-get
+      path: /2.0/clusters/get
+      operations:
+      - name: getcluster
+        method: GET
+        description: Databricks Get Cluster Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cluster_id
+          in: query
+          type: string
+          description: The unique identifier of the cluster.
+          required: true
+    - name: 2.0-clusters-list
+      path: /2.0/clusters/list
+      operations:
+      - name: listclusters
+        method: GET
+        description: Databricks List All Clusters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: can_use_client
+          in: query
+          type: string
+          description: Filter clusters by client compatibility.
+    - name: 2.0-clusters-permanent-delete
+      path: /2.0/clusters/permanent-delete
+      operations:
+      - name: permanentdeletecluster
+        method: POST
+        description: Databricks Permanently Delete a Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.0-clusters-restart
+      path: /2.0/clusters/restart
+      operations:
+      - name: restartcluster
+        method: POST
+        description: Databricks Restart a Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2.0-clusters-start
+      path: /2.0/clusters/start
+      operations:
+      - name: startcluster
+        method: POST
+        description: Databricks Start a Terminated Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.DATABRICKS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: databricks-clusters-rest
+    port: 8080
+    description: REST adapter for Databricks REST API — Clusters. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/2-0/clusters/create
+      name: 2-0-clusters-create
+      description: REST surface for 2.0-clusters-create.
+      operations:
+      - method: POST
+        name: createcluster
+        description: Databricks Create a New Cluster
+        call: databricks-clusters.createcluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-0/clusters/delete
+      name: 2-0-clusters-delete
+      description: REST surface for 2.0-clusters-delete.
+      operations:
+      - method: POST
+        name: terminatecluster
+        description: Databricks Terminate a Cluster
+        call: databricks-clusters.terminatecluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-0/clusters/edit
+      name: 2-0-clusters-edit
+      description: REST surface for 2.0-clusters-edit.
+      operations:
+      - method: POST
+        name: editcluster
+        description: Databricks Edit Cluster Configuration
+        call: databricks-clusters.editcluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-0/clusters/events
+      name: 2-0-clusters-events
+      description: REST surface for 2.0-clusters-events.
+      operations:
+      - method: POST
+        name: listclusterevents
+        description: Databricks List Cluster Events
+        call: databricks-clusters.listclusterevents
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-0/clusters/get
+      name: 2-0-clusters-get
+      description: REST surface for 2.0-clusters-get.
+      operations:
+      - method: GET
+        name: getcluster
+        description: Databricks Get Cluster Details
+        call: databricks-clusters.getcluster
+        with:
+          cluster_id: rest.cluster_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-0/clusters/list
+      name: 2-0-clusters-list
+      description: REST surface for 2.0-clusters-list.
+      operations:
+      - method: GET
+        name: listclusters
+        description: Databricks List All Clusters
+        call: databricks-clusters.listclusters
+        with:
+          can_use_client: rest.can_use_client
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-0/clusters/permanent-delete
+      name: 2-0-clusters-permanent-delete
+      description: REST surface for 2.0-clusters-permanent-delete.
+      operations:
+      - method: POST
+        name: permanentdeletecluster
+        description: Databricks Permanently Delete a Cluster
+        call: databricks-clusters.permanentdeletecluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-0/clusters/restart
+      name: 2-0-clusters-restart
+      description: REST surface for 2.0-clusters-restart.
+      operations:
+      - method: POST
+        name: restartcluster
+        description: Databricks Restart a Cluster
+        call: databricks-clusters.restartcluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2-0/clusters/start
+      name: 2-0-clusters-start
+      description: REST surface for 2.0-clusters-start.
+      operations:
+      - method: POST
+        name: startcluster
+        description: Databricks Start a Terminated Cluster
+        call: databricks-clusters.startcluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: databricks-clusters-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Databricks REST API — Clusters. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: databricks-create-new-cluster
+      description: Databricks Create a New Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-clusters.createcluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-terminate-cluster
+      description: Databricks Terminate a Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-clusters.terminatecluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-edit-cluster-configuration
+      description: Databricks Edit Cluster Configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-clusters.editcluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-list-cluster-events
+      description: Databricks List Cluster Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: databricks-clusters.listclusterevents
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-get-cluster-details
+      description: Databricks Get Cluster Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: databricks-clusters.getcluster
+      with:
+        cluster_id: tools.cluster_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-list-all-clusters
+      description: Databricks List All Clusters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: databricks-clusters.listclusters
+      with:
+        can_use_client: tools.can_use_client
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-permanently-delete-cluster
+      description: Databricks Permanently Delete a Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-clusters.permanentdeletecluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-restart-cluster
+      description: Databricks Restart a Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-clusters.restartcluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: databricks-start-terminated-cluster
+      description: Databricks Start a Terminated Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: databricks-clusters.startcluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
