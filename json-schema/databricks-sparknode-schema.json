@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SparkNode",
+  "title": "SparkNode",
+  "type": "object",
+  "properties": {
+    "private_ip": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "public_dns": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "node_id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "instance_id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "start_timestamp": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "host_private_ip": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

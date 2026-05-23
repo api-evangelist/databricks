@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RunTask",
+  "title": "RunTask",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "integer",
+      "format": "int64",
+      "example": "500123"
+    },
+    "task_key": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "life_cycle_state": {
+          "type": "string"
+        },
+        "result_state": {
+          "type": "string"
+        },
+        "state_message": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task_key": {
+            "type": "string"
+          }
+        }
+      },
+      "example": []
+    },
+    "existing_cluster_id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "new_cluster": {
+      "$ref": "#/components/schemas/CreateClusterRequest"
+    },
+    "notebook_task": {
+      "type": "object",
+      "properties": {
+        "notebook_path": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "base_parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "example": "example_value"
+    },
+    "spark_jar_task": {
+      "type": "object",
+      "properties": {
+        "main_class_name": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "example": "example_value"
+    },
+    "spark_python_task": {
+      "type": "object",
+      "properties": {
+        "python_file": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "example": "example_value"
+    },
+    "sql_task": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "object",
+          "properties": {
+            "query_id": {
+              "type": "string"
+            }
+          }
+        },
+        "warehouse_id": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    },
+    "start_time": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "setup_duration": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "execution_duration": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "cleanup_duration": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "end_time": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "cluster_instance": {
+      "type": "object",
+      "properties": {
+        "cluster_id": {
+          "type": "string"
+        },
+        "spark_context_id": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    },
+    "attempt_number": {
+      "type": "integer",
+      "example": 10
+    },
+    "libraries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Library"
+      },
+      "example": []
+    }
+  }
+}

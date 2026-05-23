@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClusterDetails",
+  "title": "ClusterDetails",
+  "type": "object",
+  "properties": {
+    "cluster_id": {
+      "type": "string",
+      "description": "The unique identifier of the cluster.",
+      "example": "500123"
+    },
+    "cluster_name": {
+      "type": "string",
+      "description": "The human-readable name of the cluster.",
+      "example": "example_value"
+    },
+    "spark_version": {
+      "type": "string",
+      "description": "The runtime version of the cluster.",
+      "example": "example_value"
+    },
+    "node_type_id": {
+      "type": "string",
+      "description": "The node type for worker nodes.",
+      "example": "500123"
+    },
+    "driver_node_type_id": {
+      "type": "string",
+      "description": "The node type for the Spark driver.",
+      "example": "500123"
+    },
+    "num_workers": {
+      "type": "integer",
+      "description": "Number of worker nodes.",
+      "example": 10
+    },
+    "autoscale": {
+      "$ref": "#/components/schemas/AutoScale"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "RUNNING",
+        "RESTARTING",
+        "RESIZING",
+        "TERMINATING",
+        "TERMINATED",
+        "ERROR",
+        "UNKNOWN"
+      ],
+      "description": "The current state of the cluster.",
+      "example": "PENDING"
+    },
+    "state_message": {
+      "type": "string",
+      "description": "A message about the state of the cluster.",
+      "example": "example_value"
+    },
+    "start_time": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The time the cluster was started in epoch milliseconds.",
+      "example": 10
+    },
+    "terminated_time": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The time the cluster was terminated in epoch milliseconds.",
+      "example": 10
+    },
+    "last_state_loss_time": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The time when the cluster driver last lost its state in epoch milliseconds.",
+      "example": 10
+    },
+    "last_activity_time": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The time of the last user activity on the cluster.",
+      "example": 10
+    },
+    "last_restarted_time": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The time the cluster was last restarted.",
+      "example": 10
+    },
+    "creator_user_name": {
+      "type": "string",
+      "description": "The email of the user who created the cluster.",
+      "example": "example_value"
+    },
+    "cluster_source": {
+      "type": "string",
+      "enum": [
+        "UI",
+        "API",
+        "JOB",
+        "MODELS",
+        "PIPELINE",
+        "PIPELINE_MAINTENANCE",
+        "SQL",
+        "SOME_OTHER_SOURCE"
+      ],
+      "description": "The source that created the cluster.",
+      "example": "UI"
+    },
+    "spark_conf": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Spark configuration key-value pairs.",
+      "example": "example_value"
+    },
+    "custom_tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tags applied to the cluster.",
+      "example": "example_value"
+    },
+    "spark_env_vars": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": "example_value"
+    },
+    "autotermination_minutes": {
+      "type": "integer",
+      "description": "Auto-termination idle timeout in minutes.",
+      "example": 10
+    },
+    "enable_elastic_disk": {
+      "type": "boolean",
+      "example": true
+    },
+    "instance_pool_id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "policy_id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "data_security_mode": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "single_user_name": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "runtime_engine": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "default_tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Default tags applied by Databricks.",
+      "example": "example_value"
+    },
+    "cluster_log_status": {
+      "type": "object",
+      "properties": {
+        "last_attempted": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "last_exception": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    },
+    "termination_reason": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Status code for the termination reason."
+        },
+        "type": {
+          "type": "string",
+          "description": "Termination type."
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "example": "example_value"
+    },
+    "disk_spec": {
+      "type": "object",
+      "properties": {
+        "disk_count": {
+          "type": "integer"
+        },
+        "disk_size": {
+          "type": "integer"
+        },
+        "disk_type": {
+          "type": "object",
+          "properties": {
+            "azure_disk_volume_type": {
+              "type": "string"
+            },
+            "ebs_volume_type": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "example": "example_value"
+    },
+    "driver": {
+      "$ref": "#/components/schemas/SparkNode"
+    },
+    "executors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SparkNode"
+      },
+      "example": []
+    },
+    "jdbc_port": {
+      "type": "integer",
+      "description": "Port on the driver for JDBC/ODBC connections.",
+      "example": 10
+    },
+    "spark_context_id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The canonical Spark context identifier.",
+      "example": "500123"
+    }
+  }
+}

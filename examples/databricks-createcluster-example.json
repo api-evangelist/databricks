@@ -1,0 +1,74 @@
+{
+  "operationId": "createCluster",
+  "method": "POST",
+  "path": "/2.0/clusters/create",
+  "summary": "Databricks Create a New Cluster",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreateclusterRequestExample",
+      "example": {
+        "cluster_name": "example_value",
+        "spark_version": "example_value",
+        "node_type_id": "500123",
+        "driver_node_type_id": "500123",
+        "num_workers": 10,
+        "autoscale": {
+          "min_workers": 10,
+          "max_workers": 10
+        },
+        "spark_conf": "example_value",
+        "aws_attributes": {
+          "first_on_demand": 10,
+          "availability": "SPOT",
+          "zone_id": "500123",
+          "instance_profile_arn": "example_value",
+          "spot_bid_price_percent": 10,
+          "ebs_volume_type": "GENERAL_PURPOSE_SSD",
+          "ebs_volume_count": 10,
+          "ebs_volume_size": 10
+        },
+        "azure_attributes": {
+          "first_on_demand": 10,
+          "availability": "SPOT_AZURE",
+          "spot_bid_max_price": 42.5
+        },
+        "gcp_attributes": {
+          "use_preemptible_executors": true,
+          "google_service_account": "example_value",
+          "availability": "GCP_PREEMPTIBLE"
+        },
+        "custom_tags": "example_value",
+        "spark_env_vars": "example_value",
+        "autotermination_minutes": 10,
+        "enable_elastic_disk": true,
+        "instance_pool_id": "500123",
+        "policy_id": "500123",
+        "enable_local_disk_encryption": true,
+        "runtime_engine": "STANDARD",
+        "data_security_mode": "NONE",
+        "single_user_name": "example_value",
+        "init_scripts": [
+          {
+            "workspace": {},
+            "volumes": {},
+            "dbfs": {}
+          }
+        ],
+        "ssh_public_keys": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Createcluster200Example",
+      "example": {
+        "cluster_id": "500123"
+      }
+    }
+  ]
+}

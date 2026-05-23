@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GcpAttributes",
+  "title": "GcpAttributes",
+  "type": "object",
+  "properties": {
+    "use_preemptible_executors": {
+      "type": "boolean",
+      "example": true
+    },
+    "google_service_account": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "availability": {
+      "type": "string",
+      "enum": [
+        "GCP_PREEMPTIBLE",
+        "GCP_ON_DEMAND"
+      ],
+      "example": "GCP_PREEMPTIBLE"
+    }
+  }
+}

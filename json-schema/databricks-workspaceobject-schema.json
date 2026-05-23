@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WorkspaceObject",
+  "title": "WorkspaceObject",
+  "type": "object",
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "enum": [
+        "NOTEBOOK",
+        "DIRECTORY",
+        "LIBRARY",
+        "FILE",
+        "REPO",
+        "DASHBOARD"
+      ],
+      "description": "The type of the workspace object.",
+      "example": "NOTEBOOK"
+    },
+    "path": {
+      "type": "string",
+      "description": "The absolute path of the object in the workspace.",
+      "example": "example_value"
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "SCALA",
+        "PYTHON",
+        "SQL",
+        "R"
+      ],
+      "description": "The language of the notebook, if applicable. Only present for notebook objects.",
+      "example": "SCALA"
+    },
+    "object_id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The unique identifier of the object.",
+      "example": "500123"
+    },
+    "created_at": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The creation time in epoch milliseconds.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "modified_at": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The last modified time in epoch milliseconds.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "resource_id": {
+      "type": "string",
+      "description": "Unique identifier for SCIM compliance.",
+      "example": "500123"
+    },
+    "size": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The file size in bytes (for FILE objects).",
+      "example": 10
+    }
+  }
+}

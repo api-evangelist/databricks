@@ -1,0 +1,35 @@
+{
+  "operationId": "editCluster",
+  "method": "POST",
+  "path": "/2.0/clusters/edit",
+  "summary": "Databricks Edit Cluster Configuration",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "EditclusterRequestExample",
+      "example": {
+        "cluster_id": "500123",
+        "cluster_name": "example_value",
+        "spark_version": "example_value",
+        "node_type_id": "500123",
+        "driver_node_type_id": "500123",
+        "num_workers": 10,
+        "autoscale": {
+          "min_workers": 10,
+          "max_workers": 10
+        },
+        "spark_conf": "example_value",
+        "custom_tags": "example_value",
+        "spark_env_vars": "example_value",
+        "autotermination_minutes": 10,
+        "enable_elastic_disk": true,
+        "instance_pool_id": "500123",
+        "policy_id": "500123",
+        "data_security_mode": "NONE",
+        "single_user_name": "example_value",
+        "runtime_engine": "STANDARD"
+      }
+    }
+  ],
+  "responseExamples": []
+}

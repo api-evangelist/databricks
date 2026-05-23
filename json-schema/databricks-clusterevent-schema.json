@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClusterEvent",
+  "title": "ClusterEvent",
+  "type": "object",
+  "properties": {
+    "cluster_id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "timestamp": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "type": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "details": {
+      "type": "object",
+      "properties": {
+        "current_num_workers": {
+          "type": "integer"
+        },
+        "target_num_workers": {
+          "type": "integer"
+        },
+        "previous_attributes": {
+          "type": "object"
+        },
+        "attributes": {
+          "type": "object"
+        },
+        "previous_cluster_size": {
+          "type": "object"
+        },
+        "cluster_size": {
+          "type": "object"
+        },
+        "cause": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "parameters": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

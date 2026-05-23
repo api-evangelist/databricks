@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JobEmailNotifications",
+  "title": "JobEmailNotifications",
+  "type": "object",
+  "properties": {
+    "on_start": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Email addresses to notify when a run starts.",
+      "example": []
+    },
+    "on_success": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Email addresses to notify when a run succeeds.",
+      "example": []
+    },
+    "on_failure": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Email addresses to notify when a run fails.",
+      "example": []
+    },
+    "on_duration_warning_threshold_exceeded": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "no_alert_for_skipped_runs": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

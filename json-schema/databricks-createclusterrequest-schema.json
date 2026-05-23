@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateClusterRequest",
+  "title": "CreateClusterRequest",
+  "type": "object",
+  "required": [
+    "cluster_name",
+    "spark_version",
+    "node_type_id"
+  ],
+  "properties": {
+    "cluster_name": {
+      "type": "string",
+      "description": "A human-readable name for the cluster. This does not need to be unique.",
+      "examples": [
+        "my-data-cluster"
+      ]
+    },
+    "spark_version": {
+      "type": "string",
+      "description": "The runtime version of the cluster. You can retrieve a list of available runtime versions using the Runtime Versions API.",
+      "examples": [
+        "14.3.x-scala2.12"
+      ]
+    },
+    "node_type_id": {
+      "type": "string",
+      "description": "The node type for worker nodes. This field determines the cloud provider instance type.",
+      "examples": [
+        "i3.xlarge"
+      ]
+    },
+    "driver_node_type_id": {
+      "type": "string",
+      "description": "The node type for the Spark driver. If not specified, defaults to the same value as node_type_id.",
+      "example": "500123"
+    },
+    "num_workers": {
+      "type": "integer",
+      "description": "Number of worker nodes for a fixed-size cluster. A cluster has one Spark driver and num_workers executors. Set to 0 for a single-node cluster.",
+      "examples": [
+        2
+      ]
+    },
+    "autoscale": {
+      "$ref": "#/components/schemas/AutoScale"
+    },
+    "spark_conf": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "A map of Spark configuration key-value pairs. These override the default Spark configuration values.",
+      "example": "example_value"
+    },
+    "aws_attributes": {
+      "$ref": "#/components/schemas/AwsAttributes"
+    },
+    "azure_attributes": {
+      "$ref": "#/components/schemas/AzureAttributes"
+    },
+    "gcp_attributes": {
+      "$ref": "#/components/schemas/GcpAttributes"
+    },
+    "custom_tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Additional tags for cluster resources. Tags are propagated to the cloud provider for cost tracking.",
+      "example": "example_value"
+    },
+    "spark_env_vars": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Environment variables for all Spark processes. Use {{secrets/scope/key}} to reference secrets.",
+      "example": "example_value"
+    },
+    "autotermination_minutes": {
+      "type": "integer",
+      "description": "Minutes of inactivity after which the cluster is automatically terminated. 0 disables auto-termination.",
+      "default": 120,
+      "example": 10
+    },
+    "enable_elastic_disk": {
+      "type": "boolean",
+      "description": "Whether to autoscale local storage. When enabled, Databricks monitors disk usage and attaches additional disks as needed.",
+      "example": true
+    },
+    "instance_pool_id": {
+      "type": "string",
+      "description": "The optional ID of the instance pool to use for cluster nodes.",
+      "example": "500123"
+    },
+    "policy_id": {
+      "type": "string",
+      "description": "The ID of the cluster policy to apply. Cluster policies constrain the configuration settings.",
+      "example": "500123"
+    },
+    "enable_local_disk_encryption": {
+      "type": "boolean",
+      "description": "Whether to encrypt data on local disks.",
+      "example": true
+    },
+    "runtime_engine": {
+      "type": "string",
+      "enum": [
+        "STANDARD",
+        "PHOTON"
+      ],
+      "description": "The runtime engine. PHOTON enables the Photon vectorized query engine for faster performance.",
+      "example": "STANDARD"
+    },
+    "data_security_mode": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "SINGLE_USER",
+        "USER_ISOLATION",
+        "LEGACY_TABLE_ACL",
+        "LEGACY_PASSTHROUGH",
+        "LEGACY_SINGLE_USER",
+        "LEGACY_SINGLE_USER_STANDARD"
+      ],
+      "description": "Data security mode for the cluster.",
+      "example": "NONE"
+    },
+    "single_user_name": {
+      "type": "string",
+      "description": "The user name (email) of the single user for SINGLE_USER access mode.",
+      "example": "example_value"
+    },
+    "init_scripts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InitScriptInfo"
+      },
+      "description": "Init scripts to run when the cluster starts.",
+      "example": []
+    },
+    "ssh_public_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "SSH public keys to add to each Spark node.",
+      "example": []
+    }
+  }
+}

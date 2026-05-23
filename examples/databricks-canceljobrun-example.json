@@ -1,0 +1,16 @@
+{
+  "operationId": "cancelJobRun",
+  "method": "POST",
+  "path": "/2.1/jobs/runs/cancel",
+  "summary": "Databricks Cancel a Job Run",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CanceljobrunRequestExample",
+      "example": {
+        "run_id": "500123"
+      }
+    }
+  ],
+  "responseExamples": []
+}

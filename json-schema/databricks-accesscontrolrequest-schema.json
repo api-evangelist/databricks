@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessControlRequest",
+  "title": "AccessControlRequest",
+  "type": "object",
+  "properties": {
+    "user_name": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "group_name": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "service_principal_name": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "permission_level": {
+      "type": "string",
+      "enum": [
+        "CAN_MANAGE",
+        "CAN_MANAGE_RUN",
+        "CAN_VIEW",
+        "IS_OWNER"
+      ],
+      "example": "CAN_MANAGE"
+    }
+  }
+}

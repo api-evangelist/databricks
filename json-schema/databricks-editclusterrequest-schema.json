@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EditClusterRequest",
+  "title": "EditClusterRequest",
+  "type": "object",
+  "required": [
+    "cluster_id",
+    "cluster_name",
+    "spark_version",
+    "node_type_id"
+  ],
+  "properties": {
+    "cluster_id": {
+      "type": "string",
+      "description": "The unique identifier of the cluster to edit.",
+      "example": "500123"
+    },
+    "cluster_name": {
+      "type": "string",
+      "description": "The new name for the cluster.",
+      "example": "example_value"
+    },
+    "spark_version": {
+      "type": "string",
+      "description": "The runtime version.",
+      "example": "example_value"
+    },
+    "node_type_id": {
+      "type": "string",
+      "description": "The node type for worker nodes.",
+      "example": "500123"
+    },
+    "driver_node_type_id": {
+      "type": "string",
+      "description": "The node type for the Spark driver.",
+      "example": "500123"
+    },
+    "num_workers": {
+      "type": "integer",
+      "description": "Number of worker nodes.",
+      "example": 10
+    },
+    "autoscale": {
+      "$ref": "#/components/schemas/AutoScale"
+    },
+    "spark_conf": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": "example_value"
+    },
+    "custom_tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": "example_value"
+    },
+    "spark_env_vars": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": "example_value"
+    },
+    "autotermination_minutes": {
+      "type": "integer",
+      "example": 10
+    },
+    "enable_elastic_disk": {
+      "type": "boolean",
+      "example": true
+    },
+    "instance_pool_id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "policy_id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "data_security_mode": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "SINGLE_USER",
+        "USER_ISOLATION",
+        "LEGACY_TABLE_ACL",
+        "LEGACY_PASSTHROUGH",
+        "LEGACY_SINGLE_USER",
+        "LEGACY_SINGLE_USER_STANDARD"
+      ],
+      "example": "NONE"
+    },
+    "single_user_name": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "runtime_engine": {
+      "type": "string",
+      "enum": [
+        "STANDARD",
+        "PHOTON"
+      ],
+      "example": "STANDARD"
+    }
+  }
+}

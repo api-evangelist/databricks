@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ErrorResponse",
+  "title": "ErrorResponse",
+  "type": "object",
+  "properties": {
+    "error_code": {
+      "type": "string",
+      "description": "A machine-readable error code.",
+      "examples": [
+        "RESOURCE_DOES_NOT_EXIST"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "description": "A human-readable error message.",
+      "examples": [
+        "Cluster 1234-567890-abcde123 does not exist"
+      ]
+    }
+  }
+}

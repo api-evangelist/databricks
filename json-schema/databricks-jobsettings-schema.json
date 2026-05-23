@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JobSettings",
+  "title": "JobSettings",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Example Title"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TaskSettings"
+      },
+      "example": []
+    },
+    "job_clusters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/JobCluster"
+      },
+      "example": []
+    },
+    "email_notifications": {
+      "$ref": "#/components/schemas/JobEmailNotifications"
+    },
+    "webhook_notifications": {
+      "$ref": "#/components/schemas/WebhookNotifications"
+    },
+    "timeout_seconds": {
+      "type": "integer",
+      "example": 10
+    },
+    "schedule": {
+      "$ref": "#/components/schemas/CronSchedule"
+    },
+    "max_concurrent_runs": {
+      "type": "integer",
+      "example": 10
+    },
+    "git_source": {
+      "$ref": "#/components/schemas/GitSource"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": "example_value"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "SINGLE_TASK",
+        "MULTI_TASK"
+      ],
+      "example": "SINGLE_TASK"
+    },
+    "queue": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "example": "example_value"
+    },
+    "continuous": {
+      "type": "object",
+      "properties": {
+        "pause_status": {
+          "type": "string",
+          "enum": [
+            "PAUSED",
+            "UNPAUSED"
+          ]
+        }
+      },
+      "example": "example_value"
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "default": {
+            "type": "string"
+          }
+        }
+      },
+      "example": []
+    },
+    "run_as": {
+      "type": "object",
+      "properties": {
+        "user_name": {
+          "type": "string"
+        },
+        "service_principal_name": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

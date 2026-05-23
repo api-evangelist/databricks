@@ -1,0 +1,11 @@
+name: Databricks Domain Vocabulary
+provider: Databricks
+providerId: databricks
+description: Tag-derived vocabulary for the Databricks API surface; sourced from openapi/ tags.
+terms:
+- term: Clusters
+  description: Manage Databricks clusters for running data engineering and data science workloads on Apache Spark.
+- term: Jobs
+  description: Create and manage automated workloads including notebooks, JARs, Python scripts, and multi-task workflows.
+- term: Workspace
+  description: Manage workspace objects such as notebooks, folders, and libraries.

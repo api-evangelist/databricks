@@ -1,0 +1,16 @@
+{
+  "operationId": "restartCluster",
+  "method": "POST",
+  "path": "/2.0/clusters/restart",
+  "summary": "Databricks Restart a Cluster",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "RestartclusterRequestExample",
+      "example": {
+        "cluster_id": "500123"
+      }
+    }
+  ],
+  "responseExamples": []
+}

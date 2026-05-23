@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InitScriptInfo",
+  "title": "InitScriptInfo",
+  "type": "object",
+  "properties": {
+    "workspace": {
+      "type": "object",
+      "properties": {
+        "destination": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    },
+    "volumes": {
+      "type": "object",
+      "properties": {
+        "destination": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    },
+    "dbfs": {
+      "type": "object",
+      "properties": {
+        "destination": {
+          "type": "string"
+        }
+      },
+      "deprecated": true,
+      "example": "example_value"
+    }
+  }
+}

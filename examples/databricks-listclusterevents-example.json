@@ -1,0 +1,55 @@
+{
+  "operationId": "listClusterEvents",
+  "method": "POST",
+  "path": "/2.0/clusters/events",
+  "summary": "Databricks List Cluster Events",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "ListclustereventsRequestExample",
+      "example": {
+        "cluster_id": "500123",
+        "start_time": 10,
+        "end_time": 10,
+        "order": "DESC",
+        "event_types": [
+          "CREATING"
+        ],
+        "offset": 10,
+        "limit": 10
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listclusterevents200Example",
+      "example": {
+        "events": [
+          {
+            "cluster_id": "500123",
+            "timestamp": 10,
+            "type": "example_value",
+            "details": {
+              "current_num_workers": 10,
+              "target_num_workers": 10,
+              "previous_attributes": "example_value",
+              "attributes": "example_value",
+              "previous_cluster_size": "example_value",
+              "cluster_size": "example_value",
+              "cause": "example_value",
+              "reason": {}
+            }
+          }
+        ],
+        "next_page": {
+          "cluster_id": "500123",
+          "end_time": 10,
+          "offset": 10
+        },
+        "total_count": 10
+      }
+    }
+  ]
+}

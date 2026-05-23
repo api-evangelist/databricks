@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateJobRequest",
+  "title": "CreateJobRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the job.",
+      "examples": [
+        "my-etl-job"
+      ]
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TaskSettings"
+      },
+      "description": "A list of task specifications to be executed by this job. For single-task jobs, use the top-level task fields instead.",
+      "example": []
+    },
+    "job_clusters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/JobCluster"
+      },
+      "description": "A list of job cluster specifications that can be shared and reused by tasks in this job.",
+      "example": []
+    },
+    "email_notifications": {
+      "$ref": "#/components/schemas/JobEmailNotifications"
+    },
+    "webhook_notifications": {
+      "$ref": "#/components/schemas/WebhookNotifications"
+    },
+    "notification_settings": {
+      "type": "object",
+      "properties": {
+        "no_alert_for_skipped_runs": {
+          "type": "boolean"
+        },
+        "no_alert_for_canceled_runs": {
+          "type": "boolean"
+        }
+      },
+      "example": "example_value"
+    },
+    "timeout_seconds": {
+      "type": "integer",
+      "description": "Maximum allowed duration for the job. If exceeded, the job is set to a TIMED_OUT life cycle state. 0 means no timeout.",
+      "default": 0,
+      "example": 10
+    },
+    "schedule": {
+      "$ref": "#/components/schemas/CronSchedule"
+    },
+    "continuous": {
+      "type": "object",
+      "properties": {
+        "pause_status": {
+          "type": "string",
+          "enum": [
+            "PAUSED",
+            "UNPAUSED"
+          ]
+        }
+      },
+      "description": "Continuous job settings for streaming workloads.",
+      "example": "example_value"
+    },
+    "trigger": {
+      "type": "object",
+      "properties": {
+        "pause_status": {
+          "type": "string",
+          "enum": [
+            "PAUSED",
+            "UNPAUSED"
+          ]
+        },
+        "file_arrival": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "min_time_between_triggers_seconds": {
+              "type": "integer"
+            },
+            "wait_after_last_change_seconds": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "description": "Trigger settings for file arrival-based jobs.",
+      "example": "example_value"
+    },
+    "max_concurrent_runs": {
+      "type": "integer",
+      "description": "Maximum number of concurrent runs for the job. Setting to 1 ensures only one run at a time.",
+      "default": 1,
+      "example": 10
+    },
+    "git_source": {
+      "$ref": "#/components/schemas/GitSource"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tags for the job.",
+      "example": "example_value"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "SINGLE_TASK",
+        "MULTI_TASK"
+      ],
+      "description": "The format of the job.",
+      "example": "SINGLE_TASK"
+    },
+    "queue": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "description": "Queue settings for the job.",
+      "example": "example_value"
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "default": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Job-level parameter definitions.",
+      "example": []
+    },
+    "run_as": {
+      "type": "object",
+      "properties": {
+        "user_name": {
+          "type": "string"
+        },
+        "service_principal_name": {
+          "type": "string"
+        }
+      },
+      "description": "Identity to run the job as.",
+      "example": "example_value"
+    },
+    "access_control_list": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AccessControlRequest"
+      },
+      "example": []
+    }
+  }
+}

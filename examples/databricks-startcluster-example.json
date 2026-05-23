@@ -1,0 +1,16 @@
+{
+  "operationId": "startCluster",
+  "method": "POST",
+  "path": "/2.0/clusters/start",
+  "summary": "Databricks Start a Terminated Cluster",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "StartclusterRequestExample",
+      "example": {
+        "cluster_id": "500123"
+      }
+    }
+  ],
+  "responseExamples": []
+}

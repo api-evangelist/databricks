@@ -1,0 +1,16 @@
+{
+  "operationId": "permanentDeleteCluster",
+  "method": "POST",
+  "path": "/2.0/clusters/permanent-delete",
+  "summary": "Databricks Permanently Delete a Cluster",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "PermanentdeleteclusterRequestExample",
+      "example": {
+        "cluster_id": "500123"
+      }
+    }
+  ],
+  "responseExamples": []
+}

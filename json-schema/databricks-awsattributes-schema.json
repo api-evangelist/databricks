@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AwsAttributes",
+  "title": "AwsAttributes",
+  "type": "object",
+  "properties": {
+    "first_on_demand": {
+      "type": "integer",
+      "description": "Number of on-demand instances to place first.",
+      "example": 10
+    },
+    "availability": {
+      "type": "string",
+      "enum": [
+        "SPOT",
+        "ON_DEMAND",
+        "SPOT_WITH_FALLBACK"
+      ],
+      "example": "SPOT"
+    },
+    "zone_id": {
+      "type": "string",
+      "description": "The availability zone identifier (e.g., us-west-2a).",
+      "example": "500123"
+    },
+    "instance_profile_arn": {
+      "type": "string",
+      "description": "IAM instance profile ARN for the cluster instances.",
+      "example": "example_value"
+    },
+    "spot_bid_price_percent": {
+      "type": "integer",
+      "description": "Max bid price as percentage of on-demand price.",
+      "example": 10
+    },
+    "ebs_volume_type": {
+      "type": "string",
+      "enum": [
+        "GENERAL_PURPOSE_SSD",
+        "THROUGHPUT_OPTIMIZED_HDD"
+      ],
+      "example": "GENERAL_PURPOSE_SSD"
+    },
+    "ebs_volume_count": {
+      "type": "integer",
+      "example": 10
+    },
+    "ebs_volume_size": {
+      "type": "integer",
+      "example": 10
+    }
+  }
+}

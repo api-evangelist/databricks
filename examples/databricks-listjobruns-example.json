@@ -1,0 +1,57 @@
+{
+  "operationId": "listJobRuns",
+  "method": "GET",
+  "path": "/2.1/jobs/runs/list",
+  "summary": "Databricks List Job Runs",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listjobruns200Example",
+      "example": {
+        "runs": [
+          {
+            "job_id": "500123",
+            "run_id": "500123",
+            "run_name": "example_value",
+            "number_in_job": 10,
+            "original_attempt_run_id": "500123",
+            "state": {
+              "life_cycle_state": "PENDING",
+              "result_state": "SUCCESS",
+              "state_message": "example_value",
+              "user_cancelled_or_timedout": true
+            },
+            "tasks": [
+              {}
+            ],
+            "job_clusters": [
+              {}
+            ],
+            "cluster_spec": {
+              "existing_cluster_id": "500123",
+              "libraries": {}
+            },
+            "cluster_instance": {
+              "cluster_id": "500123",
+              "spark_context_id": "500123"
+            },
+            "start_time": 10,
+            "setup_duration": 10,
+            "execution_duration": 10,
+            "cleanup_duration": 10,
+            "end_time": 10,
+            "trigger": "PERIODIC",
+            "run_type": "JOB_RUN",
+            "attempt_number": 10,
+            "creator_user_name": "example_value",
+            "run_page_url": "https://www.example.com",
+            "format": "SINGLE_TASK"
+          }
+        ],
+        "has_more": true
+      }
+    }
+  ]
+}

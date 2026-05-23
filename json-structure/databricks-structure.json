@@ -1,0 +1,407 @@
+{
+  "provider": "Databricks",
+  "providerId": "databricks",
+  "kind": "json-structure",
+  "description": "Structural overview of the Databricks API surface; extracted from openapi/.",
+  "schemaCount": 25,
+  "operationCount": 25,
+  "schemas": [
+    {
+      "name": "CreateClusterRequest",
+      "type": "object",
+      "propertyCount": 22,
+      "required": [
+        "cluster_name",
+        "spark_version",
+        "node_type_id"
+      ]
+    },
+    {
+      "name": "EditClusterRequest",
+      "type": "object",
+      "propertyCount": 17,
+      "required": [
+        "cluster_id",
+        "cluster_name",
+        "spark_version",
+        "node_type_id"
+      ]
+    },
+    {
+      "name": "ClusterDetails",
+      "type": "object",
+      "propertyCount": 34,
+      "required": []
+    },
+    {
+      "name": "SparkNode",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "AutoScale",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AwsAttributes",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "AzureAttributes",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "GcpAttributes",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "InitScriptInfo",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ClusterEvent",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "CreateJobRequest",
+      "type": "object",
+      "propertyCount": 18,
+      "required": []
+    },
+    {
+      "name": "TaskSettings",
+      "type": "object",
+      "propertyCount": 21,
+      "required": [
+        "task_key"
+      ]
+    },
+    {
+      "name": "JobCluster",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "job_cluster_key",
+        "new_cluster"
+      ]
+    },
+    {
+      "name": "JobEmailNotifications",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "WebhookNotifications",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "CronSchedule",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "quartz_cron_expression",
+        "timezone_id"
+      ]
+    },
+    {
+      "name": "GitSource",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "git_url",
+        "git_provider"
+      ]
+    },
+    {
+      "name": "Library",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "AccessControlRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "JobSettings",
+      "type": "object",
+      "propertyCount": 15,
+      "required": []
+    },
+    {
+      "name": "Job",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Run",
+      "type": "object",
+      "propertyCount": 23,
+      "required": []
+    },
+    {
+      "name": "RunTask",
+      "type": "object",
+      "propertyCount": 19,
+      "required": []
+    },
+    {
+      "name": "WorkspaceObject",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/2.0/clusters/create",
+      "operationId": "createCluster",
+      "summary": "Databricks Create a New Cluster",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.0/clusters/list",
+      "operationId": "listClusters",
+      "summary": "Databricks List All Clusters",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.0/clusters/get",
+      "operationId": "getCluster",
+      "summary": "Databricks Get Cluster Details",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/clusters/start",
+      "operationId": "startCluster",
+      "summary": "Databricks Start a Terminated Cluster",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/clusters/restart",
+      "operationId": "restartCluster",
+      "summary": "Databricks Restart a Cluster",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/clusters/delete",
+      "operationId": "terminateCluster",
+      "summary": "Databricks Terminate a Cluster",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/clusters/permanent-delete",
+      "operationId": "permanentDeleteCluster",
+      "summary": "Databricks Permanently Delete a Cluster",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/clusters/edit",
+      "operationId": "editCluster",
+      "summary": "Databricks Edit Cluster Configuration",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/clusters/events",
+      "operationId": "listClusterEvents",
+      "summary": "Databricks List Cluster Events",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.1/jobs/create",
+      "operationId": "createJob",
+      "summary": "Databricks Create a New Job",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.1/jobs/list",
+      "operationId": "listJobs",
+      "summary": "Databricks List All Jobs",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.1/jobs/get",
+      "operationId": "getJob",
+      "summary": "Databricks Get a Job",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.1/jobs/update",
+      "operationId": "updateJob",
+      "summary": "Databricks Partially Update a Job",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.1/jobs/delete",
+      "operationId": "deleteJob",
+      "summary": "Databricks Delete a Job",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.1/jobs/run-now",
+      "operationId": "runJobNow",
+      "summary": "Databricks Trigger a Job Run",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.1/jobs/runs/list",
+      "operationId": "listJobRuns",
+      "summary": "Databricks List Job Runs",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.1/jobs/runs/get",
+      "operationId": "getJobRun",
+      "summary": "Databricks Get a Job Run",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.1/jobs/runs/cancel",
+      "operationId": "cancelJobRun",
+      "summary": "Databricks Cancel a Job Run",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.1/jobs/runs/get-output",
+      "operationId": "getJobRunOutput",
+      "summary": "Databricks Get Run Output",
+      "tags": [
+        "Jobs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.0/workspace/list",
+      "operationId": "listWorkspaceObjects",
+      "summary": "Databricks List Workspace Objects",
+      "tags": [
+        "Workspace"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.0/workspace/get-status",
+      "operationId": "getWorkspaceObjectStatus",
+      "summary": "Databricks Get Workspace Object Status",
+      "tags": [
+        "Workspace"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/2.0/workspace/export",
+      "operationId": "exportWorkspaceObject",
+      "summary": "Databricks Export a Workspace Object",
+      "tags": [
+        "Workspace"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/workspace/import",
+      "operationId": "importWorkspaceObject",
+      "summary": "Databricks Import a Workspace Object",
+      "tags": [
+        "Workspace"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/workspace/delete",
+      "operationId": "deleteWorkspaceObject",
+      "summary": "Databricks Delete a Workspace Object",
+      "tags": [
+        "Workspace"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/2.0/workspace/mkdirs",
+      "operationId": "createWorkspaceDirectory",
+      "summary": "Databricks Create a Directory",
+      "tags": [
+        "Workspace"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "operationId": "getCluster",
+  "method": "GET",
+  "path": "/2.0/clusters/get",
+  "summary": "Databricks Get Cluster Details",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcluster200Example",
+      "example": {
+        "cluster_id": "500123",
+        "cluster_name": "example_value",
+        "spark_version": "example_value",
+        "node_type_id": "500123",
+        "driver_node_type_id": "500123",
+        "num_workers": 10,
+        "autoscale": {
+          "min_workers": 10,
+          "max_workers": 10
+        },
+        "state": "PENDING",
+        "state_message": "example_value",
+        "start_time": 10,
+        "terminated_time": 10,
+        "last_state_loss_time": 10,
+        "last_activity_time": 10,
+        "last_restarted_time": 10,
+        "creator_user_name": "example_value",
+        "cluster_source": "UI",
+        "spark_conf": "example_value",
+        "custom_tags": "example_value",
+        "spark_env_vars": "example_value",
+        "autotermination_minutes": 10,
+        "enable_elastic_disk": true,
+        "instance_pool_id": "500123",
+        "policy_id": "500123",
+        "data_security_mode": "example_value",
+        "single_user_name": "example_value",
+        "runtime_engine": "example_value",
+        "default_tags": "example_value",
+        "cluster_log_status": {
+          "last_attempted": 10,
+          "last_exception": "example_value"
+        },
+        "termination_reason": {
+          "code": "example_value",
+          "type": "example_value",
+          "parameters": "example_value"
+        },
+        "disk_spec": {
+          "disk_count": 10,
+          "disk_size": 10,
+          "disk_type": {
+            "azure_disk_volume_type": "example_value",
+            "ebs_volume_type": "example_value"
+          }
+        },
+        "driver": {
+          "private_ip": "example_value",
+          "public_dns": "example_value",
+          "node_id": "500123",
+          "instance_id": "500123",
+          "start_timestamp": 10,
+          "host_private_ip": "example_value"
+        },
+        "executors": [
+          {
+            "private_ip": "example_value",
+            "public_dns": "example_value",
+            "node_id": "500123",
+            "instance_id": "500123",
+            "start_timestamp": 10,
+            "host_private_ip": "example_value"
+          }
+        ],
+        "jdbc_port": 10,
+        "spark_context_id": "500123"
+      }
+    }
+  ]
+}

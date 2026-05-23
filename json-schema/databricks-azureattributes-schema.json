@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AzureAttributes",
+  "title": "AzureAttributes",
+  "type": "object",
+  "properties": {
+    "first_on_demand": {
+      "type": "integer",
+      "example": 10
+    },
+    "availability": {
+      "type": "string",
+      "enum": [
+        "SPOT_AZURE",
+        "ON_DEMAND_AZURE",
+        "SPOT_WITH_FALLBACK_AZURE"
+      ],
+      "example": "SPOT_AZURE"
+    },
+    "spot_bid_max_price": {
+      "type": "number",
+      "example": 42.5
+    }
+  }
+}

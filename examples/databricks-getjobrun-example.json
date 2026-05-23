@@ -1,0 +1,107 @@
+{
+  "operationId": "getJobRun",
+  "method": "GET",
+  "path": "/2.1/jobs/runs/get",
+  "summary": "Databricks Get a Job Run",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getjobrun200Example",
+      "example": {
+        "job_id": "500123",
+        "run_id": "500123",
+        "run_name": "example_value",
+        "number_in_job": 10,
+        "original_attempt_run_id": "500123",
+        "state": {
+          "life_cycle_state": "PENDING",
+          "result_state": "SUCCESS",
+          "state_message": "example_value",
+          "user_cancelled_or_timedout": true
+        },
+        "schedule": {
+          "quartz_cron_expression": "example_value",
+          "timezone_id": "500123",
+          "pause_status": "PAUSED"
+        },
+        "tasks": [
+          {
+            "run_id": "500123",
+            "task_key": "example_value",
+            "description": "A sample description.",
+            "state": {},
+            "depends_on": {},
+            "existing_cluster_id": "500123",
+            "notebook_task": {},
+            "spark_jar_task": {},
+            "spark_python_task": {},
+            "sql_task": {},
+            "start_time": 10,
+            "setup_duration": 10,
+            "execution_duration": 10,
+            "cleanup_duration": 10,
+            "end_time": 10,
+            "cluster_instance": {},
+            "attempt_number": 10,
+            "libraries": {}
+          }
+        ],
+        "job_clusters": [
+          {
+            "job_cluster_key": "example_value"
+          }
+        ],
+        "cluster_spec": {
+          "existing_cluster_id": "500123",
+          "new_cluster": {
+            "cluster_name": "example_value",
+            "spark_version": "example_value",
+            "node_type_id": "500123",
+            "driver_node_type_id": "500123",
+            "num_workers": 10,
+            "spark_conf": "example_value",
+            "custom_tags": "example_value",
+            "spark_env_vars": "example_value",
+            "autotermination_minutes": 10,
+            "enable_elastic_disk": true,
+            "instance_pool_id": "500123",
+            "policy_id": "500123",
+            "enable_local_disk_encryption": true,
+            "runtime_engine": "STANDARD",
+            "data_security_mode": "NONE",
+            "single_user_name": "example_value",
+            "init_scripts": {},
+            "ssh_public_keys": {}
+          },
+          "libraries": [
+            {}
+          ]
+        },
+        "cluster_instance": {
+          "cluster_id": "500123",
+          "spark_context_id": "500123"
+        },
+        "start_time": 10,
+        "setup_duration": 10,
+        "execution_duration": 10,
+        "cleanup_duration": 10,
+        "end_time": 10,
+        "trigger": "PERIODIC",
+        "run_type": "JOB_RUN",
+        "attempt_number": 10,
+        "creator_user_name": "example_value",
+        "run_page_url": "https://www.example.com",
+        "format": "SINGLE_TASK",
+        "git_source": {
+          "git_url": "https://www.example.com",
+          "git_provider": "gitHub",
+          "git_branch": "example_value",
+          "git_tag": "example_value",
+          "git_commit": "example_value"
+        }
+      }
+    }
+  ]
+}
