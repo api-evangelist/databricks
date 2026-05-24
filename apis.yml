@@ -1025,3 +1025,5 @@ common:
 - name: Agent Skills
   url: https://github.com/databricks/databricks-agent-skills
   type: AgentSkill
+- type: LLMsTxt
+  url: https://docs.databricks.com/llms.txt
