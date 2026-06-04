@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Create Job and Trigger First Run
+  summary: Create a new job from settings, then immediately trigger its first run.
+  description: >-
+    Defines a new Databricks job from a supplied settings payload and then
+    triggers an immediate run of that job, returning the new run_id so callers
+    can track execution. The job_id produced by the create call is reused for
+    the run-now request. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-and-run-job
+  summary: Create a job and trigger its first run.
+  description: >-
+    Creates a job with the given name and task list, then immediately submits a
+    run-now request for the newly created job.
+  inputs:
+    type: object
+    required:
+    - name
+    - tasks
+    properties:
+      name:
+        type: string
+        description: The display name for the new job.
+      tasks:
+        type: array
+        description: The list of task definitions that make up the job.
+      job_clusters:
+        type: array
+        description: Optional list of shared job cluster definitions.
+      notebook_params:
+        type: object
+        description: Optional notebook parameters to pass on the first run.
+  steps:
+  - stepId: createJob
+    description: >-
+      Create the job from the supplied name and tasks. Returns the canonical
+      job_id used to trigger the run.
+    operationId: createJob
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        tasks: $inputs.tasks
+        job_clusters: $inputs.job_clusters
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/job_id
+  - stepId: triggerFirstRun
+    description: >-
+      Trigger the first run of the newly created job, optionally passing
+      notebook parameters. Returns the run_id of the triggered run.
+    operationId: runJobNow
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $steps.createJob.outputs.jobId
+        notebook_params: $inputs.notebook_params
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/run_id
+      numberInJob: $response.body#/number_in_job
+  outputs:
+    jobId: $steps.createJob.outputs.jobId
+    runId: $steps.triggerFirstRun.outputs.runId

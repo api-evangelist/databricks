@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Cancel Job Run and Confirm Terminal
+  summary: Cancel an active run and poll until it reaches a terminal state.
+  description: >-
+    Cancels an active Databricks job run and then polls the run metadata until
+    the run leaves the TERMINATING state and settles into TERMINATED, confirming
+    the cancellation took effect. The supplied run_id drives both the cancel
+    request and the confirmation poll loop. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: cancel-run-and-confirm
+  summary: Cancel a run and confirm it reaches a terminal state.
+  description: >-
+    Submits a cancel request for the run and then reads the run repeatedly
+    until its life cycle state is TERMINATED, looping while it is still
+    TERMINATING.
+  inputs:
+    type: object
+    required:
+    - run_id
+    properties:
+      run_id:
+        type: integer
+        description: The canonical identifier of the run to cancel.
+  steps:
+  - stepId: cancelRun
+    description: >-
+      Request cancellation of the active run. Cancellation is asynchronous and
+      the run transitions to a TERMINATING state.
+    operationId: cancelJobRun
+    requestBody:
+      contentType: application/json
+      payload:
+        run_id: $inputs.run_id
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollRun
+    description: >-
+      Read the run metadata and inspect the life cycle state. Loop back while
+      the run is still TERMINATING; finish once it is TERMINATED.
+    operationId: getJobRun
+    parameters:
+    - name: run_id
+      in: query
+      value: $inputs.run_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lifeCycleState: $response.body#/state/life_cycle_state
+      resultState: $response.body#/state/result_state
+    onSuccess:
+    - name: stillTerminating
+      type: goto
+      stepId: pollRun
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "TERMINATING"
+        type: jsonpath
+    - name: terminated
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "TERMINATED"
+        type: jsonpath
+  outputs:
+    runId: $inputs.run_id
+    lifeCycleState: $steps.pollRun.outputs.lifeCycleState
+    resultState: $steps.pollRun.outputs.resultState

@@ -1,0 +1,67 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Audit Cluster Lifecycle Events
+  summary: Resolve a cluster's current state, then pull its recent lifecycle events.
+  description: >-
+    Provides a quick audit of a Databricks cluster by reading its current state
+    and then retrieving the most recent lifecycle events (creation, starting,
+    terminating, resizing, and similar) in reverse chronological order. The
+    cluster_id is reused for both the state read and the event query. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: audit-cluster-events
+  summary: Read a cluster's state and list its recent events.
+  description: >-
+    Reads the cluster's current state, then lists its recent lifecycle events
+    in descending order for an audit record.
+  inputs:
+    type: object
+    required:
+    - cluster_id
+    properties:
+      cluster_id:
+        type: string
+        description: The cluster to audit.
+      limit:
+        type: integer
+        description: Maximum number of events to return (max 500).
+  steps:
+  - stepId: getCluster
+    description: >-
+      Read the cluster to capture its current state and name for the audit
+      header.
+    operationId: getCluster
+    parameters:
+    - name: cluster_id
+      in: query
+      value: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+      clusterName: $response.body#/cluster_name
+  - stepId: listEvents
+    description: >-
+      List the cluster's lifecycle events in descending (most recent first)
+      order.
+    operationId: listClusterEvents
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_id: $inputs.cluster_id
+        order: DESC
+        limit: $inputs.limit
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      events: $response.body#/events
+  outputs:
+    clusterId: $inputs.cluster_id
+    currentState: $steps.getCluster.outputs.state
+    events: $steps.listEvents.outputs.events

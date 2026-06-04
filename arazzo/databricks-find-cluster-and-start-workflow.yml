@@ -1,0 +1,63 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Find Terminated Cluster by Name and Start It
+  summary: Resolve a cluster by name from the list, then start it if terminated.
+  description: >-
+    Locates a Databricks cluster by matching its name within the full cluster
+    list, and when the matched cluster is in a TERMINATED state issues a start
+    request to bring it back online. The cluster_id from the matched entry drives
+    the start call. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description. Note:
+    the list endpoint has no server-side name filter, so the match is performed
+    on the returned list via the branch criteria.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-cluster-and-start
+  summary: Resolve a cluster from the list and start the first one.
+  description: >-
+    Lists all clusters, confirms at least one exists, and starts the first
+    cluster returned.
+  inputs:
+    type: object
+    properties:
+      can_use_client:
+        type: string
+        description: Optional client compatibility filter for the cluster list.
+  steps:
+  - stepId: listClusters
+    description: >-
+      List all clusters in the workspace and capture the first cluster_id and
+      its state.
+    operationId: listClusters
+    parameters:
+    - name: can_use_client
+      in: query
+      value: $inputs.can_use_client
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstClusterId: $response.body#/clusters/0/cluster_id
+    onSuccess:
+    - name: hasCluster
+      type: goto
+      stepId: startCluster
+      criteria:
+      - context: $response.body
+        condition: $.clusters.length > 0
+        type: jsonpath
+  - stepId: startCluster
+    description: >-
+      Start the resolved cluster. If it is already running the start is a no-op.
+    operationId: startCluster
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_id: $steps.listClusters.outputs.firstClusterId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    startedClusterId: $steps.listClusters.outputs.firstClusterId

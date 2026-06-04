@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Provision Cluster and Wait Until Running
+  summary: Create a Spark cluster and poll its state until it reaches RUNNING.
+  description: >-
+    Provisions a new Databricks Spark cluster from a supplied configuration and
+    then polls the cluster details endpoint until the asynchronously created
+    cluster transitions out of PENDING into the RUNNING state. Cluster creation
+    is asynchronous, so the cluster_id returned by the create call is reused to
+    drive the poll loop. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-cluster
+  summary: Create a cluster and wait until it is RUNNING.
+  description: >-
+    Submits a cluster creation request and then repeatedly reads the cluster
+    status until the life cycle state becomes RUNNING, branching back to the
+    poll step while the cluster is still PENDING.
+  inputs:
+    type: object
+    required:
+    - cluster_name
+    - spark_version
+    - node_type_id
+    - num_workers
+    properties:
+      cluster_name:
+        type: string
+        description: Human-readable name for the new cluster.
+      spark_version:
+        type: string
+        description: The Spark runtime version (e.g. a Databricks Runtime key).
+      node_type_id:
+        type: string
+        description: The node type for worker and driver nodes.
+      num_workers:
+        type: integer
+        description: The number of worker nodes for the cluster.
+      autotermination_minutes:
+        type: integer
+        description: Idle minutes before the cluster auto-terminates.
+  steps:
+  - stepId: createCluster
+    description: >-
+      Create the Spark cluster. The response returns the cluster_id used to
+      poll for readiness; creation itself is asynchronous.
+    operationId: createCluster
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_name: $inputs.cluster_name
+        spark_version: $inputs.spark_version
+        node_type_id: $inputs.node_type_id
+        num_workers: $inputs.num_workers
+        autotermination_minutes: $inputs.autotermination_minutes
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      clusterId: $response.body#/cluster_id
+  - stepId: pollClusterState
+    description: >-
+      Read the cluster details and inspect the life cycle state. Loop back
+      while the cluster is still PENDING; finish once it is RUNNING.
+    operationId: getCluster
+    parameters:
+    - name: cluster_id
+      in: query
+      value: $steps.createCluster.outputs.clusterId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+      stateMessage: $response.body#/state_message
+    onSuccess:
+    - name: stillPending
+      type: goto
+      stepId: pollClusterState
+      criteria:
+      - context: $response.body
+        condition: $.state == "PENDING"
+        type: jsonpath
+    - name: clusterRunning
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.state == "RUNNING"
+        type: jsonpath
+  outputs:
+    clusterId: $steps.createCluster.outputs.clusterId
+    finalState: $steps.pollClusterState.outputs.state

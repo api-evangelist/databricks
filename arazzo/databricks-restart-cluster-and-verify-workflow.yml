@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Restart Cluster and Verify Running
+  summary: Restart a running cluster and poll until it returns to RUNNING.
+  description: >-
+    Restarts an existing Databricks cluster and then polls the cluster details
+    endpoint until the cluster transitions back into the RUNNING state after the
+    restart cycle. The supplied cluster_id drives both the restart request and
+    the verification poll loop. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: restart-cluster-and-verify
+  summary: Restart a cluster and wait until it is RUNNING again.
+  description: >-
+    Issues a restart for the given cluster and then repeatedly reads the
+    cluster status until the life cycle state is RUNNING, looping while it is
+    still RESTARTING or PENDING.
+  inputs:
+    type: object
+    required:
+    - cluster_id
+    properties:
+      cluster_id:
+        type: string
+        description: The identifier of the cluster to restart.
+  steps:
+  - stepId: restartCluster
+    description: >-
+      Restart the cluster. If the cluster is not RUNNING the restart is a
+      no-op, so the verification poll confirms the outcome.
+    operationId: restartCluster
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_id: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollClusterState
+    description: >-
+      Read the cluster status and inspect the life cycle state. Loop back while
+      the cluster is RESTARTING or PENDING; finish once it is RUNNING.
+    operationId: getCluster
+    parameters:
+    - name: cluster_id
+      in: query
+      value: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+      stateMessage: $response.body#/state_message
+    onSuccess:
+    - name: stillRestarting
+      type: goto
+      stepId: pollClusterState
+      criteria:
+      - context: $response.body
+        condition: $.state == "RESTARTING"
+        type: jsonpath
+    - name: stillPending
+      type: goto
+      stepId: pollClusterState
+      criteria:
+      - context: $response.body
+        condition: $.state == "PENDING"
+        type: jsonpath
+    - name: running
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.state == "RUNNING"
+        type: jsonpath
+  outputs:
+    clusterId: $inputs.cluster_id
+    finalState: $steps.pollClusterState.outputs.state

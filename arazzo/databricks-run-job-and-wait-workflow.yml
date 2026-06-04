@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Trigger Job Run and Wait for Output
+  summary: Trigger a job run, poll the run until terminal, then fetch its output.
+  description: >-
+    Triggers an immediate run of an existing Databricks job, polls the run
+    metadata until the run reaches a TERMINATED life cycle state, and then
+    retrieves the run output (including the notebook exit value or error trace).
+    The run_id returned by run-now drives both the poll loop and the final
+    output fetch. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: run-job-and-wait
+  summary: Run a job now, wait for completion, and return its output.
+  description: >-
+    Submits a run-now request for a job, repeatedly reads the run until its
+    life cycle state is TERMINATED, then pulls the run output for the result
+    or error details.
+  inputs:
+    type: object
+    required:
+    - job_id
+    properties:
+      job_id:
+        type: integer
+        description: The canonical identifier of the job to run.
+      notebook_params:
+        type: object
+        description: Optional map of notebook parameter name/value pairs.
+      idempotency_token:
+        type: string
+        description: Optional token guaranteeing run idempotency.
+  steps:
+  - stepId: runJobNow
+    description: >-
+      Trigger an immediate run of the job, optionally overriding notebook
+      parameters. Returns the globally unique run_id.
+    operationId: runJobNow
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $inputs.job_id
+        notebook_params: $inputs.notebook_params
+        idempotency_token: $inputs.idempotency_token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/run_id
+      numberInJob: $response.body#/number_in_job
+  - stepId: pollRun
+    description: >-
+      Read the run metadata and inspect the life cycle state. Loop back while
+      the run is PENDING or RUNNING; continue once it is TERMINATED.
+    operationId: getJobRun
+    parameters:
+    - name: run_id
+      in: query
+      value: $steps.runJobNow.outputs.runId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lifeCycleState: $response.body#/state/life_cycle_state
+      resultState: $response.body#/state/result_state
+      runPageUrl: $response.body#/run_page_url
+    onSuccess:
+    - name: stillRunning
+      type: goto
+      stepId: pollRun
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "RUNNING"
+        type: jsonpath
+    - name: stillPending
+      type: goto
+      stepId: pollRun
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "PENDING"
+        type: jsonpath
+    - name: terminated
+      type: goto
+      stepId: getRunOutput
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "TERMINATED"
+        type: jsonpath
+  - stepId: getRunOutput
+    description: >-
+      Retrieve the output and metadata of the completed run, exposing the
+      notebook result and any error trace.
+    operationId: getJobRunOutput
+    parameters:
+    - name: run_id
+      in: query
+      value: $steps.runJobNow.outputs.runId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      notebookResult: $response.body#/notebook_output/result
+      error: $response.body#/error
+  outputs:
+    runId: $steps.runJobNow.outputs.runId
+    resultState: $steps.pollRun.outputs.resultState
+    notebookResult: $steps.getRunOutput.outputs.notebookResult

@@ -1,0 +1,84 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Terminate Then Permanently Delete Cluster
+  summary: Terminate a cluster, confirm it is TERMINATED, then permanently delete it.
+  description: >-
+    Gracefully decommissions a Databricks cluster by first terminating it,
+    polling until the cluster reports a TERMINATED state, and then issuing a
+    permanent delete to remove the cluster configuration entirely. The
+    cluster_id drives all three steps. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: terminate-and-delete-cluster
+  summary: Terminate, confirm, then permanently delete a cluster.
+  description: >-
+    Terminates the cluster, polls until it is TERMINATED, then permanently
+    deletes the cluster configuration.
+  inputs:
+    type: object
+    required:
+    - cluster_id
+    properties:
+      cluster_id:
+        type: string
+        description: The cluster to terminate and permanently delete.
+  steps:
+  - stepId: terminateCluster
+    description: >-
+      Terminate the cluster. Termination is asynchronous, so a poll loop
+      confirms the cluster has stopped before deletion.
+    operationId: terminateCluster
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_id: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollClusterState
+    description: >-
+      Read the cluster status and inspect the life cycle state. Loop back while
+      the cluster is TERMINATING; continue once it is TERMINATED.
+    operationId: getCluster
+    parameters:
+    - name: cluster_id
+      in: query
+      value: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+    onSuccess:
+    - name: stillTerminating
+      type: goto
+      stepId: pollClusterState
+      criteria:
+      - context: $response.body
+        condition: $.state == "TERMINATING"
+        type: jsonpath
+    - name: terminated
+      type: goto
+      stepId: permanentDelete
+      criteria:
+      - context: $response.body
+        condition: $.state == "TERMINATED"
+        type: jsonpath
+  - stepId: permanentDelete
+    description: >-
+      Permanently delete the terminated cluster, removing its configuration
+      entirely.
+    operationId: permanentDeleteCluster
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_id: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    clusterId: $inputs.cluster_id
+    finalState: $steps.pollClusterState.outputs.state

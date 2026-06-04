@@ -1,0 +1,67 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Clone a Job From an Existing One
+  summary: Read an existing job's settings and create a new job that reuses them.
+  description: >-
+    Fetches the settings of an existing Databricks job and uses those task and
+    cluster definitions to create a brand new job under a different name,
+    effectively cloning a job template. The settings object read from the source
+    job feeds the create request's task and job cluster lists. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: clone-job
+  summary: Clone an existing job into a new one with a new name.
+  description: >-
+    Reads the source job's settings, then creates a new job that reuses the
+    source tasks and job clusters under the supplied new name.
+  inputs:
+    type: object
+    required:
+    - source_job_id
+    - new_name
+    properties:
+      source_job_id:
+        type: integer
+        description: The job to read settings from.
+      new_name:
+        type: string
+        description: The name for the cloned job.
+  steps:
+  - stepId: getSourceJob
+    description: >-
+      Read the source job to capture its settings, including the task list and
+      job cluster definitions to reuse.
+    operationId: getJob
+    parameters:
+    - name: job_id
+      in: query
+      value: $inputs.source_job_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tasks: $response.body#/settings/tasks
+      jobClusters: $response.body#/settings/job_clusters
+  - stepId: createClone
+    description: >-
+      Create a new job that reuses the source job's tasks and job clusters under
+      the new name.
+    operationId: createJob
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.new_name
+        tasks: $steps.getSourceJob.outputs.tasks
+        job_clusters: $steps.getSourceJob.outputs.jobClusters
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newJobId: $response.body#/job_id
+  outputs:
+    sourceJobId: $inputs.source_job_id
+    newJobId: $steps.createClone.outputs.newJobId

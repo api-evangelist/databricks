@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Stage Notebook Then Create and Run a Job
+  summary: Import a notebook, create a job that runs it, then trigger the first run.
+  description: >-
+    Ships a new notebook into a Databricks workspace and immediately operationalizes
+    it: the base64-encoded notebook is imported to a target path, a job is created
+    with a notebook task pointing at that path, and the job is triggered for its
+    first run. The imported notebook path flows into the job's task definition and
+    the created job_id feeds the run-now request. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: stage-notebook-and-create-job
+  summary: Import a notebook, wire a job to it, and run it.
+  description: >-
+    Imports the notebook to the target path, creates a job whose notebook task
+    references that path on an existing cluster, then triggers the first run.
+  inputs:
+    type: object
+    required:
+    - notebook_path
+    - content
+    - language
+    - existing_cluster_id
+    - job_name
+    - task_key
+    properties:
+      notebook_path:
+        type: string
+        description: The absolute path to import the notebook to and run.
+      content:
+        type: string
+        description: The base64-encoded notebook content.
+      language:
+        type: string
+        description: The notebook language (SCALA, PYTHON, SQL, or R).
+      existing_cluster_id:
+        type: string
+        description: The cluster the job task should run on.
+      job_name:
+        type: string
+        description: The name for the new job.
+      task_key:
+        type: string
+        description: The unique task key within the job.
+  steps:
+  - stepId: importNotebook
+    description: >-
+      Import the base64-encoded notebook into the target path, overwriting any
+      existing object.
+    operationId: importWorkspaceObject
+    requestBody:
+      contentType: application/json
+      payload:
+        path: $inputs.notebook_path
+        format: SOURCE
+        language: $inputs.language
+        content: $inputs.content
+        overwrite: true
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: createJob
+    description: >-
+      Create a job whose notebook task runs the freshly imported notebook on the
+      supplied existing cluster.
+    operationId: createJob
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.job_name
+        tasks:
+        - task_key: $inputs.task_key
+          existing_cluster_id: $inputs.existing_cluster_id
+          notebook_task:
+            notebook_path: $inputs.notebook_path
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/job_id
+  - stepId: triggerFirstRun
+    description: >-
+      Trigger the first run of the newly created job and capture the run_id.
+    operationId: runJobNow
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $steps.createJob.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/run_id
+  outputs:
+    notebookPath: $inputs.notebook_path
+    jobId: $steps.createJob.outputs.jobId
+    runId: $steps.triggerFirstRun.outputs.runId

@@ -890,6 +890,78 @@ maintainers:
   url: https://www.databricks.com/
 specificationVersion: '0.19'
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/databricks-audit-cluster-events-workflow.yml
+    name: Databricks Audit Cluster Lifecycle Events
+    summary: Resolve a cluster's current state, then pull its recent lifecycle events.
+  - url: arazzo/databricks-cancel-all-active-runs-workflow.yml
+    name: Databricks Cancel a Job's Active Run
+    summary: Find a job's active run and cancel it, then confirm cancellation.
+  - url: arazzo/databricks-cancel-run-and-confirm-workflow.yml
+    name: Databricks Cancel Job Run and Confirm Terminal
+    summary: Cancel an active run and poll until it reaches a terminal state.
+  - url: arazzo/databricks-cleanup-workspace-directory-workflow.yml
+    name: Databricks Inspect and Recursively Delete a Directory
+    summary: List a workspace directory's contents, then recursively delete it.
+  - url: arazzo/databricks-clone-job-settings-workflow.yml
+    name: Databricks Clone a Job From an Existing One
+    summary: Read an existing job's settings and create a new job that reuses them.
+  - url: arazzo/databricks-create-and-run-job-workflow.yml
+    name: Databricks Create Job and Trigger First Run
+    summary: Create a new job from settings, then immediately trigger its first run.
+  - url: arazzo/databricks-delete-job-and-cleanup-runs-workflow.yml
+    name: Databricks Drain Active Runs Then Delete Job
+    summary: Cancel a job's active run if present, then delete the job and its runs.
+  - url: arazzo/databricks-edit-cluster-and-verify-workflow.yml
+    name: Databricks Edit Cluster Configuration and Verify
+    summary: Read a cluster, apply edited configuration, and poll until RUNNING.
+  - url: arazzo/databricks-export-and-reimport-notebook-workflow.yml
+    name: Databricks Export a Notebook and Re-Import as a Copy
+    summary: Export a notebook's content and re-import it to a new workspace path.
+  - url: arazzo/databricks-find-cluster-and-start-workflow.yml
+    name: Databricks Find Terminated Cluster by Name and Start It
+    summary: Resolve a cluster by name from the list, then start it if terminated.
+  - url: arazzo/databricks-find-job-and-run-workflow.yml
+    name: Databricks Find Job by Name and Run It
+    summary: Look up a job by exact name, then trigger an immediate run of it.
+  - url: arazzo/databricks-import-notebook-and-verify-workflow.yml
+    name: Databricks Create Directory and Import Notebook
+    summary: Create a workspace directory, import a notebook into it, then verify status.
+  - url: arazzo/databricks-latest-run-output-workflow.yml
+    name: Databricks Fetch Latest Completed Run Output for a Job
+    summary: Find a job's most recent completed run and retrieve its output.
+  - url: arazzo/databricks-provision-cluster-and-create-job-workflow.yml
+    name: Databricks Provision Cluster Then Create Job On It
+    summary: Create a cluster, wait until RUNNING, then create a job bound to that cluster.
+  - url: arazzo/databricks-provision-cluster-workflow.yml
+    name: Databricks Provision Cluster and Wait Until Running
+    summary: Create a Spark cluster and poll its state until it reaches RUNNING.
+  - url: arazzo/databricks-restart-cluster-and-verify-workflow.yml
+    name: Databricks Restart Cluster and Verify Running
+    summary: Restart a running cluster and poll until it returns to RUNNING.
+  - url: arazzo/databricks-run-job-and-export-notebook-workflow.yml
+    name: Databricks Run Job, Wait, Then Export the Notebook
+    summary: Trigger a job run, wait for it to finish, then export the source notebook.
+  - url: arazzo/databricks-run-job-and-wait-workflow.yml
+    name: Databricks Trigger Job Run and Wait for Output
+    summary: Trigger a job run, poll the run until terminal, then fetch its output.
+  - url: arazzo/databricks-run-job-on-failure-export-output-workflow.yml
+    name: Databricks Run Job and Branch on Success or Failure
+    summary: Run a job, wait for terminal state, then branch on the result state.
+  - url: arazzo/databricks-stage-notebook-and-create-job-workflow.yml
+    name: Databricks Stage Notebook Then Create and Run a Job
+    summary: Import a notebook, create a job that runs it, then trigger the first run.
+  - url: arazzo/databricks-start-cluster-and-run-job-workflow.yml
+    name: Databricks Start Cluster Then Run Job
+    summary: Start a terminated cluster, wait until RUNNING, then trigger a job run.
+  - url: arazzo/databricks-terminate-and-delete-cluster-workflow.yml
+    name: Databricks Terminate Then Permanently Delete Cluster
+    summary: Terminate a cluster, confirm it is TERMINATED, then permanently delete it.
+  - url: arazzo/databricks-update-job-and-rerun-workflow.yml
+    name: Databricks Update Job Settings and Re-Run
+    summary: Read a job, partially update its settings, then trigger a fresh run.
 - url: https://docs.databricks.com/dev-tools/auth.html
   type: Authentication
 - url: https://docs.databricks.com/getting-started/index.html

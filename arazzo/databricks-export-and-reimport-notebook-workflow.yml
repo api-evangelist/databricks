@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Export a Notebook and Re-Import as a Copy
+  summary: Export a notebook's content and re-import it to a new workspace path.
+  description: >-
+    Copies a Databricks notebook within the workspace by exporting the source
+    notebook's base64-encoded SOURCE content and re-importing that same content
+    to a different destination path, producing an independent copy. The exported
+    content output feeds directly into the import request body. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: export-and-reimport-notebook
+  summary: Export a notebook and re-import its content to a new path.
+  description: >-
+    Exports the source notebook in SOURCE format and imports the returned
+    content to the destination path as a copy.
+  inputs:
+    type: object
+    required:
+    - source_path
+    - destination_path
+    - language
+    properties:
+      source_path:
+        type: string
+        description: The absolute path of the notebook to export.
+      destination_path:
+        type: string
+        description: The absolute path to write the copied notebook to.
+      language:
+        type: string
+        description: The notebook language (SCALA, PYTHON, SQL, or R).
+  steps:
+  - stepId: exportNotebook
+    description: >-
+      Export the source notebook in SOURCE format and capture its base64-encoded
+      content.
+    operationId: exportWorkspaceObject
+    parameters:
+    - name: path
+      in: query
+      value: $inputs.source_path
+    - name: format
+      in: query
+      value: SOURCE
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      content: $response.body#/content
+  - stepId: importCopy
+    description: >-
+      Import the exported content into the destination path, overwriting any
+      existing object there.
+    operationId: importWorkspaceObject
+    requestBody:
+      contentType: application/json
+      payload:
+        path: $inputs.destination_path
+        format: SOURCE
+        language: $inputs.language
+        content: $steps.exportNotebook.outputs.content
+        overwrite: true
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    sourcePath: $inputs.source_path
+    destinationPath: $inputs.destination_path

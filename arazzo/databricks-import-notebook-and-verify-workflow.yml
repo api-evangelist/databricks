@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Create Directory and Import Notebook
+  summary: Create a workspace directory, import a notebook into it, then verify status.
+  description: >-
+    Prepares a workspace location by creating the target directory (and any
+    parents), imports a base64-encoded notebook into that path, and then reads
+    the object status to confirm the notebook landed. The shared path input
+    drives directory creation, import, and the status verification. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: import-notebook-and-verify
+  summary: Create a directory, import a notebook, and verify it exists.
+  description: >-
+    Creates the parent directory, imports the notebook content into the target
+    path, then reads the object status to confirm the import succeeded.
+  inputs:
+    type: object
+    required:
+    - directory_path
+    - notebook_path
+    - content
+    - language
+    properties:
+      directory_path:
+        type: string
+        description: The absolute directory path to create (must start with /).
+      notebook_path:
+        type: string
+        description: The absolute path to import the notebook to (must start with /).
+      content:
+        type: string
+        description: The base64-encoded notebook content to import.
+      language:
+        type: string
+        description: The notebook language (SCALA, PYTHON, SQL, or R).
+  steps:
+  - stepId: createDirectory
+    description: >-
+      Create the target directory and any necessary parent directories before
+      importing.
+    operationId: createWorkspaceDirectory
+    requestBody:
+      contentType: application/json
+      payload:
+        path: $inputs.directory_path
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: importNotebook
+    description: >-
+      Import the base64-encoded notebook into the target path in SOURCE format,
+      overwriting any existing object.
+    operationId: importWorkspaceObject
+    requestBody:
+      contentType: application/json
+      payload:
+        path: $inputs.notebook_path
+        format: SOURCE
+        language: $inputs.language
+        content: $inputs.content
+        overwrite: true
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: verifyStatus
+    description: >-
+      Read the object status to confirm the imported notebook exists at the
+      target path.
+    operationId: getWorkspaceObjectStatus
+    parameters:
+    - name: path
+      in: query
+      value: $inputs.notebook_path
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      objectType: $response.body#/object_type
+      objectId: $response.body#/object_id
+  outputs:
+    notebookPath: $inputs.notebook_path
+    objectId: $steps.verifyStatus.outputs.objectId
+    objectType: $steps.verifyStatus.outputs.objectType

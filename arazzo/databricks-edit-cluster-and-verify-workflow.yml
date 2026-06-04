@@ -1,0 +1,111 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Edit Cluster Configuration and Verify
+  summary: Read a cluster, apply edited configuration, and poll until RUNNING.
+  description: >-
+    Reads an existing Databricks cluster to capture its current spark version
+    and node type, applies an edit that changes the worker count and
+    auto-termination, and then polls until the edited cluster returns to the
+    RUNNING state (an edit on a running cluster triggers a restart). The
+    cluster_id drives every step. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: edit-cluster-and-verify
+  summary: Edit a cluster's configuration and confirm it returns to RUNNING.
+  description: >-
+    Reads the current cluster configuration, submits an edit with a new worker
+    count, then polls until the cluster is RUNNING again after the
+    edit-triggered restart.
+  inputs:
+    type: object
+    required:
+    - cluster_id
+    - cluster_name
+    - num_workers
+    properties:
+      cluster_id:
+        type: string
+        description: The cluster to edit.
+      cluster_name:
+        type: string
+        description: The cluster name to set on the edited configuration.
+      num_workers:
+        type: integer
+        description: The new number of worker nodes.
+      autotermination_minutes:
+        type: integer
+        description: The new idle auto-termination window in minutes.
+  steps:
+  - stepId: getCluster
+    description: >-
+      Read the current cluster configuration to reuse its spark version and node
+      type on the edit request.
+    operationId: getCluster
+    parameters:
+    - name: cluster_id
+      in: query
+      value: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sparkVersion: $response.body#/spark_version
+      nodeTypeId: $response.body#/node_type_id
+  - stepId: editCluster
+    description: >-
+      Apply the edited configuration. Editing a running cluster restarts it to
+      apply the changes.
+    operationId: editCluster
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_id: $inputs.cluster_id
+        cluster_name: $inputs.cluster_name
+        spark_version: $steps.getCluster.outputs.sparkVersion
+        node_type_id: $steps.getCluster.outputs.nodeTypeId
+        num_workers: $inputs.num_workers
+        autotermination_minutes: $inputs.autotermination_minutes
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollClusterState
+    description: >-
+      Read the cluster status and inspect the life cycle state. Loop back while
+      the cluster is RESTARTING or PENDING; finish once it is RUNNING.
+    operationId: getCluster
+    parameters:
+    - name: cluster_id
+      in: query
+      value: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+    onSuccess:
+    - name: stillRestarting
+      type: goto
+      stepId: pollClusterState
+      criteria:
+      - context: $response.body
+        condition: $.state == "RESTARTING"
+        type: jsonpath
+    - name: stillPending
+      type: goto
+      stepId: pollClusterState
+      criteria:
+      - context: $response.body
+        condition: $.state == "PENDING"
+        type: jsonpath
+    - name: running
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.state == "RUNNING"
+        type: jsonpath
+  outputs:
+    clusterId: $inputs.cluster_id
+    finalState: $steps.pollClusterState.outputs.state

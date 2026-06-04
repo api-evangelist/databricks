@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Fetch Latest Completed Run Output for a Job
+  summary: Find a job's most recent completed run and retrieve its output.
+  description: >-
+    Retrieves the result of a Databricks job's latest execution by listing the
+    job's completed runs (most recent first), selecting the newest run, and
+    fetching that run's output including the notebook exit value or error trace.
+    The run_id from the first completed run feeds the output fetch. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: latest-run-output
+  summary: Get the output of a job's most recent completed run.
+  description: >-
+    Lists completed runs for the job ordered most-recent-first, then fetches the
+    output of the newest run when one exists.
+  inputs:
+    type: object
+    required:
+    - job_id
+    properties:
+      job_id:
+        type: integer
+        description: The job whose latest completed run output is wanted.
+  steps:
+  - stepId: listCompletedRuns
+    description: >-
+      List completed runs for the job, most recent first, and capture the
+      newest run_id.
+    operationId: listJobRuns
+    parameters:
+    - name: job_id
+      in: query
+      value: $inputs.job_id
+    - name: completed_only
+      in: query
+      value: true
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      latestRunId: $response.body#/runs/0/run_id
+    onSuccess:
+    - name: hasRun
+      type: goto
+      stepId: getRunOutput
+      criteria:
+      - context: $response.body
+        condition: $.runs.length > 0
+        type: jsonpath
+  - stepId: getRunOutput
+    description: >-
+      Retrieve the output of the latest completed run, exposing the notebook
+      result and any error.
+    operationId: getJobRunOutput
+    parameters:
+    - name: run_id
+      in: query
+      value: $steps.listCompletedRuns.outputs.latestRunId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      notebookResult: $response.body#/notebook_output/result
+      error: $response.body#/error
+  outputs:
+    latestRunId: $steps.listCompletedRuns.outputs.latestRunId
+    notebookResult: $steps.getRunOutput.outputs.notebookResult

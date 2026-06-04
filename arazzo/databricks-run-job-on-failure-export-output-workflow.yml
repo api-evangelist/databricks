@@ -1,0 +1,124 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Run Job and Branch on Success or Failure
+  summary: Run a job, wait for terminal state, then branch on the result state.
+  description: >-
+    Triggers a Databricks job run, polls until the run is TERMINATED, and then
+    branches on the run's result state: a SUCCESS result fetches the notebook
+    output, while any non-success terminal result fetches the same output to
+    capture the error and error trace for diagnosis. The run_id drives the poll
+    loop and both output fetches. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: run-job-branch-on-result
+  summary: Run a job and branch on SUCCESS vs failure to fetch output.
+  description: >-
+    Runs the job, polls until TERMINATED, then branches on result_state to
+    retrieve the success output or the failure error details.
+  inputs:
+    type: object
+    required:
+    - job_id
+    properties:
+      job_id:
+        type: integer
+        description: The job to run.
+      notebook_params:
+        type: object
+        description: Optional notebook parameters for the run.
+  steps:
+  - stepId: runJobNow
+    description: >-
+      Trigger an immediate run of the job and capture the run_id.
+    operationId: runJobNow
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $inputs.job_id
+        notebook_params: $inputs.notebook_params
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/run_id
+  - stepId: pollRun
+    description: >-
+      Read the run and inspect the life cycle state. Loop while RUNNING or
+      PENDING; once TERMINATED branch on the result state.
+    operationId: getJobRun
+    parameters:
+    - name: run_id
+      in: query
+      value: $steps.runJobNow.outputs.runId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lifeCycleState: $response.body#/state/life_cycle_state
+      resultState: $response.body#/state/result_state
+    onSuccess:
+    - name: stillRunning
+      type: goto
+      stepId: pollRun
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "RUNNING"
+        type: jsonpath
+    - name: stillPending
+      type: goto
+      stepId: pollRun
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "PENDING"
+        type: jsonpath
+    - name: succeeded
+      type: goto
+      stepId: getSuccessOutput
+      criteria:
+      - context: $response.body
+        condition: $.state.result_state == "SUCCESS"
+        type: jsonpath
+    - name: failed
+      type: goto
+      stepId: getFailureOutput
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "TERMINATED" && $.state.result_state != "SUCCESS"
+        type: jsonpath
+  - stepId: getSuccessOutput
+    description: >-
+      Retrieve the notebook result of the successful run.
+    operationId: getJobRunOutput
+    parameters:
+    - name: run_id
+      in: query
+      value: $steps.runJobNow.outputs.runId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      notebookResult: $response.body#/notebook_output/result
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: getFailureOutput
+    description: >-
+      Retrieve the error and stack trace of the failed run for diagnosis.
+    operationId: getJobRunOutput
+    parameters:
+    - name: run_id
+      in: query
+      value: $steps.runJobNow.outputs.runId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      error: $response.body#/error
+      errorTrace: $response.body#/error_trace
+  outputs:
+    runId: $steps.runJobNow.outputs.runId
+    resultState: $steps.pollRun.outputs.resultState
+    notebookResult: $steps.getSuccessOutput.outputs.notebookResult
+    error: $steps.getFailureOutput.outputs.error

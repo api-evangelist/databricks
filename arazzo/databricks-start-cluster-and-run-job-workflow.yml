@@ -1,0 +1,94 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Start Cluster Then Run Job
+  summary: Start a terminated cluster, wait until RUNNING, then trigger a job run.
+  description: >-
+    Starts a previously terminated Databricks cluster, polls until the cluster
+    is RUNNING, and then triggers an immediate run of a job that runs on that
+    cluster. The cluster_id drives the start and poll steps while the job_id
+    drives the run-now request. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: start-cluster-and-run-job
+  summary: Start a terminated cluster, wait for RUNNING, then run a job.
+  description: >-
+    Starts the named cluster, polls its status until RUNNING, and then submits
+    a run-now request for the supplied job.
+  inputs:
+    type: object
+    required:
+    - cluster_id
+    - job_id
+    properties:
+      cluster_id:
+        type: string
+        description: The terminated cluster to start.
+      job_id:
+        type: integer
+        description: The job to run once the cluster is RUNNING.
+      notebook_params:
+        type: object
+        description: Optional notebook parameters for the job run.
+  steps:
+  - stepId: startCluster
+    description: >-
+      Start the terminated cluster using its prior configuration. Starting is
+      asynchronous, so a poll loop confirms readiness.
+    operationId: startCluster
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_id: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollClusterState
+    description: >-
+      Read the cluster status and inspect the life cycle state. Loop back while
+      the cluster is still PENDING; continue once it is RUNNING.
+    operationId: getCluster
+    parameters:
+    - name: cluster_id
+      in: query
+      value: $inputs.cluster_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+    onSuccess:
+    - name: stillPending
+      type: goto
+      stepId: pollClusterState
+      criteria:
+      - context: $response.body
+        condition: $.state == "PENDING"
+        type: jsonpath
+    - name: running
+      type: goto
+      stepId: runJobNow
+      criteria:
+      - context: $response.body
+        condition: $.state == "RUNNING"
+        type: jsonpath
+  - stepId: runJobNow
+    description: >-
+      Trigger the job now that the cluster is RUNNING. Returns the run_id of the
+      triggered run.
+    operationId: runJobNow
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $inputs.job_id
+        notebook_params: $inputs.notebook_params
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/run_id
+  outputs:
+    clusterId: $inputs.cluster_id
+    runId: $steps.runJobNow.outputs.runId

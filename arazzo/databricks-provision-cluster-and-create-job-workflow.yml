@@ -1,0 +1,120 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Provision Cluster Then Create Job On It
+  summary: Create a cluster, wait until RUNNING, then create a job bound to that cluster.
+  description: >-
+    Stands up dedicated compute and a job to use it in one flow by creating a
+    Databricks cluster, polling until it reaches the RUNNING state, and then
+    creating a job whose task targets that cluster via existing_cluster_id. The
+    cluster_id produced by the create call flows into the job's task definition.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-cluster-and-create-job
+  summary: Create a cluster, wait for RUNNING, then create a job on it.
+  description: >-
+    Provisions a cluster, polls until it is RUNNING, then creates a notebook job
+    whose task runs on the new cluster.
+  inputs:
+    type: object
+    required:
+    - cluster_name
+    - spark_version
+    - node_type_id
+    - num_workers
+    - job_name
+    - task_key
+    - notebook_path
+    properties:
+      cluster_name:
+        type: string
+        description: Name for the new cluster.
+      spark_version:
+        type: string
+        description: The Spark runtime version for the cluster.
+      node_type_id:
+        type: string
+        description: The node type for the cluster.
+      num_workers:
+        type: integer
+        description: The number of worker nodes.
+      job_name:
+        type: string
+        description: The name for the new job.
+      task_key:
+        type: string
+        description: The unique task key within the job.
+      notebook_path:
+        type: string
+        description: The workspace path of the notebook the task runs.
+  steps:
+  - stepId: createCluster
+    description: >-
+      Create the cluster that the job task will run on. Returns the cluster_id
+      reused by the job task.
+    operationId: createCluster
+    requestBody:
+      contentType: application/json
+      payload:
+        cluster_name: $inputs.cluster_name
+        spark_version: $inputs.spark_version
+        node_type_id: $inputs.node_type_id
+        num_workers: $inputs.num_workers
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      clusterId: $response.body#/cluster_id
+  - stepId: pollClusterState
+    description: >-
+      Read the cluster status and inspect the life cycle state. Loop back while
+      PENDING; continue once it is RUNNING.
+    operationId: getCluster
+    parameters:
+    - name: cluster_id
+      in: query
+      value: $steps.createCluster.outputs.clusterId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+    onSuccess:
+    - name: stillPending
+      type: goto
+      stepId: pollClusterState
+      criteria:
+      - context: $response.body
+        condition: $.state == "PENDING"
+        type: jsonpath
+    - name: running
+      type: goto
+      stepId: createJob
+      criteria:
+      - context: $response.body
+        condition: $.state == "RUNNING"
+        type: jsonpath
+  - stepId: createJob
+    description: >-
+      Create a job whose single notebook task runs on the newly provisioned
+      cluster via existing_cluster_id.
+    operationId: createJob
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.job_name
+        tasks:
+        - task_key: $inputs.task_key
+          existing_cluster_id: $steps.createCluster.outputs.clusterId
+          notebook_task:
+            notebook_path: $inputs.notebook_path
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/job_id
+  outputs:
+    clusterId: $steps.createCluster.outputs.clusterId
+    jobId: $steps.createJob.outputs.jobId

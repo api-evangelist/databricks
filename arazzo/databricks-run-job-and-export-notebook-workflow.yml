@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Run Job, Wait, Then Export the Notebook
+  summary: Trigger a job run, wait for it to finish, then export the source notebook.
+  description: >-
+    Runs a Databricks job, polls the run until it is TERMINATED, and then exports
+    the source notebook that backs the job so the exact executed source can be
+    archived alongside the run. The run_id drives the poll loop and the supplied
+    notebook path drives the export. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: run-job-and-export-notebook
+  summary: Run a job to completion, then export the backing notebook.
+  description: >-
+    Triggers the job, polls until the run is TERMINATED, then exports the source
+    notebook content for archival.
+  inputs:
+    type: object
+    required:
+    - job_id
+    - notebook_path
+    properties:
+      job_id:
+        type: integer
+        description: The job to run.
+      notebook_path:
+        type: string
+        description: The workspace path of the notebook to export afterward.
+  steps:
+  - stepId: runJobNow
+    description: >-
+      Trigger an immediate run of the job and capture the run_id.
+    operationId: runJobNow
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $inputs.job_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/run_id
+  - stepId: pollRun
+    description: >-
+      Read the run and inspect the life cycle state. Loop while RUNNING or
+      PENDING; continue once TERMINATED.
+    operationId: getJobRun
+    parameters:
+    - name: run_id
+      in: query
+      value: $steps.runJobNow.outputs.runId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lifeCycleState: $response.body#/state/life_cycle_state
+      resultState: $response.body#/state/result_state
+    onSuccess:
+    - name: stillRunning
+      type: goto
+      stepId: pollRun
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "RUNNING"
+        type: jsonpath
+    - name: stillPending
+      type: goto
+      stepId: pollRun
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "PENDING"
+        type: jsonpath
+    - name: terminated
+      type: goto
+      stepId: exportNotebook
+      criteria:
+      - context: $response.body
+        condition: $.state.life_cycle_state == "TERMINATED"
+        type: jsonpath
+  - stepId: exportNotebook
+    description: >-
+      Export the source notebook backing the job in SOURCE format for archival
+      next to the completed run.
+    operationId: exportWorkspaceObject
+    parameters:
+    - name: path
+      in: query
+      value: $inputs.notebook_path
+    - name: format
+      in: query
+      value: SOURCE
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      content: $response.body#/content
+  outputs:
+    runId: $steps.runJobNow.outputs.runId
+    resultState: $steps.pollRun.outputs.resultState
+    notebookContent: $steps.exportNotebook.outputs.content

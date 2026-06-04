@@ -1,0 +1,84 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Cancel a Job's Active Run
+  summary: Find a job's active run and cancel it, then confirm cancellation.
+  description: >-
+    Stops in-flight work for a Databricks job by listing the job's active runs,
+    cancelling the first active run found, and then re-reading the run to
+    confirm it has moved into a TERMINATING or TERMINATED state. The run_id from
+    the active runs list drives the cancel and confirmation. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: cancel-active-run
+  summary: Locate a job's active run and cancel it.
+  description: >-
+    Lists active runs for the job, cancels the first one found, then reads it
+    back to confirm it is no longer RUNNING.
+  inputs:
+    type: object
+    required:
+    - job_id
+    properties:
+      job_id:
+        type: integer
+        description: The job whose active run should be cancelled.
+  steps:
+  - stepId: listActiveRuns
+    description: >-
+      List active runs for the job and capture the first active run_id.
+    operationId: listJobRuns
+    parameters:
+    - name: job_id
+      in: query
+      value: $inputs.job_id
+    - name: active_only
+      in: query
+      value: true
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      activeRunId: $response.body#/runs/0/run_id
+    onSuccess:
+    - name: hasActiveRun
+      type: goto
+      stepId: cancelRun
+      criteria:
+      - context: $response.body
+        condition: $.runs.length > 0
+        type: jsonpath
+  - stepId: cancelRun
+    description: >-
+      Cancel the active run. Cancellation is asynchronous; the run transitions
+      to a TERMINATING state.
+    operationId: cancelJobRun
+    requestBody:
+      contentType: application/json
+      payload:
+        run_id: $steps.listActiveRuns.outputs.activeRunId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: confirmCancel
+    description: >-
+      Read the run back to confirm it has left the RUNNING state after the
+      cancel request.
+    operationId: getJobRun
+    parameters:
+    - name: run_id
+      in: query
+      value: $steps.listActiveRuns.outputs.activeRunId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lifeCycleState: $response.body#/state/life_cycle_state
+  outputs:
+    cancelledRunId: $steps.listActiveRuns.outputs.activeRunId
+    lifeCycleState: $steps.confirmCancel.outputs.lifeCycleState

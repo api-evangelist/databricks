@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Drain Active Runs Then Delete Job
+  summary: Cancel a job's active run if present, then delete the job and its runs.
+  description: >-
+    Safely decommissions a Databricks job by listing its active runs, cancelling
+    the first one found before tearing down, and then deleting the job along with
+    all of its associated runs. When no active run exists the flow branches
+    straight to deletion. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: delete-job-and-cleanup-runs
+  summary: Cancel any active run, then delete the job.
+  description: >-
+    Checks for an active run and cancels it if present, otherwise proceeds
+    directly to deleting the job and its run history.
+  inputs:
+    type: object
+    required:
+    - job_id
+    properties:
+      job_id:
+        type: integer
+        description: The job to drain and delete.
+  steps:
+  - stepId: listActiveRuns
+    description: >-
+      List active runs for the job. Branch to cancel when one exists, otherwise
+      go straight to delete.
+    operationId: listJobRuns
+    parameters:
+    - name: job_id
+      in: query
+      value: $inputs.job_id
+    - name: active_only
+      in: query
+      value: true
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      activeRunId: $response.body#/runs/0/run_id
+    onSuccess:
+    - name: hasActiveRun
+      type: goto
+      stepId: cancelRun
+      criteria:
+      - context: $response.body
+        condition: $.runs.length > 0
+        type: jsonpath
+    - name: noActiveRun
+      type: goto
+      stepId: deleteJob
+      criteria:
+      - context: $response.body
+        condition: $.runs.length == 0
+        type: jsonpath
+  - stepId: cancelRun
+    description: >-
+      Cancel the active run before deleting the job.
+    operationId: cancelJobRun
+    requestBody:
+      contentType: application/json
+      payload:
+        run_id: $steps.listActiveRuns.outputs.activeRunId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: deleteJob
+    description: >-
+      Delete the job and all of its associated runs. This is permanent.
+    operationId: deleteJob
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $inputs.job_id
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    deletedJobId: $inputs.job_id
+    cancelledRunId: $steps.listActiveRuns.outputs.activeRunId

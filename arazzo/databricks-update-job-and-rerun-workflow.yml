@@ -1,0 +1,79 @@
+arazzo: 1.0.1
+info:
+  title: Databricks Update Job Settings and Re-Run
+  summary: Read a job, partially update its settings, then trigger a fresh run.
+  description: >-
+    Reads an existing Databricks job to confirm it exists, applies a partial
+    update to its settings (for example a new name or timeout), and then
+    triggers an immediate run so the change can be validated against a live run.
+    The job_id is reused across the read, update, and run steps. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: databricksApi
+  url: ../openapi/databricks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-job-and-rerun
+  summary: Partially update a job's settings and trigger a run.
+  description: >-
+    Reads the current job, submits a partial settings update, then triggers a
+    run-now to exercise the updated configuration.
+  inputs:
+    type: object
+    required:
+    - job_id
+    - new_settings
+    properties:
+      job_id:
+        type: integer
+        description: The canonical identifier of the job to update and run.
+      new_settings:
+        type: object
+        description: The partial job settings to apply (e.g. name, timeout, tasks).
+      notebook_params:
+        type: object
+        description: Optional notebook parameters for the validation run.
+  steps:
+  - stepId: getJob
+    description: >-
+      Read the job to confirm it exists and capture its current creator before
+      applying changes.
+    operationId: getJob
+    parameters:
+    - name: job_id
+      in: query
+      value: $inputs.job_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      creatorUserName: $response.body#/creator_user_name
+  - stepId: updateJob
+    description: >-
+      Apply the partial settings update to the job using new_settings.
+    operationId: updateJob
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $inputs.job_id
+        new_settings: $inputs.new_settings
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: rerunJob
+    description: >-
+      Trigger an immediate run of the updated job to validate the new
+      configuration.
+    operationId: runJobNow
+    requestBody:
+      contentType: application/json
+      payload:
+        job_id: $inputs.job_id
+        notebook_params: $inputs.notebook_params
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      runId: $response.body#/run_id
+  outputs:
+    jobId: $inputs.job_id
+    runId: $steps.rerunJob.outputs.runId
