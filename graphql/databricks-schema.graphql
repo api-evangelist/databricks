@@ -1,0 +1,1398 @@
+# Databricks Conceptual GraphQL Schema
+# Derived from: https://docs.databricks.com/api/workspace/introduction
+# Note: Databricks exposes a REST API only. This schema is a conceptual
+# representation for tooling, federation, and gateway integration.
+
+# ────────────────────────────────────────────────────────────────
+# Scalars
+# ────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+scalar Long
+
+# ────────────────────────────────────────────────────────────────
+# Enums
+# ────────────────────────────────────────────────────────────────
+
+enum ClusterState {
+  PENDING
+  RUNNING
+  RESTARTING
+  RESIZING
+  TERMINATING
+  TERMINATED
+  ERROR
+  UNKNOWN
+}
+
+enum RunState {
+  PENDING
+  RUNNING
+  SKIPPED
+  INTERNAL_ERROR
+  SUCCESS
+  FAILED
+  TIMEDOUT
+  CANCELED
+  WAITING_FOR_RETRY
+  BLOCKED
+  QUEUED
+}
+
+enum TableType {
+  MANAGED
+  EXTERNAL
+  VIEW
+  MATERIALIZED_VIEW
+  STREAMING_TABLE
+  FOREIGN
+}
+
+enum DataType {
+  BOOLEAN
+  BYTE
+  SHORT
+  INT
+  LONG
+  FLOAT
+  DOUBLE
+  DATE
+  TIMESTAMP
+  TIMESTAMP_NTZ
+  STRING
+  BINARY
+  DECIMAL
+  INTERVAL
+  ARRAY
+  STRUCT
+  MAP
+  CHAR
+  NULL
+  USER_DEFINED_TYPE
+  TABLE_TYPE
+}
+
+enum PipelineState {
+  DEPLOYING
+  STARTING
+  RUNNING
+  STOPPING
+  DELETED
+  RECOVERING
+  FAILED
+  RESETTING
+  IDLE
+}
+
+enum ModelVersionStatus {
+  PENDING_REGISTRATION
+  FAILED_REGISTRATION
+  READY
+}
+
+enum ServingEndpointState {
+  NOT_UPDATING
+  UPDATE_QUEUED
+  UPDATING_TRAFFIC
+  UPDATING_INGRESS_CONFIG
+  INTERNAL_ERROR
+}
+
+enum WarehouseState {
+  STARTING
+  RUNNING
+  STOPPING
+  STOPPED
+  DELETING
+  DELETED
+}
+
+enum RuntimeEngine {
+  NULL
+  STANDARD
+  PHOTON
+}
+
+enum PermissionLevel {
+  CAN_USE
+  CAN_MANAGE
+  CAN_RESTART
+  CAN_ATTACH_TO
+  CAN_RUN
+  CAN_VIEW
+  CAN_READ
+  CAN_EDIT
+  CAN_EDIT_METADATA
+  CAN_MANAGE_STAGING_VERSIONS
+  CAN_MANAGE_PRODUCTION_VERSIONS
+  IS_OWNER
+}
+
+enum SecretScopeBackend {
+  DATABRICKS
+  AZURE_KEYVAULT
+}
+
+enum TaskType {
+  NOTEBOOK_TASK
+  SPARK_JAR_TASK
+  SPARK_PYTHON_TASK
+  SPARK_SUBMIT_TASK
+  PIPELINE_TASK
+  PYTHON_WHEEL_TASK
+  SQL_TASK
+  DBT_TASK
+  RUN_JOB_TASK
+  CONDITION_TASK
+  FOR_EACH_TASK
+}
+
+# ────────────────────────────────────────────────────────────────
+# Compute / Clusters
+# ────────────────────────────────────────────────────────────────
+
+type AutoScale {
+  minWorkers: Int!
+  maxWorkers: Int!
+}
+
+type AwsAttributes {
+  firstOnDemand: Int
+  availability: String
+  zoneId: String
+  instanceProfileArn: String
+  spotBidPricePercent: Int
+  ebsVolumeType: String
+  ebsVolumeCount: Int
+  ebsVolumeSizeGb: Int
+}
+
+type AzureAttributes {
+  firstOnDemand: Int
+  availability: String
+  spotBidMaxPrice: Float
+}
+
+type GcpAttributes {
+  usePreemptibleExecutors: Boolean
+  googleServiceAccount: String
+  availability: String
+  bootDiskSize: Int
+}
+
+type InitScript {
+  dbfs: InitScriptDbfs
+  workspace: InitScriptWorkspace
+  gcs: InitScriptGcs
+  s3: InitScriptS3
+  volumes: InitScriptVolumes
+}
+
+type InitScriptDbfs {
+  destination: String!
+}
+
+type InitScriptWorkspace {
+  destination: String!
+}
+
+type InitScriptGcs {
+  destination: String!
+}
+
+type InitScriptS3 {
+  destination: String!
+  region: String
+  endpoint: String
+}
+
+type InitScriptVolumes {
+  destination: String!
+}
+
+type NodeType {
+  nodeTypeId: String!
+  memoryMb: Long!
+  numCores: Float!
+  description: String
+  instanceTypeId: String
+  isDeprecated: Boolean
+  supportEbsVolumes: Boolean
+}
+
+type SparkVersion {
+  key: String!
+  name: String!
+}
+
+type ClusterSpec {
+  sparkVersion: String
+  nodeTypeId: String
+  driverNodeTypeId: String
+  numWorkers: Int
+  autoscale: AutoScale
+  sparkConf: JSON
+  sparkEnvVars: JSON
+  awsAttributes: AwsAttributes
+  azureAttributes: AzureAttributes
+  gcpAttributes: GcpAttributes
+  customTags: JSON
+  enableElasticDisk: Boolean
+  clusterLogConf: JSON
+  initScripts: [InitScript]
+  runtimeEngine: RuntimeEngine
+  dataSecurityMode: String
+  singleUserName: String
+}
+
+type ClusterEvent {
+  clusterId: String!
+  timestamp: Long
+  type: String
+  details: JSON
+}
+
+type Cluster {
+  clusterId: String!
+  clusterName: String
+  state: ClusterState!
+  stateMessage: String
+  sparkContextId: Long
+  jdbcPort: Int
+  startTime: Long
+  terminatedTime: Long
+  lastRestartedTime: Long
+  lastActivityTime: Long
+  creatorUserName: String
+  spec: ClusterSpec
+  defaultTags: JSON
+  clusterSource: String
+  events(limit: Int, offset: Int): [ClusterEvent]
+}
+
+type ClusterPolicy {
+  policyId: String!
+  name: String!
+  definition: JSON
+  description: String
+  isDefault: Boolean
+  policyFamilyId: String
+  policyFamilyDefinitionOverrides: JSON
+  createdAtTimeStamp: Long
+  creatorUserName: String
+}
+
+type Library {
+  jar: String
+  egg: String
+  whl: String
+  pypi: LibraryPypi
+  maven: LibraryMaven
+  cran: LibraryCran
+}
+
+type LibraryPypi {
+  package: String!
+  repo: String
+}
+
+type LibraryMaven {
+  coordinates: String!
+  repo: String
+  exclusions: [String]
+}
+
+type LibraryCran {
+  package: String!
+  repo: String
+}
+
+type InstancePool {
+  instancePoolId: String!
+  instancePoolName: String!
+  nodeTypeId: String!
+  idleInstanceAutoterminationMinutes: Int
+  minIdleInstances: Int
+  maxCapacity: Int
+  state: String
+  defaultTags: JSON
+  customTags: JSON
+  awsAttributes: AwsAttributes
+  azureAttributes: AzureAttributes
+}
+
+# ────────────────────────────────────────────────────────────────
+# Jobs / Workflows
+# ────────────────────────────────────────────────────────────────
+
+type Schedule {
+  quartzCronExpression: String!
+  timezoneId: String!
+  pauseStatus: String
+}
+
+type GitSource {
+  gitUrl: String!
+  gitProvider: String!
+  gitBranch: String
+  gitTag: String
+  gitCommit: String
+  gitSnapshot: JSON
+}
+
+type EmailNotifications {
+  onStart: [String]
+  onSuccess: [String]
+  onFailure: [String]
+  noAlertForSkippedRuns: Boolean
+}
+
+type WebhookNotifications {
+  onStart: [JSON]
+  onSuccess: [JSON]
+  onFailure: [JSON]
+}
+
+type TaskDependency {
+  taskKey: String!
+  outcome: String
+}
+
+type Task {
+  taskKey: String!
+  description: String
+  dependsOn: [TaskDependency]
+  existingClusterId: String
+  newCluster: ClusterSpec
+  notebookTask: JSON
+  sparkJarTask: JSON
+  sparkPythonTask: JSON
+  sparkSubmitTask: JSON
+  pipelineTask: JSON
+  pythonWheelTask: JSON
+  sqlTask: JSON
+  dbtTask: JSON
+  runJobTask: JSON
+  libraries: [Library]
+  emailNotifications: EmailNotifications
+  timeoutSeconds: Int
+  maxRetries: Int
+  minRetryIntervalMillis: Int
+  retryOnTimeout: Boolean
+  taskType: TaskType
+}
+
+type JobCluster {
+  jobClusterKey: String!
+  newCluster: ClusterSpec!
+}
+
+type JobSettings {
+  name: String
+  tasks: [Task]
+  jobClusters: [JobCluster]
+  emailNotifications: EmailNotifications
+  webhookNotifications: WebhookNotifications
+  schedule: Schedule
+  maxConcurrentRuns: Int
+  gitSource: GitSource
+  timeoutSeconds: Int
+  tags: JSON
+  format: String
+}
+
+type Job {
+  jobId: Long!
+  creatorUserName: String
+  settings: JobSettings!
+  createdTime: Long
+  runs(activeOnly: Boolean, completedOnly: Boolean, limit: Int, offset: Int): [Run]
+}
+
+type RunState {
+  lifeCycleState: RunState
+  resultState: String
+  stateMessage: String
+  userCancelledOrTimedout: Boolean
+}
+
+type TaskRun {
+  runId: Long
+  taskKey: String
+  description: String
+  state: RunState
+  startTime: Long
+  setupDuration: Long
+  executionDuration: Long
+  cleanupDuration: Long
+  endTime: Long
+  clusterInstance: JSON
+  notebookOutput: JSON
+  logs: String
+}
+
+type Run {
+  runId: Long!
+  jobId: Long
+  numberInJob: Long
+  originalAttemptRunId: Long
+  state: RunState
+  schedule: Schedule
+  tasks: [TaskRun]
+  jobClusters: [JobCluster]
+  startTime: Long
+  setupDuration: Long
+  executionDuration: Long
+  cleanupDuration: Long
+  endTime: Long
+  triggerType: String
+  runPageUrl: String
+  runName: String
+  gitSource: GitSource
+}
+
+# ────────────────────────────────────────────────────────────────
+# Workspace
+# ────────────────────────────────────────────────────────────────
+
+type WorkspaceObject {
+  objectId: Long
+  objectType: String
+  path: String!
+  language: String
+  createdAt: Long
+  modifiedAt: Long
+  size: Long
+}
+
+type Notebook {
+  path: String!
+  language: String
+  objectId: Long
+  content: String
+}
+
+type Directory {
+  path: String!
+  objectId: Long
+  children: [WorkspaceObject]
+}
+
+type File {
+  path: String!
+  objectId: Long
+  size: Long
+  modifiedAt: Long
+}
+
+type Repo {
+  id: Long!
+  url: String!
+  provider: String!
+  path: String
+  branch: String
+  headCommitId: String
+  sparse_checkout: JSON
+}
+
+type GlobalInitScript {
+  scriptId: String!
+  name: String!
+  position: Int
+  enabled: Boolean
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+  script: String
+}
+
+type Workspace {
+  id: Long!
+  workspaceUrl: String
+  workspaceStatus: String
+  deploymentName: String
+  awsRegion: String
+  creationTime: Long
+}
+
+# ────────────────────────────────────────────────────────────────
+# Identity / Security
+# ────────────────────────────────────────────────────────────────
+
+type User {
+  id: Long!
+  userName: String!
+  displayName: String
+  emails: [JSON]
+  groups: [GroupRef]
+  roles: [JSON]
+  active: Boolean
+  externalId: String
+}
+
+type GroupRef {
+  value: String
+  display: String
+  ref: String
+  type: String
+}
+
+type Group {
+  id: Long!
+  displayName: String!
+  members: [GroupRef]
+  groups: [GroupRef]
+  roles: [JSON]
+  externalId: String
+}
+
+type ServicePrincipal {
+  id: Long!
+  applicationId: Long!
+  displayName: String
+  groups: [GroupRef]
+  roles: [JSON]
+  active: Boolean
+  externalId: String
+}
+
+type Token {
+  tokenId: String!
+  comment: String
+  creationTime: Long
+  expiryTime: Long
+  tokenInfo: JSON
+  createdByUsername: String
+}
+
+type SecretScope {
+  name: String!
+  backendType: SecretScopeBackend!
+  keyvaultMetadata: JSON
+}
+
+type Secret {
+  key: String!
+  lastUpdatedTimestamp: Long
+}
+
+type ACLItem {
+  principal: String!
+  permission: String!
+}
+
+type Permission {
+  objectId: String!
+  objectType: String!
+  accessControlList: [ACLItem]
+}
+
+type IPAccessList {
+  listId: String!
+  label: String!
+  listType: String!
+  ipAddresses: [String]
+  addressCount: Int
+  enabled: Boolean
+  createdAt: Long
+  createdBy: Long
+  updatedAt: Long
+  updatedBy: Long
+}
+
+type EncryptionConfig {
+  kmsKeyArn: String
+  useCase: String
+}
+
+# ────────────────────────────────────────────────────────────────
+# Unity Catalog
+# ────────────────────────────────────────────────────────────────
+
+type MetastoreDetail {
+  metastoreId: String!
+  name: String!
+  storageRoot: String
+  owner: String
+  defaultDataAccessConfigId: String
+  storageRootCredentialId: String
+  storageRootCredentialName: String
+  deltaSharingScope: String
+  deltaSharingRecipientTokenLifetimeInSeconds: Long
+  region: String
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+}
+
+type StorageCredential {
+  id: String!
+  name: String!
+  awsIamRole: JSON
+  azureManagedIdentity: JSON
+  azureServicePrincipal: JSON
+  gcpServiceAccountKey: JSON
+  comment: String
+  owner: String
+  readOnly: Boolean
+  createdAt: Long
+  updatedAt: Long
+}
+
+type ExternalLocation {
+  id: String!
+  name: String!
+  url: String!
+  credentialId: String
+  credentialName: String
+  comment: String
+  owner: String
+  readOnly: Boolean
+  browseOnly: Boolean
+  createdAt: Long
+  updatedAt: Long
+}
+
+type Catalog {
+  name: String!
+  catalogType: String
+  comment: String
+  owner: String
+  metastoreId: String
+  storageRoot: String
+  storageLocation: String
+  providerName: String
+  shareName: String
+  enablePredictiveOptimization: String
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+  schemas(maxResults: Int, pageToken: String): [Schema]
+}
+
+type Schema {
+  name: String!
+  catalogName: String!
+  comment: String
+  owner: String
+  metastoreId: String
+  storageRoot: String
+  storageLocation: String
+  enablePredictiveOptimization: String
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+  fullName: String
+  tables(maxResults: Int, pageToken: String): [Table]
+  views(maxResults: Int, pageToken: String): [View]
+  volumes(maxResults: Int, pageToken: String): [Volume]
+}
+
+type Column {
+  name: String!
+  typeText: String
+  typeName: DataType
+  typeJson: String
+  typeIntervalType: String
+  typePrecision: Int
+  typeScale: Int
+  position: Int
+  comment: String
+  nullable: Boolean
+  partitionIndex: Int
+  mask: JSON
+}
+
+type Partition {
+  values: [JSON]
+}
+
+type TableConstraint {
+  primaryKeyConstraint: JSON
+  foreignKeyConstraint: JSON
+  namedTableConstraint: JSON
+}
+
+type Table {
+  tableId: String!
+  name: String!
+  catalogName: String!
+  schemaName: String!
+  tableType: TableType!
+  dataSourceFormat: String
+  storageLocation: String
+  viewDefinition: String
+  comment: String
+  owner: String
+  fullName: String
+  metastoreId: String
+  columns: [Column]
+  partitions: [Partition]
+  properties: JSON
+  constraints: [TableConstraint]
+  enablePredictiveOptimization: String
+  rowFilter: JSON
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+  browseOnly: Boolean
+  accessPoint: String
+}
+
+type View {
+  name: String!
+  catalogName: String!
+  schemaName: String!
+  viewDefinition: String
+  comment: String
+  owner: String
+  fullName: String
+  columns: [Column]
+  createdAt: Long
+  updatedAt: Long
+}
+
+type Volume {
+  volumeId: String!
+  name: String!
+  catalogName: String!
+  schemaName: String!
+  volumeType: String!
+  storageLocation: String
+  comment: String
+  owner: String
+  fullName: String
+  metastoreId: String
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+}
+
+type Function {
+  functionId: String!
+  name: String!
+  catalogName: String!
+  schemaName: String!
+  inputParams: JSON
+  dataType: DataType
+  fullDataType: String
+  returnParams: JSON
+  routineBody: String
+  routineDefinition: String
+  comment: String
+  owner: String
+  fullName: String
+  createdAt: Long
+  updatedAt: Long
+}
+
+type Grant {
+  principal: String!
+  privileges: [String!]!
+}
+
+type Connection {
+  connectionId: String!
+  name: String!
+  connectionType: String!
+  comment: String
+  owner: String
+  readOnly: Boolean
+  properties: JSON
+  createdAt: Long
+  updatedAt: Long
+}
+
+type WorkspaceBinding {
+  workspaceId: Long!
+  bindingType: String
+}
+
+# ────────────────────────────────────────────────────────────────
+# SQL
+# ────────────────────────────────────────────────────────────────
+
+type SQLWarehouse {
+  id: String!
+  name: String!
+  clusterSize: String
+  minNumClusters: Int
+  maxNumClusters: Int
+  autoStopMins: Int
+  enablePhoton: Boolean
+  enableServerlessCompute: Boolean
+  spotInstancePolicy: String
+  channel: JSON
+  state: WarehouseState
+  numClusters: Int
+  numActiveSessions: Long
+  jdbcUrl: String
+  odbcParams: JSON
+  tags: JSON
+  creatorName: String
+  warehouseType: String
+  health: JSON
+}
+
+type Query {
+  id: String!
+  name: String!
+  description: String
+  query: String!
+  dataSourceId: String
+  schedule: JSON
+  options: JSON
+  tags: [String]
+  isFavorite: Boolean
+  isDraft: Boolean
+  isArchived: Boolean
+  isSafe: Boolean
+  updatedAt: DateTime
+  createdAt: DateTime
+  lastModifiedById: Long
+  userId: Long
+  visualizations: [Widget]
+}
+
+type Widget {
+  id: String!
+  dashboardId: String
+  visualizationId: String
+  text: String
+  width: Int
+  options: JSON
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Dashboard {
+  id: String!
+  name: String!
+  slug: String
+  tags: [String]
+  isDraft: Boolean
+  isArchived: Boolean
+  isFavorite: Boolean
+  userId: Long
+  updatedAt: DateTime
+  createdAt: DateTime
+  widgets: [Widget]
+}
+
+type Alert {
+  id: String!
+  name: String!
+  options: JSON
+  state: String
+  lastTriggeredAt: DateTime
+  rearm: Int
+  query: Query
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Statement {
+  statementId: String!
+  status: JSON
+  manifest: JSON
+  result: StatementResult
+}
+
+type StatementResult {
+  chunkIndex: Int
+  nextChunkIndex: Int
+  nextChunkInternalLink: String
+  rowCount: Long
+  byteCount: Long
+  data: [[JSON]]
+}
+
+# ────────────────────────────────────────────────────────────────
+# ML / MLflow
+# ────────────────────────────────────────────────────────────────
+
+type MLflowMetric {
+  key: String!
+  value: Float!
+  timestamp: Long
+  step: Long
+}
+
+type MLflowParam {
+  key: String!
+  value: String!
+}
+
+type MLflowArtifact {
+  path: String!
+  isDir: Boolean
+  fileSize: Long
+}
+
+type MLflowExperiment {
+  experimentId: String!
+  name: String!
+  artifactLocation: String
+  lifecycleStage: String
+  lastUpdateTime: Long
+  creationTime: Long
+  tags: [JSON]
+  runs(maxResults: Int, pageToken: String): [MLflowRun]
+}
+
+type MLflowRun {
+  info: JSON
+  data: MLflowRunData
+  inputs: JSON
+}
+
+type MLflowRunData {
+  metrics: [MLflowMetric]
+  params: [MLflowParam]
+  tags: [JSON]
+}
+
+type ModelAlias {
+  aliasName: String!
+  versionNum: String!
+}
+
+type RegisteredModel {
+  id: String!
+  name: String!
+  catalogName: String
+  schemaName: String
+  comment: String
+  owner: String
+  fullName: String
+  metastoreId: String
+  aliases: [ModelAlias]
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+  versions(maxResults: Int, pageToken: String): [ModelVersion]
+}
+
+type ModelVersion {
+  id: String!
+  modelName: String!
+  catalogName: String
+  schemaName: String
+  versionNum: String
+  comment: String
+  owner: String
+  status: ModelVersionStatus
+  aliases: [ModelAlias]
+  runId: String
+  runWorkspaceId: Long
+  source: String
+  storageLocation: String
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+}
+
+# ────────────────────────────────────────────────────────────────
+# Serving
+# ────────────────────────────────────────────────────────────────
+
+type ServedModel {
+  name: String!
+  modelName: String
+  modelVersion: String
+  scaleToZeroEnabled: Boolean
+  workloadSize: String
+  workloadType: String
+  trafficPercentage: Int
+  state: JSON
+  creationTimestamp: Long
+  lastUpdatedTimestamp: Long
+}
+
+type TrafficConfig {
+  routes: [JSON]
+}
+
+type ServingConfig {
+  servedModels: [ServedModel]
+  trafficConfig: TrafficConfig
+}
+
+type ServingEndpoint {
+  id: String!
+  name: String!
+  config: ServingConfig
+  state: ServingEndpointState
+  creator: String
+  creationTimestamp: Long
+  lastUpdatedTimestamp: Long
+  tags: JSON
+}
+
+# ────────────────────────────────────────────────────────────────
+# Delta Live Tables / Pipelines
+# ────────────────────────────────────────────────────────────────
+
+type DLTSettings {
+  continuous: Boolean
+  photon: Boolean
+  serverless: Boolean
+  channel: String
+  edition: String
+  pipelineType: String
+}
+
+type PipelineCluster {
+  label: String!
+  nodeTypeId: String
+  numWorkers: Int
+  autoscale: AutoScale
+  sparkConf: JSON
+  customTags: JSON
+}
+
+type PipelineSpec {
+  name: String
+  storage: String
+  catalog: String
+  target: String
+  libraries: [JSON]
+  filters: JSON
+  configuration: JSON
+  clusters: [PipelineCluster]
+  continuous: Boolean
+  development: Boolean
+  photon: Boolean
+  serverless: Boolean
+  channel: String
+  edition: String
+  notifications: [JSON]
+}
+
+type PipelineEvent {
+  id: String
+  sequence: JSON
+  origin: JSON
+  timestamp: DateTime
+  message: String
+  level: String
+  error: JSON
+  eventType: String
+  maturityLevel: String
+}
+
+type Pipeline {
+  pipelineId: String!
+  name: String!
+  state: PipelineState!
+  spec: PipelineSpec
+  clusterId: String
+  cause: String
+  health: String
+  lastModified: Long
+  latestUpdates: [JSON]
+  runAsUserName: String
+  creatorUserName: String
+  events(maxResults: Int, pageToken: String): [PipelineEvent]
+}
+
+# ────────────────────────────────────────────────────────────────
+# Delta Sharing
+# ────────────────────────────────────────────────────────────────
+
+type ShareObject {
+  name: String!
+  dataObjectType: String!
+  status: String
+  comment: String
+  addedAt: Long
+  addedBy: String
+  partitions: [JSON]
+  historyDataSharingStatus: String
+  cdfEnabled: Boolean
+  sharedAs: String
+  startVersion: Long
+  stringSharedAs: String
+}
+
+type Share {
+  name: String!
+  comment: String
+  owner: String
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+  objects: [ShareObject]
+}
+
+type Recipient {
+  name: String!
+  recipientType: String
+  comment: String
+  owner: String
+  ipAccessList: JSON
+  authenticationToken: String
+  authenticationTokenUrl: String
+  activated: Boolean
+  activatedOn: Long
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+}
+
+type Provider {
+  name: String!
+  comment: String
+  authenticationType: String
+  recipientToken: JSON
+  owner: String
+  metastoreId: String
+  shares: [Share]
+  createdAt: Long
+  updatedAt: Long
+  createdBy: String
+  updatedBy: String
+}
+
+# ────────────────────────────────────────────────────────────────
+# Vector Search
+# ────────────────────────────────────────────────────────────────
+
+type VectorSearchEndpoint {
+  name: String!
+  endpointType: String
+  endpointStatus: JSON
+  numIndexes: Long
+  id: String
+  creationTimestamp: Long
+  lastUpdatedTimestamp: Long
+}
+
+type VectorSearchIndex {
+  name: String!
+  endpointName: String!
+  primaryKey: String!
+  indexType: String
+  deltaSync: JSON
+  directAccess: JSON
+  status: JSON
+  embeddingSourceColumns: [JSON]
+  embeddingVectorColumns: [JSON]
+  creationTimestamp: Long
+  lastUpdatedTimestamp: Long
+}
+
+# ────────────────────────────────────────────────────────────────
+# Apps / Dashboards / Monitoring
+# ────────────────────────────────────────────────────────────────
+
+type App {
+  name: String!
+  description: String
+  computeStatus: JSON
+  appStatus: JSON
+  url: String
+  creator: String
+  createTime: DateTime
+  updateTime: DateTime
+  activeDeployment: JSON
+  pendingDeployment: JSON
+  resources: [JSON]
+  defaultSourceCodePath: String
+}
+
+type LakeviewDashboard {
+  dashboardId: String!
+  displayName: String!
+  etag: String
+  lifecycleState: String
+  path: String
+  serializedDashboard: String
+  warehouseId: String
+  createTime: DateTime
+  updateTime: DateTime
+  parentPath: String
+}
+
+type NotificationDestination {
+  id: String!
+  displayName: String!
+  destinationType: String
+  config: JSON
+  creationTimestamp: Long
+  lastUpdatedTimestamp: Long
+}
+
+type OnlineTable {
+  name: String!
+  spec: JSON
+  status: JSON
+  tableServingUrl: String
+  unity_catalog_provisioning_state: String
+}
+
+type QualityMonitor {
+  monitorVersion: String
+  tableName: String!
+  assetsDir: String
+  outputSchemaName: String
+  snapshotEnabled: Boolean
+  timeSeries: JSON
+  inferenceLog: JSON
+  baseline: JSON
+  customMetrics: [JSON]
+  dataClassificationConfig: JSON
+  notifications: JSON
+  schedule: JSON
+  skipBuiltinDashboard: Boolean
+  slicingExprs: [String]
+  status: JSON
+  dashboardId: String
+  monitorGlobalStats: JSON
+  driftMetricsTableName: String
+  profileMetricsTableName: String
+}
+
+# ────────────────────────────────────────────────────────────────
+# Root Query
+# ────────────────────────────────────────────────────────────────
+
+type QueryRoot {
+  # Clusters
+  cluster(clusterId: String!): Cluster
+  clusters(filterBy: String, limit: Int, offset: Int): [Cluster]
+  clusterPolicy(policyId: String!): ClusterPolicy
+  clusterPolicies: [ClusterPolicy]
+  nodeTypes: [NodeType]
+  sparkVersions: [SparkVersion]
+  instancePool(instancePoolId: String!): InstancePool
+  instancePools: [InstancePool]
+
+  # Jobs
+  job(jobId: Long!): Job
+  jobs(name: String, expandTasks: Boolean, limit: Int, offset: Int): [Job]
+  run(runId: Long!): Run
+  runs(jobId: Long, activeOnly: Boolean, completedOnly: Boolean, limit: Int, offset: Int): [Run]
+
+  # Workspace
+  workspaceObject(path: String!): WorkspaceObject
+  listWorkspace(path: String!): [WorkspaceObject]
+  notebook(path: String!): Notebook
+  repo(id: Long!): Repo
+  repos(pathPrefix: String, nextPageToken: String): [Repo]
+  globalInitScript(scriptId: String!): GlobalInitScript
+  globalInitScripts: [GlobalInitScript]
+
+  # Identity
+  currentUser: User
+  user(id: Long!): User
+  users(filter: String, sortBy: String, count: Int, startIndex: Int): [User]
+  group(id: Long!): Group
+  groups(filter: String, sortBy: String, count: Int, startIndex: Int): [Group]
+  servicePrincipal(id: Long!): ServicePrincipal
+  servicePrincipals(filter: String, sortBy: String, count: Int, startIndex: Int): [ServicePrincipal]
+
+  # Security
+  token(tokenId: String!): Token
+  tokens: [Token]
+  secretScope(scopeName: String!): SecretScope
+  secretScopes: [SecretScope]
+  secret(scopeName: String!, key: String!): Secret
+  secrets(scopeName: String!): [Secret]
+  ipAccessList(listId: String!): IPAccessList
+  ipAccessLists: [IPAccessList]
+  permissions(objectType: String!, objectId: String!): Permission
+
+  # Unity Catalog
+  metastore: MetastoreDetail
+  catalog(name: String!): Catalog
+  catalogs: [Catalog]
+  schema(fullName: String!): Schema
+  schemas(catalogName: String!, maxResults: Int, pageToken: String): [Schema]
+  table(fullName: String!): Table
+  tables(catalogName: String!, schemaName: String!, maxResults: Int, pageToken: String): [Table]
+  view(fullName: String!): View
+  views(catalogName: String!, schemaName: String!, maxResults: Int, pageToken: String): [View]
+  volume(fullName: String!): Volume
+  volumes(catalogName: String!, schemaName: String!, maxResults: Int, pageToken: String): [Volume]
+  function(fullName: String!): Function
+  functions(catalogName: String!, schemaName: String!, maxResults: Int, pageToken: String): [Function]
+  storageCredential(name: String!): StorageCredential
+  storageCredentials: [StorageCredential]
+  externalLocation(name: String!): ExternalLocation
+  externalLocations: [ExternalLocation]
+  connection(name: String!): Connection
+  connections: [Connection]
+  grants(securableType: String!, fullName: String!): [Grant]
+
+  # SQL
+  sqlWarehouse(id: String!): SQLWarehouse
+  sqlWarehouses: [SQLWarehouse]
+  sqlQuery(id: String!): Query
+  sqlQueries: [Query]
+  dashboard(id: String!): Dashboard
+  dashboards: [Dashboard]
+  alert(id: String!): Alert
+  alerts: [Alert]
+  statement(statementId: String!): Statement
+
+  # ML / MLflow
+  experiment(experimentId: String!): MLflowExperiment
+  experiments(maxResults: Int, pageToken: String): [MLflowExperiment]
+  mlflowRun(runId: String!): MLflowRun
+  registeredModel(fullName: String!): RegisteredModel
+  registeredModels(catalogName: String, schemaName: String, maxResults: Int, pageToken: String): [RegisteredModel]
+  modelVersion(fullName: String!, version: String!): ModelVersion
+  modelVersions(fullName: String!, maxResults: Int, pageToken: String): [ModelVersion]
+
+  # Serving
+  servingEndpoint(name: String!): ServingEndpoint
+  servingEndpoints: [ServingEndpoint]
+
+  # Pipelines
+  pipeline(pipelineId: String!): Pipeline
+  pipelines(filter: String, maxResults: Int, pageToken: String): [Pipeline]
+
+  # Delta Sharing
+  share(name: String!): Share
+  shares: [Share]
+  recipient(name: String!): Recipient
+  recipients: [Recipient]
+  provider(name: String!): Provider
+  providers: [Provider]
+
+  # Vector Search
+  vectorSearchEndpoint(endpointName: String!): VectorSearchEndpoint
+  vectorSearchEndpoints: [VectorSearchEndpoint]
+  vectorSearchIndex(indexName: String!): VectorSearchIndex
+  vectorSearchIndexes(endpointName: String!): [VectorSearchIndex]
+
+  # Apps / Monitoring
+  app(name: String!): App
+  apps: [App]
+  lakeviewDashboard(dashboardId: String!): LakeviewDashboard
+  lakeviewDashboards: [LakeviewDashboard]
+  notificationDestination(id: String!): NotificationDestination
+  notificationDestinations: [NotificationDestination]
+  onlineTable(name: String!): OnlineTable
+  onlineTables: [OnlineTable]
+  qualityMonitor(tableName: String!): QualityMonitor
+
+  # Libraries
+  clusterLibraries(clusterId: String!): [Library]
+}
+
+schema {
+  query: QueryRoot
+}
