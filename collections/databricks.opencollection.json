@@ -1,0 +1,551 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Databricks REST API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Databricks Create a New Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Spark cluster. This method acquires new instances from the cloud provider and starts the Spark driver and worker processes. The cluster is created asynchronously; use the cluster_id returned to poll for status."
+        },
+        {
+          "info": {
+            "name": "Databricks List All Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/clusters/list",
+            "params": [
+              {
+                "name": "can_use_client",
+                "value": "example_value",
+                "type": "query",
+                "description": "Filter clusters by client compatibility."
+              }
+            ]
+          },
+          "docs": "Returns information about all clusters in the workspace, including terminated clusters. Clusters are ordered by cluster_id."
+        },
+        {
+          "info": {
+            "name": "Databricks Get Cluster Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/clusters/get",
+            "params": [
+              {
+                "name": "cluster_id",
+                "value": "500123",
+                "type": "query",
+                "description": "The unique identifier of the cluster."
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a cluster, including its current state, configuration, and runtime properties."
+        },
+        {
+          "info": {
+            "name": "Databricks Start a Terminated Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts a terminated cluster given its cluster_id. This is similar to creating a cluster except it uses the configuration of the previously terminated cluster."
+        },
+        {
+          "info": {
+            "name": "Databricks Restart a Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/restart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restarts a Spark cluster given its cluster_id. If the cluster is not in a RUNNING state, nothing happens."
+        },
+        {
+          "info": {
+            "name": "Databricks Terminate a Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Terminates a Spark cluster given its cluster_id. The cluster is removed after being terminated. Use the permanent-delete endpoint if you want to remove the cluster configuration entirely."
+        },
+        {
+          "info": {
+            "name": "Databricks Permanently Delete a Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/permanent-delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Permanently deletes a Spark cluster. If the cluster is running, it is terminated and resources are asynchronously removed. If the cluster is terminated, it is immediately removed. A cluster can only be permanently deleted by an admin or the cluster creator."
+        },
+        {
+          "info": {
+            "name": "Databricks Edit Cluster Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/edit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edits the configuration of a cluster to match the provided attributes. The cluster must be in a RUNNING or TERMINATED state. If the cluster is running, it will be restarted to apply the changes."
+        },
+        {
+          "info": {
+            "name": "Databricks List Cluster Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a list of events about the activity of a cluster. Events are returned in reverse chronological order. This endpoint can be used to audit cluster activity and monitor lifecycle changes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Databricks Create a New Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.1/jobs/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new job with the provided settings. The job can be configured with a single task or multiple tasks with dependencies forming a directed acyclic graph (DAG)."
+        },
+        {
+          "info": {
+            "name": "Databricks List All Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.1/jobs/list",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The number of jobs to return. This value must be greater than 0 and less than or equal to 25. The default value is 20."
+              },
+              {
+                "name": "offset",
+                "value": "10",
+                "type": "query",
+                "description": "The offset of the first job to return."
+              },
+              {
+                "name": "name",
+                "value": "Example Title",
+                "type": "query",
+                "description": "A filter on the list based on the exact (case-insensitive) job name."
+              },
+              {
+                "name": "expand_tasks",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to include task and cluster details in the response."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of jobs in the workspace. Results are paginated and can be filtered by name."
+        },
+        {
+          "info": {
+            "name": "Databricks Get a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.1/jobs/get",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "500123",
+                "type": "query",
+                "description": "The canonical identifier of the job to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves the details of a single job, including its settings, creator, and run history summary."
+        },
+        {
+          "info": {
+            "name": "Databricks Partially Update a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.1/jobs/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add, update, or remove specific settings of an existing job. Use reset to overwrite all settings."
+        },
+        {
+          "info": {
+            "name": "Databricks Delete a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.1/jobs/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a job and all its associated runs. The job is permanently removed and cannot be recovered."
+        },
+        {
+          "info": {
+            "name": "Databricks Trigger a Job Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.1/jobs/run-now",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers an immediate run of a job. One run is triggered for each call. Runs triggered by run-now are considered triggered runs. Parameters can be passed to override the job defaults."
+        },
+        {
+          "info": {
+            "name": "Databricks List Job Runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.1/jobs/runs/list",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "500123",
+                "type": "query",
+                "description": "The job for which to list runs. If omitted, lists runs for all jobs."
+              },
+              {
+                "name": "active_only",
+                "value": "true",
+                "type": "query",
+                "description": "If true, only active runs are included in the results; otherwise lists both active and completed runs."
+              },
+              {
+                "name": "completed_only",
+                "value": "true",
+                "type": "query",
+                "description": "If true, only completed runs are included in the results."
+              },
+              {
+                "name": "offset",
+                "value": "10",
+                "type": "query",
+                "description": "The offset of the first run to return."
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The number of runs to return (max 25)."
+              },
+              {
+                "name": "run_type",
+                "value": "JOB_RUN",
+                "type": "query",
+                "description": "The type of runs to return."
+              },
+              {
+                "name": "expand_tasks",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to include task details in each run."
+              },
+              {
+                "name": "start_time_from",
+                "value": "10",
+                "type": "query",
+                "description": "Filter runs started after this time (epoch milliseconds)."
+              },
+              {
+                "name": "start_time_to",
+                "value": "10",
+                "type": "query",
+                "description": "Filter runs started before this time (epoch milliseconds)."
+              }
+            ]
+          },
+          "docs": "Lists runs from most recently started to least. Results are paginated. Runs can be filtered by job, active state, and completion status."
+        },
+        {
+          "info": {
+            "name": "Databricks Get a Job Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.1/jobs/runs/get",
+            "params": [
+              {
+                "name": "run_id",
+                "value": "500123",
+                "type": "query",
+                "description": "The canonical identifier of the run."
+              },
+              {
+                "name": "include_history",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to include the repair history in the response."
+              },
+              {
+                "name": "include_resolved_values",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to include resolved parameter values in the response."
+              }
+            ]
+          },
+          "docs": "Retrieves the metadata of a run, including start time, end time, status, and task details."
+        },
+        {
+          "info": {
+            "name": "Databricks Cancel a Job Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.1/jobs/runs/cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels an active run. The run is canceled asynchronously, and the request returns immediately. The canceled run transitions to a TERMINATING state."
+        },
+        {
+          "info": {
+            "name": "Databricks Get Run Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.1/jobs/runs/get-output",
+            "params": [
+              {
+                "name": "run_id",
+                "value": "500123",
+                "type": "query",
+                "description": "The canonical identifier of the run."
+              }
+            ]
+          },
+          "docs": "Retrieves the output and metadata of a single task run. This endpoint can be used for notebook, JAR, Python, and Spark submit task outputs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Workspace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Databricks List Workspace Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/workspace/list",
+            "params": [
+              {
+                "name": "path",
+                "value": "example_value",
+                "type": "query",
+                "description": "The absolute path of the workspace directory to list. Must start with /."
+              },
+              {
+                "name": "notebooks_modified_after",
+                "value": "10",
+                "type": "query",
+                "description": "If provided, only notebooks modified after this timestamp (epoch seconds) are returned."
+              }
+            ]
+          },
+          "docs": "Lists the contents of a directory in the workspace, or the object if it is not a directory. If the input path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned."
+        },
+        {
+          "info": {
+            "name": "Databricks Get Workspace Object Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/workspace/get-status",
+            "params": [
+              {
+                "name": "path",
+                "value": "example_value",
+                "type": "query",
+                "description": "The absolute path of the workspace object. Must start with /."
+              }
+            ]
+          },
+          "docs": "Gets the status of an object or a directory in the workspace. If the object does not exist, a RESOURCE_DOES_NOT_EXIST error is returned."
+        },
+        {
+          "info": {
+            "name": "Databricks Export a Workspace Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/workspace/export",
+            "params": [
+              {
+                "name": "path",
+                "value": "example_value",
+                "type": "query",
+                "description": "The absolute path of the object or directory to export. Must start with /."
+              },
+              {
+                "name": "format",
+                "value": "SOURCE",
+                "type": "query",
+                "description": "The format in which to export the notebook. The default is SOURCE."
+              },
+              {
+                "name": "direct_download",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to download the file directly. If true, the response is the exported content."
+              }
+            ]
+          },
+          "docs": "Exports a notebook or the contents of an entire directory. Notebooks can be exported in SOURCE, HTML, JUPYTER, or DBC format."
+        },
+        {
+          "info": {
+            "name": "Databricks Import a Workspace Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/workspace/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Imports a notebook or the contents of an entire directory. If the object already exists and overwrite is set to false, a RESOURCE_ALREADY_EXISTS error is returned."
+        },
+        {
+          "info": {
+            "name": "Databricks Delete a Workspace Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/workspace/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes an object or a directory and optionally all of its contents. If the path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned. If path is a non-empty directory and recursive is false, a DIRECTORY_NOT_EMPTY error is returned."
+        },
+        {
+          "info": {
+            "name": "Databricks Create a Directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/workspace/mkdirs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates the given directory and necessary parent directories if they do not exist. If there is an object (not a directory) at any prefix of the input path, a RESOURCE_ALREADY_EXISTS error is returned."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
