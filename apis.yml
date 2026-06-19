@@ -948,6 +948,10 @@ maintainers:
   url: https://www.databricks.com/
 specificationVersion: '0.19'
 common:
+- type: MCPServer
+  url: https://docs.databricks.com/aws/en/generative-ai/mcp/
+  name: MCP Server
+  description: Databricks managed MCP servers for Unity Catalog functions, Genie spaces, Databricks SQL, and Vector Search, with Unity Catalog permissions always enforced.
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/databricks/overview
 - type: ArazzoWorkflows
