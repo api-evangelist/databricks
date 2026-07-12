@@ -948,6 +948,12 @@ maintainers:
   url: https://www.databricks.com/
 specificationVersion: '0.19'
 common:
+- type: VulnerabilityDisclosure
+  url: security/databricks-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/databricks-domain-security.yml
+- type: Authentication
+  url: authentication/databricks-authentication.yml
 - type: MCPServer
   url: https://docs.databricks.com/aws/en/generative-ai/mcp/
   name: MCP Server

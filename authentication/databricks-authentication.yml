@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/databricks-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: PAT
+  description: Databricks personal access token (PAT) or OAuth M2M token. Pass the token in
+    the Authorization header as 'Bearer <token>'.
+  sources:
+  - openapi/databricks-openapi.yml
