@@ -1,0 +1,445 @@
+openapi: 3.1.0
+info:
+  title: Databricks REST Clusters Workspace API
+  description: The Databricks REST API provides programmatic access to manage Databricks workspace resources including clusters, jobs, and workspace objects. All API endpoints require authentication using a personal access token or OAuth token passed via the Authorization header. The base URL is specific to your Databricks workspace deployment region.
+  version: 2.1.0
+  contact:
+    name: Databricks
+    url: https://www.databricks.com/company/contact
+    email: support@databricks.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://www.databricks.com/legal/terms-of-use
+servers:
+- url: https://{workspace_host}/api
+  description: Databricks workspace API endpoint
+  variables:
+    workspace_host:
+      default: adb-1234567890123456.7.azuredatabricks.net
+      description: The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).
+security:
+- bearerAuth: []
+tags:
+- name: Workspace
+  description: Manage workspace objects such as notebooks, folders, and libraries.
+paths:
+  /2.0/workspace/list:
+    get:
+      operationId: listWorkspaceObjects
+      summary: Databricks List Workspace Objects
+      description: Lists the contents of a directory in the workspace, or the object if it is not a directory. If the input path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned.
+      tags:
+      - Workspace
+      parameters:
+      - name: path
+        in: query
+        required: true
+        description: The absolute path of the workspace directory to list. Must start with /.
+        schema:
+          type: string
+        example: example_value
+      - name: notebooks_modified_after
+        in: query
+        required: false
+        description: If provided, only notebooks modified after this timestamp (epoch seconds) are returned.
+        schema:
+          type: integer
+          format: int64
+        example: 10
+      responses:
+        '200':
+          description: Successfully listed workspace objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkspaceObject'
+              examples:
+                Listworkspaceobjects200Example:
+                  summary: Default listWorkspaceObjects 200 response
+                  x-microcks-default: true
+                  value:
+                    objects:
+                    - object_type: NOTEBOOK
+                      path: example_value
+                      language: SCALA
+                      object_id: '500123'
+                      created_at: '2026-01-15T10:30:00Z'
+                      modified_at: '2026-01-15T10:30:00Z'
+                      resource_id: '500123'
+                      size: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/workspace/get-status:
+    get:
+      operationId: getWorkspaceObjectStatus
+      summary: Databricks Get Workspace Object Status
+      description: Gets the status of an object or a directory in the workspace. If the object does not exist, a RESOURCE_DOES_NOT_EXIST error is returned.
+      tags:
+      - Workspace
+      parameters:
+      - name: path
+        in: query
+        required: true
+        description: The absolute path of the workspace object. Must start with /.
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Successfully retrieved object status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceObject'
+              examples:
+                Getworkspaceobjectstatus200Example:
+                  summary: Default getWorkspaceObjectStatus 200 response
+                  x-microcks-default: true
+                  value:
+                    object_type: NOTEBOOK
+                    path: example_value
+                    language: SCALA
+                    object_id: '500123'
+                    created_at: '2026-01-15T10:30:00Z'
+                    modified_at: '2026-01-15T10:30:00Z'
+                    resource_id: '500123'
+                    size: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/workspace/export:
+    get:
+      operationId: exportWorkspaceObject
+      summary: Databricks Export a Workspace Object
+      description: Exports a notebook or the contents of an entire directory. Notebooks can be exported in SOURCE, HTML, JUPYTER, or DBC format.
+      tags:
+      - Workspace
+      parameters:
+      - name: path
+        in: query
+        required: true
+        description: The absolute path of the object or directory to export. Must start with /.
+        schema:
+          type: string
+        example: example_value
+      - name: format
+        in: query
+        required: false
+        description: The format in which to export the notebook. The default is SOURCE.
+        schema:
+          type: string
+          enum:
+          - SOURCE
+          - HTML
+          - JUPYTER
+          - DBC
+          - R_MARKDOWN
+          default: SOURCE
+        example: SOURCE
+      - name: direct_download
+        in: query
+        required: false
+        description: Whether to download the file directly. If true, the response is the exported content.
+        schema:
+          type: boolean
+          default: false
+        example: true
+      responses:
+        '200':
+          description: Successfully exported the workspace object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: string
+                    description: The base64-encoded content of the exported object.
+                  file_type:
+                    type: string
+                    description: The type of the exported file.
+              examples:
+                Exportworkspaceobject200Example:
+                  summary: Default exportWorkspaceObject 200 response
+                  x-microcks-default: true
+                  value:
+                    content: example_value
+                    file_type: example_value
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/workspace/import:
+    post:
+      operationId: importWorkspaceObject
+      summary: Databricks Import a Workspace Object
+      description: Imports a notebook or the contents of an entire directory. If the object already exists and overwrite is set to false, a RESOURCE_ALREADY_EXISTS error is returned.
+      tags:
+      - Workspace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - path
+              properties:
+                path:
+                  type: string
+                  description: The absolute path of the object to import. Must start with /.
+                format:
+                  type: string
+                  enum:
+                  - SOURCE
+                  - HTML
+                  - JUPYTER
+                  - DBC
+                  - R_MARKDOWN
+                  - AUTO
+                  description: The format of the content. AUTO will try to detect the format automatically.
+                language:
+                  type: string
+                  enum:
+                  - SCALA
+                  - PYTHON
+                  - SQL
+                  - R
+                  description: The language of the object. Required for SOURCE format when the object type is a notebook.
+                content:
+                  type: string
+                  description: The base64-encoded content to import. Limit is 10 MB.
+                overwrite:
+                  type: boolean
+                  description: If true, the existing object is overwritten. Default is false.
+                  default: false
+            examples:
+              ImportworkspaceobjectRequestExample:
+                summary: Default importWorkspaceObject request
+                x-microcks-default: true
+                value:
+                  path: example_value
+                  format: SOURCE
+                  language: SCALA
+                  content: example_value
+                  overwrite: true
+      responses:
+        '200':
+          description: Object imported successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/workspace/delete:
+    post:
+      operationId: deleteWorkspaceObject
+      summary: Databricks Delete a Workspace Object
+      description: Deletes an object or a directory and optionally all of its contents. If the path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned. If path is a non-empty directory and recursive is false, a DIRECTORY_NOT_EMPTY error is returned.
+      tags:
+      - Workspace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - path
+              properties:
+                path:
+                  type: string
+                  description: The absolute path of the object to delete. Must start with /.
+                recursive:
+                  type: boolean
+                  description: If true, all contents of the directory are recursively deleted. Required for non-empty directories.
+                  default: false
+            examples:
+              DeleteworkspaceobjectRequestExample:
+                summary: Default deleteWorkspaceObject request
+                x-microcks-default: true
+                value:
+                  path: example_value
+                  recursive: true
+      responses:
+        '200':
+          description: Object deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/workspace/mkdirs:
+    post:
+      operationId: createWorkspaceDirectory
+      summary: Databricks Create a Directory
+      description: Creates the given directory and necessary parent directories if they do not exist. If there is an object (not a directory) at any prefix of the input path, a RESOURCE_ALREADY_EXISTS error is returned.
+      tags:
+      - Workspace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - path
+              properties:
+                path:
+                  type: string
+                  description: The absolute path of the directory to create. Must start with /.
+            examples:
+              CreateworkspacedirectoryRequestExample:
+                summary: Default createWorkspaceDirectory request
+                x-microcks-default: true
+                value:
+                  path: example_value
+      responses:
+        '200':
+          description: Directory created successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    WorkspaceObject:
+      type: object
+      properties:
+        object_type:
+          type: string
+          enum:
+          - NOTEBOOK
+          - DIRECTORY
+          - LIBRARY
+          - FILE
+          - REPO
+          - DASHBOARD
+          description: The type of the workspace object.
+          example: NOTEBOOK
+        path:
+          type: string
+          description: The absolute path of the object in the workspace.
+          example: example_value
+        language:
+          type: string
+          enum:
+          - SCALA
+          - PYTHON
+          - SQL
+          - R
+          description: The language of the notebook, if applicable. Only present for notebook objects.
+          example: SCALA
+        object_id:
+          type: integer
+          format: int64
+          description: The unique identifier of the object.
+          example: '500123'
+        created_at:
+          type: integer
+          format: int64
+          description: The creation time in epoch milliseconds.
+          example: '2026-01-15T10:30:00Z'
+        modified_at:
+          type: integer
+          format: int64
+          description: The last modified time in epoch milliseconds.
+          example: '2026-01-15T10:30:00Z'
+        resource_id:
+          type: string
+          description: Unique identifier for SCIM compliance.
+          example: '500123'
+        size:
+          type: integer
+          format: int64
+          description: The file size in bytes (for FILE objects).
+          example: 10
+    ErrorResponse:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: A machine-readable error code.
+          examples:
+          - RESOURCE_DOES_NOT_EXIST
+        message:
+          type: string
+          description: A human-readable error message.
+          examples:
+          - Cluster 1234-567890-abcde123 does not exist
+  responses:
+    Unauthorized:
+      description: The request lacks valid authentication credentials. Verify your access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request is malformed or contains invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: An unexpected error occurred on the server. If the problem persists, contact Databricks support.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: PAT
+      description: Databricks personal access token (PAT) or OAuth M2M token. Pass the token in the Authorization header as 'Bearer <token>'.

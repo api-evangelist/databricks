@@ -1,0 +1,1236 @@
+openapi: 3.1.0
+info:
+  title: Databricks REST Clusters API
+  description: The Databricks REST API provides programmatic access to manage Databricks workspace resources including clusters, jobs, and workspace objects. All API endpoints require authentication using a personal access token or OAuth token passed via the Authorization header. The base URL is specific to your Databricks workspace deployment region.
+  version: 2.1.0
+  contact:
+    name: Databricks
+    url: https://www.databricks.com/company/contact
+    email: support@databricks.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://www.databricks.com/legal/terms-of-use
+servers:
+- url: https://{workspace_host}/api
+  description: Databricks workspace API endpoint
+  variables:
+    workspace_host:
+      default: adb-1234567890123456.7.azuredatabricks.net
+      description: The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).
+security:
+- bearerAuth: []
+tags:
+- name: Clusters
+  description: Manage Databricks clusters for running data engineering and data science workloads on Apache Spark.
+paths:
+  /2.0/clusters/create:
+    post:
+      operationId: createCluster
+      summary: Databricks Create a New Cluster
+      description: Creates a new Spark cluster. This method acquires new instances from the cloud provider and starts the Spark driver and worker processes. The cluster is created asynchronously; use the cluster_id returned to poll for status.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClusterRequest'
+            examples:
+              CreateclusterRequestExample:
+                summary: Default createCluster request
+                x-microcks-default: true
+                value:
+                  cluster_name: example_value
+                  spark_version: example_value
+                  node_type_id: '500123'
+                  driver_node_type_id: '500123'
+                  num_workers: 10
+                  autoscale:
+                    min_workers: 10
+                    max_workers: 10
+                  spark_conf: example_value
+                  aws_attributes:
+                    first_on_demand: 10
+                    availability: SPOT
+                    zone_id: '500123'
+                    instance_profile_arn: example_value
+                    spot_bid_price_percent: 10
+                    ebs_volume_type: GENERAL_PURPOSE_SSD
+                    ebs_volume_count: 10
+                    ebs_volume_size: 10
+                  azure_attributes:
+                    first_on_demand: 10
+                    availability: SPOT_AZURE
+                    spot_bid_max_price: 42.5
+                  gcp_attributes:
+                    use_preemptible_executors: true
+                    google_service_account: example_value
+                    availability: GCP_PREEMPTIBLE
+                  custom_tags: example_value
+                  spark_env_vars: example_value
+                  autotermination_minutes: 10
+                  enable_elastic_disk: true
+                  instance_pool_id: '500123'
+                  policy_id: '500123'
+                  enable_local_disk_encryption: true
+                  runtime_engine: STANDARD
+                  data_security_mode: NONE
+                  single_user_name: example_value
+                  init_scripts:
+                  - workspace: {}
+                    volumes: {}
+                    dbfs: {}
+                  ssh_public_keys:
+                  - example_value
+      responses:
+        '200':
+          description: Cluster creation initiated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cluster_id:
+                    type: string
+                    description: The unique identifier of the newly created cluster.
+                    examples:
+                    - 1234-567890-abcde123
+              examples:
+                Createcluster200Example:
+                  summary: Default createCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster_id: '500123'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/clusters/list:
+    get:
+      operationId: listClusters
+      summary: Databricks List All Clusters
+      description: Returns information about all clusters in the workspace, including terminated clusters. Clusters are ordered by cluster_id.
+      tags:
+      - Clusters
+      parameters:
+      - name: can_use_client
+        in: query
+        required: false
+        description: Filter clusters by client compatibility.
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Successfully retrieved the list of clusters.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clusters:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ClusterDetails'
+              examples:
+                Listclusters200Example:
+                  summary: Default listClusters 200 response
+                  x-microcks-default: true
+                  value:
+                    clusters:
+                    - cluster_id: '500123'
+                      cluster_name: example_value
+                      spark_version: example_value
+                      node_type_id: '500123'
+                      driver_node_type_id: '500123'
+                      num_workers: 10
+                      state: PENDING
+                      state_message: example_value
+                      start_time: 10
+                      terminated_time: 10
+                      last_state_loss_time: 10
+                      last_activity_time: 10
+                      last_restarted_time: 10
+                      creator_user_name: example_value
+                      cluster_source: UI
+                      spark_conf: example_value
+                      custom_tags: example_value
+                      spark_env_vars: example_value
+                      autotermination_minutes: 10
+                      enable_elastic_disk: true
+                      instance_pool_id: '500123'
+                      policy_id: '500123'
+                      data_security_mode: example_value
+                      single_user_name: example_value
+                      runtime_engine: example_value
+                      default_tags: example_value
+                      cluster_log_status:
+                        last_attempted: 10
+                        last_exception: example_value
+                      termination_reason:
+                        code: example_value
+                        type: example_value
+                        parameters: example_value
+                      disk_spec:
+                        disk_count: 10
+                        disk_size: 10
+                        disk_type: {}
+                      executors:
+                      - {}
+                      jdbc_port: 10
+                      spark_context_id: '500123'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/clusters/get:
+    get:
+      operationId: getCluster
+      summary: Databricks Get Cluster Details
+      description: Retrieves detailed information about a cluster, including its current state, configuration, and runtime properties.
+      tags:
+      - Clusters
+      parameters:
+      - name: cluster_id
+        in: query
+        required: true
+        description: The unique identifier of the cluster.
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Successfully retrieved cluster details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterDetails'
+              examples:
+                Getcluster200Example:
+                  summary: Default getCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster_id: '500123'
+                    cluster_name: example_value
+                    spark_version: example_value
+                    node_type_id: '500123'
+                    driver_node_type_id: '500123'
+                    num_workers: 10
+                    autoscale:
+                      min_workers: 10
+                      max_workers: 10
+                    state: PENDING
+                    state_message: example_value
+                    start_time: 10
+                    terminated_time: 10
+                    last_state_loss_time: 10
+                    last_activity_time: 10
+                    last_restarted_time: 10
+                    creator_user_name: example_value
+                    cluster_source: UI
+                    spark_conf: example_value
+                    custom_tags: example_value
+                    spark_env_vars: example_value
+                    autotermination_minutes: 10
+                    enable_elastic_disk: true
+                    instance_pool_id: '500123'
+                    policy_id: '500123'
+                    data_security_mode: example_value
+                    single_user_name: example_value
+                    runtime_engine: example_value
+                    default_tags: example_value
+                    cluster_log_status:
+                      last_attempted: 10
+                      last_exception: example_value
+                    termination_reason:
+                      code: example_value
+                      type: example_value
+                      parameters: example_value
+                    disk_spec:
+                      disk_count: 10
+                      disk_size: 10
+                      disk_type:
+                        azure_disk_volume_type: example_value
+                        ebs_volume_type: example_value
+                    driver:
+                      private_ip: example_value
+                      public_dns: example_value
+                      node_id: '500123'
+                      instance_id: '500123'
+                      start_timestamp: 10
+                      host_private_ip: example_value
+                    executors:
+                    - private_ip: example_value
+                      public_dns: example_value
+                      node_id: '500123'
+                      instance_id: '500123'
+                      start_timestamp: 10
+                      host_private_ip: example_value
+                    jdbc_port: 10
+                    spark_context_id: '500123'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/clusters/start:
+    post:
+      operationId: startCluster
+      summary: Databricks Start a Terminated Cluster
+      description: Starts a terminated cluster given its cluster_id. This is similar to creating a cluster except it uses the configuration of the previously terminated cluster.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cluster_id
+              properties:
+                cluster_id:
+                  type: string
+                  description: The cluster to start.
+            examples:
+              StartclusterRequestExample:
+                summary: Default startCluster request
+                x-microcks-default: true
+                value:
+                  cluster_id: '500123'
+      responses:
+        '200':
+          description: Cluster start initiated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/clusters/restart:
+    post:
+      operationId: restartCluster
+      summary: Databricks Restart a Cluster
+      description: Restarts a Spark cluster given its cluster_id. If the cluster is not in a RUNNING state, nothing happens.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cluster_id
+              properties:
+                cluster_id:
+                  type: string
+                  description: The cluster to restart.
+            examples:
+              RestartclusterRequestExample:
+                summary: Default restartCluster request
+                x-microcks-default: true
+                value:
+                  cluster_id: '500123'
+      responses:
+        '200':
+          description: Cluster restart initiated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/clusters/delete:
+    post:
+      operationId: terminateCluster
+      summary: Databricks Terminate a Cluster
+      description: Terminates a Spark cluster given its cluster_id. The cluster is removed after being terminated. Use the permanent-delete endpoint if you want to remove the cluster configuration entirely.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cluster_id
+              properties:
+                cluster_id:
+                  type: string
+                  description: The cluster to terminate.
+            examples:
+              TerminateclusterRequestExample:
+                summary: Default terminateCluster request
+                x-microcks-default: true
+                value:
+                  cluster_id: '500123'
+      responses:
+        '200':
+          description: Cluster termination initiated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/clusters/permanent-delete:
+    post:
+      operationId: permanentDeleteCluster
+      summary: Databricks Permanently Delete a Cluster
+      description: Permanently deletes a Spark cluster. If the cluster is running, it is terminated and resources are asynchronously removed. If the cluster is terminated, it is immediately removed. A cluster can only be permanently deleted by an admin or the cluster creator.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cluster_id
+              properties:
+                cluster_id:
+                  type: string
+                  description: The cluster to permanently delete.
+            examples:
+              PermanentdeleteclusterRequestExample:
+                summary: Default permanentDeleteCluster request
+                x-microcks-default: true
+                value:
+                  cluster_id: '500123'
+      responses:
+        '200':
+          description: Cluster permanently deleted.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/clusters/edit:
+    post:
+      operationId: editCluster
+      summary: Databricks Edit Cluster Configuration
+      description: Edits the configuration of a cluster to match the provided attributes. The cluster must be in a RUNNING or TERMINATED state. If the cluster is running, it will be restarted to apply the changes.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditClusterRequest'
+            examples:
+              EditclusterRequestExample:
+                summary: Default editCluster request
+                x-microcks-default: true
+                value:
+                  cluster_id: '500123'
+                  cluster_name: example_value
+                  spark_version: example_value
+                  node_type_id: '500123'
+                  driver_node_type_id: '500123'
+                  num_workers: 10
+                  autoscale:
+                    min_workers: 10
+                    max_workers: 10
+                  spark_conf: example_value
+                  custom_tags: example_value
+                  spark_env_vars: example_value
+                  autotermination_minutes: 10
+                  enable_elastic_disk: true
+                  instance_pool_id: '500123'
+                  policy_id: '500123'
+                  data_security_mode: NONE
+                  single_user_name: example_value
+                  runtime_engine: STANDARD
+      responses:
+        '200':
+          description: Cluster configuration updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /2.0/clusters/events:
+    post:
+      operationId: listClusterEvents
+      summary: Databricks List Cluster Events
+      description: Retrieves a list of events about the activity of a cluster. Events are returned in reverse chronological order. This endpoint can be used to audit cluster activity and monitor lifecycle changes.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cluster_id
+              properties:
+                cluster_id:
+                  type: string
+                  description: The ID of the cluster to retrieve events for.
+                start_time:
+                  type: integer
+                  format: int64
+                  description: Start timestamp in milliseconds for the event query range.
+                end_time:
+                  type: integer
+                  format: int64
+                  description: End timestamp in milliseconds for the event query range.
+                order:
+                  type: string
+                  enum:
+                  - DESC
+                  - ASC
+                  description: Sort order for results.
+                event_types:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - CREATING
+                    - DID_NOT_EXPAND_DISK
+                    - EXPANDED_DISK
+                    - FAILED_TO_EXPAND_DISK
+                    - INIT_SCRIPTS_STARTING
+                    - INIT_SCRIPTS_FINISHED
+                    - STARTING
+                    - RESTARTING
+                    - TERMINATING
+                    - EDITED
+                    - RUNNING
+                    - RESIZING
+                    - UPSIZE_COMPLETED
+                    - NODES_LOST
+                    - DRIVER_HEALTHY
+                    - DRIVER_NOT_RESPONDING
+                    - DRIVER_UNAVAILABLE
+                    - SPARK_EXCEPTION
+                    - PINNED
+                    - UNPINNED
+                  description: Filter by specific event types.
+                offset:
+                  type: integer
+                  format: int64
+                  description: Offset for pagination.
+                limit:
+                  type: integer
+                  format: int64
+                  description: Maximum number of events to return (max 500).
+            examples:
+              ListclustereventsRequestExample:
+                summary: Default listClusterEvents request
+                x-microcks-default: true
+                value:
+                  cluster_id: '500123'
+                  start_time: 10
+                  end_time: 10
+                  order: DESC
+                  event_types:
+                  - CREATING
+                  offset: 10
+                  limit: 10
+      responses:
+        '200':
+          description: Successfully retrieved cluster events.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ClusterEvent'
+                  next_page:
+                    type: object
+                    properties:
+                      cluster_id:
+                        type: string
+                      end_time:
+                        type: integer
+                        format: int64
+                      offset:
+                        type: integer
+                        format: int64
+                  total_count:
+                    type: integer
+                    format: int64
+              examples:
+                Listclusterevents200Example:
+                  summary: Default listClusterEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    events:
+                    - cluster_id: '500123'
+                      timestamp: 10
+                      type: example_value
+                      details:
+                        current_num_workers: 10
+                        target_num_workers: 10
+                        previous_attributes: example_value
+                        attributes: example_value
+                        previous_cluster_size: example_value
+                        cluster_size: example_value
+                        cause: example_value
+                        reason: {}
+                    next_page:
+                      cluster_id: '500123'
+                      end_time: 10
+                      offset: 10
+                    total_count: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EditClusterRequest:
+      type: object
+      required:
+      - cluster_id
+      - cluster_name
+      - spark_version
+      - node_type_id
+      properties:
+        cluster_id:
+          type: string
+          description: The unique identifier of the cluster to edit.
+          example: '500123'
+        cluster_name:
+          type: string
+          description: The new name for the cluster.
+          example: example_value
+        spark_version:
+          type: string
+          description: The runtime version.
+          example: example_value
+        node_type_id:
+          type: string
+          description: The node type for worker nodes.
+          example: '500123'
+        driver_node_type_id:
+          type: string
+          description: The node type for the Spark driver.
+          example: '500123'
+        num_workers:
+          type: integer
+          description: Number of worker nodes.
+          example: 10
+        autoscale:
+          $ref: '#/components/schemas/AutoScale'
+        spark_conf:
+          type: object
+          additionalProperties:
+            type: string
+          example: example_value
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: example_value
+        spark_env_vars:
+          type: object
+          additionalProperties:
+            type: string
+          example: example_value
+        autotermination_minutes:
+          type: integer
+          example: 10
+        enable_elastic_disk:
+          type: boolean
+          example: true
+        instance_pool_id:
+          type: string
+          example: '500123'
+        policy_id:
+          type: string
+          example: '500123'
+        data_security_mode:
+          type: string
+          enum:
+          - NONE
+          - SINGLE_USER
+          - USER_ISOLATION
+          - LEGACY_TABLE_ACL
+          - LEGACY_PASSTHROUGH
+          - LEGACY_SINGLE_USER
+          - LEGACY_SINGLE_USER_STANDARD
+          example: NONE
+        single_user_name:
+          type: string
+          example: example_value
+        runtime_engine:
+          type: string
+          enum:
+          - STANDARD
+          - PHOTON
+          example: STANDARD
+    CreateClusterRequest:
+      type: object
+      required:
+      - cluster_name
+      - spark_version
+      - node_type_id
+      properties:
+        cluster_name:
+          type: string
+          description: A human-readable name for the cluster. This does not need to be unique.
+          examples:
+          - my-data-cluster
+        spark_version:
+          type: string
+          description: The runtime version of the cluster. You can retrieve a list of available runtime versions using the Runtime Versions API.
+          examples:
+          - 14.3.x-scala2.12
+        node_type_id:
+          type: string
+          description: The node type for worker nodes. This field determines the cloud provider instance type.
+          examples:
+          - i3.xlarge
+        driver_node_type_id:
+          type: string
+          description: The node type for the Spark driver. If not specified, defaults to the same value as node_type_id.
+          example: '500123'
+        num_workers:
+          type: integer
+          description: Number of worker nodes for a fixed-size cluster. A cluster has one Spark driver and num_workers executors. Set to 0 for a single-node cluster.
+          examples:
+          - 2
+        autoscale:
+          $ref: '#/components/schemas/AutoScale'
+        spark_conf:
+          type: object
+          additionalProperties:
+            type: string
+          description: A map of Spark configuration key-value pairs. These override the default Spark configuration values.
+          example: example_value
+        aws_attributes:
+          $ref: '#/components/schemas/AwsAttributes'
+        azure_attributes:
+          $ref: '#/components/schemas/AzureAttributes'
+        gcp_attributes:
+          $ref: '#/components/schemas/GcpAttributes'
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional tags for cluster resources. Tags are propagated to the cloud provider for cost tracking.
+          example: example_value
+        spark_env_vars:
+          type: object
+          additionalProperties:
+            type: string
+          description: Environment variables for all Spark processes. Use {{secrets/scope/key}} to reference secrets.
+          example: example_value
+        autotermination_minutes:
+          type: integer
+          description: Minutes of inactivity after which the cluster is automatically terminated. 0 disables auto-termination.
+          default: 120
+          example: 10
+        enable_elastic_disk:
+          type: boolean
+          description: Whether to autoscale local storage. When enabled, Databricks monitors disk usage and attaches additional disks as needed.
+          example: true
+        instance_pool_id:
+          type: string
+          description: The optional ID of the instance pool to use for cluster nodes.
+          example: '500123'
+        policy_id:
+          type: string
+          description: The ID of the cluster policy to apply. Cluster policies constrain the configuration settings.
+          example: '500123'
+        enable_local_disk_encryption:
+          type: boolean
+          description: Whether to encrypt data on local disks.
+          example: true
+        runtime_engine:
+          type: string
+          enum:
+          - STANDARD
+          - PHOTON
+          description: The runtime engine. PHOTON enables the Photon vectorized query engine for faster performance.
+          example: STANDARD
+        data_security_mode:
+          type: string
+          enum:
+          - NONE
+          - SINGLE_USER
+          - USER_ISOLATION
+          - LEGACY_TABLE_ACL
+          - LEGACY_PASSTHROUGH
+          - LEGACY_SINGLE_USER
+          - LEGACY_SINGLE_USER_STANDARD
+          description: Data security mode for the cluster.
+          example: NONE
+        single_user_name:
+          type: string
+          description: The user name (email) of the single user for SINGLE_USER access mode.
+          example: example_value
+        init_scripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/InitScriptInfo'
+          description: Init scripts to run when the cluster starts.
+          example: []
+        ssh_public_keys:
+          type: array
+          items:
+            type: string
+          description: SSH public keys to add to each Spark node.
+          example: []
+    InitScriptInfo:
+      type: object
+      properties:
+        workspace:
+          type: object
+          properties:
+            destination:
+              type: string
+          example: example_value
+        volumes:
+          type: object
+          properties:
+            destination:
+              type: string
+          example: example_value
+        dbfs:
+          type: object
+          properties:
+            destination:
+              type: string
+          deprecated: true
+          example: example_value
+    AzureAttributes:
+      type: object
+      properties:
+        first_on_demand:
+          type: integer
+          example: 10
+        availability:
+          type: string
+          enum:
+          - SPOT_AZURE
+          - ON_DEMAND_AZURE
+          - SPOT_WITH_FALLBACK_AZURE
+          example: SPOT_AZURE
+        spot_bid_max_price:
+          type: number
+          example: 42.5
+    ErrorResponse:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: A machine-readable error code.
+          examples:
+          - RESOURCE_DOES_NOT_EXIST
+        message:
+          type: string
+          description: A human-readable error message.
+          examples:
+          - Cluster 1234-567890-abcde123 does not exist
+    AwsAttributes:
+      type: object
+      properties:
+        first_on_demand:
+          type: integer
+          description: Number of on-demand instances to place first.
+          example: 10
+        availability:
+          type: string
+          enum:
+          - SPOT
+          - ON_DEMAND
+          - SPOT_WITH_FALLBACK
+          example: SPOT
+        zone_id:
+          type: string
+          description: The availability zone identifier (e.g., us-west-2a).
+          example: '500123'
+        instance_profile_arn:
+          type: string
+          description: IAM instance profile ARN for the cluster instances.
+          example: example_value
+        spot_bid_price_percent:
+          type: integer
+          description: Max bid price as percentage of on-demand price.
+          example: 10
+        ebs_volume_type:
+          type: string
+          enum:
+          - GENERAL_PURPOSE_SSD
+          - THROUGHPUT_OPTIMIZED_HDD
+          example: GENERAL_PURPOSE_SSD
+        ebs_volume_count:
+          type: integer
+          example: 10
+        ebs_volume_size:
+          type: integer
+          example: 10
+    AutoScale:
+      type: object
+      properties:
+        min_workers:
+          type: integer
+          description: The minimum number of workers the cluster can scale down to.
+          example: 10
+        max_workers:
+          type: integer
+          description: The maximum number of workers the cluster can scale up to.
+          example: 10
+      description: Autoscaling configuration. When set, num_workers is ignored and the cluster scales between min_workers and max_workers.
+    SparkNode:
+      type: object
+      properties:
+        private_ip:
+          type: string
+          example: example_value
+        public_dns:
+          type: string
+          example: example_value
+        node_id:
+          type: string
+          example: '500123'
+        instance_id:
+          type: string
+          example: '500123'
+        start_timestamp:
+          type: integer
+          format: int64
+          example: 10
+        host_private_ip:
+          type: string
+          example: example_value
+    ClusterEvent:
+      type: object
+      properties:
+        cluster_id:
+          type: string
+          example: '500123'
+        timestamp:
+          type: integer
+          format: int64
+          example: 10
+        type:
+          type: string
+          example: example_value
+        details:
+          type: object
+          properties:
+            current_num_workers:
+              type: integer
+            target_num_workers:
+              type: integer
+            previous_attributes:
+              type: object
+            attributes:
+              type: object
+            previous_cluster_size:
+              type: object
+            cluster_size:
+              type: object
+            cause:
+              type: string
+            reason:
+              type: object
+              properties:
+                code:
+                  type: string
+                type:
+                  type: string
+                parameters:
+                  type: object
+                  additionalProperties:
+                    type: string
+          example: example_value
+    ClusterDetails:
+      type: object
+      properties:
+        cluster_id:
+          type: string
+          description: The unique identifier of the cluster.
+          example: '500123'
+        cluster_name:
+          type: string
+          description: The human-readable name of the cluster.
+          example: example_value
+        spark_version:
+          type: string
+          description: The runtime version of the cluster.
+          example: example_value
+        node_type_id:
+          type: string
+          description: The node type for worker nodes.
+          example: '500123'
+        driver_node_type_id:
+          type: string
+          description: The node type for the Spark driver.
+          example: '500123'
+        num_workers:
+          type: integer
+          description: Number of worker nodes.
+          example: 10
+        autoscale:
+          $ref: '#/components/schemas/AutoScale'
+        state:
+          type: string
+          enum:
+          - PENDING
+          - RUNNING
+          - RESTARTING
+          - RESIZING
+          - TERMINATING
+          - TERMINATED
+          - ERROR
+          - UNKNOWN
+          description: The current state of the cluster.
+          example: PENDING
+        state_message:
+          type: string
+          description: A message about the state of the cluster.
+          example: example_value
+        start_time:
+          type: integer
+          format: int64
+          description: The time the cluster was started in epoch milliseconds.
+          example: 10
+        terminated_time:
+          type: integer
+          format: int64
+          description: The time the cluster was terminated in epoch milliseconds.
+          example: 10
+        last_state_loss_time:
+          type: integer
+          format: int64
+          description: The time when the cluster driver last lost its state in epoch milliseconds.
+          example: 10
+        last_activity_time:
+          type: integer
+          format: int64
+          description: The time of the last user activity on the cluster.
+          example: 10
+        last_restarted_time:
+          type: integer
+          format: int64
+          description: The time the cluster was last restarted.
+          example: 10
+        creator_user_name:
+          type: string
+          description: The email of the user who created the cluster.
+          example: example_value
+        cluster_source:
+          type: string
+          enum:
+          - UI
+          - API
+          - JOB
+          - MODELS
+          - PIPELINE
+          - PIPELINE_MAINTENANCE
+          - SQL
+          - SOME_OTHER_SOURCE
+          description: The source that created the cluster.
+          example: UI
+        spark_conf:
+          type: object
+          additionalProperties:
+            type: string
+          description: Spark configuration key-value pairs.
+          example: example_value
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Tags applied to the cluster.
+          example: example_value
+        spark_env_vars:
+          type: object
+          additionalProperties:
+            type: string
+          example: example_value
+        autotermination_minutes:
+          type: integer
+          description: Auto-termination idle timeout in minutes.
+          example: 10
+        enable_elastic_disk:
+          type: boolean
+          example: true
+        instance_pool_id:
+          type: string
+          example: '500123'
+        policy_id:
+          type: string
+          example: '500123'
+        data_security_mode:
+          type: string
+          example: example_value
+        single_user_name:
+          type: string
+          example: example_value
+        runtime_engine:
+          type: string
+          example: example_value
+        default_tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Default tags applied by Databricks.
+          example: example_value
+        cluster_log_status:
+          type: object
+          properties:
+            last_attempted:
+              type: integer
+              format: int64
+            last_exception:
+              type: string
+          example: example_value
+        termination_reason:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Status code for the termination reason.
+            type:
+              type: string
+              description: Termination type.
+            parameters:
+              type: object
+              additionalProperties:
+                type: string
+          example: example_value
+        disk_spec:
+          type: object
+          properties:
+            disk_count:
+              type: integer
+            disk_size:
+              type: integer
+            disk_type:
+              type: object
+              properties:
+                azure_disk_volume_type:
+                  type: string
+                ebs_volume_type:
+                  type: string
+          example: example_value
+        driver:
+          $ref: '#/components/schemas/SparkNode'
+        executors:
+          type: array
+          items:
+            $ref: '#/components/schemas/SparkNode'
+          example: []
+        jdbc_port:
+          type: integer
+          description: Port on the driver for JDBC/ODBC connections.
+          example: 10
+        spark_context_id:
+          type: integer
+          format: int64
+          description: The canonical Spark context identifier.
+          example: '500123'
+    GcpAttributes:
+      type: object
+      properties:
+        use_preemptible_executors:
+          type: boolean
+          example: true
+        google_service_account:
+          type: string
+          example: example_value
+        availability:
+          type: string
+          enum:
+          - GCP_PREEMPTIBLE
+          - GCP_ON_DEMAND
+          example: GCP_PREEMPTIBLE
+  responses:
+    Unauthorized:
+      description: The request lacks valid authentication credentials. Verify your access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request is malformed or contains invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Too many requests have been sent in a given amount of time. Retry after the period specified in the Retry-After header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: The authenticated user does not have permission to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: An unexpected error occurred on the server. If the problem persists, contact Databricks support.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: PAT
+      description: Databricks personal access token (PAT) or OAuth M2M token. Pass the token in the Authorization header as 'Bearer <token>'.
