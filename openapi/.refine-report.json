@@ -1,0 +1,18 @@
+{
+  "provider": "databricks",
+  "sources": [
+    "databricks-clusters-api-openapi.yml",
+    "databricks-jobs-api-openapi.yml",
+    "databricks-workspace-api-openapi.yml"
+  ],
+  "outputs": [
+    "databricks-clusters-api-openapi.yml",
+    "databricks-jobs-api-openapi.yml",
+    "databricks-workspace-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
