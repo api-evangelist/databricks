@@ -9,8 +9,6 @@ apis:
   - Visualize
   humanURL: ' https://www.databricks.com'
   properties:
-  - url: ' https://www.databricks.com'
-    type: Documentation
   - url: https://docs.databricks.com/api/workspace/introduction
     type: APIReference
   - url: graphql/databricks-graphql.md
@@ -1220,7 +1218,7 @@ common:
   type: Authentication
 - url: https://api-docs.databricks.com/
   type: APIReference
-- url: openapi/databricks-openapi.yml
+- url: openapi/_original/databricks-openapi.yml
   type: OpenAPI
 - url: json-schema/databricks-cluster-schema.json
   type: JSONSchema
