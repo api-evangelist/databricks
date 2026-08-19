@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Databricks REST Clusters API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Databricks Create a New Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Spark cluster. This method acquires new instances from the cloud provider and starts the Spark driver and worker processes. The cluster is created asynchronously; use the cluster_id returned to poll for status."
+        },
+        {
+          "info": {
+            "name": "Databricks List All Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/clusters/list",
+            "params": [
+              {
+                "name": "can_use_client",
+                "value": "example_value",
+                "type": "query",
+                "description": "Filter clusters by client compatibility."
+              }
+            ]
+          },
+          "docs": "Returns information about all clusters in the workspace, including terminated clusters. Clusters are ordered by cluster_id."
+        },
+        {
+          "info": {
+            "name": "Databricks Get Cluster Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/clusters/get",
+            "params": [
+              {
+                "name": "cluster_id",
+                "value": "500123",
+                "type": "query",
+                "description": "The unique identifier of the cluster."
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a cluster, including its current state, configuration, and runtime properties."
+        },
+        {
+          "info": {
+            "name": "Databricks Start a Terminated Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts a terminated cluster given its cluster_id. This is similar to creating a cluster except it uses the configuration of the previously terminated cluster."
+        },
+        {
+          "info": {
+            "name": "Databricks Restart a Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/restart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restarts a Spark cluster given its cluster_id. If the cluster is not in a RUNNING state, nothing happens."
+        },
+        {
+          "info": {
+            "name": "Databricks Terminate a Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Terminates a Spark cluster given its cluster_id. The cluster is removed after being terminated. Use the permanent-delete endpoint if you want to remove the cluster configuration entirely."
+        },
+        {
+          "info": {
+            "name": "Databricks Permanently Delete a Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/permanent-delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Permanently deletes a Spark cluster. If the cluster is running, it is terminated and resources are asynchronously removed. If the cluster is terminated, it is immediately removed. A cluster can only be permanently deleted by an admin or the cluster creator."
+        },
+        {
+          "info": {
+            "name": "Databricks Edit Cluster Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/edit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edits the configuration of a cluster to match the provided attributes. The cluster must be in a RUNNING or TERMINATED state. If the cluster is running, it will be restarted to apply the changes."
+        },
+        {
+          "info": {
+            "name": "Databricks List Cluster Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/clusters/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a list of events about the activity of a cluster. Events are returned in reverse chronological order. This endpoint can be used to audit cluster activity and monitor lifecycle changes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

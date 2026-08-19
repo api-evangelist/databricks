@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Databricks REST Clusters Workspace API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Databricks List Workspace Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/workspace/list",
+            "params": [
+              {
+                "name": "path",
+                "value": "example_value",
+                "type": "query",
+                "description": "The absolute path of the workspace directory to list. Must start with /."
+              },
+              {
+                "name": "notebooks_modified_after",
+                "value": "10",
+                "type": "query",
+                "description": "If provided, only notebooks modified after this timestamp (epoch seconds) are returned."
+              }
+            ]
+          },
+          "docs": "Lists the contents of a directory in the workspace, or the object if it is not a directory. If the input path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned."
+        },
+        {
+          "info": {
+            "name": "Databricks Get Workspace Object Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/workspace/get-status",
+            "params": [
+              {
+                "name": "path",
+                "value": "example_value",
+                "type": "query",
+                "description": "The absolute path of the workspace object. Must start with /."
+              }
+            ]
+          },
+          "docs": "Gets the status of an object or a directory in the workspace. If the object does not exist, a RESOURCE_DOES_NOT_EXIST error is returned."
+        },
+        {
+          "info": {
+            "name": "Databricks Export a Workspace Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{workspace_host}/api/2.0/workspace/export",
+            "params": [
+              {
+                "name": "path",
+                "value": "example_value",
+                "type": "query",
+                "description": "The absolute path of the object or directory to export. Must start with /."
+              },
+              {
+                "name": "format",
+                "value": "SOURCE",
+                "type": "query",
+                "description": "The format in which to export the notebook. The default is SOURCE."
+              },
+              {
+                "name": "direct_download",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to download the file directly. If true, the response is the exported content."
+              }
+            ]
+          },
+          "docs": "Exports a notebook or the contents of an entire directory. Notebooks can be exported in SOURCE, HTML, JUPYTER, or DBC format."
+        },
+        {
+          "info": {
+            "name": "Databricks Import a Workspace Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/workspace/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Imports a notebook or the contents of an entire directory. If the object already exists and overwrite is set to false, a RESOURCE_ALREADY_EXISTS error is returned."
+        },
+        {
+          "info": {
+            "name": "Databricks Delete a Workspace Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/workspace/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes an object or a directory and optionally all of its contents. If the path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned. If path is a non-empty directory and recursive is false, a DIRECTORY_NOT_EMPTY error is returned."
+        },
+        {
+          "info": {
+            "name": "Databricks Create a Directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{workspace_host}/api/2.0/workspace/mkdirs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates the given directory and necessary parent directories if they do not exist. If there is an object (not a directory) at any prefix of the input path, a RESOURCE_ALREADY_EXISTS error is returned."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

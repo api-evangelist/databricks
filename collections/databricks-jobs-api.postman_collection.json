@@ -1,0 +1,3278 @@
+{
+  "item": [
+    {
+      "id": "919f2a1c-eafd-4ab7-ba03-90a57849021b",
+      "name": "Jobs",
+      "description": {
+        "content": "Create and manage automated workloads including notebooks, JARs, Python scripts, and multi-task workflows.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7472b0a4-dbbd-4722-b123-2fe4dc5db193",
+          "name": "Databricks Create a New Job",
+          "request": {
+            "name": "Databricks Create a New Job",
+            "description": {
+              "content": "Creates a new job with the provided settings. The job can be configured with a single task or multiple tasks with dependencies forming a directed acyclic graph (DAG).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"tasks\": [\n    {\n      \"task_key\": \"<string>\",\n      \"description\": \"<string>\",\n      \"depends_on\": [\n        {\n          \"task_key\": \"<string>\",\n          \"outcome\": \"<string>\"\n        },\n        {\n          \"task_key\": \"<string>\",\n          \"outcome\": \"<string>\"\n        }\n      ],\n      \"existing_cluster_id\": \"<string>\",\n      \"new_cluster\": {\n        \"cluster_name\": \"<string>\",\n        \"spark_version\": \"<string>\",\n        \"node_type_id\": \"<string>\",\n        \"driver_node_type_id\": \"<string>\",\n        \"num_workers\": \"<integer>\",\n        \"autoscale\": {\n          \"min_workers\": \"<integer>\",\n          \"max_workers\": \"<integer>\"\n        },\n        \"spark_conf\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"aws_attributes\": {\n          \"first_on_demand\": \"<integer>\",\n          \"availability\": \"<string>\",\n          \"zone_id\": \"<string>\",\n          \"instance_profile_arn\": \"<string>\",\n          \"spot_bid_price_percent\": \"<integer>\",\n          \"ebs_volume_type\": \"<string>\",\n          \"ebs_volume_count\": \"<integer>\",\n          \"ebs_volume_size\": \"<integer>\"\n        },\n        \"azure_attributes\": {\n          \"first_on_demand\": \"<integer>\",\n          \"availability\": \"<string>\",\n          \"spot_bid_max_price\": \"<number>\"\n        },\n        \"gcp_attributes\": {\n          \"use_preemptible_executors\": \"<boolean>\",\n          \"google_service_account\": \"<string>\",\n          \"availability\": \"<string>\"\n        },\n        \"custom_tags\": {\n          \"key_0\": \"<string>\"\n        },\n        \"spark_env_vars\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"autotermination_minutes\": 120,\n        \"enable_elastic_disk\": \"<boolean>\",\n        \"instance_pool_id\": \"<string>\",\n        \"policy_id\": \"<string>\",\n        \"enable_local_disk_encryption\": \"<boolean>\",\n        \"runtime_engine\": \"<string>\",\n        \"data_security_mode\": \"<string>\",\n        \"single_user_name\": \"<string>\",\n        \"init_scripts\": [\n          {\n            \"workspace\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"volumes\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"dbfs\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"workspace\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"volumes\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"dbfs\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"ssh_public_keys\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"job_cluster_key\": \"<string>\",\n      \"notebook_task\": {\n        \"notebook_path\": \"<string>\",\n        \"source\": \"<string>\",\n        \"base_parameters\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"spark_jar_task\": {\n        \"main_class_name\": \"<string>\",\n        \"parameters\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"jar_uri\": \"<string>\"\n      },\n      \"spark_python_task\": {\n        \"python_file\": \"<string>\",\n        \"parameters\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"source\": \"<string>\"\n      },\n      \"spark_submit_task\": {\n        \"parameters\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"pipeline_task\": {\n        \"pipeline_id\": \"<string>\",\n        \"full_refresh\": \"<boolean>\"\n      },\n      \"python_wheel_task\": {\n        \"package_name\": \"<string>\",\n        \"entry_point\": \"<string>\",\n        \"parameters\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"named_parameters\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"sql_task\": {\n        \"query\": {\n          \"query_id\": \"<string>\"\n        },\n        \"dashboard\": {\n          \"dashboard_id\": \"<string>\"\n        },\n        \"alert\": {\n          \"alert_id\": \"<string>\"\n        },\n        \"warehouse_id\": \"<string>\",\n        \"parameters\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        }\n      },\n      \"dbt_task\": {\n        \"project_directory\": \"<string>\",\n        \"commands\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"schema\": \"<string>\",\n        \"warehouse_id\": \"<string>\",\n        \"catalog\": \"<string>\",\n        \"profiles_directory\": \"<string>\"\n      },\n      \"run_if\": \"<string>\",\n      \"timeout_seconds\": \"<integer>\",\n      \"max_retries\": \"<integer>\",\n      \"min_retry_interval_millis\": \"<integer>\",\n      \"retry_on_timeout\": \"<boolean>\",\n      \"email_notifications\": {\n        \"on_start\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"on_success\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"on_failure\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"on_duration_warning_threshold_exceeded\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"no_alert_for_skipped_runs\": \"<boolean>\"\n      },\n      \"libraries\": [\n        {\n          \"jar\": \"<string>\",\n          \"egg\": \"<string>\",\n          \"whl\": \"<string>\",\n          \"pypi\": {\n            \"package\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          \"maven\": {\n            \"coordinates\": \"<string>\",\n            \"repo\": \"<string>\",\n            \"exclusions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"cran\": {\n            \"package\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          \"requirements\": \"<string>\"\n        },\n        {\n          \"jar\": \"<string>\",\n          \"egg\": \"<string>\",\n          \"whl\": \"<string>\",\n          \"pypi\": {\n            \"package\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          \"maven\": {\n            \"coordinates\": \"<string>\",\n            \"repo\": \"<string>\",\n            \"exclusions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"cran\": {\n            \"package\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          \"requirements\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"task_key\": \"<string>\",\n      \"description\": \"<string>\",\n      \"depends_on\": [\n        {\n          \"task_key\": \"<string>\",\n          \"outcome\": \"<string>\"\n        },\n        {\n          \"task_key\": \"<string>\",\n          \"outcome\": \"<string>\"\n        }\n      ],\n      \"existing_cluster_id\": \"<string>\",\n      \"new_cluster\": {\n        \"cluster_name\": \"<string>\",\n        \"spark_version\": \"<string>\",\n        \"node_type_id\": \"<string>\",\n        \"driver_node_type_id\": \"<string>\",\n        \"num_workers\": \"<integer>\",\n        \"autoscale\": {\n          \"min_workers\": \"<integer>\",\n          \"max_workers\": \"<integer>\"\n        },\n        \"spark_conf\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"aws_attributes\": {\n          \"first_on_demand\": \"<integer>\",\n          \"availability\": \"<string>\",\n          \"zone_id\": \"<string>\",\n          \"instance_profile_arn\": \"<string>\",\n          \"spot_bid_price_percent\": \"<integer>\",\n          \"ebs_volume_type\": \"<string>\",\n          \"ebs_volume_count\": \"<integer>\",\n          \"ebs_volume_size\": \"<integer>\"\n        },\n        \"azure_attributes\": {\n          \"first_on_demand\": \"<integer>\",\n          \"availability\": \"<string>\",\n          \"spot_bid_max_price\": \"<number>\"\n        },\n        \"gcp_attributes\": {\n          \"use_preemptible_executors\": \"<boolean>\",\n          \"google_service_account\": \"<string>\",\n          \"availability\": \"<string>\"\n        },\n        \"custom_tags\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"spark_env_vars\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"autotermination_minutes\": 120,\n        \"enable_elastic_disk\": \"<boolean>\",\n        \"instance_pool_id\": \"<string>\",\n        \"policy_id\": \"<string>\",\n        \"enable_local_disk_encryption\": \"<boolean>\",\n        \"runtime_engine\": \"<string>\",\n        \"data_security_mode\": \"<string>\",\n        \"single_user_name\": \"<string>\",\n        \"init_scripts\": [\n          {\n            \"workspace\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"volumes\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"dbfs\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"workspace\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"volumes\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"dbfs\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"ssh_public_keys\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"job_cluster_key\": \"<string>\",\n      \"notebook_task\": {\n        \"notebook_path\": \"<string>\",\n        \"source\": \"<string>\",\n        \"base_parameters\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      \"spark_jar_task\": {\n        \"main_class_name\": \"<string>\",\n        \"parameters\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"jar_uri\": \"<string>\"\n      },\n      \"spark_python_task\": {\n        \"python_file\": \"<string>\",\n        \"parameters\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"source\": \"<string>\"\n      },\n      \"spark_submit_task\": {\n        \"parameters\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"pipeline_task\": {\n        \"pipeline_id\": \"<string>\",\n        \"full_refresh\": \"<boolean>\"\n      },\n      \"python_wheel_task\": {\n        \"package_name\": \"<string>\",\n        \"entry_point\": \"<string>\",\n        \"parameters\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"named_parameters\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      },\n      \"sql_task\": {\n        \"query\": {\n          \"query_id\": \"<string>\"\n        },\n        \"dashboard\": {\n          \"dashboard_id\": \"<string>\"\n        },\n        \"alert\": {\n          \"alert_id\": \"<string>\"\n        },\n        \"warehouse_id\": \"<string>\",\n        \"parameters\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"dbt_task\": {\n        \"project_directory\": \"<string>\",\n        \"commands\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"schema\": \"<string>\",\n        \"warehouse_id\": \"<string>\",\n        \"catalog\": \"<string>\",\n        \"profiles_directory\": \"<string>\"\n      },\n      \"run_if\": \"<string>\",\n      \"timeout_seconds\": \"<integer>\",\n      \"max_retries\": \"<integer>\",\n      \"min_retry_interval_millis\": \"<integer>\",\n      \"retry_on_timeout\": \"<boolean>\",\n      \"email_notifications\": {\n        \"on_start\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"on_success\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"on_failure\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"on_duration_warning_threshold_exceeded\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"no_alert_for_skipped_runs\": \"<boolean>\"\n      },\n      \"libraries\": [\n        {\n          \"jar\": \"<string>\",\n          \"egg\": \"<string>\",\n          \"whl\": \"<string>\",\n          \"pypi\": {\n            \"package\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          \"maven\": {\n            \"coordinates\": \"<string>\",\n            \"repo\": \"<string>\",\n            \"exclusions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"cran\": {\n            \"package\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          \"requirements\": \"<string>\"\n        },\n        {\n          \"jar\": \"<string>\",\n          \"egg\": \"<string>\",\n          \"whl\": \"<string>\",\n          \"pypi\": {\n            \"package\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          \"maven\": {\n            \"coordinates\": \"<string>\",\n            \"repo\": \"<string>\",\n            \"exclusions\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"cran\": {\n            \"package\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          \"requirements\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"job_clusters\": [\n    {\n      \"job_cluster_key\": \"<string>\",\n      \"new_cluster\": {\n        \"cluster_name\": \"<string>\",\n        \"spark_version\": \"<string>\",\n        \"node_type_id\": \"<string>\",\n        \"driver_node_type_id\": \"<string>\",\n        \"num_workers\": \"<integer>\",\n        \"autoscale\": {\n          \"min_workers\": \"<integer>\",\n          \"max_workers\": \"<integer>\"\n        },\n        \"spark_conf\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"aws_attributes\": {\n          \"first_on_demand\": \"<integer>\",\n          \"availability\": \"<string>\",\n          \"zone_id\": \"<string>\",\n          \"instance_profile_arn\": \"<string>\",\n          \"spot_bid_price_percent\": \"<integer>\",\n          \"ebs_volume_type\": \"<string>\",\n          \"ebs_volume_count\": \"<integer>\",\n          \"ebs_volume_size\": \"<integer>\"\n        },\n        \"azure_attributes\": {\n          \"first_on_demand\": \"<integer>\",\n          \"availability\": \"<string>\",\n          \"spot_bid_max_price\": \"<number>\"\n        },\n        \"gcp_attributes\": {\n          \"use_preemptible_executors\": \"<boolean>\",\n          \"google_service_account\": \"<string>\",\n          \"availability\": \"<string>\"\n        },\n        \"custom_tags\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"spark_env_vars\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"autotermination_minutes\": 120,\n        \"enable_elastic_disk\": \"<boolean>\",\n        \"instance_pool_id\": \"<string>\",\n        \"policy_id\": \"<string>\",\n        \"enable_local_disk_encryption\": \"<boolean>\",\n        \"runtime_engine\": \"<string>\",\n        \"data_security_mode\": \"<string>\",\n        \"single_user_name\": \"<string>\",\n        \"init_scripts\": [\n          {\n            \"workspace\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"volumes\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"dbfs\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"workspace\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"volumes\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"dbfs\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"ssh_public_keys\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"job_cluster_key\": \"<string>\",\n      \"new_cluster\": {\n        \"cluster_name\": \"<string>\",\n        \"spark_version\": \"<string>\",\n        \"node_type_id\": \"<string>\",\n        \"driver_node_type_id\": \"<string>\",\n        \"num_workers\": \"<integer>\",\n        \"autoscale\": {\n          \"min_workers\": \"<integer>\",\n          \"max_workers\": \"<integer>\"\n        },\n        \"spark_conf\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        \"aws_attributes\": {\n          \"first_on_demand\": \"<integer>\",\n          \"availability\": \"<string>\",\n          \"zone_id\": \"<string>\",\n          \"instance_profile_arn\": \"<string>\",\n          \"spot_bid_price_percent\": \"<integer>\",\n          \"ebs_volume_type\": \"<string>\",\n          \"ebs_volume_count\": \"<integer>\",\n          \"ebs_volume_size\": \"<integer>\"\n        },\n        \"azure_attributes\": {\n          \"first_on_demand\": \"<integer>\",\n          \"availability\": \"<string>\",\n          \"spot_bid_max_price\": \"<number>\"\n        },\n        \"gcp_attributes\": {\n          \"use_preemptible_executors\": \"<boolean>\",\n          \"google_service_account\": \"<string>\",\n          \"availability\": \"<string>\"\n        },\n        \"custom_tags\": {\n          \"key_0\": \"<string>\"\n        },\n        \"spark_env_vars\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"autotermination_minutes\": 120,\n        \"enable_elastic_disk\": \"<boolean>\",\n        \"instance_pool_id\": \"<string>\",\n        \"policy_id\": \"<string>\",\n        \"enable_local_disk_encryption\": \"<boolean>\",\n        \"runtime_engine\": \"<string>\",\n        \"data_security_mode\": \"<string>\",\n        \"single_user_name\": \"<string>\",\n        \"init_scripts\": [\n          {\n            \"workspace\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"volumes\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"dbfs\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"workspace\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"volumes\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"dbfs\": {\n              \"destination\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"ssh_public_keys\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"email_notifications\": {\n    \"on_start\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"on_success\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"on_failure\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"no_alert_for_skipped_runs\": \"<boolean>\"\n  },\n  \"webhook_notifications\": {\n    \"on_start\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"on_success\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"on_failure\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ]\n  },\n  \"notification_settings\": {\n    \"no_alert_for_skipped_runs\": \"<boolean>\",\n    \"no_alert_for_canceled_runs\": \"<boolean>\"\n  },\n  \"timeout_seconds\": 0,\n  \"schedule\": {\n    \"quartz_cron_expression\": \"<string>\",\n    \"timezone_id\": \"<string>\",\n    \"pause_status\": \"<string>\"\n  },\n  \"continuous\": {\n    \"pause_status\": \"<string>\"\n  },\n  \"trigger\": {\n    \"pause_status\": \"<string>\",\n    \"file_arrival\": {\n      \"url\": \"<string>\",\n      \"min_time_between_triggers_seconds\": \"<integer>\",\n      \"wait_after_last_change_seconds\": \"<integer>\"\n    }\n  },\n  \"max_concurrent_runs\": 1,\n  \"git_source\": {\n    \"git_url\": \"<string>\",\n    \"git_provider\": \"<string>\",\n    \"git_branch\": \"<string>\",\n    \"git_tag\": \"<string>\",\n    \"git_commit\": \"<string>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"format\": \"<string>\",\n  \"queue\": {\n    \"enabled\": \"<boolean>\"\n  },\n  \"parameters\": [\n    {\n      \"name\": \"<string>\",\n      \"default\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"default\": \"<string>\"\n    }\n  ],\n  \"run_as\": {\n    \"user_name\": \"<string>\",\n    \"service_principal_name\": \"<string>\"\n  },\n  \"access_control_list\": [\n    {\n      \"user_name\": \"<string>\",\n      \"group_name\": \"<string>\",\n      \"service_principal_name\": \"<string>\",\n      \"permission_level\": \"<string>\"\n    },\n    {\n      \"user_name\": \"<string>\",\n      \"group_name\": \"<string>\",\n      \"service_principal_name\": \"<string>\",\n      \"permission_level\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a67e479b-335f-4ab7-8ff4-2d771e7d3a81",
+              "name": "Job created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"tasks\": [\n    {\n      \"task_key\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"depends_on\": {},\n      \"existing_cluster_id\": \"500123\",\n      \"job_cluster_key\": \"example_value\",\n      \"notebook_task\": {},\n      \"spark_jar_task\": {},\n      \"spark_python_task\": {},\n      \"spark_submit_task\": {},\n      \"pipeline_task\": {},\n      \"python_wheel_task\": {},\n      \"sql_task\": {},\n      \"dbt_task\": {},\n      \"run_if\": \"ALL_SUCCESS\",\n      \"timeout_seconds\": 10,\n      \"max_retries\": 10,\n      \"min_retry_interval_millis\": 10,\n      \"retry_on_timeout\": true,\n      \"libraries\": {}\n    }\n  ],\n  \"job_clusters\": [\n    {\n      \"job_cluster_key\": \"example_value\"\n    }\n  ],\n  \"email_notifications\": {\n    \"on_start\": [\n      {}\n    ],\n    \"on_success\": [\n      {}\n    ],\n    \"on_failure\": [\n      {}\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {}\n    ],\n    \"no_alert_for_skipped_runs\": true\n  },\n  \"webhook_notifications\": {\n    \"on_start\": [\n      {}\n    ],\n    \"on_success\": [\n      {}\n    ],\n    \"on_failure\": [\n      {}\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {}\n    ]\n  },\n  \"notification_settings\": {\n    \"no_alert_for_skipped_runs\": true,\n    \"no_alert_for_canceled_runs\": true\n  },\n  \"timeout_seconds\": 10,\n  \"schedule\": {\n    \"quartz_cron_expression\": \"example_value\",\n    \"timezone_id\": \"500123\",\n    \"pause_status\": \"PAUSED\"\n  },\n  \"continuous\": {\n    \"pause_status\": \"PAUSED\"\n  },\n  \"trigger\": {\n    \"pause_status\": \"PAUSED\",\n    \"file_arrival\": {\n      \"url\": \"https://www.example.com\",\n      \"min_time_between_triggers_seconds\": 10,\n      \"wait_after_last_change_seconds\": 10\n    }\n  },\n  \"max_concurrent_runs\": 10,\n  \"git_source\": {\n    \"git_url\": \"https://www.example.com\",\n    \"git_provider\": \"gitHub\",\n    \"git_branch\": \"example_value\",\n    \"git_tag\": \"example_value\",\n    \"git_commit\": \"example_value\"\n  },\n  \"tags\": \"example_value\",\n  \"format\": \"SINGLE_TASK\",\n  \"queue\": {\n    \"enabled\": true\n  },\n  \"parameters\": [\n    {\n      \"name\": \"Example Title\",\n      \"default\": \"example_value\"\n    }\n  ],\n  \"run_as\": {\n    \"user_name\": \"example_value\",\n    \"service_principal_name\": \"example_value\"\n  },\n  \"access_control_list\": [\n    {\n      \"user_name\": \"example_value\",\n      \"group_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\",\n      \"permission_level\": \"CAN_MANAGE\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job_id\": \"500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d60ee45e-b9f2-4a84-9395-c67a7298b017",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"tasks\": [\n    {\n      \"task_key\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"depends_on\": {},\n      \"existing_cluster_id\": \"500123\",\n      \"job_cluster_key\": \"example_value\",\n      \"notebook_task\": {},\n      \"spark_jar_task\": {},\n      \"spark_python_task\": {},\n      \"spark_submit_task\": {},\n      \"pipeline_task\": {},\n      \"python_wheel_task\": {},\n      \"sql_task\": {},\n      \"dbt_task\": {},\n      \"run_if\": \"ALL_SUCCESS\",\n      \"timeout_seconds\": 10,\n      \"max_retries\": 10,\n      \"min_retry_interval_millis\": 10,\n      \"retry_on_timeout\": true,\n      \"libraries\": {}\n    }\n  ],\n  \"job_clusters\": [\n    {\n      \"job_cluster_key\": \"example_value\"\n    }\n  ],\n  \"email_notifications\": {\n    \"on_start\": [\n      {}\n    ],\n    \"on_success\": [\n      {}\n    ],\n    \"on_failure\": [\n      {}\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {}\n    ],\n    \"no_alert_for_skipped_runs\": true\n  },\n  \"webhook_notifications\": {\n    \"on_start\": [\n      {}\n    ],\n    \"on_success\": [\n      {}\n    ],\n    \"on_failure\": [\n      {}\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {}\n    ]\n  },\n  \"notification_settings\": {\n    \"no_alert_for_skipped_runs\": true,\n    \"no_alert_for_canceled_runs\": true\n  },\n  \"timeout_seconds\": 10,\n  \"schedule\": {\n    \"quartz_cron_expression\": \"example_value\",\n    \"timezone_id\": \"500123\",\n    \"pause_status\": \"PAUSED\"\n  },\n  \"continuous\": {\n    \"pause_status\": \"PAUSED\"\n  },\n  \"trigger\": {\n    \"pause_status\": \"PAUSED\",\n    \"file_arrival\": {\n      \"url\": \"https://www.example.com\",\n      \"min_time_between_triggers_seconds\": 10,\n      \"wait_after_last_change_seconds\": 10\n    }\n  },\n  \"max_concurrent_runs\": 10,\n  \"git_source\": {\n    \"git_url\": \"https://www.example.com\",\n    \"git_provider\": \"gitHub\",\n    \"git_branch\": \"example_value\",\n    \"git_tag\": \"example_value\",\n    \"git_commit\": \"example_value\"\n  },\n  \"tags\": \"example_value\",\n  \"format\": \"SINGLE_TASK\",\n  \"queue\": {\n    \"enabled\": true\n  },\n  \"parameters\": [\n    {\n      \"name\": \"Example Title\",\n      \"default\": \"example_value\"\n    }\n  ],\n  \"run_as\": {\n    \"user_name\": \"example_value\",\n    \"service_principal_name\": \"example_value\"\n  },\n  \"access_control_list\": [\n    {\n      \"user_name\": \"example_value\",\n      \"group_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\",\n      \"permission_level\": \"CAN_MANAGE\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "544d2f31-96c6-4ece-9347-8d46754766fc",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"tasks\": [\n    {\n      \"task_key\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"depends_on\": {},\n      \"existing_cluster_id\": \"500123\",\n      \"job_cluster_key\": \"example_value\",\n      \"notebook_task\": {},\n      \"spark_jar_task\": {},\n      \"spark_python_task\": {},\n      \"spark_submit_task\": {},\n      \"pipeline_task\": {},\n      \"python_wheel_task\": {},\n      \"sql_task\": {},\n      \"dbt_task\": {},\n      \"run_if\": \"ALL_SUCCESS\",\n      \"timeout_seconds\": 10,\n      \"max_retries\": 10,\n      \"min_retry_interval_millis\": 10,\n      \"retry_on_timeout\": true,\n      \"libraries\": {}\n    }\n  ],\n  \"job_clusters\": [\n    {\n      \"job_cluster_key\": \"example_value\"\n    }\n  ],\n  \"email_notifications\": {\n    \"on_start\": [\n      {}\n    ],\n    \"on_success\": [\n      {}\n    ],\n    \"on_failure\": [\n      {}\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {}\n    ],\n    \"no_alert_for_skipped_runs\": true\n  },\n  \"webhook_notifications\": {\n    \"on_start\": [\n      {}\n    ],\n    \"on_success\": [\n      {}\n    ],\n    \"on_failure\": [\n      {}\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {}\n    ]\n  },\n  \"notification_settings\": {\n    \"no_alert_for_skipped_runs\": true,\n    \"no_alert_for_canceled_runs\": true\n  },\n  \"timeout_seconds\": 10,\n  \"schedule\": {\n    \"quartz_cron_expression\": \"example_value\",\n    \"timezone_id\": \"500123\",\n    \"pause_status\": \"PAUSED\"\n  },\n  \"continuous\": {\n    \"pause_status\": \"PAUSED\"\n  },\n  \"trigger\": {\n    \"pause_status\": \"PAUSED\",\n    \"file_arrival\": {\n      \"url\": \"https://www.example.com\",\n      \"min_time_between_triggers_seconds\": 10,\n      \"wait_after_last_change_seconds\": 10\n    }\n  },\n  \"max_concurrent_runs\": 10,\n  \"git_source\": {\n    \"git_url\": \"https://www.example.com\",\n    \"git_provider\": \"gitHub\",\n    \"git_branch\": \"example_value\",\n    \"git_tag\": \"example_value\",\n    \"git_commit\": \"example_value\"\n  },\n  \"tags\": \"example_value\",\n  \"format\": \"SINGLE_TASK\",\n  \"queue\": {\n    \"enabled\": true\n  },\n  \"parameters\": [\n    {\n      \"name\": \"Example Title\",\n      \"default\": \"example_value\"\n    }\n  ],\n  \"run_as\": {\n    \"user_name\": \"example_value\",\n    \"service_principal_name\": \"example_value\"\n  },\n  \"access_control_list\": [\n    {\n      \"user_name\": \"example_value\",\n      \"group_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\",\n      \"permission_level\": \"CAN_MANAGE\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b89e8f33-314e-4e24-83c5-8a00b4fb3eb8",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"tasks\": [\n    {\n      \"task_key\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"depends_on\": {},\n      \"existing_cluster_id\": \"500123\",\n      \"job_cluster_key\": \"example_value\",\n      \"notebook_task\": {},\n      \"spark_jar_task\": {},\n      \"spark_python_task\": {},\n      \"spark_submit_task\": {},\n      \"pipeline_task\": {},\n      \"python_wheel_task\": {},\n      \"sql_task\": {},\n      \"dbt_task\": {},\n      \"run_if\": \"ALL_SUCCESS\",\n      \"timeout_seconds\": 10,\n      \"max_retries\": 10,\n      \"min_retry_interval_millis\": 10,\n      \"retry_on_timeout\": true,\n      \"libraries\": {}\n    }\n  ],\n  \"job_clusters\": [\n    {\n      \"job_cluster_key\": \"example_value\"\n    }\n  ],\n  \"email_notifications\": {\n    \"on_start\": [\n      {}\n    ],\n    \"on_success\": [\n      {}\n    ],\n    \"on_failure\": [\n      {}\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {}\n    ],\n    \"no_alert_for_skipped_runs\": true\n  },\n  \"webhook_notifications\": {\n    \"on_start\": [\n      {}\n    ],\n    \"on_success\": [\n      {}\n    ],\n    \"on_failure\": [\n      {}\n    ],\n    \"on_duration_warning_threshold_exceeded\": [\n      {}\n    ]\n  },\n  \"notification_settings\": {\n    \"no_alert_for_skipped_runs\": true,\n    \"no_alert_for_canceled_runs\": true\n  },\n  \"timeout_seconds\": 10,\n  \"schedule\": {\n    \"quartz_cron_expression\": \"example_value\",\n    \"timezone_id\": \"500123\",\n    \"pause_status\": \"PAUSED\"\n  },\n  \"continuous\": {\n    \"pause_status\": \"PAUSED\"\n  },\n  \"trigger\": {\n    \"pause_status\": \"PAUSED\",\n    \"file_arrival\": {\n      \"url\": \"https://www.example.com\",\n      \"min_time_between_triggers_seconds\": 10,\n      \"wait_after_last_change_seconds\": 10\n    }\n  },\n  \"max_concurrent_runs\": 10,\n  \"git_source\": {\n    \"git_url\": \"https://www.example.com\",\n    \"git_provider\": \"gitHub\",\n    \"git_branch\": \"example_value\",\n    \"git_tag\": \"example_value\",\n    \"git_commit\": \"example_value\"\n  },\n  \"tags\": \"example_value\",\n  \"format\": \"SINGLE_TASK\",\n  \"queue\": {\n    \"enabled\": true\n  },\n  \"parameters\": [\n    {\n      \"name\": \"Example Title\",\n      \"default\": \"example_value\"\n    }\n  ],\n  \"run_as\": {\n    \"user_name\": \"example_value\",\n    \"service_principal_name\": \"example_value\"\n  },\n  \"access_control_list\": [\n    {\n      \"user_name\": \"example_value\",\n      \"group_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\",\n      \"permission_level\": \"CAN_MANAGE\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03e2f568-6df5-4a07-9166-2b7db86bd710",
+          "name": "Databricks List All Jobs",
+          "request": {
+            "name": "Databricks List All Jobs",
+            "description": {
+              "content": "Retrieves a list of jobs in the workspace. Results are paginated and can be filtered by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "The number of jobs to return. This value must be greater than 0 and less than or equal to 25. The default value is 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The offset of the first job to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "A filter on the list based on the exact (case-insensitive) job name."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand_tasks",
+                  "value": "false",
+                  "description": "Whether to include task and cluster details in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0587e94-eafe-4e97-b51a-65c3b93569ed",
+              "name": "Successfully retrieved the list of jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Example Title"
+                    },
+                    {
+                      "key": "expand_tasks",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"job_id\": \"500123\",\n      \"creator_user_name\": \"example_value\",\n      \"run_as_user_name\": \"example_value\",\n      \"created_time\": 10\n    }\n  ],\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f450a2e-dfde-4f1c-8e7f-b7f53779c028",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Example Title"
+                    },
+                    {
+                      "key": "expand_tasks",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "554ddb75-7d90-433d-a446-3cd7494f0869",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Example Title"
+                    },
+                    {
+                      "key": "expand_tasks",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51abced3-0f37-4ac3-add4-9e2e0c1d9431",
+          "name": "Databricks Get a Job",
+          "request": {
+            "name": "Databricks Get a Job",
+            "description": {
+              "content": "Retrieves the details of a single job, including its settings, creator, and run history summary.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "job_id",
+                  "value": "<long>",
+                  "description": "(Required) The canonical identifier of the job to retrieve."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2d9a541-5723-4f29-a158-cba5f5205c79",
+              "name": "Successfully retrieved the job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job_id\": \"500123\",\n  \"creator_user_name\": \"example_value\",\n  \"run_as_user_name\": \"example_value\",\n  \"settings\": {\n    \"name\": \"Example Title\",\n    \"tasks\": [\n      {}\n    ],\n    \"job_clusters\": [\n      {}\n    ],\n    \"timeout_seconds\": 10,\n    \"max_concurrent_runs\": 10,\n    \"tags\": \"example_value\",\n    \"format\": \"SINGLE_TASK\",\n    \"queue\": {\n      \"enabled\": true\n    },\n    \"continuous\": {\n      \"pause_status\": \"PAUSED\"\n    },\n    \"parameters\": [\n      {}\n    ],\n    \"run_as\": {\n      \"user_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\"\n    }\n  },\n  \"created_time\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e549dd03-e916-4dbe-b933-30d72489f875",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1554a006-d289-4245-a983-5d23d84b8976",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a460371a-b362-43e5-8d13-a2cf7fa0f108",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d56e5331-4074-49de-a5d3-09433ce6f5fd",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "893777fa-55d6-490d-bf1e-5a58df7b2695",
+          "name": "Databricks Partially Update a Job",
+          "request": {
+            "name": "Databricks Partially Update a Job",
+            "description": {
+              "content": "Add, update, or remove specific settings of an existing job. Use reset to overwrite all settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"job_id\": \"<long>\",\n  \"new_settings\": {\n    \"name\": \"<string>\",\n    \"tasks\": [\n      {\n        \"task_key\": \"<string>\",\n        \"description\": \"<string>\",\n        \"depends_on\": [\n          {\n            \"task_key\": \"<string>\",\n            \"outcome\": \"<string>\"\n          },\n          {\n            \"task_key\": \"<string>\",\n            \"outcome\": \"<string>\"\n          }\n        ],\n        \"existing_cluster_id\": \"<string>\",\n        \"new_cluster\": {\n          \"cluster_name\": \"<string>\",\n          \"spark_version\": \"<string>\",\n          \"node_type_id\": \"<string>\",\n          \"driver_node_type_id\": \"<string>\",\n          \"num_workers\": \"<integer>\",\n          \"autoscale\": {\n            \"min_workers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_workers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"spark_conf\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          },\n          \"aws_attributes\": {\n            \"first_on_demand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zone_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spot_bid_price_percent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"azure_attributes\": {\n            \"first_on_demand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spot_bid_max_price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"gcp_attributes\": {\n            \"use_preemptible_executors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"google_service_account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"custom_tags\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          },\n          \"spark_env_vars\": {\n            \"key_0\": \"<string>\"\n          },\n          \"autotermination_minutes\": 120,\n          \"enable_elastic_disk\": \"<boolean>\",\n          \"instance_pool_id\": \"<string>\",\n          \"policy_id\": \"<string>\",\n          \"enable_local_disk_encryption\": \"<boolean>\",\n          \"runtime_engine\": \"<string>\",\n          \"data_security_mode\": \"<string>\",\n          \"single_user_name\": \"<string>\",\n          \"init_scripts\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"ssh_public_keys\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"job_cluster_key\": \"<string>\",\n        \"notebook_task\": {\n          \"notebook_path\": \"<string>\",\n          \"source\": \"<string>\",\n          \"base_parameters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        },\n        \"spark_jar_task\": {\n          \"main_class_name\": \"<string>\",\n          \"parameters\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"jar_uri\": \"<string>\"\n        },\n        \"spark_python_task\": {\n          \"python_file\": \"<string>\",\n          \"parameters\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"source\": \"<string>\"\n        },\n        \"spark_submit_task\": {\n          \"parameters\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"pipeline_task\": {\n          \"pipeline_id\": \"<string>\",\n          \"full_refresh\": \"<boolean>\"\n        },\n        \"python_wheel_task\": {\n          \"package_name\": \"<string>\",\n          \"entry_point\": \"<string>\",\n          \"parameters\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"named_parameters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        \"sql_task\": {\n          \"query\": {\n            \"query_id\": \"<string>\"\n          },\n          \"dashboard\": {\n            \"dashboard_id\": \"<string>\"\n          },\n          \"alert\": {\n            \"alert_id\": \"<string>\"\n          },\n          \"warehouse_id\": \"<string>\",\n          \"parameters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        \"dbt_task\": {\n          \"project_directory\": \"<string>\",\n          \"commands\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"schema\": \"<string>\",\n          \"warehouse_id\": \"<string>\",\n          \"catalog\": \"<string>\",\n          \"profiles_directory\": \"<string>\"\n        },\n        \"run_if\": \"<string>\",\n        \"timeout_seconds\": \"<integer>\",\n        \"max_retries\": \"<integer>\",\n        \"min_retry_interval_millis\": \"<integer>\",\n        \"retry_on_timeout\": \"<boolean>\",\n        \"email_notifications\": {\n          \"on_start\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"on_success\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"on_failure\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"on_duration_warning_threshold_exceeded\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"no_alert_for_skipped_runs\": \"<boolean>\"\n        },\n        \"libraries\": [\n          {\n            \"jar\": \"<string>\",\n            \"egg\": \"<string>\",\n            \"whl\": \"<string>\",\n            \"pypi\": {\n              \"package\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"maven\": {\n              \"coordinates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"exclusions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"cran\": {\n              \"package\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requirements\": \"<string>\"\n          },\n          {\n            \"jar\": \"<string>\",\n            \"egg\": \"<string>\",\n            \"whl\": \"<string>\",\n            \"pypi\": {\n              \"package\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"maven\": {\n              \"coordinates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"exclusions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"cran\": {\n              \"package\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requirements\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"task_key\": \"<string>\",\n        \"description\": \"<string>\",\n        \"depends_on\": [\n          {\n            \"task_key\": \"<string>\",\n            \"outcome\": \"<string>\"\n          },\n          {\n            \"task_key\": \"<string>\",\n            \"outcome\": \"<string>\"\n          }\n        ],\n        \"existing_cluster_id\": \"<string>\",\n        \"new_cluster\": {\n          \"cluster_name\": \"<string>\",\n          \"spark_version\": \"<string>\",\n          \"node_type_id\": \"<string>\",\n          \"driver_node_type_id\": \"<string>\",\n          \"num_workers\": \"<integer>\",\n          \"autoscale\": {\n            \"min_workers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_workers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"spark_conf\": {\n            \"key_0\": \"<string>\"\n          },\n          \"aws_attributes\": {\n            \"first_on_demand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zone_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spot_bid_price_percent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"azure_attributes\": {\n            \"first_on_demand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spot_bid_max_price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"gcp_attributes\": {\n            \"use_preemptible_executors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"google_service_account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"custom_tags\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          },\n          \"spark_env_vars\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\",\n            \"key_3\": \"<string>\"\n          },\n          \"autotermination_minutes\": 120,\n          \"enable_elastic_disk\": \"<boolean>\",\n          \"instance_pool_id\": \"<string>\",\n          \"policy_id\": \"<string>\",\n          \"enable_local_disk_encryption\": \"<boolean>\",\n          \"runtime_engine\": \"<string>\",\n          \"data_security_mode\": \"<string>\",\n          \"single_user_name\": \"<string>\",\n          \"init_scripts\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"ssh_public_keys\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"job_cluster_key\": \"<string>\",\n        \"notebook_task\": {\n          \"notebook_path\": \"<string>\",\n          \"source\": \"<string>\",\n          \"base_parameters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        },\n        \"spark_jar_task\": {\n          \"main_class_name\": \"<string>\",\n          \"parameters\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"jar_uri\": \"<string>\"\n        },\n        \"spark_python_task\": {\n          \"python_file\": \"<string>\",\n          \"parameters\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"source\": \"<string>\"\n        },\n        \"spark_submit_task\": {\n          \"parameters\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"pipeline_task\": {\n          \"pipeline_id\": \"<string>\",\n          \"full_refresh\": \"<boolean>\"\n        },\n        \"python_wheel_task\": {\n          \"package_name\": \"<string>\",\n          \"entry_point\": \"<string>\",\n          \"parameters\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"named_parameters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        \"sql_task\": {\n          \"query\": {\n            \"query_id\": \"<string>\"\n          },\n          \"dashboard\": {\n            \"dashboard_id\": \"<string>\"\n          },\n          \"alert\": {\n            \"alert_id\": \"<string>\"\n          },\n          \"warehouse_id\": \"<string>\",\n          \"parameters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        \"dbt_task\": {\n          \"project_directory\": \"<string>\",\n          \"commands\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"schema\": \"<string>\",\n          \"warehouse_id\": \"<string>\",\n          \"catalog\": \"<string>\",\n          \"profiles_directory\": \"<string>\"\n        },\n        \"run_if\": \"<string>\",\n        \"timeout_seconds\": \"<integer>\",\n        \"max_retries\": \"<integer>\",\n        \"min_retry_interval_millis\": \"<integer>\",\n        \"retry_on_timeout\": \"<boolean>\",\n        \"email_notifications\": {\n          \"on_start\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"on_success\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"on_failure\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"on_duration_warning_threshold_exceeded\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"no_alert_for_skipped_runs\": \"<boolean>\"\n        },\n        \"libraries\": [\n          {\n            \"jar\": \"<string>\",\n            \"egg\": \"<string>\",\n            \"whl\": \"<string>\",\n            \"pypi\": {\n              \"package\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"maven\": {\n              \"coordinates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"exclusions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"cran\": {\n              \"package\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requirements\": \"<string>\"\n          },\n          {\n            \"jar\": \"<string>\",\n            \"egg\": \"<string>\",\n            \"whl\": \"<string>\",\n            \"pypi\": {\n              \"package\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"maven\": {\n              \"coordinates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"exclusions\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"cran\": {\n              \"package\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"repo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requirements\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"job_clusters\": [\n      {\n        \"job_cluster_key\": \"<string>\",\n        \"new_cluster\": {\n          \"cluster_name\": \"<string>\",\n          \"spark_version\": \"<string>\",\n          \"node_type_id\": \"<string>\",\n          \"driver_node_type_id\": \"<string>\",\n          \"num_workers\": \"<integer>\",\n          \"autoscale\": {\n            \"min_workers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_workers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"spark_conf\": {\n            \"key_0\": \"<string>\"\n          },\n          \"aws_attributes\": {\n            \"first_on_demand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zone_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spot_bid_price_percent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"azure_attributes\": {\n            \"first_on_demand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spot_bid_max_price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"gcp_attributes\": {\n            \"use_preemptible_executors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"google_service_account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"custom_tags\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          },\n          \"spark_env_vars\": {\n            \"key_0\": \"<string>\"\n          },\n          \"autotermination_minutes\": 120,\n          \"enable_elastic_disk\": \"<boolean>\",\n          \"instance_pool_id\": \"<string>\",\n          \"policy_id\": \"<string>\",\n          \"enable_local_disk_encryption\": \"<boolean>\",\n          \"runtime_engine\": \"<string>\",\n          \"data_security_mode\": \"<string>\",\n          \"single_user_name\": \"<string>\",\n          \"init_scripts\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"ssh_public_keys\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      },\n      {\n        \"job_cluster_key\": \"<string>\",\n        \"new_cluster\": {\n          \"cluster_name\": \"<string>\",\n          \"spark_version\": \"<string>\",\n          \"node_type_id\": \"<string>\",\n          \"driver_node_type_id\": \"<string>\",\n          \"num_workers\": \"<integer>\",\n          \"autoscale\": {\n            \"min_workers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_workers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"spark_conf\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          },\n          \"aws_attributes\": {\n            \"first_on_demand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zone_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spot_bid_price_percent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"azure_attributes\": {\n            \"first_on_demand\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spot_bid_max_price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"gcp_attributes\": {\n            \"use_preemptible_executors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"google_service_account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"custom_tags\": {\n            \"key_0\": \"<string>\"\n          },\n          \"spark_env_vars\": {\n            \"key_0\": \"<string>\"\n          },\n          \"autotermination_minutes\": 120,\n          \"enable_elastic_disk\": \"<boolean>\",\n          \"instance_pool_id\": \"<string>\",\n          \"policy_id\": \"<string>\",\n          \"enable_local_disk_encryption\": \"<boolean>\",\n          \"runtime_engine\": \"<string>\",\n          \"data_security_mode\": \"<string>\",\n          \"single_user_name\": \"<string>\",\n          \"init_scripts\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"ssh_public_keys\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      }\n    ],\n    \"email_notifications\": {\n      \"on_start\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_success\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_failure\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_duration_warning_threshold_exceeded\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"no_alert_for_skipped_runs\": \"<boolean>\"\n    },\n    \"webhook_notifications\": {\n      \"on_start\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ],\n      \"on_success\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ],\n      \"on_failure\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ],\n      \"on_duration_warning_threshold_exceeded\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ]\n    },\n    \"timeout_seconds\": \"<integer>\",\n    \"schedule\": {\n      \"quartz_cron_expression\": \"<string>\",\n      \"timezone_id\": \"<string>\",\n      \"pause_status\": \"<string>\"\n    },\n    \"max_concurrent_runs\": \"<integer>\",\n    \"git_source\": {\n      \"git_url\": \"<string>\",\n      \"git_provider\": \"<string>\",\n      \"git_branch\": \"<string>\",\n      \"git_tag\": \"<string>\",\n      \"git_commit\": \"<string>\"\n    },\n    \"tags\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\"\n    },\n    \"format\": \"<string>\",\n    \"queue\": {\n      \"enabled\": \"<boolean>\"\n    },\n    \"continuous\": {\n      \"pause_status\": \"<string>\"\n    },\n    \"parameters\": [\n      {\n        \"name\": \"<string>\",\n        \"default\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"default\": \"<string>\"\n      }\n    ],\n    \"run_as\": {\n      \"user_name\": \"<string>\",\n      \"service_principal_name\": \"<string>\"\n    }\n  },\n  \"fields_to_remove\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a4eb1ac-07c9-416c-85c3-21bc427cbb7d",
+              "name": "Job updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\",\n  \"new_settings\": {\n    \"name\": \"Example Title\",\n    \"tasks\": [\n      {}\n    ],\n    \"job_clusters\": [\n      {}\n    ],\n    \"email_notifications\": {\n      \"on_start\": {},\n      \"on_success\": {},\n      \"on_failure\": {},\n      \"on_duration_warning_threshold_exceeded\": {},\n      \"no_alert_for_skipped_runs\": true\n    },\n    \"webhook_notifications\": {\n      \"on_start\": {},\n      \"on_success\": {},\n      \"on_failure\": {},\n      \"on_duration_warning_threshold_exceeded\": {}\n    },\n    \"timeout_seconds\": 10,\n    \"schedule\": {\n      \"quartz_cron_expression\": \"example_value\",\n      \"timezone_id\": \"500123\",\n      \"pause_status\": \"PAUSED\"\n    },\n    \"max_concurrent_runs\": 10,\n    \"git_source\": {\n      \"git_url\": \"https://www.example.com\",\n      \"git_provider\": \"gitHub\",\n      \"git_branch\": \"example_value\",\n      \"git_tag\": \"example_value\",\n      \"git_commit\": \"example_value\"\n    },\n    \"tags\": \"example_value\",\n    \"format\": \"SINGLE_TASK\",\n    \"queue\": {\n      \"enabled\": true\n    },\n    \"continuous\": {\n      \"pause_status\": \"PAUSED\"\n    },\n    \"parameters\": [\n      {\n        \"name\": \"Example Title\",\n        \"default\": \"example_value\"\n      }\n    ],\n    \"run_as\": {\n      \"user_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\"\n    }\n  },\n  \"fields_to_remove\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d0c9714-487b-451b-986a-d30679be7e7e",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\",\n  \"new_settings\": {\n    \"name\": \"Example Title\",\n    \"tasks\": [\n      {}\n    ],\n    \"job_clusters\": [\n      {}\n    ],\n    \"email_notifications\": {\n      \"on_start\": {},\n      \"on_success\": {},\n      \"on_failure\": {},\n      \"on_duration_warning_threshold_exceeded\": {},\n      \"no_alert_for_skipped_runs\": true\n    },\n    \"webhook_notifications\": {\n      \"on_start\": {},\n      \"on_success\": {},\n      \"on_failure\": {},\n      \"on_duration_warning_threshold_exceeded\": {}\n    },\n    \"timeout_seconds\": 10,\n    \"schedule\": {\n      \"quartz_cron_expression\": \"example_value\",\n      \"timezone_id\": \"500123\",\n      \"pause_status\": \"PAUSED\"\n    },\n    \"max_concurrent_runs\": 10,\n    \"git_source\": {\n      \"git_url\": \"https://www.example.com\",\n      \"git_provider\": \"gitHub\",\n      \"git_branch\": \"example_value\",\n      \"git_tag\": \"example_value\",\n      \"git_commit\": \"example_value\"\n    },\n    \"tags\": \"example_value\",\n    \"format\": \"SINGLE_TASK\",\n    \"queue\": {\n      \"enabled\": true\n    },\n    \"continuous\": {\n      \"pause_status\": \"PAUSED\"\n    },\n    \"parameters\": [\n      {\n        \"name\": \"Example Title\",\n        \"default\": \"example_value\"\n      }\n    ],\n    \"run_as\": {\n      \"user_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\"\n    }\n  },\n  \"fields_to_remove\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5e9bad4-d706-47cb-872e-423924b724a1",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\",\n  \"new_settings\": {\n    \"name\": \"Example Title\",\n    \"tasks\": [\n      {}\n    ],\n    \"job_clusters\": [\n      {}\n    ],\n    \"email_notifications\": {\n      \"on_start\": {},\n      \"on_success\": {},\n      \"on_failure\": {},\n      \"on_duration_warning_threshold_exceeded\": {},\n      \"no_alert_for_skipped_runs\": true\n    },\n    \"webhook_notifications\": {\n      \"on_start\": {},\n      \"on_success\": {},\n      \"on_failure\": {},\n      \"on_duration_warning_threshold_exceeded\": {}\n    },\n    \"timeout_seconds\": 10,\n    \"schedule\": {\n      \"quartz_cron_expression\": \"example_value\",\n      \"timezone_id\": \"500123\",\n      \"pause_status\": \"PAUSED\"\n    },\n    \"max_concurrent_runs\": 10,\n    \"git_source\": {\n      \"git_url\": \"https://www.example.com\",\n      \"git_provider\": \"gitHub\",\n      \"git_branch\": \"example_value\",\n      \"git_tag\": \"example_value\",\n      \"git_commit\": \"example_value\"\n    },\n    \"tags\": \"example_value\",\n    \"format\": \"SINGLE_TASK\",\n    \"queue\": {\n      \"enabled\": true\n    },\n    \"continuous\": {\n      \"pause_status\": \"PAUSED\"\n    },\n    \"parameters\": [\n      {\n        \"name\": \"Example Title\",\n        \"default\": \"example_value\"\n      }\n    ],\n    \"run_as\": {\n      \"user_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\"\n    }\n  },\n  \"fields_to_remove\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b356e6e-a72a-4b00-8826-8959aba69d8b",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\",\n  \"new_settings\": {\n    \"name\": \"Example Title\",\n    \"tasks\": [\n      {}\n    ],\n    \"job_clusters\": [\n      {}\n    ],\n    \"email_notifications\": {\n      \"on_start\": {},\n      \"on_success\": {},\n      \"on_failure\": {},\n      \"on_duration_warning_threshold_exceeded\": {},\n      \"no_alert_for_skipped_runs\": true\n    },\n    \"webhook_notifications\": {\n      \"on_start\": {},\n      \"on_success\": {},\n      \"on_failure\": {},\n      \"on_duration_warning_threshold_exceeded\": {}\n    },\n    \"timeout_seconds\": 10,\n    \"schedule\": {\n      \"quartz_cron_expression\": \"example_value\",\n      \"timezone_id\": \"500123\",\n      \"pause_status\": \"PAUSED\"\n    },\n    \"max_concurrent_runs\": 10,\n    \"git_source\": {\n      \"git_url\": \"https://www.example.com\",\n      \"git_provider\": \"gitHub\",\n      \"git_branch\": \"example_value\",\n      \"git_tag\": \"example_value\",\n      \"git_commit\": \"example_value\"\n    },\n    \"tags\": \"example_value\",\n    \"format\": \"SINGLE_TASK\",\n    \"queue\": {\n      \"enabled\": true\n    },\n    \"continuous\": {\n      \"pause_status\": \"PAUSED\"\n    },\n    \"parameters\": [\n      {\n        \"name\": \"Example Title\",\n        \"default\": \"example_value\"\n      }\n    ],\n    \"run_as\": {\n      \"user_name\": \"example_value\",\n      \"service_principal_name\": \"example_value\"\n    }\n  },\n  \"fields_to_remove\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46b72bcf-46b0-400e-aba5-9dd4fd08dea1",
+          "name": "Databricks Delete a Job",
+          "request": {
+            "name": "Databricks Delete a Job",
+            "description": {
+              "content": "Deletes a job and all its associated runs. The job is permanently removed and cannot be recovered.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"job_id\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cdfaf7cf-ff77-4cae-9383-16019abb1d98",
+              "name": "Job deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "551bfea7-8e6c-449e-a484-5f20c886075b",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fffa604-ebfa-4d52-8868-117de7cd646a",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddf52dd0-bf89-4aab-8dab-8c716cfeac5f",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aeee4c77-f9ae-49a3-99dc-28d117710fe2",
+          "name": "Databricks Trigger a Job Run",
+          "request": {
+            "name": "Databricks Trigger a Job Run",
+            "description": {
+              "content": "Triggers an immediate run of a job. One run is triggered for each call. Runs triggered by run-now are considered triggered runs. Parameters can be passed to override the job defaults.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "run-now"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"job_id\": \"<long>\",\n  \"idempotency_token\": \"<string>\",\n  \"jar_params\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notebook_params\": {\n    \"key_0\": \"<string>\"\n  },\n  \"python_params\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"spark_submit_params\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"python_named_params\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"pipeline_params\": {\n    \"full_refresh\": \"<boolean>\"\n  },\n  \"sql_params\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "485a2014-2e61-4d9e-bcf1-7fd96aae2db4",
+              "name": "Job run triggered successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "run-now"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\",\n  \"idempotency_token\": \"example_value\",\n  \"jar_params\": [\n    \"example_value\"\n  ],\n  \"notebook_params\": \"example_value\",\n  \"python_params\": [\n    \"example_value\"\n  ],\n  \"spark_submit_params\": [\n    \"example_value\"\n  ],\n  \"python_named_params\": \"example_value\",\n  \"pipeline_params\": {\n    \"full_refresh\": true\n  },\n  \"sql_params\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_id\": \"500123\",\n  \"number_in_job\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6113c7a1-355f-4e27-9148-de7d221f64b1",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "run-now"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\",\n  \"idempotency_token\": \"example_value\",\n  \"jar_params\": [\n    \"example_value\"\n  ],\n  \"notebook_params\": \"example_value\",\n  \"python_params\": [\n    \"example_value\"\n  ],\n  \"spark_submit_params\": [\n    \"example_value\"\n  ],\n  \"python_named_params\": \"example_value\",\n  \"pipeline_params\": {\n    \"full_refresh\": true\n  },\n  \"sql_params\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "131e2d80-7724-49bf-97f0-f643501c949d",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "run-now"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\",\n  \"idempotency_token\": \"example_value\",\n  \"jar_params\": [\n    \"example_value\"\n  ],\n  \"notebook_params\": \"example_value\",\n  \"python_params\": [\n    \"example_value\"\n  ],\n  \"spark_submit_params\": [\n    \"example_value\"\n  ],\n  \"python_named_params\": \"example_value\",\n  \"pipeline_params\": {\n    \"full_refresh\": true\n  },\n  \"sql_params\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07a525eb-3cce-4a0a-b4ea-62ab6f44c036",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "run-now"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job_id\": \"500123\",\n  \"idempotency_token\": \"example_value\",\n  \"jar_params\": [\n    \"example_value\"\n  ],\n  \"notebook_params\": \"example_value\",\n  \"python_params\": [\n    \"example_value\"\n  ],\n  \"spark_submit_params\": [\n    \"example_value\"\n  ],\n  \"python_named_params\": \"example_value\",\n  \"pipeline_params\": {\n    \"full_refresh\": true\n  },\n  \"sql_params\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a3ffd53-43d9-45e4-ae15-44d46611fbb5",
+          "name": "Databricks List Job Runs",
+          "request": {
+            "name": "Databricks List Job Runs",
+            "description": {
+              "content": "Lists runs from most recently started to least. Results are paginated. Runs can be filtered by job, active state, and completion status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "runs",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "job_id",
+                  "value": "<long>",
+                  "description": "The job for which to list runs. If omitted, lists runs for all jobs."
+                },
+                {
+                  "disabled": false,
+                  "key": "active_only",
+                  "value": "false",
+                  "description": "If true, only active runs are included in the results; otherwise lists both active and completed runs."
+                },
+                {
+                  "disabled": false,
+                  "key": "completed_only",
+                  "value": "false",
+                  "description": "If true, only completed runs are included in the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The offset of the first run to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "The number of runs to return (max 25)."
+                },
+                {
+                  "disabled": false,
+                  "key": "run_type",
+                  "value": "<string>",
+                  "description": "The type of runs to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand_tasks",
+                  "value": "false",
+                  "description": "Whether to include task details in each run."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time_from",
+                  "value": "<long>",
+                  "description": "Filter runs started after this time (epoch milliseconds)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time_to",
+                  "value": "<long>",
+                  "description": "Filter runs started before this time (epoch milliseconds)."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4cf01d6-b5eb-4465-a033-e927fb2690ed",
+              "name": "Successfully retrieved the list of runs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "active_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "completed_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "run_type",
+                      "value": "JOB_RUN"
+                    },
+                    {
+                      "key": "expand_tasks",
+                      "value": "true"
+                    },
+                    {
+                      "key": "start_time_from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start_time_to",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"runs\": [\n    {\n      \"job_id\": \"500123\",\n      \"run_id\": \"500123\",\n      \"run_name\": \"example_value\",\n      \"number_in_job\": 10,\n      \"original_attempt_run_id\": \"500123\",\n      \"state\": {\n        \"life_cycle_state\": \"PENDING\",\n        \"result_state\": \"SUCCESS\",\n        \"state_message\": \"example_value\",\n        \"user_cancelled_or_timedout\": true\n      },\n      \"tasks\": [\n        {}\n      ],\n      \"job_clusters\": [\n        {}\n      ],\n      \"cluster_spec\": {\n        \"existing_cluster_id\": \"500123\",\n        \"libraries\": {}\n      },\n      \"cluster_instance\": {\n        \"cluster_id\": \"500123\",\n        \"spark_context_id\": \"500123\"\n      },\n      \"start_time\": 10,\n      \"setup_duration\": 10,\n      \"execution_duration\": 10,\n      \"cleanup_duration\": 10,\n      \"end_time\": 10,\n      \"trigger\": \"PERIODIC\",\n      \"run_type\": \"JOB_RUN\",\n      \"attempt_number\": 10,\n      \"creator_user_name\": \"example_value\",\n      \"run_page_url\": \"https://www.example.com\",\n      \"format\": \"SINGLE_TASK\"\n    }\n  ],\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e671118-8d15-4f59-9feb-b065339e326f",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "active_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "completed_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "run_type",
+                      "value": "JOB_RUN"
+                    },
+                    {
+                      "key": "expand_tasks",
+                      "value": "true"
+                    },
+                    {
+                      "key": "start_time_from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start_time_to",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edac4967-322e-4504-891a-d7b0244c49ee",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "active_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "completed_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "run_type",
+                      "value": "JOB_RUN"
+                    },
+                    {
+                      "key": "expand_tasks",
+                      "value": "true"
+                    },
+                    {
+                      "key": "start_time_from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start_time_to",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba535003-3d38-43ec-b1c7-c6dc4e36a78f",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "active_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "completed_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "run_type",
+                      "value": "JOB_RUN"
+                    },
+                    {
+                      "key": "expand_tasks",
+                      "value": "true"
+                    },
+                    {
+                      "key": "start_time_from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start_time_to",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e62671d0-b4d8-462a-b8ce-5842e2ef5109",
+          "name": "Databricks Get a Job Run",
+          "request": {
+            "name": "Databricks Get a Job Run",
+            "description": {
+              "content": "Retrieves the metadata of a run, including start time, end time, status, and task details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "runs",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "run_id",
+                  "value": "<long>",
+                  "description": "(Required) The canonical identifier of the run."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_history",
+                  "value": "<boolean>",
+                  "description": "Whether to include the repair history in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_resolved_values",
+                  "value": "<boolean>",
+                  "description": "Whether to include resolved parameter values in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4db6e68-f655-44b8-85ca-f9960b6aa3e1",
+              "name": "Successfully retrieved run details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "include_history",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_resolved_values",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job_id\": \"500123\",\n  \"run_id\": \"500123\",\n  \"run_name\": \"example_value\",\n  \"number_in_job\": 10,\n  \"original_attempt_run_id\": \"500123\",\n  \"state\": {\n    \"life_cycle_state\": \"PENDING\",\n    \"result_state\": \"SUCCESS\",\n    \"state_message\": \"example_value\",\n    \"user_cancelled_or_timedout\": true\n  },\n  \"schedule\": {\n    \"quartz_cron_expression\": \"example_value\",\n    \"timezone_id\": \"500123\",\n    \"pause_status\": \"PAUSED\"\n  },\n  \"tasks\": [\n    {\n      \"run_id\": \"500123\",\n      \"task_key\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"state\": {},\n      \"depends_on\": {},\n      \"existing_cluster_id\": \"500123\",\n      \"notebook_task\": {},\n      \"spark_jar_task\": {},\n      \"spark_python_task\": {},\n      \"sql_task\": {},\n      \"start_time\": 10,\n      \"setup_duration\": 10,\n      \"execution_duration\": 10,\n      \"cleanup_duration\": 10,\n      \"end_time\": 10,\n      \"cluster_instance\": {},\n      \"attempt_number\": 10,\n      \"libraries\": {}\n    }\n  ],\n  \"job_clusters\": [\n    {\n      \"job_cluster_key\": \"example_value\"\n    }\n  ],\n  \"cluster_spec\": {\n    \"existing_cluster_id\": \"500123\",\n    \"new_cluster\": {\n      \"cluster_name\": \"example_value\",\n      \"spark_version\": \"example_value\",\n      \"node_type_id\": \"500123\",\n      \"driver_node_type_id\": \"500123\",\n      \"num_workers\": 10,\n      \"spark_conf\": \"example_value\",\n      \"custom_tags\": \"example_value\",\n      \"spark_env_vars\": \"example_value\",\n      \"autotermination_minutes\": 10,\n      \"enable_elastic_disk\": true,\n      \"instance_pool_id\": \"500123\",\n      \"policy_id\": \"500123\",\n      \"enable_local_disk_encryption\": true,\n      \"runtime_engine\": \"STANDARD\",\n      \"data_security_mode\": \"NONE\",\n      \"single_user_name\": \"example_value\",\n      \"init_scripts\": {},\n      \"ssh_public_keys\": {}\n    },\n    \"libraries\": [\n      {}\n    ]\n  },\n  \"cluster_instance\": {\n    \"cluster_id\": \"500123\",\n    \"spark_context_id\": \"500123\"\n  },\n  \"start_time\": 10,\n  \"setup_duration\": 10,\n  \"execution_duration\": 10,\n  \"cleanup_duration\": 10,\n  \"end_time\": 10,\n  \"trigger\": \"PERIODIC\",\n  \"run_type\": \"JOB_RUN\",\n  \"attempt_number\": 10,\n  \"creator_user_name\": \"example_value\",\n  \"run_page_url\": \"https://www.example.com\",\n  \"format\": \"SINGLE_TASK\",\n  \"git_source\": {\n    \"git_url\": \"https://www.example.com\",\n    \"git_provider\": \"gitHub\",\n    \"git_branch\": \"example_value\",\n    \"git_tag\": \"example_value\",\n    \"git_commit\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db2452f-e8a7-4340-9337-a54f3de1398d",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "include_history",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_resolved_values",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f151667e-0bde-45f5-9db6-f6aa49ca0614",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "include_history",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_resolved_values",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "123a383a-6ea2-4a6d-9169-ade1da4a338f",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "include_history",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_resolved_values",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "662604ec-5bf1-44e5-81b6-cb2dcc2ebeef",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "include_history",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_resolved_values",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a42f293-93f2-41ec-aa00-f93fac5f1562",
+          "name": "Databricks Cancel a Job Run",
+          "request": {
+            "name": "Databricks Cancel a Job Run",
+            "description": {
+              "content": "Cancels an active run. The run is canceled asynchronously, and the request returns immediately. The canceled run transitions to a TERMINATING state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "runs",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"run_id\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d477c175-7735-4850-bede-7641f388f983",
+              "name": "Run cancellation initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"run_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3af05b8d-2e9e-4903-98b6-4cc5d514f06c",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"run_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de351831-5b67-4bcb-876f-b70f02549ddd",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"run_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a11badbe-6c4f-47c8-926d-a99ad6b04cc4",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"run_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1d8407a-a43d-4950-96e4-18817e06ebe0",
+          "name": "Databricks Get Run Output",
+          "request": {
+            "name": "Databricks Get Run Output",
+            "description": {
+              "content": "Retrieves the output and metadata of a single task run. This endpoint can be used for notebook, JAR, Python, and Spark submit task outputs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.1",
+                "jobs",
+                "runs",
+                "get-output"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "run_id",
+                  "value": "<long>",
+                  "description": "(Required) The canonical identifier of the run."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7af8eb44-989d-486a-ae09-0749f48fe173",
+              "name": "Successfully retrieved run output.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get-output"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notebook_output\": {\n    \"result\": \"example_value\",\n    \"truncated\": true\n  },\n  \"error\": \"example_value\",\n  \"error_trace\": \"example_value\",\n  \"metadata\": {\n    \"job_id\": \"500123\",\n    \"run_id\": \"500123\",\n    \"run_name\": \"example_value\",\n    \"number_in_job\": 10,\n    \"original_attempt_run_id\": \"500123\",\n    \"state\": {\n      \"life_cycle_state\": \"PENDING\",\n      \"result_state\": \"SUCCESS\",\n      \"state_message\": \"example_value\",\n      \"user_cancelled_or_timedout\": true\n    },\n    \"schedule\": {\n      \"quartz_cron_expression\": \"example_value\",\n      \"timezone_id\": \"500123\",\n      \"pause_status\": \"PAUSED\"\n    },\n    \"tasks\": [\n      {}\n    ],\n    \"job_clusters\": [\n      {}\n    ],\n    \"cluster_spec\": {\n      \"existing_cluster_id\": \"500123\",\n      \"libraries\": [\n        {}\n      ]\n    },\n    \"cluster_instance\": {\n      \"cluster_id\": \"500123\",\n      \"spark_context_id\": \"500123\"\n    },\n    \"start_time\": 10,\n    \"setup_duration\": 10,\n    \"execution_duration\": 10,\n    \"cleanup_duration\": 10,\n    \"end_time\": 10,\n    \"trigger\": \"PERIODIC\",\n    \"run_type\": \"JOB_RUN\",\n    \"attempt_number\": 10,\n    \"creator_user_name\": \"example_value\",\n    \"run_page_url\": \"https://www.example.com\",\n    \"format\": \"SINGLE_TASK\",\n    \"git_source\": {\n      \"git_url\": \"https://www.example.com\",\n      \"git_provider\": \"gitHub\",\n      \"git_branch\": \"example_value\",\n      \"git_tag\": \"example_value\",\n      \"git_commit\": \"example_value\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0478c4a3-4318-4507-b8d9-56a2e32018ce",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get-output"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3a149ab-9059-4a98-8338-5eda50758708",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get-output"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b5bd4b5-1164-43b2-ae4c-16ebdfdc2bf5",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.1",
+                    "jobs",
+                    "runs",
+                    "get-output"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "adb-1234567890123456.7.azuredatabricks.net",
+      "key": "workspace_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{workspace_host}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b09a184f-08a9-4dc7-8b37-21b4117c2a5d",
+    "name": "Databricks REST Clusters Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Databricks REST API provides programmatic access to manage Databricks workspace resources including clusters, jobs, and workspace objects. All API endpoints require authentication using a personal access token or OAuth token passed via the Authorization header. The base URL is specific to your Databricks workspace deployment region.\n\nContact Support:\n Name: Databricks\n Email: support@databricks.com",
+      "type": "text/plain"
+    }
+  }
+}

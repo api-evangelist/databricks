@@ -1,0 +1,2075 @@
+{
+  "item": [
+    {
+      "id": "d4ddaf95-7f06-4ba4-8e7c-3e1aefd68cf2",
+      "name": "Workspace",
+      "description": {
+        "content": "Manage workspace objects such as notebooks, folders, and libraries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae049596-a213-4391-bb3d-eb6e180acccd",
+          "name": "Databricks List Workspace Objects",
+          "request": {
+            "name": "Databricks List Workspace Objects",
+            "description": {
+              "content": "Lists the contents of a directory in the workspace, or the object if it is not a directory. If the input path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "workspace",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "path",
+                  "value": "<string>",
+                  "description": "(Required) The absolute path of the workspace directory to list. Must start with /."
+                },
+                {
+                  "disabled": false,
+                  "key": "notebooks_modified_after",
+                  "value": "<long>",
+                  "description": "If provided, only notebooks modified after this timestamp (epoch seconds) are returned."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6051bdc9-6a99-4b1d-8689-536240a59102",
+              "name": "Successfully listed workspace objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "notebooks_modified_after",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objects\": [\n    {\n      \"object_type\": \"NOTEBOOK\",\n      \"path\": \"example_value\",\n      \"language\": \"SCALA\",\n      \"object_id\": \"500123\",\n      \"created_at\": \"2026-01-15T10:30:00Z\",\n      \"modified_at\": \"2026-01-15T10:30:00Z\",\n      \"resource_id\": \"500123\",\n      \"size\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3239d1c-8d1a-41e1-8f10-4fafe4fc4feb",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "notebooks_modified_after",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7768f2fc-11cd-4d02-bdc2-6a5ffa0d934b",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "notebooks_modified_after",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2967e71-f6ba-41e0-8ec4-c71691de0d9e",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "notebooks_modified_after",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddb4e90d-c1b7-462d-a14c-f2ede0249406",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "notebooks_modified_after",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ba9de6e-bc98-4a55-a50d-b3898914fa77",
+          "name": "Databricks Get Workspace Object Status",
+          "request": {
+            "name": "Databricks Get Workspace Object Status",
+            "description": {
+              "content": "Gets the status of an object or a directory in the workspace. If the object does not exist, a RESOURCE_DOES_NOT_EXIST error is returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "workspace",
+                "get-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "path",
+                  "value": "<string>",
+                  "description": "(Required) The absolute path of the workspace object. Must start with /."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4d1a2bf-9fa1-42dd-b5d5-defb40515224",
+              "name": "Successfully retrieved object status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "get-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_type\": \"NOTEBOOK\",\n  \"path\": \"example_value\",\n  \"language\": \"SCALA\",\n  \"object_id\": \"500123\",\n  \"created_at\": \"2026-01-15T10:30:00Z\",\n  \"modified_at\": \"2026-01-15T10:30:00Z\",\n  \"resource_id\": \"500123\",\n  \"size\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c99f99a-1ad3-44d0-846f-1fe3466b9497",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "get-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20b70276-7d88-47c2-9a67-e86cc35b2540",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "get-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3825c404-e13d-4403-a9f4-6630afb6c644",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "get-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2915eff1-3ffb-4e44-a8f3-1be4fb100253",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "get-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a1fb248-d4ca-46ef-ad96-46d35d630fb2",
+          "name": "Databricks Export a Workspace Object",
+          "request": {
+            "name": "Databricks Export a Workspace Object",
+            "description": {
+              "content": "Exports a notebook or the contents of an entire directory. Notebooks can be exported in SOURCE, HTML, JUPYTER, or DBC format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "workspace",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "path",
+                  "value": "<string>",
+                  "description": "(Required) The absolute path of the object or directory to export. Must start with /."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "SOURCE",
+                  "description": "The format in which to export the notebook. The default is SOURCE."
+                },
+                {
+                  "disabled": false,
+                  "key": "direct_download",
+                  "value": "false",
+                  "description": "Whether to download the file directly. If true, the response is the exported content."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98709deb-a912-47ba-9781-712ff3f0f21a",
+              "name": "Successfully exported the workspace object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "format",
+                      "value": "SOURCE"
+                    },
+                    {
+                      "key": "direct_download",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": \"example_value\",\n  \"file_type\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "572a428e-3a96-44c9-a2b7-31537951886a",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "format",
+                      "value": "SOURCE"
+                    },
+                    {
+                      "key": "direct_download",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18997312-df0f-48a5-9a5c-cd4f7b24683b",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "format",
+                      "value": "SOURCE"
+                    },
+                    {
+                      "key": "direct_download",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "277dd243-0561-4a19-8360-396bf4934a36",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "format",
+                      "value": "SOURCE"
+                    },
+                    {
+                      "key": "direct_download",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84a8324c-b696-4c95-9ca0-3b3d698f77aa",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "format",
+                      "value": "SOURCE"
+                    },
+                    {
+                      "key": "direct_download",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e07c483-8276-4f7c-9c06-6822f05b914b",
+          "name": "Databricks Import a Workspace Object",
+          "request": {
+            "name": "Databricks Import a Workspace Object",
+            "description": {
+              "content": "Imports a notebook or the contents of an entire directory. If the object already exists and overwrite is set to false, a RESOURCE_ALREADY_EXISTS error is returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "workspace",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"path\": \"<string>\",\n  \"format\": \"<string>\",\n  \"language\": \"<string>\",\n  \"content\": \"<string>\",\n  \"overwrite\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11d2f3e3-6c1c-4c0e-b056-7e971800a779",
+              "name": "Object imported successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"format\": \"SOURCE\",\n  \"language\": \"SCALA\",\n  \"content\": \"example_value\",\n  \"overwrite\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d42dbe2-6386-410d-b65d-49170e5ceed1",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"format\": \"SOURCE\",\n  \"language\": \"SCALA\",\n  \"content\": \"example_value\",\n  \"overwrite\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e10e0bb3-6299-4d23-9a59-b15df2052aa4",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"format\": \"SOURCE\",\n  \"language\": \"SCALA\",\n  \"content\": \"example_value\",\n  \"overwrite\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb63488f-682b-4a06-bb74-68a34ebb1578",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"format\": \"SOURCE\",\n  \"language\": \"SCALA\",\n  \"content\": \"example_value\",\n  \"overwrite\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1baa38e-39fc-46c6-99d1-e438ea017c77",
+          "name": "Databricks Delete a Workspace Object",
+          "request": {
+            "name": "Databricks Delete a Workspace Object",
+            "description": {
+              "content": "Deletes an object or a directory and optionally all of its contents. If the path does not exist, a RESOURCE_DOES_NOT_EXIST error is returned. If path is a non-empty directory and recursive is false, a DIRECTORY_NOT_EMPTY error is returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "workspace",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"path\": \"<string>\",\n  \"recursive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96415d2a-9c3e-40e8-8337-c793a6514a17",
+              "name": "Object deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"recursive\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b121f09-5b01-4679-845c-0db3f02329fa",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"recursive\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c429dcb6-4616-4bf2-97eb-c7a2ab632ff5",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"recursive\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb821ce3-24fa-4286-8747-758046d2956d",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"recursive\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "590453c3-5a74-4635-a8c4-c2ea4d6e1ec3",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\",\n  \"recursive\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa993d7b-a5d0-4917-b308-7f7c7620bbbc",
+          "name": "Databricks Create a Directory",
+          "request": {
+            "name": "Databricks Create a Directory",
+            "description": {
+              "content": "Creates the given directory and necessary parent directories if they do not exist. If there is an object (not a directory) at any prefix of the input path, a RESOURCE_ALREADY_EXISTS error is returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "workspace",
+                "mkdirs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"path\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64a5c7db-495e-4590-b395-a831c9d66330",
+              "name": "Directory created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "mkdirs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9125b983-cdf1-43f3-aa8f-1542d1aa42f8",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "mkdirs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e99e4d3-725a-4695-a84d-cc138feb9664",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "mkdirs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92d0df26-ed60-4d97-ab92-9d7db32f951d",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "workspace",
+                    "mkdirs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"path\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "adb-1234567890123456.7.azuredatabricks.net",
+      "key": "workspace_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{workspace_host}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "93843e69-1725-4df2-b4dc-ba50d5cb7bc6",
+    "name": "Databricks REST Clusters Workspace API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Databricks REST API provides programmatic access to manage Databricks workspace resources including clusters, jobs, and workspace objects. All API endpoints require authentication using a personal access token or OAuth token passed via the Authorization header. The base URL is specific to your Databricks workspace deployment region.\n\nContact Support:\n Name: Databricks\n Email: support@databricks.com",
+      "type": "text/plain"
+    }
+  }
+}

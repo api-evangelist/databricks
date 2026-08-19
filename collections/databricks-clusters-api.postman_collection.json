@@ -1,0 +1,2787 @@
+{
+  "item": [
+    {
+      "id": "79908ea5-ed2b-4a45-b166-1cd6bfa5d1b5",
+      "name": "Clusters",
+      "description": {
+        "content": "Manage Databricks clusters for running data engineering and data science workloads on Apache Spark.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "567857fb-1138-4fe1-a532-599193d984cb",
+          "name": "Databricks Create a New Cluster",
+          "request": {
+            "name": "Databricks Create a New Cluster",
+            "description": {
+              "content": "Creates a new Spark cluster. This method acquires new instances from the cloud provider and starts the Spark driver and worker processes. The cluster is created asynchronously; use the cluster_id returned to poll for status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster_name\": \"<string>\",\n  \"spark_version\": \"<string>\",\n  \"node_type_id\": \"<string>\",\n  \"driver_node_type_id\": \"<string>\",\n  \"num_workers\": \"<integer>\",\n  \"autoscale\": {\n    \"min_workers\": \"<integer>\",\n    \"max_workers\": \"<integer>\"\n  },\n  \"spark_conf\": {\n    \"key_0\": \"<string>\"\n  },\n  \"aws_attributes\": {\n    \"first_on_demand\": \"<integer>\",\n    \"availability\": \"<string>\",\n    \"zone_id\": \"<string>\",\n    \"instance_profile_arn\": \"<string>\",\n    \"spot_bid_price_percent\": \"<integer>\",\n    \"ebs_volume_type\": \"<string>\",\n    \"ebs_volume_count\": \"<integer>\",\n    \"ebs_volume_size\": \"<integer>\"\n  },\n  \"azure_attributes\": {\n    \"first_on_demand\": \"<integer>\",\n    \"availability\": \"<string>\",\n    \"spot_bid_max_price\": \"<number>\"\n  },\n  \"gcp_attributes\": {\n    \"use_preemptible_executors\": \"<boolean>\",\n    \"google_service_account\": \"<string>\",\n    \"availability\": \"<string>\"\n  },\n  \"custom_tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"spark_env_vars\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"autotermination_minutes\": 120,\n  \"enable_elastic_disk\": \"<boolean>\",\n  \"instance_pool_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"enable_local_disk_encryption\": \"<boolean>\",\n  \"runtime_engine\": \"<string>\",\n  \"data_security_mode\": \"<string>\",\n  \"single_user_name\": \"<string>\",\n  \"init_scripts\": [\n    {\n      \"workspace\": {\n        \"destination\": \"<string>\"\n      },\n      \"volumes\": {\n        \"destination\": \"<string>\"\n      },\n      \"dbfs\": {\n        \"destination\": \"<string>\"\n      }\n    },\n    {\n      \"workspace\": {\n        \"destination\": \"<string>\"\n      },\n      \"volumes\": {\n        \"destination\": \"<string>\"\n      },\n      \"dbfs\": {\n        \"destination\": \"<string>\"\n      }\n    }\n  ],\n  \"ssh_public_keys\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8b66630-e9d1-4c16-bb77-7006f8138998",
+              "name": "Cluster creation initiated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"aws_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT\",\n    \"zone_id\": \"500123\",\n    \"instance_profile_arn\": \"example_value\",\n    \"spot_bid_price_percent\": 10,\n    \"ebs_volume_type\": \"GENERAL_PURPOSE_SSD\",\n    \"ebs_volume_count\": 10,\n    \"ebs_volume_size\": 10\n  },\n  \"azure_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT_AZURE\",\n    \"spot_bid_max_price\": 42.5\n  },\n  \"gcp_attributes\": {\n    \"use_preemptible_executors\": true,\n    \"google_service_account\": \"example_value\",\n    \"availability\": \"GCP_PREEMPTIBLE\"\n  },\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"enable_local_disk_encryption\": true,\n  \"runtime_engine\": \"STANDARD\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"init_scripts\": [\n    {\n      \"workspace\": {},\n      \"volumes\": {},\n      \"dbfs\": {}\n    }\n  ],\n  \"ssh_public_keys\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster_id\": \"500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d0c280e-5f3b-4543-8a9b-1ffa5d207e82",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"aws_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT\",\n    \"zone_id\": \"500123\",\n    \"instance_profile_arn\": \"example_value\",\n    \"spot_bid_price_percent\": 10,\n    \"ebs_volume_type\": \"GENERAL_PURPOSE_SSD\",\n    \"ebs_volume_count\": 10,\n    \"ebs_volume_size\": 10\n  },\n  \"azure_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT_AZURE\",\n    \"spot_bid_max_price\": 42.5\n  },\n  \"gcp_attributes\": {\n    \"use_preemptible_executors\": true,\n    \"google_service_account\": \"example_value\",\n    \"availability\": \"GCP_PREEMPTIBLE\"\n  },\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"enable_local_disk_encryption\": true,\n  \"runtime_engine\": \"STANDARD\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"init_scripts\": [\n    {\n      \"workspace\": {},\n      \"volumes\": {},\n      \"dbfs\": {}\n    }\n  ],\n  \"ssh_public_keys\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75928a34-302d-4460-b1d9-9af45526064c",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"aws_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT\",\n    \"zone_id\": \"500123\",\n    \"instance_profile_arn\": \"example_value\",\n    \"spot_bid_price_percent\": 10,\n    \"ebs_volume_type\": \"GENERAL_PURPOSE_SSD\",\n    \"ebs_volume_count\": 10,\n    \"ebs_volume_size\": 10\n  },\n  \"azure_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT_AZURE\",\n    \"spot_bid_max_price\": 42.5\n  },\n  \"gcp_attributes\": {\n    \"use_preemptible_executors\": true,\n    \"google_service_account\": \"example_value\",\n    \"availability\": \"GCP_PREEMPTIBLE\"\n  },\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"enable_local_disk_encryption\": true,\n  \"runtime_engine\": \"STANDARD\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"init_scripts\": [\n    {\n      \"workspace\": {},\n      \"volumes\": {},\n      \"dbfs\": {}\n    }\n  ],\n  \"ssh_public_keys\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3db6ca12-10ac-49d0-9da8-b8c0a4c10d34",
+              "name": "The authenticated user does not have permission to perform this action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"aws_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT\",\n    \"zone_id\": \"500123\",\n    \"instance_profile_arn\": \"example_value\",\n    \"spot_bid_price_percent\": 10,\n    \"ebs_volume_type\": \"GENERAL_PURPOSE_SSD\",\n    \"ebs_volume_count\": 10,\n    \"ebs_volume_size\": 10\n  },\n  \"azure_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT_AZURE\",\n    \"spot_bid_max_price\": 42.5\n  },\n  \"gcp_attributes\": {\n    \"use_preemptible_executors\": true,\n    \"google_service_account\": \"example_value\",\n    \"availability\": \"GCP_PREEMPTIBLE\"\n  },\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"enable_local_disk_encryption\": true,\n  \"runtime_engine\": \"STANDARD\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"init_scripts\": [\n    {\n      \"workspace\": {},\n      \"volumes\": {},\n      \"dbfs\": {}\n    }\n  ],\n  \"ssh_public_keys\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2a15b86-13ab-4ead-8af2-04b5b37e5999",
+              "name": "Too many requests have been sent in a given amount of time. Retry after the period specified in the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"aws_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT\",\n    \"zone_id\": \"500123\",\n    \"instance_profile_arn\": \"example_value\",\n    \"spot_bid_price_percent\": 10,\n    \"ebs_volume_type\": \"GENERAL_PURPOSE_SSD\",\n    \"ebs_volume_count\": 10,\n    \"ebs_volume_size\": 10\n  },\n  \"azure_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT_AZURE\",\n    \"spot_bid_max_price\": 42.5\n  },\n  \"gcp_attributes\": {\n    \"use_preemptible_executors\": true,\n    \"google_service_account\": \"example_value\",\n    \"availability\": \"GCP_PREEMPTIBLE\"\n  },\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"enable_local_disk_encryption\": true,\n  \"runtime_engine\": \"STANDARD\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"init_scripts\": [\n    {\n      \"workspace\": {},\n      \"volumes\": {},\n      \"dbfs\": {}\n    }\n  ],\n  \"ssh_public_keys\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f897dc2-a190-45a1-b9ab-da8a0090da2f",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"aws_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT\",\n    \"zone_id\": \"500123\",\n    \"instance_profile_arn\": \"example_value\",\n    \"spot_bid_price_percent\": 10,\n    \"ebs_volume_type\": \"GENERAL_PURPOSE_SSD\",\n    \"ebs_volume_count\": 10,\n    \"ebs_volume_size\": 10\n  },\n  \"azure_attributes\": {\n    \"first_on_demand\": 10,\n    \"availability\": \"SPOT_AZURE\",\n    \"spot_bid_max_price\": 42.5\n  },\n  \"gcp_attributes\": {\n    \"use_preemptible_executors\": true,\n    \"google_service_account\": \"example_value\",\n    \"availability\": \"GCP_PREEMPTIBLE\"\n  },\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"enable_local_disk_encryption\": true,\n  \"runtime_engine\": \"STANDARD\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"init_scripts\": [\n    {\n      \"workspace\": {},\n      \"volumes\": {},\n      \"dbfs\": {}\n    }\n  ],\n  \"ssh_public_keys\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0436117-5066-49ed-845a-4fbc652735c3",
+          "name": "Databricks List All Clusters",
+          "request": {
+            "name": "Databricks List All Clusters",
+            "description": {
+              "content": "Returns information about all clusters in the workspace, including terminated clusters. Clusters are ordered by cluster_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "can_use_client",
+                  "value": "<string>",
+                  "description": "Filter clusters by client compatibility."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eebc5f47-f227-47a7-8ec1-4b8ebe20bab4",
+              "name": "Successfully retrieved the list of clusters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "can_use_client",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"clusters\": [\n    {\n      \"cluster_id\": \"500123\",\n      \"cluster_name\": \"example_value\",\n      \"spark_version\": \"example_value\",\n      \"node_type_id\": \"500123\",\n      \"driver_node_type_id\": \"500123\",\n      \"num_workers\": 10,\n      \"state\": \"PENDING\",\n      \"state_message\": \"example_value\",\n      \"start_time\": 10,\n      \"terminated_time\": 10,\n      \"last_state_loss_time\": 10,\n      \"last_activity_time\": 10,\n      \"last_restarted_time\": 10,\n      \"creator_user_name\": \"example_value\",\n      \"cluster_source\": \"UI\",\n      \"spark_conf\": \"example_value\",\n      \"custom_tags\": \"example_value\",\n      \"spark_env_vars\": \"example_value\",\n      \"autotermination_minutes\": 10,\n      \"enable_elastic_disk\": true,\n      \"instance_pool_id\": \"500123\",\n      \"policy_id\": \"500123\",\n      \"data_security_mode\": \"example_value\",\n      \"single_user_name\": \"example_value\",\n      \"runtime_engine\": \"example_value\",\n      \"default_tags\": \"example_value\",\n      \"cluster_log_status\": {\n        \"last_attempted\": 10,\n        \"last_exception\": \"example_value\"\n      },\n      \"termination_reason\": {\n        \"code\": \"example_value\",\n        \"type\": \"example_value\",\n        \"parameters\": \"example_value\"\n      },\n      \"disk_spec\": {\n        \"disk_count\": 10,\n        \"disk_size\": 10,\n        \"disk_type\": {}\n      },\n      \"executors\": [\n        {}\n      ],\n      \"jdbc_port\": 10,\n      \"spark_context_id\": \"500123\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "622b59a4-14df-49b5-b26c-68d8691c8c5f",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "can_use_client",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a27adaf-b4c6-4716-817a-28e56952cc86",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "can_use_client",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33c70ed2-90fb-4329-8a84-9c731e461d99",
+          "name": "Databricks Get Cluster Details",
+          "request": {
+            "name": "Databricks Get Cluster Details",
+            "description": {
+              "content": "Retrieves detailed information about a cluster, including its current state, configuration, and runtime properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cluster_id",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier of the cluster."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "356c84a7-d30c-4c8a-979b-daab647be794",
+              "name": "Successfully retrieved cluster details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster_id\": \"500123\",\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"state\": \"PENDING\",\n  \"state_message\": \"example_value\",\n  \"start_time\": 10,\n  \"terminated_time\": 10,\n  \"last_state_loss_time\": 10,\n  \"last_activity_time\": 10,\n  \"last_restarted_time\": 10,\n  \"creator_user_name\": \"example_value\",\n  \"cluster_source\": \"UI\",\n  \"spark_conf\": \"example_value\",\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"data_security_mode\": \"example_value\",\n  \"single_user_name\": \"example_value\",\n  \"runtime_engine\": \"example_value\",\n  \"default_tags\": \"example_value\",\n  \"cluster_log_status\": {\n    \"last_attempted\": 10,\n    \"last_exception\": \"example_value\"\n  },\n  \"termination_reason\": {\n    \"code\": \"example_value\",\n    \"type\": \"example_value\",\n    \"parameters\": \"example_value\"\n  },\n  \"disk_spec\": {\n    \"disk_count\": 10,\n    \"disk_size\": 10,\n    \"disk_type\": {\n      \"azure_disk_volume_type\": \"example_value\",\n      \"ebs_volume_type\": \"example_value\"\n    }\n  },\n  \"driver\": {\n    \"private_ip\": \"example_value\",\n    \"public_dns\": \"example_value\",\n    \"node_id\": \"500123\",\n    \"instance_id\": \"500123\",\n    \"start_timestamp\": 10,\n    \"host_private_ip\": \"example_value\"\n  },\n  \"executors\": [\n    {\n      \"private_ip\": \"example_value\",\n      \"public_dns\": \"example_value\",\n      \"node_id\": \"500123\",\n      \"instance_id\": \"500123\",\n      \"start_timestamp\": 10,\n      \"host_private_ip\": \"example_value\"\n    }\n  ],\n  \"jdbc_port\": 10,\n  \"spark_context_id\": \"500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a09c58e-7140-4658-aff8-1ea47b9cf43b",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "933b5d1a-a7f5-421c-83f8-724125ef276b",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14df107d-dbfc-4c9b-b4be-dbcc6ea07eac",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62e5820f-7fc4-4aa4-91e9-97e05b2863e6",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a927ba85-cb7c-4440-96d8-b72e00a4f9e6",
+          "name": "Databricks Start a Terminated Cluster",
+          "request": {
+            "name": "Databricks Start a Terminated Cluster",
+            "description": {
+              "content": "Starts a terminated cluster given its cluster_id. This is similar to creating a cluster except it uses the configuration of the previously terminated cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "503acc2c-0681-453b-9681-6b84e0af98fb",
+              "name": "Cluster start initiated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e704cff9-e696-4728-abe8-e7ede4070138",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f37d859-e2d5-49c2-b255-428048f60386",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12b24b71-172b-44f1-9802-6ad31f313724",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0b83774-bec0-449a-8fd1-517e1b334e53",
+          "name": "Databricks Restart a Cluster",
+          "request": {
+            "name": "Databricks Restart a Cluster",
+            "description": {
+              "content": "Restarts a Spark cluster given its cluster_id. If the cluster is not in a RUNNING state, nothing happens.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "restart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44f3a679-55ec-4c90-ba1f-b1699be7a86e",
+              "name": "Cluster restart initiated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "restart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7d4340d-a168-4645-b351-a95340c9302c",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "restart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f92758ca-8cf0-426f-ac3a-10920274c3f9",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "restart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2180a385-c6ce-4151-aa46-520f55bb10ea",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "restart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df9061bd-c690-4319-8a36-047a765a14f8",
+          "name": "Databricks Terminate a Cluster",
+          "request": {
+            "name": "Databricks Terminate a Cluster",
+            "description": {
+              "content": "Terminates a Spark cluster given its cluster_id. The cluster is removed after being terminated. Use the permanent-delete endpoint if you want to remove the cluster configuration entirely.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0cd40160-5490-43b0-a82a-4f3b9652f7d9",
+              "name": "Cluster termination initiated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "309ecea8-29b0-41b8-bfa7-3c40426a94e3",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16163180-972e-4efa-bede-fdf4cb3f806f",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc7bfbc9-d0f2-4585-bc21-3790da39b8f5",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da757efb-cc21-49ac-989a-c271a601413e",
+          "name": "Databricks Permanently Delete a Cluster",
+          "request": {
+            "name": "Databricks Permanently Delete a Cluster",
+            "description": {
+              "content": "Permanently deletes a Spark cluster. If the cluster is running, it is terminated and resources are asynchronously removed. If the cluster is terminated, it is immediately removed. A cluster can only be permanently deleted by an admin or the cluster creator.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "permanent-delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a419d82f-63d0-4ba2-91df-121330acca84",
+              "name": "Cluster permanently deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "permanent-delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75933440-9a31-47f8-ab42-13b1573786ef",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "permanent-delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6c16ea4-55ca-4f52-925b-81866416826b",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "permanent-delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03e58574-311a-4152-a586-93b5d38d620e",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "permanent-delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38993169-f0da-404c-b2a4-e4d60dbbb3ec",
+          "name": "Databricks Edit Cluster Configuration",
+          "request": {
+            "name": "Databricks Edit Cluster Configuration",
+            "description": {
+              "content": "Edits the configuration of a cluster to match the provided attributes. The cluster must be in a RUNNING or TERMINATED state. If the cluster is running, it will be restarted to apply the changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster_id\": \"<string>\",\n  \"cluster_name\": \"<string>\",\n  \"spark_version\": \"<string>\",\n  \"node_type_id\": \"<string>\",\n  \"driver_node_type_id\": \"<string>\",\n  \"num_workers\": \"<integer>\",\n  \"autoscale\": {\n    \"min_workers\": \"<integer>\",\n    \"max_workers\": \"<integer>\"\n  },\n  \"spark_conf\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"custom_tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"spark_env_vars\": {\n    \"key_0\": \"<string>\"\n  },\n  \"autotermination_minutes\": \"<integer>\",\n  \"enable_elastic_disk\": \"<boolean>\",\n  \"instance_pool_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"data_security_mode\": \"<string>\",\n  \"single_user_name\": \"<string>\",\n  \"runtime_engine\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2bd146f2-3c04-4660-b6cb-9fda840a0287",
+              "name": "Cluster configuration updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\",\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"runtime_engine\": \"STANDARD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee9c8cfb-b23f-4d77-ae4d-cc502ee39aa7",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\",\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"runtime_engine\": \"STANDARD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ace8a43c-0a47-405a-b646-d3e374c8cb67",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\",\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"runtime_engine\": \"STANDARD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f668d624-ebc1-4a78-bae8-49f21049a06c",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\",\n  \"cluster_name\": \"example_value\",\n  \"spark_version\": \"example_value\",\n  \"node_type_id\": \"500123\",\n  \"driver_node_type_id\": \"500123\",\n  \"num_workers\": 10,\n  \"autoscale\": {\n    \"min_workers\": 10,\n    \"max_workers\": 10\n  },\n  \"spark_conf\": \"example_value\",\n  \"custom_tags\": \"example_value\",\n  \"spark_env_vars\": \"example_value\",\n  \"autotermination_minutes\": 10,\n  \"enable_elastic_disk\": true,\n  \"instance_pool_id\": \"500123\",\n  \"policy_id\": \"500123\",\n  \"data_security_mode\": \"NONE\",\n  \"single_user_name\": \"example_value\",\n  \"runtime_engine\": \"STANDARD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ea4a957-b003-42de-b511-d7a72af8d416",
+          "name": "Databricks List Cluster Events",
+          "request": {
+            "name": "Databricks List Cluster Events",
+            "description": {
+              "content": "Retrieves a list of events about the activity of a cluster. Events are returned in reverse chronological order. This endpoint can be used to audit cluster activity and monitor lifecycle changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2.0",
+                "clusters",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                  "type": "any",
+                  "value": "{{workspace_host}}",
+                  "key": "workspace_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster_id\": \"<string>\",\n  \"start_time\": \"<long>\",\n  \"end_time\": \"<long>\",\n  \"order\": \"<string>\",\n  \"event_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": \"<long>\",\n  \"limit\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "408168ab-5566-4b21-af1c-10b6255192d4",
+              "name": "Successfully retrieved cluster events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\",\n  \"start_time\": 10,\n  \"end_time\": 10,\n  \"order\": \"DESC\",\n  \"event_types\": [\n    \"CREATING\"\n  ],\n  \"offset\": 10,\n  \"limit\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"cluster_id\": \"500123\",\n      \"timestamp\": 10,\n      \"type\": \"example_value\",\n      \"details\": {\n        \"current_num_workers\": 10,\n        \"target_num_workers\": 10,\n        \"previous_attributes\": \"example_value\",\n        \"attributes\": \"example_value\",\n        \"previous_cluster_size\": \"example_value\",\n        \"cluster_size\": \"example_value\",\n        \"cause\": \"example_value\",\n        \"reason\": {}\n      }\n    }\n  ],\n  \"next_page\": {\n    \"cluster_id\": \"500123\",\n    \"end_time\": 10,\n    \"offset\": 10\n  },\n  \"total_count\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0f1b341-135b-4ddf-bba2-4d65298f9949",
+              "name": "The request is malformed or contains invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\",\n  \"start_time\": 10,\n  \"end_time\": 10,\n  \"order\": \"DESC\",\n  \"event_types\": [\n    \"CREATING\"\n  ],\n  \"offset\": 10,\n  \"limit\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29168cd5-2004-4073-9814-350952537bca",
+              "name": "The request lacks valid authentication credentials. Verify your access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\",\n  \"start_time\": 10,\n  \"end_time\": 10,\n  \"order\": \"DESC\",\n  \"event_types\": [\n    \"CREATING\"\n  ],\n  \"offset\": 10,\n  \"limit\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b31f4709-72d3-4f24-91aa-e9bd0c619f48",
+              "name": "An unexpected error occurred on the server. If the problem persists, contact Databricks support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2.0",
+                    "clusters",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+                      "type": "any",
+                      "value": "{{workspace_host}}",
+                      "key": "workspace_host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster_id\": \"500123\",\n  \"start_time\": 10,\n  \"end_time\": 10,\n  \"order\": \"DESC\",\n  \"event_types\": [\n    \"CREATING\"\n  ],\n  \"offset\": 10,\n  \"limit\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"RESOURCE_DOES_NOT_EXIST\",\n  \"message\": \"Cluster 1234-567890-abcde123 does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your Databricks workspace. Format varies by cloud provider (e.g., adb-<workspace-id>.<random>.azuredatabricks.net for Azure, <workspace-id>.cloud.databricks.com for AWS).",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "adb-1234567890123456.7.azuredatabricks.net",
+      "key": "workspace_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{workspace_host}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6fa53f79-04a4-44e0-bd99-0799120e9992",
+    "name": "Databricks REST Clusters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Databricks REST API provides programmatic access to manage Databricks workspace resources including clusters, jobs, and workspace objects. All API endpoints require authentication using a personal access token or OAuth token passed via the Authorization header. The base URL is specific to your Databricks workspace deployment region.\n\nContact Support:\n Name: Databricks\n Email: support@databricks.com",
+      "type": "text/plain"
+    }
+  }
+}
