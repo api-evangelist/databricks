@@ -1058,7 +1058,7 @@ maintainers:
 - name: Databricks
   email: support@databricks.com
   url: https://www.databricks.com/
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 common:
 - type: AgenticAccess
   url: agentic-access/databricks-agentic-access.yml
