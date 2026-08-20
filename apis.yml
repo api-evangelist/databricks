@@ -23,6 +23,10 @@ apis:
   name: Databricks DBFS API
   tags:
   - Data
+  - File
+  - Storage
+  tags_raw:
+  - Data
   - Files
   - Storage
   humanURL: https://docs.databricks.com/api/workspace/dbfs
@@ -64,6 +68,10 @@ apis:
 - aid: databricks:serving-endpoints-api
   name: Databricks Serving Endpoints API
   tags:
+  - Artificial Intelligence
+  - Machine-Learning
+  - Model Serving
+  tags_raw:
   - AI
   - Machine Learning
   - Model Serving
@@ -93,6 +101,10 @@ apis:
 - aid: databricks:instance-pools-api
   name: Databricks Instance Pools API
   tags:
+  - Cluster
+  - Compute
+  - Infrastructure
+  tags_raw:
   - Clusters
   - Compute
   - Infrastructure
@@ -135,6 +147,10 @@ apis:
 - aid: databricks:vector-search-indexes-api
   name: Databricks Vector Search Indexes API
   tags:
+  - Artificial Intelligence
+  - Embeddings
+  - Vector Search
+  tags_raw:
   - AI
   - Embeddings
   - Vector Search
@@ -149,6 +165,10 @@ apis:
 - aid: databricks:model-versions-api
   name: Databricks Model Versions API
   tags:
+  - Machine-Learning
+  - MLflow
+  - Model Registry
+  tags_raw:
   - Machine Learning
   - MLflow
   - Model Registry
@@ -205,6 +225,10 @@ apis:
 - aid: databricks:cluster-policies-api
   name: Databricks Cluster Policies API
   tags:
+  - Cluster
+  - Governance
+  - Policies
+  tags_raw:
   - Clusters
   - Governance
   - Policies
@@ -219,6 +243,10 @@ apis:
 - aid: databricks:libraries-api
   name: Databricks Libraries API
   tags:
+  - Cluster
+  - Dependencies
+  - Libraries
+  tags_raw:
   - Clusters
   - Dependencies
   - Libraries
@@ -261,6 +289,10 @@ apis:
 - aid: databricks:statement-execution-api
   name: Databricks Statement Execution API
   tags:
+  - Query
+  - SQL
+  - Warehouses
+  tags_raw:
   - Queries
   - SQL
   - Warehouses
@@ -275,6 +307,10 @@ apis:
 - aid: databricks:queries-api
   name: Databricks Queries API
   tags:
+  - Analytics
+  - Query
+  - SQL
+  tags_raw:
   - Analytics
   - Queries
   - SQL
@@ -430,6 +466,10 @@ apis:
 - aid: databricks:registered-models-api
   name: Databricks Registered Models API
   tags:
+  - Machine-Learning
+  - MLflow
+  - Model Registry
+  tags_raw:
   - Machine Learning
   - MLflow
   - Model Registry
@@ -444,6 +484,10 @@ apis:
 - aid: databricks:experiments-api
   name: Databricks Experiments API
   tags:
+  - Experiments
+  - Machine-Learning
+  - MLflow
+  tags_raw:
   - Experiments
   - Machine Learning
   - MLflow
@@ -486,6 +530,10 @@ apis:
 - aid: databricks:vector-search-endpoints-api
   name: Databricks Vector Search Endpoints API
   tags:
+  - Artificial Intelligence
+  - Compute
+  - Vector Search
+  tags_raw:
   - AI
   - Compute
   - Vector Search
@@ -558,6 +606,10 @@ apis:
   tags:
   - Alerts
   - Integration
+  - Notification
+  tags_raw:
+  - Alerts
+  - Integration
   - Notifications
   humanURL: https://docs.databricks.com/api/workspace/notificationdestinations
   properties:
@@ -570,6 +622,10 @@ apis:
 - aid: databricks:apps-api
   name: Databricks Apps API
   tags:
+  - Application
+  - Deployment
+  - Development
+  tags_raw:
   - Applications
   - Deployment
   - Development
@@ -598,6 +654,10 @@ apis:
 - aid: databricks:files-api
   name: Databricks Files API
   tags:
+  - File
+  - Storage
+  - Unity Catalog
+  tags_raw:
   - Files
   - Storage
   - Unity Catalog
@@ -642,6 +702,10 @@ apis:
   tags:
   - Authentication
   - Identity
+  - User
+  tags_raw:
+  - Authentication
+  - Identity
   - Users
   humanURL: https://docs.databricks.com/api/workspace/currentuser
   properties:
@@ -654,6 +718,10 @@ apis:
 - aid: databricks:groups-api
   name: Databricks Groups API
   tags:
+  - Access Control
+  - Group
+  - Identity
+  tags_raw:
   - Access Control
   - Groups
   - Identity
@@ -684,6 +752,10 @@ apis:
   tags:
   - Administration
   - Identity
+  - User
+  tags_raw:
+  - Administration
+  - Identity
   - Users
   humanURL: https://docs.databricks.com/api/workspace/users
   properties:
@@ -710,6 +782,10 @@ apis:
 - aid: databricks:model-registry-api
   name: Databricks Model Registry API
   tags:
+  - Machine-Learning
+  - MLflow
+  - Model Registry
+  tags_raw:
   - Machine Learning
   - MLflow
   - Model Registry
@@ -769,6 +845,8 @@ apis:
     Manage Databricks clusters for running data engineering and data science workloads on Apache Spark.
   humanURL: ' https://www.databricks.com'
   tags:
+  - Cluster
+  tags_raw:
   - Clusters
   properties:
   - type: OpenAPI
@@ -839,6 +917,8 @@ apis:
     Create and manage automated workloads including notebooks, JARs, Python scripts, and multi-task workflows.
   humanURL: ' https://www.databricks.com'
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -974,6 +1054,30 @@ apis:
     url: json-schema/databricks-workspace-object-schema.json
 name: Databricks
 tags:
+- Artificial Intelligence
+- Analytics
+- Apache Spark
+- Big Data
+- Clean Rooms
+- Cloud Computing
+- Data
+- Data Analytics
+- Data Engineering
+- Data Governance
+- Delta Lake
+- Delta Sharing
+- ETL
+- Identity Management
+- Lakehouse
+- Machine-Learning
+- MLflow
+- Model Serving
+- Security
+- SQL
+- Unity Catalog
+- Vector Search
+- Visualize
+tags_raw:
 - AI
 - Analytics
 - Apache Spark
