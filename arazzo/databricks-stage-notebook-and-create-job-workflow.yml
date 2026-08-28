@@ -12,8 +12,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: databricksApi
-  url: ../openapi/databricks-openapi.yml
+- name: jobsApi
+  url: ../openapi/databricks-jobs-api-openapi.yml
+  type: openapi
+- name: workspaceApi
+  url: ../openapi/databricks-workspace-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: stage-notebook-and-create-job

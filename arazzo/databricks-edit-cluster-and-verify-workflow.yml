@@ -12,8 +12,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: databricksApi
-  url: ../openapi/databricks-openapi.yml
+- name: clustersApi
+  url: ../openapi/databricks-clusters-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: edit-cluster-and-verify

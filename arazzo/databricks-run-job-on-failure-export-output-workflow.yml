@@ -12,8 +12,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: databricksApi
-  url: ../openapi/databricks-openapi.yml
+- name: jobsApi
+  url: ../openapi/databricks-jobs-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: run-job-branch-on-result
