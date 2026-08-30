@@ -590,6 +590,10 @@ apis:
 - aid: databricks:clean-rooms-api
   name: Databricks Clean Rooms API
   tags:
+  - Cleanrooms
+  - Collaboration
+  - Privacy
+  tags_raw:
   - Clean Rooms
   - Collaboration
   - Privacy
@@ -1058,7 +1062,7 @@ tags:
 - Analytics
 - Apache Spark
 - Big Data
-- Clean Rooms
+- Cleanrooms
 - Cloud Computing
 - Data
 - Data Analytics
