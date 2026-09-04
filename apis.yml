@@ -1120,22 +1120,23 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: paid
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Paid · Self-serve signup
-  confidence: high
+  label: Paid
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://www.databricks.com/en-website-assets/static/f9f2b15ae456c41f7d2e5b303c8c6c6e/databricks-logo.svg
 access: 3rd-Party
 created: '2025-01-14'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 description: Collection of Databricks REST APIs for managing workspaces, clusters,
   jobs, and data operations.
 integrations:
