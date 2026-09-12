@@ -1181,6 +1181,8 @@ maintainers:
   url: https://www.databricks.com/
 specificationVersion: '0.23'
 common:
+- type: Website
+  url: https://www.databricks.com/
 - type: CapabilityMap
   url: capabilities/databricks-capability-edges.yml
   name: Databricks Business Capability Map
