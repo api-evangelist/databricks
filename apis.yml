@@ -1066,11 +1066,12 @@ apis:
     url: json-schema/databricks-workspace-object-schema.json
 name: Databricks
 tags:
+- Cleanroom
+- Databricks
 - Artificial Intelligence
 - Analytics
 - Apache Spark
 - Big Data
-- Cleanroom
 - Cloud Computing
 - Data
 - Data Analytics
