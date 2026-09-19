@@ -42,6 +42,10 @@ apis:
   tags:
   - Analytics
   - SQL
+  - Warehouse
+  tags_raw:
+  - Analytics
+  - SQL
   - Warehouses
   humanURL: https://docs.databricks.com/api/workspace/warehouses
   properties:
@@ -291,7 +295,7 @@ apis:
   tags:
   - Query
   - SQL
-  - Warehouses
+  - Warehouse
   tags_raw:
   - Queries
   - SQL
@@ -339,6 +343,10 @@ apis:
 - aid: databricks:schemas-api
   name: Databricks Schemas API
   tags:
+  - Data Governance
+  - Schema
+  - Unity Catalog
+  tags_raw:
   - Data Governance
   - Schemas
   - Unity Catalog
@@ -590,7 +598,7 @@ apis:
 - aid: databricks:clean-rooms-api
   name: Databricks Clean Rooms API
   tags:
-  - Cleanrooms
+  - Cleanroom
   - Collaboration
   - Privacy
   tags_raw:
@@ -1062,7 +1070,7 @@ tags:
 - Analytics
 - Apache Spark
 - Big Data
-- Cleanrooms
+- Cleanroom
 - Cloud Computing
 - Data
 - Data Analytics
@@ -1081,8 +1089,9 @@ tags:
 - Unity Catalog
 - Vector Search
 - Visualize
-- Databricks
 tags_raw:
+- Cleanrooms
+- Databricks
 - AI
 - Analytics
 - Apache Spark
