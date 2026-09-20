@@ -1192,6 +1192,10 @@ maintainers:
   url: https://www.databricks.com/
 specificationVersion: '0.23'
 common:
+- type: Pricing
+  url: https://www.databricks.com/product/pricing
+- type: Plans
+  url: plans/databricks-plans-pricing.yml
 - type: Website
   url: https://www.databricks.com/
 - type: CapabilityMap
