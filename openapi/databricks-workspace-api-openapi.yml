@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Databricks REST Clusters Workspace API
+  title: Databricks REST Workspace API
   description: The Databricks REST API provides programmatic access to manage Databricks workspace resources including clusters, jobs, and workspace objects. All API endpoints require authentication using a personal access token or OAuth token passed via the Authorization header. The base URL is specific to your Databricks workspace deployment region.
   version: 2.1.0
   contact:
@@ -348,6 +348,19 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: A machine-readable error code.
+          examples:
+          - RESOURCE_DOES_NOT_EXIST
+        message:
+          type: string
+          description: A human-readable error message.
+          examples:
+          - Cluster 1234-567890-abcde123 does not exist
     WorkspaceObject:
       type: object
       properties:
@@ -399,26 +412,7 @@ components:
           format: int64
           description: The file size in bytes (for FILE objects).
           example: 10
-    ErrorResponse:
-      type: object
-      properties:
-        error_code:
-          type: string
-          description: A machine-readable error code.
-          examples:
-          - RESOURCE_DOES_NOT_EXIST
-        message:
-          type: string
-          description: A human-readable error message.
-          examples:
-          - Cluster 1234-567890-abcde123 does not exist
   responses:
-    Unauthorized:
-      description: The request lacks valid authentication credentials. Verify your access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: The request is malformed or contains invalid parameters.
       content:
@@ -433,6 +427,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerError:
       description: An unexpected error occurred on the server. If the problem persists, contact Databricks support.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: The request lacks valid authentication credentials. Verify your access token.
       content:
         application/json:
           schema:
