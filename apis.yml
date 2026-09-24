@@ -7,12 +7,10 @@ apis:
   - Analytics
   - Data
   - Visualize
-  humanURL: ' https://www.databricks.com'
+  humanURL: https://www.databricks.com
   properties:
   - url: https://docs.databricks.com/api/workspace/introduction
     type: APIReference
-  - url: graphql/databricks-graphql.md
-    type: GraphQL
   description: >-
     Databricks is a cloud-based data platform that simplifies and accelerates the process of preparing
     and analyzing large volumes of data. The platform integrates with popular data sources and tools,
@@ -73,12 +71,13 @@ apis:
   name: Databricks Serving Endpoints API
   tags:
   - Artificial Intelligence
-  - Machine-Learning
+  - Machine Learning
   - Model Serving
   tags_raw:
   - AI
   - Machine Learning
   - Model Serving
+  - Machine-Learning
   humanURL: https://docs.databricks.com/api/workspace/servingendpoints
   properties:
   - url: https://docs.databricks.com/api/workspace/servingendpoints
@@ -169,13 +168,14 @@ apis:
 - aid: databricks:model-versions-api
   name: Databricks Model Versions API
   tags:
-  - Machine-Learning
+  - Machine Learning
   - MLflow
   - Model Registry
   tags_raw:
   - Machine Learning
   - MLflow
   - Model Registry
+  - Machine-Learning
   humanURL: https://docs.databricks.com/api/workspace/modelversions
   properties:
   - url: https://docs.databricks.com/api/workspace/modelversions
@@ -249,7 +249,7 @@ apis:
   tags:
   - Cluster
   - Dependencies
-  - Libraries
+  - Library
   tags_raw:
   - Clusters
   - Dependencies
@@ -474,13 +474,14 @@ apis:
 - aid: databricks:registered-models-api
   name: Databricks Registered Models API
   tags:
-  - Machine-Learning
+  - Machine Learning
   - MLflow
   - Model Registry
   tags_raw:
   - Machine Learning
   - MLflow
   - Model Registry
+  - Machine-Learning
   humanURL: https://docs.databricks.com/api/workspace/registeredmodels
   properties:
   - url: https://docs.databricks.com/api/workspace/registeredmodels
@@ -493,12 +494,13 @@ apis:
   name: Databricks Experiments API
   tags:
   - Experiments
-  - Machine-Learning
+  - Machine Learning
   - MLflow
   tags_raw:
   - Experiments
   - Machine Learning
   - MLflow
+  - Machine-Learning
   humanURL: https://docs.databricks.com/api/workspace/experiments
   properties:
   - url: https://docs.databricks.com/api/workspace/experiments
@@ -794,13 +796,14 @@ apis:
 - aid: databricks:model-registry-api
   name: Databricks Model Registry API
   tags:
-  - Machine-Learning
+  - Machine Learning
   - MLflow
   - Model Registry
   tags_raw:
   - Machine Learning
   - MLflow
   - Model Registry
+  - Machine-Learning
   humanURL: https://docs.databricks.com/api/workspace/modelregistry
   properties:
   - url: https://docs.databricks.com/api/workspace/modelregistry
@@ -855,7 +858,7 @@ apis:
   name: Databricks Clusters API
   description: >-
     Manage Databricks clusters for running data engineering and data science workloads on Apache Spark.
-  humanURL: ' https://www.databricks.com'
+  humanURL: https://www.databricks.com
   tags:
   - Cluster
   tags_raw:
@@ -927,7 +930,7 @@ apis:
   name: Databricks Jobs API
   description: >-
     Create and manage automated workloads including notebooks, JARs, Python scripts, and multi-task workflows.
-  humanURL: ' https://www.databricks.com'
+  humanURL: https://www.databricks.com
   tags:
   - Job
   tags_raw:
@@ -998,7 +1001,7 @@ apis:
 - aid: databricks:databricks-workspace-api
   name: Databricks Workspace API
   description: Manage workspace objects such as notebooks, folders, and libraries.
-  humanURL: ' https://www.databricks.com'
+  humanURL: https://www.databricks.com
   tags:
   - Workspace
   properties:
@@ -1082,7 +1085,7 @@ tags:
 - ETL
 - Identity Management
 - Lakehouse
-- Machine-Learning
+- Machine Learning
 - MLflow
 - Model Serving
 - Security
@@ -1090,6 +1093,7 @@ tags:
 - Unity Catalog
 - Vector Search
 - Visualize
+- Data Catalog
 tags_raw:
 - Cleanrooms
 - Databricks
@@ -1116,6 +1120,8 @@ tags_raw:
 - Unity Catalog
 - Vector Search
 - Visualize
+- Machine-Learning
+- Data Catalog
 type: Index
 deliveryModel:
   model: saas
