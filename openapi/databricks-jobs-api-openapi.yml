@@ -941,126 +941,218 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    AwsAttributes:
+    CreateClusterRequest:
       type: object
+      required:
+      - cluster_name
+      - spark_version
+      - node_type_id
       properties:
-        first_on_demand:
-          type: integer
-          description: Number of on-demand instances to place first.
-          example: 10
-        availability:
+        cluster_name:
           type: string
-          enum:
-          - SPOT
-          - ON_DEMAND
-          - SPOT_WITH_FALLBACK
-          example: SPOT
-        zone_id:
+          description: A human-readable name for the cluster. This does not need to be unique.
+          examples:
+          - my-data-cluster
+        spark_version:
           type: string
-          description: The availability zone identifier (e.g., us-west-2a).
+          description: The runtime version of the cluster. You can retrieve a list of available runtime versions using the Runtime Versions API.
+          examples:
+          - 14.3.x-scala2.12
+        node_type_id:
+          type: string
+          description: The node type for worker nodes. This field determines the cloud provider instance type.
+          examples:
+          - i3.xlarge
+        driver_node_type_id:
+          type: string
+          description: The node type for the Spark driver. If not specified, defaults to the same value as node_type_id.
           example: '500123'
-        instance_profile_arn:
-          type: string
-          description: IAM instance profile ARN for the cluster instances.
+        num_workers:
+          type: integer
+          description: Number of worker nodes for a fixed-size cluster. A cluster has one Spark driver and num_workers executors. Set to 0 for a single-node cluster.
+          examples:
+          - 2
+        autoscale:
+          $ref: '#/components/schemas/AutoScale'
+        spark_conf:
+          type: object
+          additionalProperties:
+            type: string
+          description: A map of Spark configuration key-value pairs. These override the default Spark configuration values.
           example: example_value
-        spot_bid_price_percent:
+        aws_attributes:
+          $ref: '#/components/schemas/AwsAttributes'
+        azure_attributes:
+          $ref: '#/components/schemas/AzureAttributes'
+        gcp_attributes:
+          $ref: '#/components/schemas/GcpAttributes'
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional tags for cluster resources. Tags are propagated to the cloud provider for cost tracking.
+          example: example_value
+        spark_env_vars:
+          type: object
+          additionalProperties:
+            type: string
+          description: Environment variables for all Spark processes. Use {{secrets/scope/key}} to reference secrets.
+          example: example_value
+        autotermination_minutes:
           type: integer
-          description: Max bid price as percentage of on-demand price.
+          description: Minutes of inactivity after which the cluster is automatically terminated. 0 disables auto-termination.
+          default: 120
           example: 10
-        ebs_volume_type:
+        enable_elastic_disk:
+          type: boolean
+          description: Whether to autoscale local storage. When enabled, Databricks monitors disk usage and attaches additional disks as needed.
+          example: true
+        instance_pool_id:
+          type: string
+          description: The optional ID of the instance pool to use for cluster nodes.
+          example: '500123'
+        policy_id:
+          type: string
+          description: The ID of the cluster policy to apply. Cluster policies constrain the configuration settings.
+          example: '500123'
+        enable_local_disk_encryption:
+          type: boolean
+          description: Whether to encrypt data on local disks.
+          example: true
+        runtime_engine:
           type: string
           enum:
-          - GENERAL_PURPOSE_SSD
-          - THROUGHPUT_OPTIMIZED_HDD
-          example: GENERAL_PURPOSE_SSD
-        ebs_volume_count:
-          type: integer
-          example: 10
-        ebs_volume_size:
-          type: integer
-          example: 10
-    Run:
+          - STANDARD
+          - PHOTON
+          description: The runtime engine. PHOTON enables the Photon vectorized query engine for faster performance.
+          example: STANDARD
+        data_security_mode:
+          type: string
+          enum:
+          - NONE
+          - SINGLE_USER
+          - USER_ISOLATION
+          - LEGACY_TABLE_ACL
+          - LEGACY_PASSTHROUGH
+          - LEGACY_SINGLE_USER
+          - LEGACY_SINGLE_USER_STANDARD
+          description: Data security mode for the cluster.
+          example: NONE
+        single_user_name:
+          type: string
+          description: The user name (email) of the single user for SINGLE_USER access mode.
+          example: example_value
+        init_scripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/InitScriptInfo'
+          description: Init scripts to run when the cluster starts.
+          example: []
+        ssh_public_keys:
+          type: array
+          items:
+            type: string
+          description: SSH public keys to add to each Spark node.
+          example: []
+    RunTask:
       type: object
       properties:
-        job_id:
-          type: integer
-          format: int64
-          example: '500123'
         run_id:
           type: integer
           format: int64
-          description: The canonical identifier of the run.
           example: '500123'
-        run_name:
+        task_key:
           type: string
           example: example_value
-        number_in_job:
-          type: integer
-          format: int64
-          example: 10
-        original_attempt_run_id:
-          type: integer
-          format: int64
-          example: '500123'
+        description:
+          type: string
+          example: A sample description.
         state:
           type: object
           properties:
             life_cycle_state:
               type: string
-              enum:
-              - PENDING
-              - RUNNING
-              - TERMINATING
-              - TERMINATED
-              - SKIPPED
-              - INTERNAL_ERROR
-              - BLOCKED
-              - WAITING_FOR_RETRY
-              - QUEUED
-              description: The current life cycle state of the run.
             result_state:
               type: string
-              enum:
-              - SUCCESS
-              - FAILED
-              - TIMEDOUT
-              - CANCELED
-              - MAXIMUM_CONCURRENT_RUNS_REACHED
-              - EXCLUDED
-              - SUCCESS_WITH_FAILURES
-              - UPSTREAM_FAILED
-              - UPSTREAM_CANCELED
-              description: The result state of the run, if completed.
             state_message:
               type: string
-              description: A descriptive message for the current state.
-            user_cancelled_or_timedout:
-              type: boolean
           example: example_value
-        schedule:
-          $ref: '#/components/schemas/CronSchedule'
-        tasks:
+        depends_on:
           type: array
           items:
-            $ref: '#/components/schemas/RunTask'
+            type: object
+            properties:
+              task_key:
+                type: string
           example: []
-        job_clusters:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobCluster'
-          example: []
-        cluster_spec:
+        existing_cluster_id:
+          type: string
+          example: '500123'
+        new_cluster:
+          $ref: '#/components/schemas/CreateClusterRequest'
+        notebook_task:
           type: object
           properties:
-            existing_cluster_id:
+            notebook_path:
               type: string
-            new_cluster:
-              $ref: '#/components/schemas/CreateClusterRequest'
-            libraries:
+            source:
+              type: string
+            base_parameters:
+              type: object
+              additionalProperties:
+                type: string
+          example: example_value
+        spark_jar_task:
+          type: object
+          properties:
+            main_class_name:
+              type: string
+            parameters:
               type: array
               items:
-                $ref: '#/components/schemas/Library'
+                type: string
           example: example_value
+        spark_python_task:
+          type: object
+          properties:
+            python_file:
+              type: string
+            parameters:
+              type: array
+              items:
+                type: string
+          example: example_value
+        sql_task:
+          type: object
+          properties:
+            query:
+              type: object
+              properties:
+                query_id:
+                  type: string
+            warehouse_id:
+              type: string
+          example: example_value
+        start_time:
+          type: integer
+          format: int64
+          example: 10
+        setup_duration:
+          type: integer
+          format: int64
+          example: 10
+        execution_duration:
+          type: integer
+          format: int64
+          example: 10
+        cleanup_duration:
+          type: integer
+          format: int64
+          example: 10
+        end_time:
+          type: integer
+          format: int64
+          example: 10
         cluster_instance:
           type: object
           properties:
@@ -1069,148 +1161,88 @@ components:
             spark_context_id:
               type: string
           example: example_value
-        start_time:
-          type: integer
-          format: int64
-          description: The start time of the run in epoch milliseconds.
-          example: 10
-        setup_duration:
-          type: integer
-          format: int64
-          description: Setup duration in milliseconds.
-          example: 10
-        execution_duration:
-          type: integer
-          format: int64
-          description: Execution duration in milliseconds.
-          example: 10
-        cleanup_duration:
-          type: integer
-          format: int64
-          description: Cleanup duration in milliseconds.
-          example: 10
-        end_time:
-          type: integer
-          format: int64
-          description: End time in epoch milliseconds.
-          example: 10
-        trigger:
-          type: string
-          enum:
-          - PERIODIC
-          - ONE_TIME
-          - RETRY
-          - RUN_JOB_TASK
-          - FILE_ARRIVAL
-          example: PERIODIC
-        run_type:
-          type: string
-          enum:
-          - JOB_RUN
-          - WORKFLOW_RUN
-          - SUBMIT_RUN
-          example: JOB_RUN
         attempt_number:
           type: integer
           example: 10
-        creator_user_name:
+        libraries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Library'
+          example: []
+    JobSettings:
+      type: object
+      properties:
+        name:
           type: string
+          example: Example Title
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskSettings'
+          example: []
+        job_clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobCluster'
+          example: []
+        email_notifications:
+          $ref: '#/components/schemas/JobEmailNotifications'
+        webhook_notifications:
+          $ref: '#/components/schemas/WebhookNotifications'
+        timeout_seconds:
+          type: integer
+          example: 10
+        schedule:
+          $ref: '#/components/schemas/CronSchedule'
+        max_concurrent_runs:
+          type: integer
+          example: 10
+        git_source:
+          $ref: '#/components/schemas/GitSource'
+        tags:
+          type: object
+          additionalProperties:
+            type: string
           example: example_value
-        run_page_url:
-          type: string
-          description: URL of the run page in the Databricks workspace.
-          example: https://www.example.com
         format:
           type: string
           enum:
           - SINGLE_TASK
           - MULTI_TASK
           example: SINGLE_TASK
-        git_source:
-          $ref: '#/components/schemas/GitSource'
-    GitSource:
-      type: object
-      required:
-      - git_url
-      - git_provider
-      properties:
-        git_url:
-          type: string
-          description: URL of the Git repository.
-          example: https://www.example.com
-        git_provider:
-          type: string
-          enum:
-          - gitHub
-          - bitbucketCloud
-          - gitLab
-          - azureDevOpsServices
-          - gitHubEnterprise
-          - bitbucketServer
-          - gitLabEnterpriseEdition
-          - awsCodeCommit
-          description: The Git provider.
-          example: gitHub
-        git_branch:
-          type: string
-          description: Branch to use.
+        queue:
+          type: object
+          properties:
+            enabled:
+              type: boolean
           example: example_value
-        git_tag:
-          type: string
-          description: Tag to use.
+        continuous:
+          type: object
+          properties:
+            pause_status:
+              type: string
+              enum:
+              - PAUSED
+              - UNPAUSED
           example: example_value
-        git_commit:
-          type: string
-          description: Commit hash to use.
+        parameters:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              default:
+                type: string
+          example: []
+        run_as:
+          type: object
+          properties:
+            user_name:
+              type: string
+            service_principal_name:
+              type: string
           example: example_value
-    AutoScale:
-      type: object
-      properties:
-        min_workers:
-          type: integer
-          description: The minimum number of workers the cluster can scale down to.
-          example: 10
-        max_workers:
-          type: integer
-          description: The maximum number of workers the cluster can scale up to.
-          example: 10
-      description: Autoscaling configuration. When set, num_workers is ignored and the cluster scales between min_workers and max_workers.
-    AccessControlRequest:
-      type: object
-      properties:
-        user_name:
-          type: string
-          example: example_value
-        group_name:
-          type: string
-          example: example_value
-        service_principal_name:
-          type: string
-          example: example_value
-        permission_level:
-          type: string
-          enum:
-          - CAN_MANAGE
-          - CAN_MANAGE_RUN
-          - CAN_VIEW
-          - IS_OWNER
-          example: CAN_MANAGE
-    AzureAttributes:
-      type: object
-      properties:
-        first_on_demand:
-          type: integer
-          example: 10
-        availability:
-          type: string
-          enum:
-          - SPOT_AZURE
-          - ON_DEMAND_AZURE
-          - SPOT_WITH_FALLBACK_AZURE
-          example: SPOT_AZURE
-        spot_bid_max_price:
-          type: number
-          example: 42.5
     TaskSettings:
       type: object
       required:
@@ -1402,6 +1434,292 @@ components:
             $ref: '#/components/schemas/Library'
           description: Libraries to install on the cluster running this task.
           example: []
+    GitSource:
+      type: object
+      required:
+      - git_url
+      - git_provider
+      properties:
+        git_url:
+          type: string
+          description: URL of the Git repository.
+          example: https://www.example.com
+        git_provider:
+          type: string
+          enum:
+          - gitHub
+          - bitbucketCloud
+          - gitLab
+          - azureDevOpsServices
+          - gitHubEnterprise
+          - bitbucketServer
+          - gitLabEnterpriseEdition
+          - awsCodeCommit
+          description: The Git provider.
+          example: gitHub
+        git_branch:
+          type: string
+          description: Branch to use.
+          example: example_value
+        git_tag:
+          type: string
+          description: Tag to use.
+          example: example_value
+        git_commit:
+          type: string
+          description: Commit hash to use.
+          example: example_value
+    AwsAttributes:
+      type: object
+      properties:
+        first_on_demand:
+          type: integer
+          description: Number of on-demand instances to place first.
+          example: 10
+        availability:
+          type: string
+          enum:
+          - SPOT
+          - ON_DEMAND
+          - SPOT_WITH_FALLBACK
+          example: SPOT
+        zone_id:
+          type: string
+          description: The availability zone identifier (e.g., us-west-2a).
+          example: '500123'
+        instance_profile_arn:
+          type: string
+          description: IAM instance profile ARN for the cluster instances.
+          example: example_value
+        spot_bid_price_percent:
+          type: integer
+          description: Max bid price as percentage of on-demand price.
+          example: 10
+        ebs_volume_type:
+          type: string
+          enum:
+          - GENERAL_PURPOSE_SSD
+          - THROUGHPUT_OPTIMIZED_HDD
+          example: GENERAL_PURPOSE_SSD
+        ebs_volume_count:
+          type: integer
+          example: 10
+        ebs_volume_size:
+          type: integer
+          example: 10
+    ErrorResponse:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: A machine-readable error code.
+          examples:
+          - RESOURCE_DOES_NOT_EXIST
+        message:
+          type: string
+          description: A human-readable error message.
+          examples:
+          - Cluster 1234-567890-abcde123 does not exist
+    Run:
+      type: object
+      properties:
+        job_id:
+          type: integer
+          format: int64
+          example: '500123'
+        run_id:
+          type: integer
+          format: int64
+          description: The canonical identifier of the run.
+          example: '500123'
+        run_name:
+          type: string
+          example: example_value
+        number_in_job:
+          type: integer
+          format: int64
+          example: 10
+        original_attempt_run_id:
+          type: integer
+          format: int64
+          example: '500123'
+        state:
+          type: object
+          properties:
+            life_cycle_state:
+              type: string
+              enum:
+              - PENDING
+              - RUNNING
+              - TERMINATING
+              - TERMINATED
+              - SKIPPED
+              - INTERNAL_ERROR
+              - BLOCKED
+              - WAITING_FOR_RETRY
+              - QUEUED
+              description: The current life cycle state of the run.
+            result_state:
+              type: string
+              enum:
+              - SUCCESS
+              - FAILED
+              - TIMEDOUT
+              - CANCELED
+              - MAXIMUM_CONCURRENT_RUNS_REACHED
+              - EXCLUDED
+              - SUCCESS_WITH_FAILURES
+              - UPSTREAM_FAILED
+              - UPSTREAM_CANCELED
+              description: The result state of the run, if completed.
+            state_message:
+              type: string
+              description: A descriptive message for the current state.
+            user_cancelled_or_timedout:
+              type: boolean
+          example: example_value
+        schedule:
+          $ref: '#/components/schemas/CronSchedule'
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunTask'
+          example: []
+        job_clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobCluster'
+          example: []
+        cluster_spec:
+          type: object
+          properties:
+            existing_cluster_id:
+              type: string
+            new_cluster:
+              $ref: '#/components/schemas/CreateClusterRequest'
+            libraries:
+              type: array
+              items:
+                $ref: '#/components/schemas/Library'
+          example: example_value
+        cluster_instance:
+          type: object
+          properties:
+            cluster_id:
+              type: string
+            spark_context_id:
+              type: string
+          example: example_value
+        start_time:
+          type: integer
+          format: int64
+          description: The start time of the run in epoch milliseconds.
+          example: 10
+        setup_duration:
+          type: integer
+          format: int64
+          description: Setup duration in milliseconds.
+          example: 10
+        execution_duration:
+          type: integer
+          format: int64
+          description: Execution duration in milliseconds.
+          example: 10
+        cleanup_duration:
+          type: integer
+          format: int64
+          description: Cleanup duration in milliseconds.
+          example: 10
+        end_time:
+          type: integer
+          format: int64
+          description: End time in epoch milliseconds.
+          example: 10
+        trigger:
+          type: string
+          enum:
+          - PERIODIC
+          - ONE_TIME
+          - RETRY
+          - RUN_JOB_TASK
+          - FILE_ARRIVAL
+          example: PERIODIC
+        run_type:
+          type: string
+          enum:
+          - JOB_RUN
+          - WORKFLOW_RUN
+          - SUBMIT_RUN
+          example: JOB_RUN
+        attempt_number:
+          type: integer
+          example: 10
+        creator_user_name:
+          type: string
+          example: example_value
+        run_page_url:
+          type: string
+          description: URL of the run page in the Databricks workspace.
+          example: https://www.example.com
+        format:
+          type: string
+          enum:
+          - SINGLE_TASK
+          - MULTI_TASK
+          example: SINGLE_TASK
+        git_source:
+          $ref: '#/components/schemas/GitSource'
+    Library:
+      type: object
+      properties:
+        jar:
+          type: string
+          description: URI of a JAR to install.
+          example: example_value
+        egg:
+          type: string
+          description: URI of an egg to install (deprecated).
+          example: example_value
+        whl:
+          type: string
+          description: URI of a wheel to install.
+          example: example_value
+        pypi:
+          type: object
+          properties:
+            package:
+              type: string
+              description: The name of the PyPI package to install. An optional version specification can be included.
+            repo:
+              type: string
+              description: The repository URL.
+          example: example_value
+        maven:
+          type: object
+          properties:
+            coordinates:
+              type: string
+              description: Maven coordinates in the form groupId:artifactId:version.
+            repo:
+              type: string
+            exclusions:
+              type: array
+              items:
+                type: string
+          example: example_value
+        cran:
+          type: object
+          properties:
+            package:
+              type: string
+              description: The name of the CRAN package.
+            repo:
+              type: string
+          example: example_value
+        requirements:
+          type: string
+          description: Path to a requirements.txt file.
+          example: example_value
     CreateJobRequest:
       type: object
       properties:
@@ -1522,35 +1840,21 @@ components:
           items:
             $ref: '#/components/schemas/AccessControlRequest'
           example: []
-    JobEmailNotifications:
+    GcpAttributes:
       type: object
       properties:
-        on_start:
-          type: array
-          items:
-            type: string
-          description: Email addresses to notify when a run starts.
-          example: []
-        on_success:
-          type: array
-          items:
-            type: string
-          description: Email addresses to notify when a run succeeds.
-          example: []
-        on_failure:
-          type: array
-          items:
-            type: string
-          description: Email addresses to notify when a run fails.
-          example: []
-        on_duration_warning_threshold_exceeded:
-          type: array
-          items:
-            type: string
-          example: []
-        no_alert_for_skipped_runs:
+        use_preemptible_executors:
           type: boolean
           example: true
+        google_service_account:
+          type: string
+          example: example_value
+        availability:
+          type: string
+          enum:
+          - GCP_PREEMPTIBLE
+          - GCP_ON_DEMAND
+          example: GCP_PREEMPTIBLE
     InitScriptInfo:
       type: object
       properties:
@@ -1573,195 +1877,89 @@ components:
               type: string
           deprecated: true
           example: example_value
-    RunTask:
+    AutoScale:
       type: object
       properties:
-        run_id:
+        min_workers:
           type: integer
-          format: int64
-          example: '500123'
-        task_key:
+          description: The minimum number of workers the cluster can scale down to.
+          example: 10
+        max_workers:
+          type: integer
+          description: The maximum number of workers the cluster can scale up to.
+          example: 10
+      description: Autoscaling configuration. When set, num_workers is ignored and the cluster scales between min_workers and max_workers.
+    AzureAttributes:
+      type: object
+      properties:
+        first_on_demand:
+          type: integer
+          example: 10
+        availability:
           type: string
+          enum:
+          - SPOT_AZURE
+          - ON_DEMAND_AZURE
+          - SPOT_WITH_FALLBACK_AZURE
+          example: SPOT_AZURE
+        spot_bid_max_price:
+          type: number
+          example: 42.5
+    CronSchedule:
+      type: object
+      required:
+      - quartz_cron_expression
+      - timezone_id
+      properties:
+        quartz_cron_expression:
+          type: string
+          description: A Quartz cron expression describing the schedule. See http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html
+          examples:
+          - 0 0 8 * * ?
+        timezone_id:
+          type: string
+          description: A Java timezone ID. The schedule is resolved relative to this timezone.
+          examples:
+          - America/Los_Angeles
+        pause_status:
+          type: string
+          enum:
+          - PAUSED
+          - UNPAUSED
+          description: Whether the schedule is paused.
+          example: PAUSED
+    JobCluster:
+      type: object
+      required:
+      - job_cluster_key
+      - new_cluster
+      properties:
+        job_cluster_key:
+          type: string
+          description: A unique key for the job cluster. Referenced by tasks using job_cluster_key.
           example: example_value
-        description:
-          type: string
-          example: A sample description.
-        state:
-          type: object
-          properties:
-            life_cycle_state:
-              type: string
-            result_state:
-              type: string
-            state_message:
-              type: string
-          example: example_value
-        depends_on:
-          type: array
-          items:
-            type: object
-            properties:
-              task_key:
-                type: string
-          example: []
-        existing_cluster_id:
-          type: string
-          example: '500123'
         new_cluster:
           $ref: '#/components/schemas/CreateClusterRequest'
-        notebook_task:
-          type: object
-          properties:
-            notebook_path:
-              type: string
-            source:
-              type: string
-            base_parameters:
-              type: object
-              additionalProperties:
-                type: string
-          example: example_value
-        spark_jar_task:
-          type: object
-          properties:
-            main_class_name:
-              type: string
-            parameters:
-              type: array
-              items:
-                type: string
-          example: example_value
-        spark_python_task:
-          type: object
-          properties:
-            python_file:
-              type: string
-            parameters:
-              type: array
-              items:
-                type: string
-          example: example_value
-        sql_task:
-          type: object
-          properties:
-            query:
-              type: object
-              properties:
-                query_id:
-                  type: string
-            warehouse_id:
-              type: string
-          example: example_value
-        start_time:
-          type: integer
-          format: int64
-          example: 10
-        setup_duration:
-          type: integer
-          format: int64
-          example: 10
-        execution_duration:
-          type: integer
-          format: int64
-          example: 10
-        cleanup_duration:
-          type: integer
-          format: int64
-          example: 10
-        end_time:
-          type: integer
-          format: int64
-          example: 10
-        cluster_instance:
-          type: object
-          properties:
-            cluster_id:
-              type: string
-            spark_context_id:
-              type: string
-          example: example_value
-        attempt_number:
-          type: integer
-          example: 10
-        libraries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Library'
-          example: []
-    Library:
+    AccessControlRequest:
       type: object
       properties:
-        jar:
+        user_name:
           type: string
-          description: URI of a JAR to install.
           example: example_value
-        egg:
+        group_name:
           type: string
-          description: URI of an egg to install (deprecated).
           example: example_value
-        whl:
+        service_principal_name:
           type: string
-          description: URI of a wheel to install.
           example: example_value
-        pypi:
-          type: object
-          properties:
-            package:
-              type: string
-              description: The name of the PyPI package to install. An optional version specification can be included.
-            repo:
-              type: string
-              description: The repository URL.
-          example: example_value
-        maven:
-          type: object
-          properties:
-            coordinates:
-              type: string
-              description: Maven coordinates in the form groupId:artifactId:version.
-            repo:
-              type: string
-            exclusions:
-              type: array
-              items:
-                type: string
-          example: example_value
-        cran:
-          type: object
-          properties:
-            package:
-              type: string
-              description: The name of the CRAN package.
-            repo:
-              type: string
-          example: example_value
-        requirements:
+        permission_level:
           type: string
-          description: Path to a requirements.txt file.
-          example: example_value
-    Job:
-      type: object
-      properties:
-        job_id:
-          type: integer
-          format: int64
-          description: The canonical identifier for this job.
-          example: '500123'
-        creator_user_name:
-          type: string
-          description: The email of the user who created the job.
-          example: example_value
-        run_as_user_name:
-          type: string
-          description: The email of the user the job runs as.
-          example: example_value
-        settings:
-          $ref: '#/components/schemas/JobSettings'
-        created_time:
-          type: integer
-          format: int64
-          description: The time the job was created in epoch milliseconds.
-          example: 10
+          enum:
+          - CAN_MANAGE
+          - CAN_MANAGE_RUN
+          - CAN_VIEW
+          - IS_OWNER
+          example: CAN_MANAGE
     WebhookNotifications:
       type: object
       properties:
@@ -1797,256 +1995,58 @@ components:
               id:
                 type: string
           example: []
-    CreateClusterRequest:
+    Job:
       type: object
-      required:
-      - cluster_name
-      - spark_version
-      - node_type_id
       properties:
-        cluster_name:
-          type: string
-          description: A human-readable name for the cluster. This does not need to be unique.
-          examples:
-          - my-data-cluster
-        spark_version:
-          type: string
-          description: The runtime version of the cluster. You can retrieve a list of available runtime versions using the Runtime Versions API.
-          examples:
-          - 14.3.x-scala2.12
-        node_type_id:
-          type: string
-          description: The node type for worker nodes. This field determines the cloud provider instance type.
-          examples:
-          - i3.xlarge
-        driver_node_type_id:
-          type: string
-          description: The node type for the Spark driver. If not specified, defaults to the same value as node_type_id.
+        job_id:
+          type: integer
+          format: int64
+          description: The canonical identifier for this job.
           example: '500123'
-        num_workers:
+        creator_user_name:
+          type: string
+          description: The email of the user who created the job.
+          example: example_value
+        run_as_user_name:
+          type: string
+          description: The email of the user the job runs as.
+          example: example_value
+        settings:
+          $ref: '#/components/schemas/JobSettings'
+        created_time:
           type: integer
-          description: Number of worker nodes for a fixed-size cluster. A cluster has one Spark driver and num_workers executors. Set to 0 for a single-node cluster.
-          examples:
-          - 2
-        autoscale:
-          $ref: '#/components/schemas/AutoScale'
-        spark_conf:
-          type: object
-          additionalProperties:
-            type: string
-          description: A map of Spark configuration key-value pairs. These override the default Spark configuration values.
-          example: example_value
-        aws_attributes:
-          $ref: '#/components/schemas/AwsAttributes'
-        azure_attributes:
-          $ref: '#/components/schemas/AzureAttributes'
-        gcp_attributes:
-          $ref: '#/components/schemas/GcpAttributes'
-        custom_tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Additional tags for cluster resources. Tags are propagated to the cloud provider for cost tracking.
-          example: example_value
-        spark_env_vars:
-          type: object
-          additionalProperties:
-            type: string
-          description: Environment variables for all Spark processes. Use {{secrets/scope/key}} to reference secrets.
-          example: example_value
-        autotermination_minutes:
-          type: integer
-          description: Minutes of inactivity after which the cluster is automatically terminated. 0 disables auto-termination.
-          default: 120
+          format: int64
+          description: The time the job was created in epoch milliseconds.
           example: 10
-        enable_elastic_disk:
-          type: boolean
-          description: Whether to autoscale local storage. When enabled, Databricks monitors disk usage and attaches additional disks as needed.
-          example: true
-        instance_pool_id:
-          type: string
-          description: The optional ID of the instance pool to use for cluster nodes.
-          example: '500123'
-        policy_id:
-          type: string
-          description: The ID of the cluster policy to apply. Cluster policies constrain the configuration settings.
-          example: '500123'
-        enable_local_disk_encryption:
-          type: boolean
-          description: Whether to encrypt data on local disks.
-          example: true
-        runtime_engine:
-          type: string
-          enum:
-          - STANDARD
-          - PHOTON
-          description: The runtime engine. PHOTON enables the Photon vectorized query engine for faster performance.
-          example: STANDARD
-        data_security_mode:
-          type: string
-          enum:
-          - NONE
-          - SINGLE_USER
-          - USER_ISOLATION
-          - LEGACY_TABLE_ACL
-          - LEGACY_PASSTHROUGH
-          - LEGACY_SINGLE_USER
-          - LEGACY_SINGLE_USER_STANDARD
-          description: Data security mode for the cluster.
-          example: NONE
-        single_user_name:
-          type: string
-          description: The user name (email) of the single user for SINGLE_USER access mode.
-          example: example_value
-        init_scripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/InitScriptInfo'
-          description: Init scripts to run when the cluster starts.
-          example: []
-        ssh_public_keys:
+    JobEmailNotifications:
+      type: object
+      properties:
+        on_start:
           type: array
           items:
             type: string
-          description: SSH public keys to add to each Spark node.
+          description: Email addresses to notify when a run starts.
           example: []
-    ErrorResponse:
-      type: object
-      properties:
-        error_code:
-          type: string
-          description: A machine-readable error code.
-          examples:
-          - RESOURCE_DOES_NOT_EXIST
-        message:
-          type: string
-          description: A human-readable error message.
-          examples:
-          - Cluster 1234-567890-abcde123 does not exist
-    CronSchedule:
-      type: object
-      required:
-      - quartz_cron_expression
-      - timezone_id
-      properties:
-        quartz_cron_expression:
-          type: string
-          description: A Quartz cron expression describing the schedule. See http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html
-          examples:
-          - 0 0 8 * * ?
-        timezone_id:
-          type: string
-          description: A Java timezone ID. The schedule is resolved relative to this timezone.
-          examples:
-          - America/Los_Angeles
-        pause_status:
-          type: string
-          enum:
-          - PAUSED
-          - UNPAUSED
-          description: Whether the schedule is paused.
-          example: PAUSED
-    GcpAttributes:
-      type: object
-      properties:
-        use_preemptible_executors:
+        on_success:
+          type: array
+          items:
+            type: string
+          description: Email addresses to notify when a run succeeds.
+          example: []
+        on_failure:
+          type: array
+          items:
+            type: string
+          description: Email addresses to notify when a run fails.
+          example: []
+        on_duration_warning_threshold_exceeded:
+          type: array
+          items:
+            type: string
+          example: []
+        no_alert_for_skipped_runs:
           type: boolean
           example: true
-        google_service_account:
-          type: string
-          example: example_value
-        availability:
-          type: string
-          enum:
-          - GCP_PREEMPTIBLE
-          - GCP_ON_DEMAND
-          example: GCP_PREEMPTIBLE
-    JobCluster:
-      type: object
-      required:
-      - job_cluster_key
-      - new_cluster
-      properties:
-        job_cluster_key:
-          type: string
-          description: A unique key for the job cluster. Referenced by tasks using job_cluster_key.
-          example: example_value
-        new_cluster:
-          $ref: '#/components/schemas/CreateClusterRequest'
-    JobSettings:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Example Title
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaskSettings'
-          example: []
-        job_clusters:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobCluster'
-          example: []
-        email_notifications:
-          $ref: '#/components/schemas/JobEmailNotifications'
-        webhook_notifications:
-          $ref: '#/components/schemas/WebhookNotifications'
-        timeout_seconds:
-          type: integer
-          example: 10
-        schedule:
-          $ref: '#/components/schemas/CronSchedule'
-        max_concurrent_runs:
-          type: integer
-          example: 10
-        git_source:
-          $ref: '#/components/schemas/GitSource'
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: example_value
-        format:
-          type: string
-          enum:
-          - SINGLE_TASK
-          - MULTI_TASK
-          example: SINGLE_TASK
-        queue:
-          type: object
-          properties:
-            enabled:
-              type: boolean
-          example: example_value
-        continuous:
-          type: object
-          properties:
-            pause_status:
-              type: string
-              enum:
-              - PAUSED
-              - UNPAUSED
-          example: example_value
-        parameters:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              default:
-                type: string
-          example: []
-        run_as:
-          type: object
-          properties:
-            user_name:
-              type: string
-            service_principal_name:
-              type: string
-          example: example_value
   responses:
     BadRequest:
       description: The request is malformed or contains invalid parameters.
@@ -2060,14 +2060,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: The request lacks valid authentication credentials. Verify your access token.
+    InternalServerError:
+      description: An unexpected error occurred on the server. If the problem persists, contact Databricks support.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalServerError:
-      description: An unexpected error occurred on the server. If the problem persists, contact Databricks support.
+    Unauthorized:
+      description: The request lacks valid authentication credentials. Verify your access token.
       content:
         application/json:
           schema:

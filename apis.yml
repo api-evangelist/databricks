@@ -1,5 +1,8 @@
 aid: databricks
 url: https://raw.githubusercontent.com/api-evangelist/databricks/refs/heads/main/apis.yml
+x-docs-platform: docusaurus
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-25
 apis:
 - aid: databricks:databricks
   name: Databricks
