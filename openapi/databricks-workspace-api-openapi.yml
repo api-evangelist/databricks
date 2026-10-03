@@ -348,8 +348,8 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    NotFound:
-      description: The requested resource does not exist.
+    Unauthorized:
+      description: The request lacks valid authentication credentials. Verify your access token.
       content:
         application/json:
           schema:
@@ -360,8 +360,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: The request lacks valid authentication credentials. Verify your access token.
+    NotFound:
+      description: The requested resource does not exist.
       content:
         application/json:
           schema:
@@ -373,6 +373,19 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: A machine-readable error code.
+          examples:
+          - RESOURCE_DOES_NOT_EXIST
+        message:
+          type: string
+          description: A human-readable error message.
+          examples:
+          - Cluster 1234-567890-abcde123 does not exist
     WorkspaceObject:
       type: object
       properties:
@@ -424,19 +437,6 @@ components:
           format: int64
           description: The file size in bytes (for FILE objects).
           example: 10
-    ErrorResponse:
-      type: object
-      properties:
-        error_code:
-          type: string
-          description: A machine-readable error code.
-          examples:
-          - RESOURCE_DOES_NOT_EXIST
-        message:
-          type: string
-          description: A human-readable error message.
-          examples:
-          - Cluster 1234-567890-abcde123 does not exist
   securitySchemes:
     bearerAuth:
       type: http

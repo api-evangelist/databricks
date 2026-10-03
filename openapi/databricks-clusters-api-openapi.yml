@@ -630,303 +630,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CreateClusterRequest:
-      type: object
-      required:
-      - cluster_name
-      - spark_version
-      - node_type_id
-      properties:
-        cluster_name:
-          type: string
-          description: A human-readable name for the cluster. This does not need to be unique.
-          examples:
-          - my-data-cluster
-        spark_version:
-          type: string
-          description: The runtime version of the cluster. You can retrieve a list of available runtime versions using the Runtime Versions API.
-          examples:
-          - 14.3.x-scala2.12
-        node_type_id:
-          type: string
-          description: The node type for worker nodes. This field determines the cloud provider instance type.
-          examples:
-          - i3.xlarge
-        driver_node_type_id:
-          type: string
-          description: The node type for the Spark driver. If not specified, defaults to the same value as node_type_id.
-          example: '500123'
-        num_workers:
-          type: integer
-          description: Number of worker nodes for a fixed-size cluster. A cluster has one Spark driver and num_workers executors. Set to 0 for a single-node cluster.
-          examples:
-          - 2
-        autoscale:
-          $ref: '#/components/schemas/AutoScale'
-        spark_conf:
-          type: object
-          additionalProperties:
-            type: string
-          description: A map of Spark configuration key-value pairs. These override the default Spark configuration values.
-          example: example_value
-        aws_attributes:
-          $ref: '#/components/schemas/AwsAttributes'
-        azure_attributes:
-          $ref: '#/components/schemas/AzureAttributes'
-        gcp_attributes:
-          $ref: '#/components/schemas/GcpAttributes'
-        custom_tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Additional tags for cluster resources. Tags are propagated to the cloud provider for cost tracking.
-          example: example_value
-        spark_env_vars:
-          type: object
-          additionalProperties:
-            type: string
-          description: Environment variables for all Spark processes. Use {{secrets/scope/key}} to reference secrets.
-          example: example_value
-        autotermination_minutes:
-          type: integer
-          description: Minutes of inactivity after which the cluster is automatically terminated. 0 disables auto-termination.
-          default: 120
-          example: 10
-        enable_elastic_disk:
-          type: boolean
-          description: Whether to autoscale local storage. When enabled, Databricks monitors disk usage and attaches additional disks as needed.
-          example: true
-        instance_pool_id:
-          type: string
-          description: The optional ID of the instance pool to use for cluster nodes.
-          example: '500123'
-        policy_id:
-          type: string
-          description: The ID of the cluster policy to apply. Cluster policies constrain the configuration settings.
-          example: '500123'
-        enable_local_disk_encryption:
-          type: boolean
-          description: Whether to encrypt data on local disks.
-          example: true
-        runtime_engine:
-          type: string
-          enum:
-          - STANDARD
-          - PHOTON
-          description: The runtime engine. PHOTON enables the Photon vectorized query engine for faster performance.
-          example: STANDARD
-        data_security_mode:
-          type: string
-          enum:
-          - NONE
-          - SINGLE_USER
-          - USER_ISOLATION
-          - LEGACY_TABLE_ACL
-          - LEGACY_PASSTHROUGH
-          - LEGACY_SINGLE_USER
-          - LEGACY_SINGLE_USER_STANDARD
-          description: Data security mode for the cluster.
-          example: NONE
-        single_user_name:
-          type: string
-          description: The user name (email) of the single user for SINGLE_USER access mode.
-          example: example_value
-        init_scripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/InitScriptInfo'
-          description: Init scripts to run when the cluster starts.
-          example: []
-        ssh_public_keys:
-          type: array
-          items:
-            type: string
-          description: SSH public keys to add to each Spark node.
-          example: []
-    EditClusterRequest:
-      type: object
-      required:
-      - cluster_id
-      - cluster_name
-      - spark_version
-      - node_type_id
-      properties:
-        cluster_id:
-          type: string
-          description: The unique identifier of the cluster to edit.
-          example: '500123'
-        cluster_name:
-          type: string
-          description: The new name for the cluster.
-          example: example_value
-        spark_version:
-          type: string
-          description: The runtime version.
-          example: example_value
-        node_type_id:
-          type: string
-          description: The node type for worker nodes.
-          example: '500123'
-        driver_node_type_id:
-          type: string
-          description: The node type for the Spark driver.
-          example: '500123'
-        num_workers:
-          type: integer
-          description: Number of worker nodes.
-          example: 10
-        autoscale:
-          $ref: '#/components/schemas/AutoScale'
-        spark_conf:
-          type: object
-          additionalProperties:
-            type: string
-          example: example_value
-        custom_tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: example_value
-        spark_env_vars:
-          type: object
-          additionalProperties:
-            type: string
-          example: example_value
-        autotermination_minutes:
-          type: integer
-          example: 10
-        enable_elastic_disk:
-          type: boolean
-          example: true
-        instance_pool_id:
-          type: string
-          example: '500123'
-        policy_id:
-          type: string
-          example: '500123'
-        data_security_mode:
-          type: string
-          enum:
-          - NONE
-          - SINGLE_USER
-          - USER_ISOLATION
-          - LEGACY_TABLE_ACL
-          - LEGACY_PASSTHROUGH
-          - LEGACY_SINGLE_USER
-          - LEGACY_SINGLE_USER_STANDARD
-          example: NONE
-        single_user_name:
-          type: string
-          example: example_value
-        runtime_engine:
-          type: string
-          enum:
-          - STANDARD
-          - PHOTON
-          example: STANDARD
-    AutoScale:
-      type: object
-      properties:
-        min_workers:
-          type: integer
-          description: The minimum number of workers the cluster can scale down to.
-          example: 10
-        max_workers:
-          type: integer
-          description: The maximum number of workers the cluster can scale up to.
-          example: 10
-      description: Autoscaling configuration. When set, num_workers is ignored and the cluster scales between min_workers and max_workers.
-    AwsAttributes:
-      type: object
-      properties:
-        first_on_demand:
-          type: integer
-          description: Number of on-demand instances to place first.
-          example: 10
-        availability:
-          type: string
-          enum:
-          - SPOT
-          - ON_DEMAND
-          - SPOT_WITH_FALLBACK
-          example: SPOT
-        zone_id:
-          type: string
-          description: The availability zone identifier (e.g., us-west-2a).
-          example: '500123'
-        instance_profile_arn:
-          type: string
-          description: IAM instance profile ARN for the cluster instances.
-          example: example_value
-        spot_bid_price_percent:
-          type: integer
-          description: Max bid price as percentage of on-demand price.
-          example: 10
-        ebs_volume_type:
-          type: string
-          enum:
-          - GENERAL_PURPOSE_SSD
-          - THROUGHPUT_OPTIMIZED_HDD
-          example: GENERAL_PURPOSE_SSD
-        ebs_volume_count:
-          type: integer
-          example: 10
-        ebs_volume_size:
-          type: integer
-          example: 10
-    AzureAttributes:
-      type: object
-      properties:
-        first_on_demand:
-          type: integer
-          example: 10
-        availability:
-          type: string
-          enum:
-          - SPOT_AZURE
-          - ON_DEMAND_AZURE
-          - SPOT_WITH_FALLBACK_AZURE
-          example: SPOT_AZURE
-        spot_bid_max_price:
-          type: number
-          example: 42.5
-    GcpAttributes:
-      type: object
-      properties:
-        use_preemptible_executors:
-          type: boolean
-          example: true
-        google_service_account:
-          type: string
-          example: example_value
-        availability:
-          type: string
-          enum:
-          - GCP_PREEMPTIBLE
-          - GCP_ON_DEMAND
-          example: GCP_PREEMPTIBLE
-    SparkNode:
-      type: object
-      properties:
-        private_ip:
-          type: string
-          example: example_value
-        public_dns:
-          type: string
-          example: example_value
-        node_id:
-          type: string
-          example: '500123'
-        instance_id:
-          type: string
-          example: '500123'
-        start_timestamp:
-          type: integer
-          format: int64
-          example: 10
-        host_private_ip:
-          type: string
-          example: example_value
     ClusterDetails:
       type: object
       properties:
@@ -1114,6 +817,87 @@ components:
           format: int64
           description: The canonical Spark context identifier.
           example: '500123'
+    EditClusterRequest:
+      type: object
+      required:
+      - cluster_id
+      - cluster_name
+      - spark_version
+      - node_type_id
+      properties:
+        cluster_id:
+          type: string
+          description: The unique identifier of the cluster to edit.
+          example: '500123'
+        cluster_name:
+          type: string
+          description: The new name for the cluster.
+          example: example_value
+        spark_version:
+          type: string
+          description: The runtime version.
+          example: example_value
+        node_type_id:
+          type: string
+          description: The node type for worker nodes.
+          example: '500123'
+        driver_node_type_id:
+          type: string
+          description: The node type for the Spark driver.
+          example: '500123'
+        num_workers:
+          type: integer
+          description: Number of worker nodes.
+          example: 10
+        autoscale:
+          $ref: '#/components/schemas/AutoScale'
+        spark_conf:
+          type: object
+          additionalProperties:
+            type: string
+          example: example_value
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: example_value
+        spark_env_vars:
+          type: object
+          additionalProperties:
+            type: string
+          example: example_value
+        autotermination_minutes:
+          type: integer
+          example: 10
+        enable_elastic_disk:
+          type: boolean
+          example: true
+        instance_pool_id:
+          type: string
+          example: '500123'
+        policy_id:
+          type: string
+          example: '500123'
+        data_security_mode:
+          type: string
+          enum:
+          - NONE
+          - SINGLE_USER
+          - USER_ISOLATION
+          - LEGACY_TABLE_ACL
+          - LEGACY_PASSTHROUGH
+          - LEGACY_SINGLE_USER
+          - LEGACY_SINGLE_USER_STANDARD
+          example: NONE
+        single_user_name:
+          type: string
+          example: example_value
+        runtime_engine:
+          type: string
+          enum:
+          - STANDARD
+          - PHOTON
+          example: STANDARD
     ClusterEvent:
       type: object
       properties:
@@ -1156,6 +940,35 @@ components:
                   additionalProperties:
                     type: string
           example: example_value
+    AzureAttributes:
+      type: object
+      properties:
+        first_on_demand:
+          type: integer
+          example: 10
+        availability:
+          type: string
+          enum:
+          - SPOT_AZURE
+          - ON_DEMAND_AZURE
+          - SPOT_WITH_FALLBACK_AZURE
+          example: SPOT_AZURE
+        spot_bid_max_price:
+          type: number
+          example: 42.5
+    ErrorResponse:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: A machine-readable error code.
+          examples:
+          - RESOURCE_DOES_NOT_EXIST
+        message:
+          type: string
+          description: A human-readable error message.
+          examples:
+          - Cluster 1234-567890-abcde123 does not exist
     InitScriptInfo:
       type: object
       properties:
@@ -1178,22 +991,209 @@ components:
               type: string
           deprecated: true
           example: example_value
-    ErrorResponse:
+    SparkNode:
       type: object
       properties:
-        error_code:
+        private_ip:
           type: string
-          description: A machine-readable error code.
-          examples:
-          - RESOURCE_DOES_NOT_EXIST
-        message:
+          example: example_value
+        public_dns:
           type: string
-          description: A human-readable error message.
+          example: example_value
+        node_id:
+          type: string
+          example: '500123'
+        instance_id:
+          type: string
+          example: '500123'
+        start_timestamp:
+          type: integer
+          format: int64
+          example: 10
+        host_private_ip:
+          type: string
+          example: example_value
+    CreateClusterRequest:
+      type: object
+      required:
+      - cluster_name
+      - spark_version
+      - node_type_id
+      properties:
+        cluster_name:
+          type: string
+          description: A human-readable name for the cluster. This does not need to be unique.
           examples:
-          - Cluster 1234-567890-abcde123 does not exist
+          - my-data-cluster
+        spark_version:
+          type: string
+          description: The runtime version of the cluster. You can retrieve a list of available runtime versions using the Runtime Versions API.
+          examples:
+          - 14.3.x-scala2.12
+        node_type_id:
+          type: string
+          description: The node type for worker nodes. This field determines the cloud provider instance type.
+          examples:
+          - i3.xlarge
+        driver_node_type_id:
+          type: string
+          description: The node type for the Spark driver. If not specified, defaults to the same value as node_type_id.
+          example: '500123'
+        num_workers:
+          type: integer
+          description: Number of worker nodes for a fixed-size cluster. A cluster has one Spark driver and num_workers executors. Set to 0 for a single-node cluster.
+          examples:
+          - 2
+        autoscale:
+          $ref: '#/components/schemas/AutoScale'
+        spark_conf:
+          type: object
+          additionalProperties:
+            type: string
+          description: A map of Spark configuration key-value pairs. These override the default Spark configuration values.
+          example: example_value
+        aws_attributes:
+          $ref: '#/components/schemas/AwsAttributes'
+        azure_attributes:
+          $ref: '#/components/schemas/AzureAttributes'
+        gcp_attributes:
+          $ref: '#/components/schemas/GcpAttributes'
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional tags for cluster resources. Tags are propagated to the cloud provider for cost tracking.
+          example: example_value
+        spark_env_vars:
+          type: object
+          additionalProperties:
+            type: string
+          description: Environment variables for all Spark processes. Use {{secrets/scope/key}} to reference secrets.
+          example: example_value
+        autotermination_minutes:
+          type: integer
+          description: Minutes of inactivity after which the cluster is automatically terminated. 0 disables auto-termination.
+          default: 120
+          example: 10
+        enable_elastic_disk:
+          type: boolean
+          description: Whether to autoscale local storage. When enabled, Databricks monitors disk usage and attaches additional disks as needed.
+          example: true
+        instance_pool_id:
+          type: string
+          description: The optional ID of the instance pool to use for cluster nodes.
+          example: '500123'
+        policy_id:
+          type: string
+          description: The ID of the cluster policy to apply. Cluster policies constrain the configuration settings.
+          example: '500123'
+        enable_local_disk_encryption:
+          type: boolean
+          description: Whether to encrypt data on local disks.
+          example: true
+        runtime_engine:
+          type: string
+          enum:
+          - STANDARD
+          - PHOTON
+          description: The runtime engine. PHOTON enables the Photon vectorized query engine for faster performance.
+          example: STANDARD
+        data_security_mode:
+          type: string
+          enum:
+          - NONE
+          - SINGLE_USER
+          - USER_ISOLATION
+          - LEGACY_TABLE_ACL
+          - LEGACY_PASSTHROUGH
+          - LEGACY_SINGLE_USER
+          - LEGACY_SINGLE_USER_STANDARD
+          description: Data security mode for the cluster.
+          example: NONE
+        single_user_name:
+          type: string
+          description: The user name (email) of the single user for SINGLE_USER access mode.
+          example: example_value
+        init_scripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/InitScriptInfo'
+          description: Init scripts to run when the cluster starts.
+          example: []
+        ssh_public_keys:
+          type: array
+          items:
+            type: string
+          description: SSH public keys to add to each Spark node.
+          example: []
+    GcpAttributes:
+      type: object
+      properties:
+        use_preemptible_executors:
+          type: boolean
+          example: true
+        google_service_account:
+          type: string
+          example: example_value
+        availability:
+          type: string
+          enum:
+          - GCP_PREEMPTIBLE
+          - GCP_ON_DEMAND
+          example: GCP_PREEMPTIBLE
+    AutoScale:
+      type: object
+      properties:
+        min_workers:
+          type: integer
+          description: The minimum number of workers the cluster can scale down to.
+          example: 10
+        max_workers:
+          type: integer
+          description: The maximum number of workers the cluster can scale up to.
+          example: 10
+      description: Autoscaling configuration. When set, num_workers is ignored and the cluster scales between min_workers and max_workers.
+    AwsAttributes:
+      type: object
+      properties:
+        first_on_demand:
+          type: integer
+          description: Number of on-demand instances to place first.
+          example: 10
+        availability:
+          type: string
+          enum:
+          - SPOT
+          - ON_DEMAND
+          - SPOT_WITH_FALLBACK
+          example: SPOT
+        zone_id:
+          type: string
+          description: The availability zone identifier (e.g., us-west-2a).
+          example: '500123'
+        instance_profile_arn:
+          type: string
+          description: IAM instance profile ARN for the cluster instances.
+          example: example_value
+        spot_bid_price_percent:
+          type: integer
+          description: Max bid price as percentage of on-demand price.
+          example: 10
+        ebs_volume_type:
+          type: string
+          enum:
+          - GENERAL_PURPOSE_SSD
+          - THROUGHPUT_OPTIMIZED_HDD
+          example: GENERAL_PURPOSE_SSD
+        ebs_volume_count:
+          type: integer
+          example: 10
+        ebs_volume_size:
+          type: integer
+          example: 10
   responses:
-    NotFound:
-      description: The requested resource does not exist.
+    TooManyRequests:
+      description: Too many requests have been sent in a given amount of time. Retry after the period specified in the Retry-After header.
       content:
         application/json:
           schema:
@@ -1204,14 +1204,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request is malformed or contains invalid parameters.
+    InternalServerError:
+      description: An unexpected error occurred on the server. If the problem persists, contact Databricks support.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalServerError:
-      description: An unexpected error occurred on the server. If the problem persists, contact Databricks support.
+    BadRequest:
+      description: The request is malformed or contains invalid parameters.
       content:
         application/json:
           schema:
@@ -1222,8 +1222,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    TooManyRequests:
-      description: Too many requests have been sent in a given amount of time. Retry after the period specified in the Retry-After header.
+    NotFound:
+      description: The requested resource does not exist.
       content:
         application/json:
           schema:
