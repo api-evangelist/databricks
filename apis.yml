@@ -1086,7 +1086,6 @@ tags:
 - Delta Lake
 - Delta Sharing
 - ETL
-- Identity Management
 - Lakehouse
 - Machine Learning
 - MLflow
@@ -1113,7 +1112,6 @@ tags_raw:
 - Delta Lake
 - Delta Sharing
 - ETL
-- Identity Management
 - Lakehouse
 - Machine Learning
 - MLflow
@@ -1438,3 +1436,5 @@ common:
   type: AgentSkills
 - type: LlmsText
   url: https://docs.databricks.com/llms.txt
+x-tags-removed:
+- Identity and Access Management
