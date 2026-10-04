@@ -1,38 +1,36 @@
-# Kin Score artifact — databricks — 2026-09-01T210448
+# Kin Score artifact — databricks — 2026-09-25T232841
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: databricks
-  schema_version: 0.18.0
-  scored_at: '2026-09-01'
-  run_ts: 2026-09-01T210448
-  composite: 58.6
+  schema_version: 0.23.0
+  scored_at: '2026-09-25'
+  run_ts: 2026-09-25T232841
+  composite: 55.8
   band: strong
   facets:
-    discoverability: 51.9
-    contract_quality: 63.3
-    governance: 13.6
-    operational_transparency: 55.3
-    developer_ergonomics: 83.3
-    commercial_clarity: 60.5
+    discoverability: 45.0
+    contract_quality: 55.4
     contract_governance: 13.6
-    access_clarity: 60.5
+    operational_transparency: 55.3
+    developer_ergonomics: 79.0
+    access_clarity: 52.6
   agent_readiness:
-    score: 40.1
+    score: 44.9
     band: agent-ready
     band_gated_from: agent-native
     dimensions:
       spec_presence: true
       agentic_access: derived
       reversibility_documented: documented
-      mcp_server: documented
+      mcp_server: verified
       auth_clarity: bearer
       idempotency: verified
       error_semantics: false
       openapi_examples: verified
       rate_limit_signal: documented
       event_surface_described: false
-      agent_skills: true
+      agent_skills: unknown
       well_known_catalog: false
       consent_identity: false
       agent_card: false
@@ -41,7 +39,14 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 28.2
+    matched_via: fallback
   provenance:
+    mcp: first-party
     agentic_access: derived
     contracts:
       total: 3
