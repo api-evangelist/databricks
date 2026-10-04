@@ -1,0 +1,236 @@
+generated: '2026-10-03'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 16
+  own: 11
+  other_domain: 1
+  platform: 4
+  roles:
+  - api
+  - docs
+  - identity
+  - other
+  - portal
+  - source
+  - status
+  - support
+  - website
+hosts:
+- host: agentskills.io
+  found_by:
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: agentskills.io
+  role: other
+  relation: other-domain
+- host: api-docs.databricks.com
+  found_by:
+  - pointer
+  - probed
+  - well-known
+  types:
+  - APIReference
+  serves: []
+  registrable_domain: databricks.com
+  role: docs
+  relation: own
+- host: api.databricks.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: databricks.com
+  role: api
+  relation: own
+- host: community.databricks.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - well-known
+  types:
+  - Support
+  serves: []
+  registrable_domain: databricks.com
+  role: support
+  relation: own
+- host: customer-academy.databricks.com
+  found_by:
+  - pointer
+  - probed
+  - well-known
+  types:
+  - Academy
+  serves: []
+  registrable_domain: databricks.com
+  role: other
+  relation: own
+- host: developer.databricks.com
+  found_by:
+  - probed
+  - site-links
+  - namespace-probe
+  types: []
+  serves: []
+  title: Databricks Developer
+  status: 200
+  registrable_domain: databricks.com
+  role: portal
+  relation: own
+- host: developers.databricks.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - namespace-probe
+  - docs-index
+  - vendor-detect
+  types:
+  - DeveloperPortal
+  serves:
+  - docs
+  - cdn
+  - hosting
+  title: Databricks Developer
+  status: 200
+  vendor: cloudflare
+  registrable_domain: databricks.com
+  role: portal
+  relation: own
+- host: docs.databricks.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - site-links
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - MCPServer
+  - Authentication
+  - GettingStarted
+  - SDKs
+  - APIReference
+  - Documentation
+  - RateLimits
+  - ChangeLog
+  - Integrations
+  - LlmsText
+  serves:
+  - docs
+  - documentation
+  vendor: docusaurus
+  registrable_domain: databricks.com
+  role: docs
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  - docs-index
+  types:
+  - GitHubOrganization
+  - SDKs
+  - CLI
+  - AgentSkills
+  serves:
+  - docs
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: help.databricks.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - Support
+  serves: []
+  registrable_domain: databricks.com
+  role: support
+  relation: own
+- host: login.databricks.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - well-known
+  types:
+  - Login
+  serves: []
+  registrable_domain: databricks.com
+  role: identity
+  relation: own
+- host: status.databricks.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - StatusPage
+  serves:
+  - cdn
+  vendor: cloudfront
+  registrable_domain: databricks.com
+  role: status
+  relation: own
+- host: twitter.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: twitter.com
+  role: other
+  relation: platform
+- host: www.databricks.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  types:
+  - TrustCenter
+  - Newsroom
+  - Pricing
+  - Website
+  - Signup
+  - PrivacyPolicy
+  - TermsOfService
+  - Security
+  - Blog
+  - Contact
+  - Training
+  serves:
+  - docs
+  registrable_domain: databricks.com
+  role: website
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.postman.com
+  found_by:
+  - pointer
+  types:
+  - PostmanWorkspace
+  serves: []
+  registrable_domain: postman.com
+  role: other
+  relation: platform

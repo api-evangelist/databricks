@@ -630,6 +630,44 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    AwsAttributes:
+      type: object
+      properties:
+        first_on_demand:
+          type: integer
+          description: Number of on-demand instances to place first.
+          example: 10
+        availability:
+          type: string
+          enum:
+          - SPOT
+          - ON_DEMAND
+          - SPOT_WITH_FALLBACK
+          example: SPOT
+        zone_id:
+          type: string
+          description: The availability zone identifier (e.g., us-west-2a).
+          example: '500123'
+        instance_profile_arn:
+          type: string
+          description: IAM instance profile ARN for the cluster instances.
+          example: example_value
+        spot_bid_price_percent:
+          type: integer
+          description: Max bid price as percentage of on-demand price.
+          example: 10
+        ebs_volume_type:
+          type: string
+          enum:
+          - GENERAL_PURPOSE_SSD
+          - THROUGHPUT_OPTIMIZED_HDD
+          example: GENERAL_PURPOSE_SSD
+        ebs_volume_count:
+          type: integer
+          example: 10
+        ebs_volume_size:
+          type: integer
+          example: 10
     ClusterDetails:
       type: object
       properties:
@@ -817,6 +855,50 @@ components:
           format: int64
           description: The canonical Spark context identifier.
           example: '500123'
+    SparkNode:
+      type: object
+      properties:
+        private_ip:
+          type: string
+          example: example_value
+        public_dns:
+          type: string
+          example: example_value
+        node_id:
+          type: string
+          example: '500123'
+        instance_id:
+          type: string
+          example: '500123'
+        start_timestamp:
+          type: integer
+          format: int64
+          example: 10
+        host_private_ip:
+          type: string
+          example: example_value
+    InitScriptInfo:
+      type: object
+      properties:
+        workspace:
+          type: object
+          properties:
+            destination:
+              type: string
+          example: example_value
+        volumes:
+          type: object
+          properties:
+            destination:
+              type: string
+          example: example_value
+        dbfs:
+          type: object
+          properties:
+            destination:
+              type: string
+          deprecated: true
+          example: example_value
     EditClusterRequest:
       type: object
       required:
@@ -898,64 +980,6 @@ components:
           - STANDARD
           - PHOTON
           example: STANDARD
-    ClusterEvent:
-      type: object
-      properties:
-        cluster_id:
-          type: string
-          example: '500123'
-        timestamp:
-          type: integer
-          format: int64
-          example: 10
-        type:
-          type: string
-          example: example_value
-        details:
-          type: object
-          properties:
-            current_num_workers:
-              type: integer
-            target_num_workers:
-              type: integer
-            previous_attributes:
-              type: object
-            attributes:
-              type: object
-            previous_cluster_size:
-              type: object
-            cluster_size:
-              type: object
-            cause:
-              type: string
-            reason:
-              type: object
-              properties:
-                code:
-                  type: string
-                type:
-                  type: string
-                parameters:
-                  type: object
-                  additionalProperties:
-                    type: string
-          example: example_value
-    AzureAttributes:
-      type: object
-      properties:
-        first_on_demand:
-          type: integer
-          example: 10
-        availability:
-          type: string
-          enum:
-          - SPOT_AZURE
-          - ON_DEMAND_AZURE
-          - SPOT_WITH_FALLBACK_AZURE
-          example: SPOT_AZURE
-        spot_bid_max_price:
-          type: number
-          example: 42.5
     ErrorResponse:
       type: object
       properties:
@@ -969,50 +993,6 @@ components:
           description: A human-readable error message.
           examples:
           - Cluster 1234-567890-abcde123 does not exist
-    InitScriptInfo:
-      type: object
-      properties:
-        workspace:
-          type: object
-          properties:
-            destination:
-              type: string
-          example: example_value
-        volumes:
-          type: object
-          properties:
-            destination:
-              type: string
-          example: example_value
-        dbfs:
-          type: object
-          properties:
-            destination:
-              type: string
-          deprecated: true
-          example: example_value
-    SparkNode:
-      type: object
-      properties:
-        private_ip:
-          type: string
-          example: example_value
-        public_dns:
-          type: string
-          example: example_value
-        node_id:
-          type: string
-          example: '500123'
-        instance_id:
-          type: string
-          example: '500123'
-        start_timestamp:
-          type: integer
-          format: int64
-          example: 10
-        host_private_ip:
-          type: string
-          example: example_value
     CreateClusterRequest:
       type: object
       required:
@@ -1126,6 +1106,76 @@ components:
             type: string
           description: SSH public keys to add to each Spark node.
           example: []
+    ClusterEvent:
+      type: object
+      properties:
+        cluster_id:
+          type: string
+          example: '500123'
+        timestamp:
+          type: integer
+          format: int64
+          example: 10
+        type:
+          type: string
+          example: example_value
+        details:
+          type: object
+          properties:
+            current_num_workers:
+              type: integer
+            target_num_workers:
+              type: integer
+            previous_attributes:
+              type: object
+            attributes:
+              type: object
+            previous_cluster_size:
+              type: object
+            cluster_size:
+              type: object
+            cause:
+              type: string
+            reason:
+              type: object
+              properties:
+                code:
+                  type: string
+                type:
+                  type: string
+                parameters:
+                  type: object
+                  additionalProperties:
+                    type: string
+          example: example_value
+    AzureAttributes:
+      type: object
+      properties:
+        first_on_demand:
+          type: integer
+          example: 10
+        availability:
+          type: string
+          enum:
+          - SPOT_AZURE
+          - ON_DEMAND_AZURE
+          - SPOT_WITH_FALLBACK_AZURE
+          example: SPOT_AZURE
+        spot_bid_max_price:
+          type: number
+          example: 42.5
+    AutoScale:
+      type: object
+      properties:
+        min_workers:
+          type: integer
+          description: The minimum number of workers the cluster can scale down to.
+          example: 10
+        max_workers:
+          type: integer
+          description: The maximum number of workers the cluster can scale up to.
+          example: 10
+      description: Autoscaling configuration. When set, num_workers is ignored and the cluster scales between min_workers and max_workers.
     GcpAttributes:
       type: object
       properties:
@@ -1141,63 +1191,7 @@ components:
           - GCP_PREEMPTIBLE
           - GCP_ON_DEMAND
           example: GCP_PREEMPTIBLE
-    AutoScale:
-      type: object
-      properties:
-        min_workers:
-          type: integer
-          description: The minimum number of workers the cluster can scale down to.
-          example: 10
-        max_workers:
-          type: integer
-          description: The maximum number of workers the cluster can scale up to.
-          example: 10
-      description: Autoscaling configuration. When set, num_workers is ignored and the cluster scales between min_workers and max_workers.
-    AwsAttributes:
-      type: object
-      properties:
-        first_on_demand:
-          type: integer
-          description: Number of on-demand instances to place first.
-          example: 10
-        availability:
-          type: string
-          enum:
-          - SPOT
-          - ON_DEMAND
-          - SPOT_WITH_FALLBACK
-          example: SPOT
-        zone_id:
-          type: string
-          description: The availability zone identifier (e.g., us-west-2a).
-          example: '500123'
-        instance_profile_arn:
-          type: string
-          description: IAM instance profile ARN for the cluster instances.
-          example: example_value
-        spot_bid_price_percent:
-          type: integer
-          description: Max bid price as percentage of on-demand price.
-          example: 10
-        ebs_volume_type:
-          type: string
-          enum:
-          - GENERAL_PURPOSE_SSD
-          - THROUGHPUT_OPTIMIZED_HDD
-          example: GENERAL_PURPOSE_SSD
-        ebs_volume_count:
-          type: integer
-          example: 10
-        ebs_volume_size:
-          type: integer
-          example: 10
   responses:
-    TooManyRequests:
-      description: Too many requests have been sent in a given amount of time. Retry after the period specified in the Retry-After header.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: The request lacks valid authentication credentials. Verify your access token.
       content:
@@ -1224,6 +1218,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Too many requests have been sent in a given amount of time. Retry after the period specified in the Retry-After header.
       content:
         application/json:
           schema:

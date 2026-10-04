@@ -1,0 +1,28 @@
+generated: '2026-10-03'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://developers.databricks.com/docs/agents/cli.md
+sources:
+- https://developers.databricks.com/docs/agents/cli.md
+- https://developers.databricks.com/docs/tools/databricks-cli#authenticate
+- https://developers.databricks.com/docs/tools/ai-tools/agent-skills
+- https://developers.databricks.com/docs/tools/databricks-cli.md
+install:
+- method: pip
+  command: pip install databricks-agentbricks
+commands:
+- group: agent lifecycle
+  commands:
+  - agentbricks init
+  - agentbricks dev
+  - agentbricks deploy
+- group: resource binding
+  commands:
+  - agentbricks tools add
+  - agentbricks memory bind
+  - agentbricks sessions bind
+- group: authentication
+  commands:
+  - agentbricks login
+binary: agentbricks
+docs: https://developers.databricks.com/docs/agents/cli.md

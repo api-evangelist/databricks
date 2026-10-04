@@ -1,0 +1,58 @@
+generated: '2026-10-03'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/databricks-clusters-api-openapi.yml
+- openapi/databricks-jobs-api-openapi.yml
+- openapi/databricks-workspace-api-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: ErrorResponse
+coverage:
+  operations: 25
+  statuses_declared: 6
+problems:
+- status: 400
+  title: Bad Request
+  description: The request is malformed or contains invalid parameters.
+  operations: 23
+  media_types:
+  - application/json
+  schema: ErrorResponse
+- status: 401
+  title: Unauthorized
+  description: The request lacks valid authentication credentials. Verify your access token.
+  operations: 25
+  media_types:
+  - application/json
+  schema: ErrorResponse
+- status: 403
+  title: Forbidden
+  description: The authenticated user does not have permission to perform this action.
+  operations: 1
+  media_types:
+  - application/json
+  schema: ErrorResponse
+- status: 404
+  title: Not Found
+  description: The requested resource does not exist.
+  operations: 7
+  media_types:
+  - application/json
+  schema: ErrorResponse
+- status: 429
+  title: Too Many Requests
+  description: Too many requests have been sent in a given amount of time. Retry after the period specified in the
+    Retry-After header.
+  operations: 1
+  media_types:
+  - application/json
+  schema: ErrorResponse
+- status: 500
+  title: Internal Server Error
+  description: An unexpected error occurred on the server. If the problem persists, contact Databricks support.
+  operations: 25
+  media_types:
+  - application/json
+  schema: ErrorResponse

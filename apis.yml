@@ -1,8 +1,378 @@
 aid: databricks
+
 url: https://raw.githubusercontent.com/api-evangelist/databricks/refs/heads/main/apis.yml
+
 x-docs-platform: docusaurus
+
 x-docs-platform-confidence: medium
+
 x-docs-platform-checked: 2026-09-25
+
+name: Databricks
+
+tags:
+- Cleanroom
+- Databricks
+- Artificial Intelligence
+- Analytics
+- Apache Spark
+- Big Data
+- Cloud Computing
+- Data
+- Data Analytics
+- Data Engineering
+- Data Governance
+- Delta Lake
+- Delta Sharing
+- ETL
+- Identity Management
+- Lakehouse
+- Machine Learning
+- MLflow
+- Model Serving
+- Security
+- SQL
+- Unity Catalog
+- Vector Search
+- Visualize
+- Data Catalog
+
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+
+accessModel:
+  pricing: paid
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Paid
+  confidence: medium
+  source:
+  - plans
+  - authentication
+  - security
+  generated: '2026-09-03'
+  method: derived
+
+image: https://www.databricks.com/en-website-assets/static/f9f2b15ae456c41f7d2e5b303c8c6c6e/databricks-logo.svg
+
+access: 3rd-Party
+
+created: '2025-01-14'
+
+modified: '2026-05-19'
+
+position: Consuming
+
+description: 'Databricks provides a unified Data + AI Platform that runs analytical and operational workloads on a single open, governed foundation. The platform enables enterprises to build business intelligence and AI applications, stream and analyze data, and manage data engineering, data warehousing, and governance across cloud environments. It is targeted at organizations that need integrated data, analytics, and AI capabilities without duplicating data or adding complexity.'
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- name: Databricks
+  email: support@databricks.com
+  url: https://www.databricks.com/
+
+specificationVersion: '0.23'
+
+common:
+- type: FinOps
+  url: finops/databricks-finops.yml
+- type: RateLimits
+  url: rate-limits/databricks-rate-limits.yml
+- type: Spectral
+  url: rules/databricks-spectral-rules.yml
+- type: Spectral
+  url: rules/databricks-rules.yml
+- type: Spectral
+  url: rules/databricks-jsonschema-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/databricks-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/databricks-webhooks.yml
+- type: DataModel
+  url: data-model/databricks-data-model.yml
+- type: CLI
+  url: cli/databricks-cli.yml
+- type: Idempotency
+  url: conventions/databricks-conventions.yml
+- type: Conventions
+  url: conventions/databricks-conventions.yml
+- type: ErrorCatalog
+  url: errors/databricks-problem-types.yml
+- type: Conformance
+  url: conformance/databricks-conformance.yml
+- type: LLMsTxt
+  url: llms/databricks-llms.txt
+- type: SecurityTxt
+  url: well-known/databricks-security.txt
+- type: SecurityTxt
+  url: well-known/databricks-customer-academy-security.txt
+- type: WellKnown
+  url: well-known/databricks-well-known.yml
+- type: Hosts
+  url: hosts/databricks-hosts.yml
+- type: Vendors
+  url: vendors/databricks-vendors.yml
+- type: Packages
+  url: packages/databricks-packages.yml
+- type: TrustCenter
+  url: https://www.databricks.com/trust
+- type: Newsroom
+  url: https://www.databricks.com/company/newsroom
+- type: DeveloperPortal
+  url: https://developers.databricks.com/?itm_source=www&itm_category=home&itm_page=home
+- type: Pricing
+  url: https://www.databricks.com/product/pricing
+- type: Plans
+  url: plans/databricks-plans-pricing.yml
+- type: Website
+  url: https://www.databricks.com/
+- type: CapabilityMap
+  url: capabilities/databricks-capability-edges.yml
+  name: Databricks Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/databricks-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/databricks-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/databricks-domain-security.yml
+- type: Authentication
+  url: authentication/databricks-authentication.yml
+- type: MCPServer
+  url: https://docs.databricks.com/aws/en/generative-ai/mcp/
+  name: MCP Server
+  description: Databricks managed MCP servers for Unity Catalog functions, Genie spaces, Databricks SQL, and Vector Search, with Unity Catalog permissions always enforced.
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/databricks/overview
+- type: Arazzo
+  url: arazzo/databricks-audit-cluster-events-workflow.yml
+  name: Databricks Audit Cluster Lifecycle Events
+- type: Arazzo
+  url: arazzo/databricks-cancel-all-active-runs-workflow.yml
+  name: Databricks Cancel a Job's Active Run
+- type: Arazzo
+  url: arazzo/databricks-cancel-run-and-confirm-workflow.yml
+  name: Databricks Cancel Job Run and Confirm Terminal
+- type: Arazzo
+  url: arazzo/databricks-cleanup-workspace-directory-workflow.yml
+  name: Databricks Inspect and Recursively Delete a Directory
+- type: Arazzo
+  url: arazzo/databricks-clone-job-settings-workflow.yml
+  name: Databricks Clone a Job From an Existing One
+- type: Arazzo
+  url: arazzo/databricks-create-and-run-job-workflow.yml
+  name: Databricks Create Job and Trigger First Run
+- type: Arazzo
+  url: arazzo/databricks-delete-job-and-cleanup-runs-workflow.yml
+  name: Databricks Drain Active Runs Then Delete Job
+- type: Arazzo
+  url: arazzo/databricks-edit-cluster-and-verify-workflow.yml
+  name: Databricks Edit Cluster Configuration and Verify
+- type: Arazzo
+  url: arazzo/databricks-export-and-reimport-notebook-workflow.yml
+  name: Databricks Export a Notebook and Re-Import as a Copy
+- type: Arazzo
+  url: arazzo/databricks-find-cluster-and-start-workflow.yml
+  name: Databricks Find Terminated Cluster by Name and Start It
+- type: Arazzo
+  url: arazzo/databricks-find-job-and-run-workflow.yml
+  name: Databricks Find Job by Name and Run It
+- type: Arazzo
+  url: arazzo/databricks-import-notebook-and-verify-workflow.yml
+  name: Databricks Create Directory and Import Notebook
+- type: Arazzo
+  url: arazzo/databricks-latest-run-output-workflow.yml
+  name: Databricks Fetch Latest Completed Run Output for a Job
+- type: Arazzo
+  url: arazzo/databricks-provision-cluster-and-create-job-workflow.yml
+  name: Databricks Provision Cluster Then Create Job On It
+- type: Arazzo
+  url: arazzo/databricks-provision-cluster-workflow.yml
+  name: Databricks Provision Cluster and Wait Until Running
+- type: Arazzo
+  url: arazzo/databricks-restart-cluster-and-verify-workflow.yml
+  name: Databricks Restart Cluster and Verify Running
+- type: Arazzo
+  url: arazzo/databricks-run-job-and-export-notebook-workflow.yml
+  name: Databricks Run Job, Wait, Then Export the Notebook
+- type: Arazzo
+  url: arazzo/databricks-run-job-and-wait-workflow.yml
+  name: Databricks Trigger Job Run and Wait for Output
+- type: Arazzo
+  url: arazzo/databricks-run-job-on-failure-export-output-workflow.yml
+  name: Databricks Run Job and Branch on Success or Failure
+- type: Arazzo
+  url: arazzo/databricks-stage-notebook-and-create-job-workflow.yml
+  name: Databricks Stage Notebook Then Create and Run a Job
+- type: Arazzo
+  url: arazzo/databricks-start-cluster-and-run-job-workflow.yml
+  name: Databricks Start Cluster Then Run Job
+- type: Arazzo
+  url: arazzo/databricks-terminate-and-delete-cluster-workflow.yml
+  name: Databricks Terminate Then Permanently Delete Cluster
+- type: Arazzo
+  url: arazzo/databricks-update-job-and-rerun-workflow.yml
+  name: Databricks Update Job Settings and Re-Run
+- url: https://docs.databricks.com/dev-tools/auth.html
+  type: Authentication
+- url: https://docs.databricks.com/getting-started/index.html
+  type: GettingStarted
+- url: https://docs.databricks.com/dev-tools/sdks.html
+  type: SDKs
+- url: https://status.databricks.com/
+  type: StatusPage
+- url: https://help.databricks.com/
+  type: Support
+- url: https://docs.databricks.com/api/workspace/introduction
+  type: APIReference
+- url: https://docs.databricks.com/aws/en/reference/api
+  type: Documentation
+- url: https://www.databricks.com/product/pricing
+  type: Pricing
+- url: https://www.databricks.com/try-databricks
+  type: Signup
+- url: https://www.databricks.com/legal/privacynotice
+  type: PrivacyPolicy
+- url: https://www.databricks.com/legal/terms-of-use
+  type: TermsOfService
+- url: https://www.databricks.com/trust
+  type: Security
+- url: https://docs.databricks.com/aws/en/resources/limits
+  type: RateLimits
+- url: https://docs.databricks.com/aws/en/release-notes/
+  type: ChangeLog
+- url: https://www.databricks.com/blog
+  type: Blog
+- url: https://community.databricks.com/
+  type: Support
+  title: Community Forum
+- url: https://github.com/databricks
+  type: GitHubOrganization
+- url: https://github.com/databricks/databricks-sdk-py
+  type: SDKs
+  title: Python SDK
+- url: https://github.com/databricks/databricks-sdk-go
+  type: SDKs
+  title: Go SDK
+- url: https://github.com/databricks/cli
+  type: CLI
+- url: https://docs.databricks.com/aws/en/dev-tools/cli
+  type: Documentation
+- url: https://twitter.com/databricks
+  type: X
+- url: https://www.linkedin.com/company/databricks
+  type: LinkedIn
+- url: https://login.databricks.com/
+  type: Login
+- url: https://www.databricks.com/company/contact
+  type: Contact
+- url: https://www.databricks.com/learn/training/home
+  type: Training
+- url: https://customer-academy.databricks.com/learn
+  type: Academy
+- url: https://github.com/databricks/databricks-sdk-java
+  type: SDKs
+  title: Java SDK
+- url: https://github.com/databricks/databricks-sql-python
+  type: SDKs
+  title: Python SQL SDK
+- url: https://github.com/databricks/terraform-provider-databricks
+  type: SDKs
+  title: Terraform Provider
+- url: https://docs.databricks.com/aws/en/reference/mlflow-api
+  type: APIReference
+  title: MLflow API Reference
+- url: https://www.databricks.com/trust/security-features
+  type: Security
+- url: https://docs.databricks.com/aws/en/dev-tools/auth
+  type: Authentication
+- url: https://api-docs.databricks.com/
+  type: APIReference
+- url: openapi/_original/databricks-openapi.yml
+  type: OpenAPI
+- url: json-schema/databricks-cluster-schema.json
+  type: JSONSchema
+- url: json-schema/databricks-job-schema.json
+  type: JSONSchema
+- url: json-ld/databricks-context.jsonld
+  type: JSONLD
+- url: rules/databricks-spectral-rules.yml
+  type: SpectralRules
+- type: Features
+  data:
+  - 'Jobs Compute: ~$0.07-$0.15/DBU (cheapest)'
+  - 'All-Purpose Compute: ~$0.55/DBU (interactive)'
+  - 'SQL Serverless: ~$0.70/DBU (infra included)'
+  - 'Serverless Jobs: $0.35-$0.40/DBU'
+  - 'Editions: Standard (Azure legacy), Premium (default), Enterprise (AWS)'
+  - 'Multi-cloud: AWS, Azure, GCP'
+  - 'REST API: 30 req/sec default, 10 req/sec for jobs/run-now'
+  - DBSQL Statement Execution API
+  - Unity Catalog for governance
+  - Delta Lake table format
+  - Mosaic AI / MLflow for ML lifecycle
+  - Genie / AI/BI for natural-language analytics
+  - Workflows for orchestration
+  - Lakeflow Connect for data ingestion
+  - Model Serving for low-latency inference
+  - Committed Use Contracts for volume discounts
+  sources:
+  - https://www.databricks.com/product/pricing
+  updated: '2026-05-04'
+- type: UseCases
+  data:
+  - name: Data Engineering
+    description: Build and orchestrate ETL pipelines with Delta Live Tables and multi-task
+      workflows.
+  - name: Data Warehousing
+    description: Run analytical SQL queries on lakehouse data with serverless SQL
+      warehouses.
+  - name: Machine Learning
+    description: Train, track, and deploy ML models with MLflow experiment tracking
+      and model registry.
+  - name: Real-Time Analytics
+    description: Process streaming data with structured streaming and serve results
+      through online tables.
+  - name: Data Governance
+    description: Govern data assets across the organization with Unity Catalog metadata
+      management.
+- type: Integrations
+  data:
+  - name: Apache Spark
+    description: Native integration with Apache Spark for distributed data processing
+      at scale.
+  - name: Delta Lake
+    description: Built on Delta Lake open format for ACID transactions and time travel
+      on data lakes.
+  - name: MLflow
+    description: Open-source platform for managing the complete machine learning lifecycle.
+  - name: Terraform
+    description: Infrastructure-as-code provider for automating Databricks workspace
+      provisioning.
+  - name: dbt
+    description: Integration with dbt for SQL-based data transformation workflows.
+- type: Integrations
+  url: https://docs.databricks.com/aws/en/integrations
+- name: Agent Skills
+  url: https://github.com/databricks/databricks-agent-skills
+  type: AgentSkills
+- type: LlmsText
+  url: https://docs.databricks.com/llms.txt
+
 apis:
 - aid: databricks:databricks
   name: Databricks
@@ -1070,33 +1440,7 @@ apis:
     url: https://docs.databricks.com/api/workspace/workspace
   - type: JSONSchema
     url: json-schema/databricks-workspace-object-schema.json
-name: Databricks
-tags:
-- Cleanroom
-- Databricks
-- Artificial Intelligence
-- Analytics
-- Apache Spark
-- Big Data
-- Cloud Computing
-- Data
-- Data Analytics
-- Data Engineering
-- Data Governance
-- Delta Lake
-- Delta Sharing
-- ETL
-- Identity Management
-- Lakehouse
-- Machine Learning
-- MLflow
-- Model Serving
-- Security
-- SQL
-- Unity Catalog
-- Vector Search
-- Visualize
-- Data Catalog
+
 tags_raw:
 - Cleanrooms
 - Databricks
@@ -1125,40 +1469,9 @@ tags_raw:
 - Visualize
 - Machine-Learning
 - Data Catalog
+
 type: Index
-deliveryModel:
-  model: saas
-  open_source: false
-  commercial: true
-  callable_host: false
-  label: Hosted service · you call their endpoint
-  confidence: medium
-  source:
-  - openapi
-  - pricing
-  generated: '2026-08-28'
-  method: derived
-accessModel:
-  pricing: paid
-  onboarding: unknown
-  trial: false
-  try_now: false
-  public: false
-  label: Paid
-  confidence: medium
-  source:
-  - plans
-  - authentication
-  - security
-  generated: '2026-09-03'
-  method: derived
-image: https://www.databricks.com/en-website-assets/static/f9f2b15ae456c41f7d2e5b303c8c6c6e/databricks-logo.svg
-access: 3rd-Party
-created: '2025-01-14'
-modified: '2026-05-19'
-position: Consuming
-description: Collection of Databricks REST APIs for managing workspaces, clusters,
-  jobs, and data operations.
+
 integrations:
 - name: Databricks
 - name: Fivetran
@@ -1193,248 +1506,9 @@ integrations:
 - name: Precisely
 - name: AtScale
 - name: Stardog
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-- name: Databricks
-  email: support@databricks.com
-  url: https://www.databricks.com/
-specificationVersion: '0.23'
-common:
-- type: Pricing
-  url: https://www.databricks.com/product/pricing
-- type: Plans
-  url: plans/databricks-plans-pricing.yml
-- type: Website
-  url: https://www.databricks.com/
-- type: CapabilityMap
-  url: capabilities/databricks-capability-edges.yml
-  name: Databricks Business Capability Map
-- type: AgenticAccess
-  url: agentic-access/databricks-agentic-access.yml
-- type: VulnerabilityDisclosure
-  url: security/databricks-vulnerability-disclosure.yml
-- type: DomainSecurity
-  url: security/databricks-domain-security.yml
-- type: Authentication
-  url: authentication/databricks-authentication.yml
-- type: MCPServer
-  url: https://docs.databricks.com/aws/en/generative-ai/mcp/
-  name: MCP Server
-  description: Databricks managed MCP servers for Unity Catalog functions, Genie spaces, Databricks SQL, and Vector Search, with Unity Catalog permissions always enforced.
-- type: PostmanWorkspace
-  url: https://www.postman.com/kinlaneapi/databricks/overview
-- type: Arazzo
-  url: arazzo/databricks-audit-cluster-events-workflow.yml
-  name: Databricks Audit Cluster Lifecycle Events
-- type: Arazzo
-  url: arazzo/databricks-cancel-all-active-runs-workflow.yml
-  name: Databricks Cancel a Job's Active Run
-- type: Arazzo
-  url: arazzo/databricks-cancel-run-and-confirm-workflow.yml
-  name: Databricks Cancel Job Run and Confirm Terminal
-- type: Arazzo
-  url: arazzo/databricks-cleanup-workspace-directory-workflow.yml
-  name: Databricks Inspect and Recursively Delete a Directory
-- type: Arazzo
-  url: arazzo/databricks-clone-job-settings-workflow.yml
-  name: Databricks Clone a Job From an Existing One
-- type: Arazzo
-  url: arazzo/databricks-create-and-run-job-workflow.yml
-  name: Databricks Create Job and Trigger First Run
-- type: Arazzo
-  url: arazzo/databricks-delete-job-and-cleanup-runs-workflow.yml
-  name: Databricks Drain Active Runs Then Delete Job
-- type: Arazzo
-  url: arazzo/databricks-edit-cluster-and-verify-workflow.yml
-  name: Databricks Edit Cluster Configuration and Verify
-- type: Arazzo
-  url: arazzo/databricks-export-and-reimport-notebook-workflow.yml
-  name: Databricks Export a Notebook and Re-Import as a Copy
-- type: Arazzo
-  url: arazzo/databricks-find-cluster-and-start-workflow.yml
-  name: Databricks Find Terminated Cluster by Name and Start It
-- type: Arazzo
-  url: arazzo/databricks-find-job-and-run-workflow.yml
-  name: Databricks Find Job by Name and Run It
-- type: Arazzo
-  url: arazzo/databricks-import-notebook-and-verify-workflow.yml
-  name: Databricks Create Directory and Import Notebook
-- type: Arazzo
-  url: arazzo/databricks-latest-run-output-workflow.yml
-  name: Databricks Fetch Latest Completed Run Output for a Job
-- type: Arazzo
-  url: arazzo/databricks-provision-cluster-and-create-job-workflow.yml
-  name: Databricks Provision Cluster Then Create Job On It
-- type: Arazzo
-  url: arazzo/databricks-provision-cluster-workflow.yml
-  name: Databricks Provision Cluster and Wait Until Running
-- type: Arazzo
-  url: arazzo/databricks-restart-cluster-and-verify-workflow.yml
-  name: Databricks Restart Cluster and Verify Running
-- type: Arazzo
-  url: arazzo/databricks-run-job-and-export-notebook-workflow.yml
-  name: Databricks Run Job, Wait, Then Export the Notebook
-- type: Arazzo
-  url: arazzo/databricks-run-job-and-wait-workflow.yml
-  name: Databricks Trigger Job Run and Wait for Output
-- type: Arazzo
-  url: arazzo/databricks-run-job-on-failure-export-output-workflow.yml
-  name: Databricks Run Job and Branch on Success or Failure
-- type: Arazzo
-  url: arazzo/databricks-stage-notebook-and-create-job-workflow.yml
-  name: Databricks Stage Notebook Then Create and Run a Job
-- type: Arazzo
-  url: arazzo/databricks-start-cluster-and-run-job-workflow.yml
-  name: Databricks Start Cluster Then Run Job
-- type: Arazzo
-  url: arazzo/databricks-terminate-and-delete-cluster-workflow.yml
-  name: Databricks Terminate Then Permanently Delete Cluster
-- type: Arazzo
-  url: arazzo/databricks-update-job-and-rerun-workflow.yml
-  name: Databricks Update Job Settings and Re-Run
-- url: https://docs.databricks.com/dev-tools/auth.html
-  type: Authentication
-- url: https://docs.databricks.com/getting-started/index.html
-  type: GettingStarted
-- url: https://docs.databricks.com/dev-tools/sdks.html
-  type: SDKs
-- url: https://status.databricks.com/
-  type: StatusPage
-- url: https://help.databricks.com/
-  type: Support
-- url: https://docs.databricks.com/api/workspace/introduction
-  type: APIReference
-- url: https://docs.databricks.com/aws/en/reference/api
-  type: Documentation
-- url: https://www.databricks.com/product/pricing
-  type: Pricing
-- url: https://www.databricks.com/try-databricks
-  type: Signup
-- url: https://www.databricks.com/legal/privacynotice
-  type: PrivacyPolicy
-- url: https://www.databricks.com/legal/terms-of-use
-  type: TermsOfService
-- url: https://www.databricks.com/trust
-  type: Security
-- url: https://docs.databricks.com/aws/en/resources/limits
-  type: RateLimits
-- url: https://docs.databricks.com/aws/en/release-notes/
-  type: ChangeLog
-- url: https://www.databricks.com/blog
-  type: Blog
-- url: https://community.databricks.com/
-  type: Support
-  title: Community Forum
-- url: https://github.com/databricks
-  type: GitHubOrganization
-- url: https://github.com/databricks/databricks-sdk-py
-  type: SDKs
-  title: Python SDK
-- url: https://github.com/databricks/databricks-sdk-go
-  type: SDKs
-  title: Go SDK
-- url: https://github.com/databricks/cli
-  type: CLI
-- url: https://docs.databricks.com/aws/en/dev-tools/cli
-  type: Documentation
-- url: https://twitter.com/databricks
-  type: X
-- url: https://www.linkedin.com/company/databricks
-  type: LinkedIn
-- url: https://login.databricks.com/
-  type: Login
-- url: https://www.databricks.com/company/contact
-  type: Contact
-- url: https://www.databricks.com/learn/training/home
-  type: Training
-- url: https://customer-academy.databricks.com/learn
-  type: Academy
-- url: https://github.com/databricks/databricks-sdk-java
-  type: SDKs
-  title: Java SDK
-- url: https://github.com/databricks/databricks-sql-python
-  type: SDKs
-  title: Python SQL SDK
-- url: https://github.com/databricks/terraform-provider-databricks
-  type: SDKs
-  title: Terraform Provider
-- url: https://docs.databricks.com/aws/en/reference/mlflow-api
-  type: APIReference
-  title: MLflow API Reference
-- url: https://www.databricks.com/trust/security-features
-  type: Security
-- url: https://docs.databricks.com/aws/en/dev-tools/auth
-  type: Authentication
-- url: https://api-docs.databricks.com/
-  type: APIReference
-- url: openapi/_original/databricks-openapi.yml
-  type: OpenAPI
-- url: json-schema/databricks-cluster-schema.json
-  type: JSONSchema
-- url: json-schema/databricks-job-schema.json
-  type: JSONSchema
-- url: json-ld/databricks-context.jsonld
-  type: JSONLD
-- url: rules/databricks-spectral-rules.yml
-  type: SpectralRules
-- type: Features
-  data:
-  - 'Jobs Compute: ~$0.07-$0.15/DBU (cheapest)'
-  - 'All-Purpose Compute: ~$0.55/DBU (interactive)'
-  - 'SQL Serverless: ~$0.70/DBU (infra included)'
-  - 'Serverless Jobs: $0.35-$0.40/DBU'
-  - 'Editions: Standard (Azure legacy), Premium (default), Enterprise (AWS)'
-  - 'Multi-cloud: AWS, Azure, GCP'
-  - 'REST API: 30 req/sec default, 10 req/sec for jobs/run-now'
-  - DBSQL Statement Execution API
-  - Unity Catalog for governance
-  - Delta Lake table format
-  - Mosaic AI / MLflow for ML lifecycle
-  - Genie / AI/BI for natural-language analytics
-  - Workflows for orchestration
-  - Lakeflow Connect for data ingestion
-  - Model Serving for low-latency inference
-  - Committed Use Contracts for volume discounts
-  sources:
-  - https://www.databricks.com/product/pricing
-  updated: '2026-05-04'
-- type: UseCases
-  data:
-  - name: Data Engineering
-    description: Build and orchestrate ETL pipelines with Delta Live Tables and multi-task
-      workflows.
-  - name: Data Warehousing
-    description: Run analytical SQL queries on lakehouse data with serverless SQL
-      warehouses.
-  - name: Machine Learning
-    description: Train, track, and deploy ML models with MLflow experiment tracking
-      and model registry.
-  - name: Real-Time Analytics
-    description: Process streaming data with structured streaming and serve results
-      through online tables.
-  - name: Data Governance
-    description: Govern data assets across the organization with Unity Catalog metadata
-      management.
-- type: Integrations
-  data:
-  - name: Apache Spark
-    description: Native integration with Apache Spark for distributed data processing
-      at scale.
-  - name: Delta Lake
-    description: Built on Delta Lake open format for ACID transactions and time travel
-      on data lakes.
-  - name: MLflow
-    description: Open-source platform for managing the complete machine learning lifecycle.
-  - name: Terraform
-    description: Infrastructure-as-code provider for automating Databricks workspace
-      provisioning.
-  - name: dbt
-    description: Integration with dbt for SQL-based data transformation workflows.
-- type: Integrations
-  url: https://docs.databricks.com/aws/en/integrations
-- name: Agent Skills
-  url: https://github.com/databricks/databricks-agent-skills
-  type: AgentSkills
-- type: LlmsText
-  url: https://docs.databricks.com/llms.txt
+x-enrichment:
+  date: '2026-10-03'
+  status: enriched
+  artifacts_added: 22
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

@@ -1,0 +1,41 @@
+generated: '2026-10-03'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.databricks.com/api/model-registry/v1/registry-webhook
+sources:
+- https://docs.databricks.com/api/model-registry/v1/registry-webhook
+- https://docs.databricks.com/api/notification-destinations/v1/notification-destination
+- https://docs.databricks.com/api/clusters/v2/list-events
+- https://docs.databricks.com/api/clusters/v2/list-events.md
+description: Databricks Model Registry webhooks
+events:
+- event: MODEL_VERSION_CREATED
+  description: A new model version was created for the associated model.
+- event: MODEL_VERSION_TRANSITIONED_STAGE
+  description: A model version’s stage was changed.
+- event: TRANSITION_REQUEST_CREATED
+  description: A user requested a model version’s stage be transitioned.
+- event: COMMENT_CREATED
+  description: A user wrote a comment on a registered model.
+- event: REGISTERED_MODEL_CREATED
+  description: A new registered model was created. This event type can only be specified for a registry-wide webhook, which can be created by
+    not specifying a model name in the create request.
+- event: MODEL_VERSION_TAG_SET
+  description: A user set a tag on the model version.
+- event: MODEL_VERSION_TRANSITIONED_TO_STAGING
+  description: A model version was transitioned to staging.
+- event: MODEL_VERSION_TRANSITIONED_TO_PRODUCTION
+  description: A model version was transitioned to production.
+- event: MODEL_VERSION_TRANSITIONED_TO_ARCHIVED
+  description: A model version was archived.
+- event: TRANSITION_REQUEST_TO_STAGING_CREATED
+  description: A user requested a model version be transitioned to staging.
+- event: TRANSITION_REQUEST_TO_PRODUCTION_CREATED
+  description: A user requested a model version be transitioned to production.
+- event: TRANSITION_REQUEST_TO_ARCHIVED_CREATED
+  description: A user requested a model version be archived.
+delivery:
+  auth: Shared secret required for HMAC encoding payload. The HMAC‑encoded payload is sent in the header "X-Databricks-Signature". Optional "authorization"
+    header can be set (e.g., "Bearer <access_token>").
+  content_type: application/json
+docs: https://docs.databricks.com/api/model-registry/v1/registry-webhook
