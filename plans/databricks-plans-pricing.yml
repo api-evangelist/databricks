@@ -2,6 +2,7 @@
 generated: '2026-09-20'
 method: searched
 source: https://www.databricks.com/product/pricing
+name: Databricks API Plans
 sources:
 - https://www.databricks.com/product/pricing
 provenance:

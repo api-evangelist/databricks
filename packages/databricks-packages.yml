@@ -1,0 +1,42 @@
+generated: '2026-10-03'
+method: probed
+generator: harvest-packages.py
+source: registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org, api.nuget.org, packagist.org, crates.io)
+ownership_rule: 'official: true only when the registry metadata (homepage, repository, author, URLs) names the provider''s domain (agentic-access/databricks-agentic-access.yml,
+  arazzo/databricks-audit-cluster-events-workflow.yml, arazzo/databricks-cancel-all-active-runs-workflow.yml, arazzo/databricks-cancel-run-and-confirm-workflow.yml,
+  arazzo/databricks-cleanup-workspace-directory-workflow.yml, arazzo/databricks-clone-job-settings-workflow.yml, arazzo/databricks-create-and-run-job-workflow.yml,
+  arazzo/databricks-delete-job-and-cleanup-runs-workflow.yml, arazzo/databricks-edit-cluster-and-verify-workflow.yml, arazzo/databricks-export-and-reimport-notebook-workflow.yml,
+  arazzo/databricks-find-cluster-and-start-workflow.yml, arazzo/databricks-find-job-and-run-workflow.yml, arazzo/databricks-import-notebook-and-verify-workflow.yml,
+  arazzo/databricks-latest-run-output-workflow.yml, arazzo/databricks-provision-cluster-and-create-job-workflow.yml, arazzo/databricks-provision-cluster-workflow.yml,
+  arazzo/databricks-restart-cluster-and-verify-workflow.yml, arazzo/databricks-run-job-and-export-notebook-workflow.yml, arazzo/databricks-run-job-and-wait-workflow.yml,
+  arazzo/databricks-run-job-on-failure-export-output-workflow.yml, arazzo/databricks-stage-notebook-and-create-job-workflow.yml, arazzo/databricks-start-cluster-and-run-job-workflow.yml,
+  arazzo/databricks-terminate-and-delete-cluster-workflow.yml, arazzo/databricks-update-job-and-rerun-workflow.yml, authentication/databricks-authentication.yml,
+  capabilities/databricks-capability-edges.yml, databricks.com, json-ld/databricks-context.jsonld, json-schema/databricks-cluster-schema.json,
+  json-schema/databricks-job-schema.json, linkedin.com, openapi/_original/databricks-openapi.yml, plans/databricks-plans-pricing.yml, postman.com,
+  rules/databricks-spectral-rules.yml, security/databricks-domain-security.yml, security/databricks-vulnerability-disclosure.yml, twitter.com)
+  or its accepted GitHub org.'
+packages:
+- name: databricks
+  registry: npm
+  url: https://www.npmjs.com/package/databricks
+  language: JavaScript
+  official: true
+  version: 1.0.0
+  published: '2017-05-11'
+  evidence: metadata names databricks.com
+- name: databricks
+  registry: pypi
+  url: https://pypi.org/project/databricks/
+  language: Python
+  official: false
+  version: '0.2'
+  published: '2018-11-15'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'
+- name: databricks
+  registry: rubygems
+  url: https://rubygems.org/gems/databricks
+  language: Ruby
+  official: false
+  version: 2.3.1
+  published: '2021-06-04'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'

@@ -1,0 +1,20 @@
+generated: '2026-10-03'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/databricks-jobs-api-openapi.yml
+skills:
+- file: skills/databricks-create-and-run-job.md
+  name: databricks-create-and-run-job
+  api: openapi/databricks-jobs-api-openapi.yml
+  operations:
+  - createJob
+  - runJobNow
+  - getJobRun
+  - getJobRunOutput
+- file: skills/databricks-workspace-export.md
+  name: databricks-workspace-export
+  api: openapi/databricks-workspace-api-openapi.yml
+  operations:
+  - listWorkspaceObjects
+  - getWorkspaceObjectStatus
+  - exportWorkspaceObject
