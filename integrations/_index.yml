@@ -14,6 +14,30 @@
   relationship: system-coverage
   status: not-a-workflow
   arazzo: null
+- slug: databricks-github-marketplace-actions
+  label: GitHub Marketplace (actions)
+  partner: github-actions
+  partner_name: GitHub Marketplace (actions)
+  type: marketplace
+  marketplace: github-actions
+  channel: partner-built
+  evidence: https://github.com/marketplace/actions/run-databricks-notebook
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-visual-studio-code-marketplace
+  label: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_name: Visual Studio Code Marketplace
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  evidence: https://marketplace.visualstudio.com/publishers/databricks
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: databricks-mparticle
   label: mParticle
   partner: mparticle
@@ -48,29 +72,5 @@
   evidence: https://fivetran.com/docs/activations/destinations/available-destinations/databricks
   source: edge
   relationship: connector-coverage
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-github-marketplace-actions
-  label: GitHub Marketplace (actions)
-  partner: github-actions
-  partner_name: GitHub Marketplace (actions)
-  type: marketplace
-  marketplace: github-actions
-  channel: partner-built
-  evidence: https://github.com/marketplace/actions/run-databricks-notebook
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-visual-studio-code-marketplace
-  label: Visual Studio Code Marketplace
-  partner: vs-code-marketplace
-  partner_name: Visual Studio Code Marketplace
-  type: marketplace
-  marketplace: vscode
-  channel: partner-built
-  evidence: https://marketplace.visualstudio.com/publishers/databricks
-  source: edge
-  relationship: platform-app
   status: not-a-workflow
   arazzo: null

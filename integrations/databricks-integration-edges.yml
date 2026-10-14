@@ -19,6 +19,44 @@ edges:
   matched_by: verified-token-table
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
+- partner_name: GitHub Marketplace (actions)
+  partner: github-actions
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-actions
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/actions/run-databricks-notebook
+  listing_count: 2
+  apps:
+  - Run Databricks Notebook
+  - upload-dbfs-temp
+  publisher_name: Databricks
+  badges:
+  - Verified creator
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+- partner_name: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_match: aggregator
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.visualstudio.com/publishers/databricks
+  listing_count: 3
+  apps:
+  - Databricks
+  - Databricks Driver for SQLTools
+  - Neon - Serverless Postgres
+  publisher_name: Databricks
+  badges:
+  - Verified publisher
+  - Verified domain
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 - partner_name: mParticle
   partner: mparticle
   partner_match: aggregator
@@ -81,44 +119,6 @@ edges:
       - update or create
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
-- partner_name: GitHub Marketplace (actions)
-  partner: github-actions
-  partner_match: aggregator
-  type: marketplace
-  marketplace: github-actions
-  channel: partner-built
-  relationship: platform-app
-  direction: third-party
-  evidence: https://github.com/marketplace/actions/run-databricks-notebook
-  listing_count: 2
-  apps:
-  - Run Databricks Notebook
-  - upload-dbfs-temp
-  publisher_name: Databricks
-  badges:
-  - Verified creator
-  detected_by: sweep-devtools.py
-  detected: '2026-10-14'
-- partner_name: Visual Studio Code Marketplace
-  partner: vs-code-marketplace
-  partner_match: aggregator
-  type: marketplace
-  marketplace: vscode
-  channel: partner-built
-  relationship: platform-app
-  direction: third-party
-  evidence: https://marketplace.visualstudio.com/publishers/databricks
-  listing_count: 3
-  apps:
-  - Databricks
-  - Databricks Driver for SQLTools
-  - Neon - Serverless Postgres
-  publisher_name: Databricks
-  badges:
-  - Verified publisher
-  - Verified domain
-  detected_by: sweep-devtools.py
-  detected: '2026-10-14'
 generated: '2026-10-13'
 method: searched
 checked:
