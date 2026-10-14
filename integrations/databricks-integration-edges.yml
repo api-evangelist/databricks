@@ -19,7 +19,76 @@ edges:
   matched_by: verified-token-table
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
+- partner_name: mParticle
+  partner: mparticle
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://docs.mparticle.com/integrations/databricks/data-warehouse/
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - databricks
+      integration_types:
+      - data-warehouse
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/databricks-destination
+  coverage_role:
+  - destination
+  - source
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - databricks-destination
+      status: released
+    source:
+      catalog_entries:
+      - databricks
+      status: released
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Census
+  partner: getcensus
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://fivetran.com/docs/activations/destinations/available-destinations/databricks
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - databricks
+      sync_behaviours:
+      - update only
+      - update or create
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
 generated: '2026-10-13'
 method: searched
 checked:
+- https://docs.mparticle.com/integrations/databricks/data-warehouse/
+- https://fivetran.com/docs/activations/destinations/available-destinations/databricks
 - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
+- https://hightouch.com/docs/destinations/databricks-destination
+source:
+- https://docs.mparticle.com/integrations/databricks/data-warehouse/
+- https://fivetran.com/docs/activations/destinations/available-destinations/databricks
+- https://hightouch.com/docs/destinations/databricks-destination
