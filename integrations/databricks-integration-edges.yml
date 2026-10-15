@@ -119,6 +119,28 @@ edges:
       - update or create
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: LlamaIndex
+  partner: llamaindex
+  partner_match: framework
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/run-llama/llama_index/tree/main/llama-index-integrations/vector_stores/llama-index-vector-stores-databricks
+  coverage_role:
+  - embeddings
+  - vector-store
+  framework_signals:
+    packages:
+    - llama-index-embeddings-databricks
+    - llama-index-vector-stores-databricks
+    roles:
+    - embeddings
+    - vector-store
+    vendor_domain: databricks.com
+  matched_by: verified-domain-table
+  detected_by: sweep-rag-vector.py
+  first_seen: '2026-10-15'
 generated: '2026-10-13'
 method: searched
 checked:
@@ -126,6 +148,7 @@ checked:
 - https://fivetran.com/docs/activations/destinations/available-destinations/databricks
 - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
 - https://github.com/marketplace?type=actions
+- https://github.com/run-llama/llama_index/tree/main/llama-index-integrations
 - https://hightouch.com/docs/destinations/databricks-destination
 - https://marketplace.visualstudio.com/vscode
 source:
