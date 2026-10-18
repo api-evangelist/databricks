@@ -322,7 +322,7 @@
       type: destination
       lapsed: false
       cloud: true
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: databricks-fivetran
   label: Fivetran
@@ -348,7 +348,7 @@
     - connectors/databases/databricks
     vendor_link: https://www.databricks.com/product/data-lakehouse
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: databricks-meltano
   label: Meltano
@@ -377,7 +377,7 @@
     quality:
     - unknown
     builder: 'community (Meltano Hub variant maintainers: dron-a)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: databricks-google-workspace-own
   label: Google Workspace (own)
