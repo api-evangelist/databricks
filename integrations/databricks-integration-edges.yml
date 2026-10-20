@@ -1036,19 +1036,57 @@ edges:
       - North America
   detected_by: sweep-professional-services.py
   first_seen: '2026-10-20'
+- partner_name: Scoop
+  partner: null
+  partner_match: null
+  type: register
+  direction: provider-built
+  category: official CLI (Scoop)
+  evidence: https://github.com/ScoopInstaller/Extras/blob/master/bucket/databricks-cli.json
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Scoop (public package index)
+    spec_file: null
+    packages:
+    - name: databricks-cli
+      kind: extras
+      version: 1.21.0
+      released: null
+      lapsed: false
+      page: https://github.com/ScoopInstaller/Extras/blob/master/bucket/databricks-cli.json
+      cli: 'scoop description: CLI for interacting with the Databricks platform.'
+      repo_leg: domain:databricks.com
+      publisher_leg: artifact-shared-github-org:databricks
+      matched_by: domain+name-among-holders
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  detected_by: sweep-official-clis.py
+  first_seen: '2026-10-20'
 generated: '2026-10-13'
 method: searched
 checked:
 - google-workspace/integrations/google-workspace-integration-edges.yml
+- https://api.appexchange.salesforce.com/recommendations/v3/listings?type=consultants&pageSize=50&page=0
+- https://api.finder.partners.aws.a2z.com/search?locale=en&size=20&from=0
+- https://app.hubspot.com/api/chirp-frontend-external/v1/gateway/com.hubspot.marketplace.personalization.rpc.PersonalizationPublicRpc/search?hs_static_app=marketplace-storefront-public-ui&hs_static_app_version=1.13519
+- https://cdn.winget.microsoft.com/cache
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
 - https://docs.mparticle.com/integrations/databricks/data-warehouse/
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/activations/destinations/available-destinations/databricks
 - https://fivetran.com/docs/connectors/partner-built-program
+- https://formulae.brew.sh/api/cask.json
+- https://formulae.brew.sh/api/formula.json
 - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
+- https://github.com/ScoopInstaller/Extras
+- https://github.com/ScoopInstaller/Main
 - https://github.com/kubeflow/website
 - https://github.com/lfai/landscape
 - https://github.com/marketplace?type=actions
@@ -1060,11 +1098,15 @@ checked:
 - https://govramp.org/program-participants
 - https://hightouch.com/docs/destinations/databricks-destination
 - https://marketplace.visualstudio.com/vscode
+- https://pypi.org/pypi
 - https://raw.githubusercontent.com/18F/fedramp-data/4b73d9247fd6360759960e4690e3ce4ca858e0fa/data/data.json
+- https://registry.npmjs.org
 - https://registry.npmjs.org/-/v1/search?text=keywords:n8n-community-node-package
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/suppliers
+- https://www.databricks.com/en-partners-assets/data/partner/all/en.json
 - https://www.gs1.org/services/gdsn/certified-data-pools-list
 - https://www.gs1us.org/services/find-gs1-us-solution-partner/profiles
+- https://www.snowflake.com/content/snowflake-site/global/en/why-snowflake/partners/all-partners/_jcr_content/root/responsivegrid/container/container/filterable_resources.filter.json?offset=0
 - https://www.spscommerce.com/partner-community/directory/
 - https://zapier.com/api/v4/apps/
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
@@ -1072,11 +1114,6 @@ checked:
 - power-bi/integrations/power-bi-integration-edges.yml
 - slack/integrations/slack-integration-edges.yml
 - tableau/integrations/tableau-integration-edges.yml
-- https://api.appexchange.salesforce.com/recommendations/v3/listings?type=consultants&pageSize=50&page=0
-- https://api.finder.partners.aws.a2z.com/search?locale=en&size=20&from=0
-- https://app.hubspot.com/api/chirp-frontend-external/v1/gateway/com.hubspot.marketplace.personalization.rpc.PersonalizationPublicRpc/search?hs_static_app=marketplace-storefront-public-ui&hs_static_app_version=1.13519
-- https://www.databricks.com/en-partners-assets/data/partner/all/en.json
-- https://www.snowflake.com/content/snowflake-site/global/en/why-snowflake/partners/all-partners/_jcr_content/root/responsivegrid/container/container/filterable_resources.filter.json?offset=0
 source:
 - https://docs.mparticle.com/integrations/databricks/data-warehouse/
 - https://fivetran.com/docs/activations/destinations/available-destinations/databricks
