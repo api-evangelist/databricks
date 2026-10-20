@@ -1066,27 +1066,3560 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
   first_seen: '2026-10-20'
+- partner_name: Exchange Data International
+  partner: exchange-data-international
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/83edb75b-70ab-4484-bd48-cd412cee38a2
+  partner_url: https://www.exchange-data.com/product_category/products-services
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Exchange Data International
+    matched_domain: exchange-data.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - SAMPLE Foreign Exchange Rates FX Data | Currency Data | incl. Euro-Legacy Currencies & ISO Codes
+    - SAMPLE Global Credit Default Swap (CDS) Data | 2000+ Reference Entities | Bond Credit Rating | ...
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: SafeGraph
+  partner: safegraph
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/840684a7-8ea5-4f97-8f80-92d77a796b35
+  partner_url: https://safegraph.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: SafeGraph
+    matched_domain: safegraph.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Geometry - Building Footprint Dataset
+    - Point of Interest (POI) Dataset
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: MOSTLY AI
+  partner: mostly-ai
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/88338f65-c6c5-44df-8b1d-25bb66cbdb00
+  partner_url: https://mostly.ai
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: MOSTLY AI
+    matched_domain: mostly.ai
+    matched_by: domain
+    listings: 4
+    sample_listings:
+    - Airlines Passengers
+    - Census Synthetic Data Package
+    - Data Insights powered by marktguru
+    - Privacy-Safe Synthetic Data in Unity Catalog for Financial Services
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 4
+      ASSET_TYPE_MEDIA: 1
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Socotra Inc
+  partner: socotra
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/8c2c2b17-eb7f-44a6-99d8-1e255d2b3ac9
+  partner_url: https://socotra.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Socotra Inc
+    matched_domain: socotra.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Socotra Data Ingestion Accelerator
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_NOTEBOOK: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: ATTOM
+  partner: attomdata
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/8effc83a-c271-4c2b-a805-391bbb7fc9f7
+  partner_url: https://www.attomdata.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: ATTOM
+    matched_domain: attomdata.com
+    matched_by: domain
+    listings: 11
+    sample_listings:
+    - SAMPLE ATTOM AVM | AI-Powered Residential Valuations for 95M+ U.S. Properties | Built on 30+yrs ...
+    - SAMPLE ATTOM | House Price Index Data | 30+ Years of Residential Price Trends | 36-Month ...
+    - SAMPLE ATTOM | Property Data | AI-Powered Neighborhood Scoring | ResiScore | 24-Month Home Price ...
+    - SAMPLE Foreclosure Data | U.S. Propensity to Default Scores - 60M+ Properties | ATTOM Data
+    - SAMPLE Mortgage Data | 591M+ Assignments & Releases Records - U.S. Mortgage Assignment & ...
+    other_registrations:
+    - ATTOM
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Braze
+  partner: braze
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/99e21999-64ed-4384-960a-8776cc948018
+  partner_url: https://www.braze.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Braze
+    matched_domain: braze.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Braze
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Snap, Inc.
+  partner: snap
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/a07290ca-ce6b-47ac-a6d7-2e09e36d26c2
+  partner_url: https://www.snap.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Snap, Inc.
+    matched_domain: snap.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - Snapchat Conversions API
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MEDIA: 1
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: ThoughtSpot
+  partner: thoughtspot
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/a169c2c0-9831-4bb4-a2ba-8bce6fd5b636
+  partner_url: https://www.thoughtspot.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: ThoughtSpot
+    matched_domain: thoughtspot.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - ThoughtSpot Agentic Analytics for Databricks
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Sovrn
+  partner: sovrn
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/a55c6cf4-69b8-4ad2-85f5-bede1c86ae6d
+  partner_url: https://www.sovrn.com/data-solutions/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Sovrn
+    matched_domain: sovrn.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - Sovrn Weblog Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Ataccama
+  partner: ataccama
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/af819657-7429-43b3-a251-9d31afa0174c
+  partner_url: https://ataccama.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Ataccama
+    matched_domain: ataccama.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Ataccama MCP
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Nutritionix
+  partner: nutritionix
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/b00b0400-e15d-4f0f-9804-67c86e38aa3a
+  partner_url: https://www.nutritionix.com/database
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Nutritionix
+    matched_domain: nutritionix.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Consumer Packaged Goods (Grocery) | Nutrition Datasets
+    - Restaurants | Nutrition Datasets
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Fivetran Data Pipelines
+  partner: fivetran
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/b15383da-c0ed-472c-a490-60ef60b8d78e
+  partner_url: https://www.fivetran.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Fivetran Data Pipelines
+    matched_domain: fivetran.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Fivetran Data Pipelines
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Precisely
+  partner: precisely-apis
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/b2312fad-ce38-48e5-9c55-8a225d183993
+  partner_url: https://www.precisely.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Precisely
+    matched_domain: precisely.com
+    matched_by: domain
+    listings: 80
+    sample_listings:
+    - Address Fabric Australia Sample
+    - Address Fabric Canada Sample
+    - Address Fabric USA Sample
+    - Base Immeubles Premium France - FRA Sample
+    - Buildings - Great Britain Sample
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 80
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Asana
+  partner: asana
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/b9448628-ea98-4c3f-bc6c-379ea68a133f
+  partner_url: https://asana.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Asana
+    matched_domain: asana.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Asana MCP
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Nasdaq eVestment
+  partner: nasdaq
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/b9e9b929-aec2-4e5e-a8af-4a2ea2be5aee
+  partner_url: https://www.nasdaq.com/solutions/evestment
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Nasdaq eVestment
+    matched_domain: nasdaq.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_listings:
+    - Data Link MCP Server
+    - Nasdaq eVestment Next Best Action
+    other_registrations:
+    - Nasdaq
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: S&P Global Market Intelligence
+  partner: sp-global
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/bb123ba0-f713-4a39-8c51-2daca088d1de
+  partner_url: https://www.marketplace.spglobal.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: S&P Global Market Intelligence
+    matched_domain: spglobal.com
+    matched_by: domain+name-among-holders
+    listings: 86
+    sample_listings:
+    - AI Ready Data
+    - Business Entity Cross Reference Service (BECRS)
+    - Business Relationships
+    - Chemicals Enhanced Analysis and Forecasts
+    - Commodities at Sea
+    other_registrations:
+    - S&P Global Energy
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 36
+      ASSET_TYPE_MCP: 2
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: DevRev
+  partner: devrev
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/bec4b914-45c5-4546-b9d6-6a6d00306ebd
+  partner_url: https://devrev.ai/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: DevRev
+    matched_domain: devrev.ai
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Computer by DevRev
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Movable Ink
+  partner: movable-ink
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/c0156b90-0da7-4955-b007-c8b14e8a4c68
+  partner_url: https://movableink.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Movable Ink
+    matched_domain: movableink.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Movable Ink Studio Campaign and User Level Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Matillion
+  partner: matillion
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/c1d82ee2-95c4-4c7a-a3d2-7814b59dd20a
+  partner_url: https://www.matillion.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Matillion
+    matched_domain: matillion.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Life Sciences ETL using Matillion
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Zebra Technologies
+  partner: zebra-technologies
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/c4e19272-fc82-49b2-9bc5-4ed34b698919
+  partner_url: https://www.zebra.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Zebra Technologies
+    matched_domain: zebra.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - Workcloud Modeling Studio
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Tonic.ai
+  partner: tonic-ai
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/c80a0ad7-8f29-4894-941e-47f8a952ebfc
+  partner_url: https://www.tonic.ai/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Tonic.ai
+    matched_domain: tonic.ai
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Unstructured Data Ingestion by Tonic Textual for Databricks
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Monte Carlo Data + AI Observability Platform
+  partner: monte-carlo
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/ca9d3989-b467-4a24-a768-34f21a522054
+  partner_url: https://montecarlo.ai/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Monte Carlo Data + AI Observability Platform
+    matched_domain: montecarlo.ai
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - Monte Carlo AI
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: AppLovin
+  partner: applovin
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/cac156ba-17fd-4718-8e5e-b4053d86a523
+  partner_url: https://applovin.com/en
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: AppLovin
+    matched_domain: applovin.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - AppLovin Conversion API
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_NOTEBOOK: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Omni
+  partner: omni
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/cecd2da6-8fa2-4b6e-ae04-04936f84ed46
+  partner_url: https://omni.co
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Omni
+    matched_domain: omni.co
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - Omni
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Sigma Computing
+  partner: sigma-computing
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/cfccf3c5-0092-49bd-9df2-4e62774aee96
+  partner_url: https://www.sigmacomputing.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Sigma Computing
+    matched_domain: sigmacomputing.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - Sigma | AI, Apps & Analytics Software
+    - Sigma | MCP - AWS US West
+    - Sigma | MCP - GCP US Central
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 2
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Visier Inc.
+  partner: visier
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/d0cefe18-5a9c-4881-bba0-6a9a34122922
+  partner_url: https://www.visier.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Visier Inc.
+    matched_domain: visier.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Visier Workforce Intelligence
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Enigma
+  partner: enigma-public
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/d40f7797-9097-408c-aebc-6d8dccd3c0f3
+  partner_url: https://www.enigma.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Enigma
+    matched_domain: enigma.com
+    matched_by: domain+name-among-holders
+    listings: 10
+    sample_listings:
+    - Ecommerce Companies & Online Selling Signals
+    - New Business Digital Presence & First Review Signals (Annual)
+    - New Business Digital Presence & First Review Signals (Monthly)
+    - New Business Operating Locations Digital Presence & First Review Signals (Annual)
+    - New Business Operating Locations Digital Presence & First Review Signals (Monthly)
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 10
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: G2
+  partner: g2
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/d41c9cf0-56f5-43f5-acce-78131af3eabf
+  partner_url: https://g2.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: G2
+    matched_domain: g2.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - G2 Buyer Intent Data
+    - G2 Market Intelligence
+    - G2 Review Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 3
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: MarketCheck
+  partner: marketcheck
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/d485518b-1b34-47ee-8d75-7ff19b8ab402
+  partner_url: https://www.marketcheck.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: MarketCheck
+    matched_domain: marketcheck.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Historical Automotive Sales Data - North America | Car Data
+    - US Automotive Dealership Inventory Data (Updates Daily) - North America
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: StreamNative
+  partner: streamnative
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/d6ea0226-f44f-4e01-b0a9-9adcba60cbf9
+  partner_url: https://streamnative.io
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: StreamNative
+    matched_domain: streamnative.io
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - StreamNative MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: CARTO
+  partner: carto
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/dd56dcf4-cb70-449e-abad-c8038c0de3d9
+  partner_url: https://carto.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: CARTO
+    matched_domain: carto.com
+    matched_by: domain
+    listings: 10
+    sample_listings:
+    - Kontur - Population - Global (H3 res. 8, 2021)
+    - Overture Maps - Addresses
+    - Overture Maps - Base
+    - Overture Maps - Buildings
+    - Overture Maps - Divisions
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 10
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: LSEG
+  partner: lseg
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/df05ca6b-a858-4f66-8532-28c47b30e4c3
+  partner_url: https://www.lseg.com/en
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: LSEG
+    matched_domain: lseg.com
+    matched_by: domain+name-among-holders
+    listings: 6
+    sample_listings:
+    - LSEG Historical Fixed Income Analytics – Government, Corporate, and Taxable Municipal Bonds.
+    - LSEG Lipper on Databricks
+    - 'LSEG Loan Connector: LPC'
+    - LSEG MCP
+    - LSEG Tick History
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 5
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: CData Software
+  partner: cdata
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/df095f90-4d7b-42a4-9c21-e13113e4aa59
+  partner_url: https://www.cdata.com/ai
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: CData Software
+    matched_domain: cdata.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 'CData Connect AI: Managed MCP Platform for Enterprise Databricks Agents'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Dataminr
+  partner: dataminr
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e1197cfa-c3bd-426a-ac3b-2d9599d28c4a
+  partner_url: https://www.dataminr.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Dataminr
+    matched_domain: dataminr.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - 'Dataminr Real-Time Commodities Intelligence: Early Risk Signals'
+    - Dataminr Real-Time Supply Chain Risk & Disruption Intelligence
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: MoEngage
+  partner: moengage
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e2590b53-8f6c-42a5-a704-0e3ed5d34648
+  partner_url: https://www.moengage.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: MoEngage
+    matched_domain: moengage.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - MoEngage Events (via OpenSharing)
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Silent Push
+  partner: silent-push
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e25c06f8-4227-4352-8717-48189a80f26b
+  partner_url: https://www.silentpush.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Silent Push
+    matched_domain: silentpush.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Analyze Newly Discovered Phishing Domains via Silent Push
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Datavant
+  partner: datavant
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e315dc06-06f9-469a-8a30-eda793e11ddf
+  partner_url: https://datavant.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Datavant
+    matched_domain: datavant.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_listings:
+    - Datavant App
+    - Datavant Connect
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+      ASSET_TYPE_APP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Samba TV
+  partner: sambatv
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e3a2920a-8136-416c-a1f5-691c253f27f7
+  partner_url: https://samba.tv
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Samba TV
+    matched_domain: samba.tv
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Samba Identity Resolution
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Celonis
+  partner: celonis
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e6253bdd-80ab-4b2d-b4e1-43dd2fbb2c88
+  partner_url: https://www.celonis.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Celonis
+    matched_domain: celonis.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Celonis
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Insider One
+  partner: insider
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e694e319-8dab-4c8d-8b45-dcdb9091805c
+  partner_url: https://insiderone.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Insider One
+    matched_domain: insiderone.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Insider One
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: OneTrust
+  partner: onetrust
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e7190295-5ba6-4569-b05f-61751be33b64
+  partner_url: https://www.onetrust.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: OneTrust
+    matched_domain: onetrust.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - OneTrust AI-Ready Governance
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: AcuityMD
+  partner: acuitymd
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e86178d9-a2d7-4d6b-86e3-ccde8bdb9dac
+  partner_url: https://www.acuitymd.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: AcuityMD
+    matched_domain: acuitymd.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - AcuityMD Encounters Data Mart
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Composio
+  partner: composio
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e8984316-c96e-47bb-a8d2-64901f21b9f6
+  partner_url: https://composio.dev
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Composio
+    matched_domain: composio.dev
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 'Composio MCP Server: Integration And Skills Layer for AI Agents'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Ambee
+  partner: ambee
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/e8f52c61-ad23-4333-82f9-6f83cd446474
+  partner_url: https://www.getambee.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Ambee
+    matched_domain: getambee.com
+    matched_by: domain
+    listings: 6
+    sample_listings:
+    - Ambee Global Air Quality Data - Historical | Present | Forecast
+    - Ambee Global Natural Disaster Data – Historical | Present | Climatology
+    - Ambee Global Pollen Data - Historical | Present | Forecast
+    - Ambee Global Weather Data - Historical | Present | Forecast
+    - Ambee Global Wildfire Data – Historical | Present | Risk Forecast | Climatology
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 6
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: bioRxiv | medRxiv
+  partner: biorxiv
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/eb36d550-0f84-425d-8604-0e120cd817c4
+  partner_url: https://connect.biorxiv.org/resources/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: bioRxiv | medRxiv
+    matched_domain: biorxiv.org
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - bioRxiv & medRxiv MCP - Life Science Preprint Intelligence
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: The Associated Press
+  partner: associated-press
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/ec311bdf-bd66-4b4b-8ee2-3a027140b2fe
+  partner_url: https://www.ap.org/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: The Associated Press
+    matched_domain: ap.org
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - AP News
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: BlueConic, Inc
+  partner: blueconic
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/edec3d22-5f65-400b-b897-2d0edefbb385
+  partner_url: https://www.blueconic.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: BlueConic, Inc
+    matched_domain: blueconic.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - BlueConic
+    - BlueConic MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: AccuWeather
+  partner: accuweather
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f0a29bd4-946b-477e-a43a-1c3f2a6e6506
+  partner_url: https://afb.accuweather.com/accuweather-data-suite
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: AccuWeather
+    matched_domain: accuweather.com
+    matched_by: domain
+    listings: 10
+    sample_listings:
+    - 'AccuWeather: Lifestyle & Health Indices'
+    - Daily and Hourly Forecasts - U.S. Postal Codes Sample
+    - Demand Forecasting using Historical Weather - Demo
+    - Forecast Weather Data
+    - Historical Weather Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 10
+      ASSET_TYPE_GIT_REPO: 3
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Box
+  partner: box
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f18c74e1-b18c-4595-9222-cbe5ea773380
+  partner_url: https://www.box.com/home
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Box
+    matched_domain: box.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Box MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Shutterstock
+  partner: shutterstock
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f1e2468b-186b-4ad3-8dbe-91954aa9cbab
+  partner_url: https://www.shutterstock.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Shutterstock
+    matched_domain: shutterstock.com
+    matched_by: domain
+    listings: 5
+    sample_listings:
+    - ' Free Sample Dataset - Object Detection (200 High-Res Images & Metadata)'
+    - Free Sample Dataset - 1000 High Resolution Images & Metadata
+    - Free Sample Dataset - 50 High Resolution Videos & Metadata
+    - Free Sample Dataset - Facial Detection (100 High-Res Images & Metadata)
+    - Free Sample Dataset - People Detection (200 High-Res Images & Metadata)
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 5
+      ASSET_TYPE_MEDIA: 5
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Felt Maps
+  partner: felt
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f53cc718-1efe-4f9b-b820-9bdd38b5ed93
+  partner_url: https://felt.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Felt Maps
+    matched_domain: felt.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 'Felt MCP: A Full GIS for AI Agents'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Arctic Wolf
+  partner: arctic-wolf
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f5d94d3d-7320-4f74-8591-b809487ee17c
+  partner_url: https://www.arcticwolf.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Arctic Wolf
+    matched_domain: arcticwolf.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - The Arctic Wolf Aurora Superintelligence Platform
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_NOTEBOOK: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Vantage
+  partner: vantage-sh
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f635b60e-d1cc-445f-be6a-599a9a720e1a
+  partner_url: https://www.vantage.sh/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Vantage
+    matched_domain: vantage.sh
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 'Vantage-MCP: Automated Cloud Cost Intelligence for FinOps Teams'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Komodo Health
+  partner: komodo-health
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f77cbe35-afdb-4ddc-a9d7-dec83fe53c33
+  partner_url: https://www.komodohealth.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Komodo Health
+    matched_domain: komodohealth.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Healthcare Map via Delta Sharing
+    - MapLab Enterprise
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 2
+      ASSET_TYPE_MEDIA: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Snowplow
+  partner: snowplow
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f874299c-32b5-48d2-8dae-43487aefe472
+  partner_url: https://snowplow.io/partner/databricks/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Snowplow
+    matched_domain: snowplow.io
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 'Snowplow Behavioral Data: Personalizing with Propensity Scoring'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Glean
+  partner: glean
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/f890bd45-529b-4269-8c3f-bed69625c3ab
+  partner_url: https://www.glean.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Glean
+    matched_domain: glean.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 'Glean MCP: Enterprise Search and AI Agents'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Atropos Health
+  partner: atropos-health
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/fa85a7fd-df69-454b-91b7-4bdc0a291105
+  partner_url: https://www.atroposhealth.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Atropos Health
+    matched_domain: atroposhealth.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - The Atropos Evidence Agent MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Faros AI
+  partner: faros
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/fbd8ae83-0862-414a-b5bf-0f5ad5178132
+  partner_url: https://www.faros.ai
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Faros AI
+    matched_domain: faros.ai
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Faros AI
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Rwazi
+  partner: rwazi
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/0296f22e-95af-40d9-b392-ea64d68cec1b
+  partner_url: https://rwazi.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Rwazi
+    matched_domain: rwazi.com
+    matched_by: domain
+    listings: 5
+    sample_listings:
+    - SAMPLE AI in Consumer Decision Making | Global Coverage | 190+ Countries
+    - SAMPLE Conversational Audio Data | Multi-Speaker | 13 Languages | GPS-Verified | Global Coverage
+    - SAMPLE Fruit Juice Retail Data | Product Availability Scorecard | Pricing, Shelf Visibility & ...
+    - SAMPLE Global Insurance Data | Analyze Insurance Trends, Consumer Behaviors and Demographic ...
+    - SAMPLE Retail Trade Intelligence | Store-Level Data | Verified Contacts | GPS-Verified | 190 ...
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 5
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: People Data Labs
+  partner: peopledatalabs
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/066869f4-06d9-4b50-b56d-e05bebcfddcd
+  partner_url: https://peopledatalabs.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: People Data Labs
+    matched_domain: peopledatalabs.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - Company Data License
+    - Free Company Dataset
+    - Person Data License
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 3
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Domo
+  partner: domo
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/076fe15b-8bcf-40b0-997b-d1fd72332646
+  partner_url: https://www.domo.com/partners/databricks
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Domo
+    matched_domain: domo.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Domo
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Sendoso
+  partner: sendoso
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/0798bf7a-188b-48e7-97a9-8383ea0bc9a4
+  partner_url: https://www.sendoso.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Sendoso
+    matched_domain: sendoso.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Sendoso MCP
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Serif Health
+  partner: serif-health
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/0adfd425-2346-4579-a3cb-5d6c8ba95648
+  partner_url: https://www.serifhealth.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Serif Health
+    matched_domain: serifhealth.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - 'Price Transparency Data Sample: Behavioral Health and ABA in UHC Optum Pennsylvania'
+    - 'Price Transparency Data Sample: Top 25 Inpatient DRGs in Aetna Texas'
+    - 'Price Transparency Data Sample: Top 25 Physician Procedures in Cigna Illinois'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      UNSTATED: 3
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Foursquare
+  partner: foursquare
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/0bb11653-c3cd-40af-9457-0ac5a7706180
+  partner_url: https://location.foursquare.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Foursquare
+    matched_domain: foursquare.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - OS Places
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: FinThrive Healthcare
+  partner: finthrive
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/0f2ff226-562d-4278-b51b-70ef20bc56ac
+  partner_url: https://finthrive.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: FinThrive Healthcare
+    matched_domain: finthrive.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Hospital Chargemaster Data
+    - Hospital Claims and Remittance Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Dotmatics
+  partner: dotmatics
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/1114b7cf-c52f-4e56-84f1-b063af9929fd
+  partner_url: https://www.dotmatics.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Dotmatics
+    matched_domain: dotmatics.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Luma, The Scientific Operating System for the Self-Driving Lab
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MEDIA: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: SuperAnnotate
+  partner: superannotate
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/12c3aefa-e8a6-473e-95dc-fdca09a16f16
+  partner_url: https://superannotate.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: SuperAnnotate
+    matched_domain: superannotate.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - LLM Fine-Tuning and Evaluation Solution Accelerator
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Epsilon
+  partner: epsilon
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/158429b8-233e-4e4c-9f60-54eae0ad4821
+  partner_url: https://www.epsilon.com/us
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Epsilon
+    matched_domain: epsilon.com
+    matched_by: domain
+    listings: 6
+    sample_listings:
+    - Epsilon - Contact Complete
+    - Epsilon CDP
+    - Marketing Foundations for Databricks - 3rd Party Data
+    - Marketing Foundations for Databricks - Activation
+    - Marketing Foundations for Databricks - Analytics
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 5
+      ASSET_TYPE_DATA_TABLE: 2
+      ASSET_TYPE_MODEL: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Habu, Inc.
+  partner: habu
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/2149a32a-d5a6-4d96-a0cf-ebd9a7452279
+  partner_url: https://habu.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Habu, Inc.
+    matched_domain: habu.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Habu Data Clean Room
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: You.com
+  partner: you-com
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/22598a6c-3c6c-4f1d-939e-2fbab40dd3bd
+  partner_url: https://you.com/home
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: You.com
+    matched_domain: you.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - 'You.com MCP: The #1 AI Web Search API'
+    - 'You.com: #1 AI Financial Research API'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Anvilogic
+  partner: anvilogic
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/23076d60-c054-4962-991d-c46e53559cca
+  partner_url: https://www.anvilogic.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Anvilogic
+    matched_domain: anvilogic.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Anvilogic
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MEDIA: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: ActionIQ
+  partner: actioniq
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/24a6f2f5-05f1-404e-a240-04f1d4da10da
+  partner_url: https://www.actioniq.com/get-started/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: ActionIQ
+    matched_domain: actioniq.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - ActionIQ
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Dataiku
+  partner: dataiku
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/279acd58-5784-42c4-afe3-b7edf10c0b28
+  partner_url: https://www.dataiku.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Dataiku
+    matched_domain: dataiku.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Dataiku MCP - The Universal AI Platform for Enterprise Agents
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: LiveRamp
+  partner: liveramp
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/2b61bfbd-23b0-4322-afe7-78fcb9b127a8
+  partner_url: https://liveramp.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: LiveRamp
+    matched_domain: liveramp.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Identity Resolution & Translation
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_NOTEBOOK: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: The Trade Desk
+  partner: trade-desk
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/2e6136fa-992e-45a3-b743-120724f36eba
+  partner_url: https://www.thetradedesk.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: The Trade Desk
+    matched_domain: thetradedesk.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - 'TTD Connector: Audience & Conversion Data App'
+    - 'TTD Connector: Audience & Conversion Data SDK'
+    - 'TTD Connector: Raw Event Data Stream (REDS)'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_APP: 1
+      ASSET_TYPE_NOTEBOOK: 1
+      ASSET_TYPE_DATA_TABLE: 1
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: AI21 Labs
+  partner: ai21-labs
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/3049479e-f2c1-455b-8cf6-3c9ce9355764
+  partner_url: https://ai21.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: AI21 Labs
+    matched_domain: ai21.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Jamba 1.5 Mini
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MODEL: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Alation
+  partner: alation
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/327843b1-48d8-4ea6-91fb-fe286e1a05f8
+  partner_url: https://www.alation.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Alation
+    matched_domain: alation.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Alation MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Amperity
+  partner: amperity
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/34f40a16-df53-435e-8c31-fec310b8d131
+  partner_url: https://www.amperity.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Amperity
+    matched_domain: amperity.com
+    matched_by: domain
+    listings: 6
+    sample_listings:
+    - AI-Driven Personalization
+    - Amperity's Identity Resolution Agent - 30 Day Trial
+    - Chuck Data Sample Data
+    - Customer Acquisition & Retention Ratio (Leaky Bucket)
+    - Customer Value Migration
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 6
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Amberdata
+  partner: amberdata
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/35bc002c-b312-42a5-96c7-03f57ddc6e31
+  partner_url: https://amberdata.io
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Amberdata
+    matched_domain: amberdata.io
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - Blockchain Crypto Data
+    - Centralized Exchange (CEX) Crypto Market Data
+    - Decentralized Finance (DeFi) DEX and Lending Crypto Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 3
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: BMLL Technologies
+  partner: bmll-technologies
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/37d35e28-fa1f-40c6-b770-22ffb99dcaef
+  partner_url: https://www.bmlltech.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: BMLL Technologies
+    matched_domain: bmlltech.com
+    matched_by: domain
+    listings: 11
+    sample_listings:
+    - BMLL Auction Imbalance Data
+    - BMLL Daily Classified Trades
+    - BMLL Daily Reference Master
+    - BMLL Data Feed Analytics
+    - BMLL Level 1 Quotes
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 11
+      ASSET_TYPE_NOTEBOOK: 7
+      ASSET_TYPE_GIT_REPO: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Allium Labs, Inc.
+  partner: allium
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/38c650c4-1730-4e0b-9479-26786ba9584a
+  partner_url: https://allium.so
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Allium Labs, Inc.
+    matched_domain: allium.so
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Ethereum Realtime Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Theta Lake
+  partner: theta-lake
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/39c61bbf-8d7a-4011-bc0a-b40f8e0458f0
+  partner_url: https://thetalake.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Theta Lake
+    matched_domain: thetalake.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Theta Lake MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: SeekOut
+  partner: seekout
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/42fd56e9-cfdf-4de0-a7bd-9cfe8089e6b0
+  partner_url: https://www.seekout.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: SeekOut
+    matched_domain: seekout.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - SeekOut
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Nimble
+  partner: nimbleway
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/44c5899b-14cd-4e50-94f2-1f710c0e20dd
+  partner_url: https://nimbleway.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Nimble
+    matched_domain: nimbleway.com
+    matched_by: domain
+    listings: 5
+    sample_listings:
+    - 'Domestic & International Online Supermarket Data Pipelines  '
+    - 'Global Real-Time E-commerce & Retail Data Pipelines: Price, Sellers, Inventory, & Consumer Sentiment'
+    - 'Nimble MCP: Agentic Web Search Platform'
+    - Real-Time International Residential & Commercial Real Estate Data Pipelines
+    - 'Real-Time Localized Restaurant Data Pipelines: Global Hospitality Data Localized By Region'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 4
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Informatica
+  partner: informatica
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/4683e151-cb8f-4f1a-b07f-5a30a734dbe4
+  partner_url: https://www.informatica.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Informatica
+    matched_domain: informatica.com
+    matched_by: domain
+    listings: 5
+    sample_listings:
+    - Informatica Cloud Address Verification MCP Server
+    - Informatica Customer Identification MCP Server
+    - Informatica Data Governance and Catalog Metadata Search MCP Server
+    - Informatica Data Provisioning MCP Server
+    - Informatica Job Management MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 5
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: FactSet
+  partner: factset
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/48d55bd7-064c-4665-844d-dff8a6def12c
+  partner_url: https://www.factset.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: FactSet
+    matched_domain: factset.com
+    matched_by: domain
+    listings: 27
+    sample_listings:
+    - FactSet AI-Ready Data MCP
+    - FactSet Corporate Governance
+    - FactSet Data Management Solutions
+    - FactSet Debt Capital Structure
+    - FactSet ETF
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 26
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Replit
+  partner: replit
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/4aad5ccd-fd15-421d-a0b2-b6ee56134a8f
+  partner_url: https://replit.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Replit
+    matched_domain: replit.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Replit
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Stagwell Global
+  partner: stagwell
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/4de4bb78-daa9-483c-9011-23cb35e3a27c
+  partner_url: https://www.stagwellglobal.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Stagwell Global
+    matched_domain: stagwellglobal.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Stagwell TMC Cleanroom App
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_APP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Capital One Software
+  partner: capital-one
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/51ebed26-6dc1-4d0d-8b16-60ba790feccf
+  partner_url: https://www.capitalone.com/software/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Capital One Software
+    matched_domain: capitalone.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Databolt Connect
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_APP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/53f49193-8bec-4023-8b0e-aad26f9bc898
+  partner_url: https://hightouch.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Hightouch
+    matched_domain: hightouch.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Build a Composable CDP on Databricks
+    - Hightouch MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Newton Research
+  partner: newton-research
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/54e77c75-e040-41b1-af8e-12bda0d0d89f
+  partner_url: https://newtonresearch.ai
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Newton Research
+    matched_domain: newtonresearch.ai
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 'Newton: AI-powered Marketing Analytics Agents'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: SPS Commerce
+  partner: sps-commerce
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/556f3406-c4ae-4143-b7f7-030038eded21
+  partner_url: https://www.spscommerce.com/lp/analytics-partner-page/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: SPS Commerce
+    matched_domain: spscommerce.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Sales and Inventory Data for Retail Business Intelligence
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: UniCourt
+  partner: unicourt
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/577c526f-dbd0-425a-b5cf-850da41daf30
+  partner_url: https://unicourt.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: UniCourt
+    matched_domain: unicourt.com
+    matched_by: domain
+    listings: 5
+    sample_listings:
+    - SAMPLE UniCourt Attorney Data API - USA Attorney Data matched to Court Records (AI Normalized)
+    - SAMPLE UniCourt Court Data API - USA Court Records (AI Normalized)
+    - SAMPLE UniCourt Judge Data API - USA Judges in State and Federal Courts (AI Normalized)
+    - SAMPLE UniCourt Law Firm & Litigation Data API - USA Legal Data on Law Firms (AI Normalized)
+    - SAMPLE UniCourt Legal Analytics & Litigation Data AP - USA Legal Data (AI Normalized)
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 5
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Stocktwits
+  partner: stocktwits
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/5a0c3b75-3984-4bd3-8aae-f2c9e740da60
+  partner_url: https://www.stocktwits.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Stocktwits
+    matched_domain: stocktwits.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Stocktwits Messages API
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+      ASSET_TYPE_MEDIA: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Anomalo
+  partner: anomalo
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/5c4e4d88-9b5b-4ccf-ab38-8a1ad3572762
+  partner_url: https://www.anomalo.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Anomalo
+    matched_domain: anomalo.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Anomalo
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Kinaxis
+  partner: kinaxis
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/5d5378db-7c78-4afb-830b-28f1e004e83e
+  partner_url: https://www.kinaxis.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Kinaxis
+    matched_domain: kinaxis.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Data Publish
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Shovels
+  partner: shovels
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/5d93b577-f1d9-45f7-abf5-6c9b4ce27748
+  partner_url: https://www.shovels.ai
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Shovels
+    matched_domain: shovels.ai
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - U.S. Building Permits, Contractors & Residents Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: HealthVerity
+  partner: healthverity
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/5e4eac82-02a6-4a4d-bbb2-76c748d58d92
+  partner_url: https://www.healthverity.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: HealthVerity
+    matched_domain: healthverity.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Claims Sample Patient Dataset
+    - Provider Diversity and Diagnosis Index
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: mParticle
+  partner: mparticle
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/5e5a5b14-3bbf-4926-be16-0454fc62ee29
+  partner_url: https://mparticle.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: mParticle
+    matched_domain: mparticle.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - mParticle by Rokt Databricks Connector
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Magnite
+  partner: magnite
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/5f0f312c-02d5-4a5e-b1bd-d110b647f571
+  partner_url: https://www.magnite.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Magnite
+    matched_domain: magnite.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Magnite Data Onboarding
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Bright Data
+  partner: bright-data
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/63866f42-27f8-4a1f-b243-37e7be863700
+  partner_url: https://brightdata.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Bright Data
+    matched_domain: brightdata.com
+    matched_by: domain
+    listings: 45
+    sample_listings:
+    - Airbnb Properties Information
+    - Amazon Dataset
+    - 'Apple App Store Dataset '
+    - Best Buy Products Dataset
+    - 'Bright Insights: Actionable AI-driven eCommerce Insights'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 40
+      ASSET_TYPE_GIT_REPO: 4
+      ASSET_TYPE_MEDIA: 1
+      ASSET_TYPE_APP: 1
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Daloopa
+  partner: daloopa
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/67b92f07-25a5-4783-91fc-b2cb325ac5ed
+  partner_url: https://daloopa.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Daloopa
+    matched_domain: daloopa.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Daloopa Fundamental Data
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Stripe
+  partner: stripe
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/6abedc7a-3bf2-4a54-97b5-a121ad4c63a5
+  partner_url: https://stripe.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Stripe
+    matched_domain: stripe.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Stripe Data Pipeline
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Collibra
+  partner: collibra
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/6b4c3f00-c69d-47ed-a3a2-541171c84c7d
+  partner_url: https://collibra.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Collibra
+    matched_domain: collibra.com
+    matched_by: domain
+    listings: 4
+    sample_listings:
+    - Collibra MCP Server
+    - Test-Listing-02
+    - automation-test-listing
+    - automation-test-listing-2
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MODEL: 3
+      ASSET_TYPE_NOTEBOOK: 3
+      ASSET_TYPE_MEDIA: 3
+      ASSET_TYPE_DATA_TABLE: 3
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Health Catalyst
+  partner: healthcatalyst
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/6c6166cf-26dc-4aec-a16d-6d1cc8dde719
+  partner_url: https://www.healthcatalyst.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Health Catalyst
+    matched_domain: healthcatalyst.com
+    matched_by: domain
+    listings: 11
+    sample_listings:
+    - Ambulatory Intelligence
+    - Detecting Sudden Patient Satisfaction Anomalies
+    - Improving HEDIS Scores
+    - Improving Surgical Outcomes for Elective Procedures
+    - Matching Patient to Provider Panels
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 10
+      ASSET_TYPE_GIT_REPO: 9
+      ASSET_TYPE_MEDIA: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: TomTom
+  partner: tomtom
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/71284de7-82bb-49eb-ba51-cb3138406eaf
+  partner_url: https://tomtom.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: TomTom
+    matched_domain: tomtom.com
+    matched_by: domain
+    listings: 2
+    sample_listings:
+    - Traffic Stats
+    - Traffic Volumes
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_NOTEBOOK: 2
+      ASSET_TYPE_DATA_TABLE: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Crunchbase
+  partner: crunchbase-data
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/73a87e59-fbdc-426b-b7b7-354fb40e2892
+  partner_url: https://www.crunchbase.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Crunchbase
+    matched_domain: crunchbase.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Crunchbase Private Company Intelligence
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: PredictHQ
+  partner: predicthq
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/75082c74-8371-43f8-b6c2-8dfbf076ac3c
+  partner_url: https://www.predicthq.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: PredictHQ
+    matched_domain: predicthq.com
+    matched_by: domain
+    listings: 6
+    sample_listings:
+    - Curated Global Intelligent Event Data
+    - Demand Intelligence - Live TV Event Broadcasts, California
+    - Intelligent Event Data Sample - Attended Events, Seattle
+    - Intelligent Event Data Sample - Non-Attended Events, Seattle
+    - Intelligent Event Data Sample - Unscheduled Events, California
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 6
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: YipitData
+  partner: yipitdata
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/756f6180-e251-493b-8878-663fcfc61501
+  partner_url: https://www.yipitdata.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: YipitData
+    matched_domain: yipitdata.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - SKU-Level Email Receipt Data from 2M+ Users
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Moody's
+  partner: moodys-rms
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/757a382d-5f20-411a-bca0-e3a363112082
+  partner_url: https://www.moodys.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Moody's
+    matched_domain: moodys.com
+    matched_by: domain+name-among-holders
+    listings: 9
+    sample_listings:
+    - Moody's Company Foundations
+    - Moody's Credit MCP
+    - Moody's EDF-X
+    - Moody's Economic Forecast Data
+    - Moody's Growth & Strategy MCP
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 7
+      ASSET_TYPE_MEDIA: 2
+      ASSET_TYPE_MCP: 2
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Obsidian Security
+  partner: obsidian-security
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/75e04c9b-d5e7-4784-ab1c-e48f433d5d02
+  partner_url: https://www.obsidiansecurity.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Obsidian Security
+    matched_domain: obsidiansecurity.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Obsidian Security
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 1
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: FiscalNote
+  partner: fiscalnote
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/76b26690-ee55-4e68-956f-664671450858
+  partner_url: https://fiscalnote.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: FiscalNote
+    matched_domain: fiscalnote.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - FrontierView Global Macroeconomics Data
+    - Intelligent Sentiment Data
+    - News Pulse
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 3
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Tavily
+  partner: tavily
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/774f5dff-32bb-4077-9ab2-c9166c2c729a
+  partner_url: https://tavily.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Tavily
+    matched_domain: tavily.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Tavily MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Alteryx, Inc.
+  partner: alteryx
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/79ebaec1-d5b2-4073-9610-ab8a705f15c8
+  partner_url: https://www.alteryx.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Alteryx, Inc.
+    matched_domain: alteryx.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - Alteryx Designer Office of Finance Starter Kit
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: ZoomInfo
+  partner: zoominfo
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/7b188ec5-4695-43ac-a955-f6486e1ab53c
+  partner_url: https://www.zoominfo.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: ZoomInfo
+    matched_domain: zoominfo.com
+    matched_by: domain
+    listings: 5
+    sample_listings:
+    - B2B Commercial Data (Contact)
+    - B2B Commercial Data (Firmographic, Hierarchy, Technology)
+    - B2B Commercial Data (Intent)
+    - First Mover Advantage Dataset
+    - Licensed Contractors Dataset
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 5
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Atlan
+  partner: atlan
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/7dec753c-f158-4083-ad76-5b0c77cba34d
+  partner_url: https://atlan.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Atlan
+    matched_domain: atlan.com
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - 'Atlan MCP: Enterprise Context Layer'
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: AtScale, Inc.
+  partner: atscale
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/7eaad65e-cd30-47f3-b3f8-88e128859c98
+  partner_url: https://www.atscale.com
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: AtScale, Inc.
+    matched_domain: atscale.com
+    matched_by: domain
+    listings: 3
+    sample_listings:
+    - AtScale MCP
+    - AtScale Semantic Layer
+    - AtScale Tutorials
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_GIT_REPO: 1
+      ASSET_TYPE_DATA_TABLE: 1
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: PurpleLab Inc.
+  partner: purplelab
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/7f96a44e-e17c-4214-9093-6f48f3026e29
+  partner_url: https://purplelab.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: PurpleLab Inc.
+    matched_domain: purplelab.com
+    matched_by: domain
+    listings: 5
+    sample_listings:
+    - CLEAR RWD™
+    - HCO Actual Rates
+    - Pharmacy Market Measurement
+    - Provider Data Solutions
+    - Provider Reference Data and Practice Locations Sample
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_DATA_TABLE: 5
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: IQVIA
+  partner: iqvia
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/7fab49b9-819a-4cd8-a7e2-79af51df6f72
+  partner_url: https://www.iqvia.com/
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: IQVIA
+    matched_domain: iqvia.com
+    matched_by: domain
+    listings: 6
+    sample_listings:
+    - IQVIA Data-as-a-Service (DaaS+)
+    - IQVIA MIDAS®
+    - IQVIA OneKey HCP & HCO Data
+    - IQVIA PharMetrics® Plus Claims Data
+    - IQVIA US Healthcare Insurer & Risk Data & Services
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MEDIA: 2
+      UNSTATED: 2
+      ASSET_TYPE_MODEL: 1
+      ASSET_TYPE_DATA_TABLE: 3
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: Linkup
+  partner: linkup-so
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: distribution
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://marketplace.databricks.com/provider/7fd8d5a9-be7c-4331-a6e7-e979d70ad13b
+  partner_url: https://www.linkup.so
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: Linkup
+    matched_domain: linkup.so
+    matched_by: domain
+    listings: 1
+    sample_listings:
+    - Linkup MCP Server
+    signal_note: one edge per (seller, marketplace); listing counts and badges are context, never counted
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    asset_types:
+      ASSET_TYPE_MCP: 1
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
 generated: '2026-10-13'
 method: searched
 checked:
 - google-workspace/integrations/google-workspace-integration-edges.yml
-- https://api.appexchange.salesforce.com/recommendations/v3/listings?type=consultants&pageSize=50&page=0
-- https://api.finder.partners.aws.a2z.com/search?locale=en&size=20&from=0
-- https://app.hubspot.com/api/chirp-frontend-external/v1/gateway/com.hubspot.marketplace.personalization.rpc.PersonalizationPublicRpc/search?hs_static_app=marketplace-storefront-public-ui&hs_static_app_version=1.13519
-- https://cdn.winget.microsoft.com/cache
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
 - https://docs.mparticle.com/integrations/databricks/data-warehouse/
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/activations/destinations/available-destinations/databricks
 - https://fivetran.com/docs/connectors/partner-built-program
-- https://formulae.brew.sh/api/cask.json
-- https://formulae.brew.sh/api/formula.json
 - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
-- https://github.com/ScoopInstaller/Extras
-- https://github.com/ScoopInstaller/Main
 - https://github.com/kubeflow/website
 - https://github.com/lfai/landscape
 - https://github.com/marketplace?type=actions
@@ -1098,15 +4631,11 @@ checked:
 - https://govramp.org/program-participants
 - https://hightouch.com/docs/destinations/databricks-destination
 - https://marketplace.visualstudio.com/vscode
-- https://pypi.org/pypi
 - https://raw.githubusercontent.com/18F/fedramp-data/4b73d9247fd6360759960e4690e3ce4ca858e0fa/data/data.json
-- https://registry.npmjs.org
 - https://registry.npmjs.org/-/v1/search?text=keywords:n8n-community-node-package
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/suppliers
-- https://www.databricks.com/en-partners-assets/data/partner/all/en.json
 - https://www.gs1.org/services/gdsn/certified-data-pools-list
 - https://www.gs1us.org/services/find-gs1-us-solution-partner/profiles
-- https://www.snowflake.com/content/snowflake-site/global/en/why-snowflake/partners/all-partners/_jcr_content/root/responsivegrid/container/container/filterable_resources.filter.json?offset=0
 - https://www.spscommerce.com/partner-community/directory/
 - https://zapier.com/api/v4/apps/
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
@@ -1114,8 +4643,38 @@ checked:
 - power-bi/integrations/power-bi-integration-edges.yml
 - slack/integrations/slack-integration-edges.yml
 - tableau/integrations/tableau-integration-edges.yml
+- https://api.appexchange.salesforce.com/recommendations/v3/listings?type=consultants&pageSize=50&page=0
+- https://api.finder.partners.aws.a2z.com/search?locale=en&size=20&from=0
+- https://app.hubspot.com/api/chirp-frontend-external/v1/gateway/com.hubspot.marketplace.personalization.rpc.PersonalizationPublicRpc/search?hs_static_app=marketplace-storefront-public-ui&hs_static_app_version=1.13519
+- https://www.databricks.com/en-partners-assets/data/partner/all/en.json
+- https://www.snowflake.com/content/snowflake-site/global/en/why-snowflake/partners/all-partners/_jcr_content/root/responsivegrid/container/container/filterable_resources.filter.json?offset=0
+- https://cdn.winget.microsoft.com/cache
+- https://formulae.brew.sh/api/cask.json
+- https://formulae.brew.sh/api/formula.json
+- https://github.com/ScoopInstaller/Extras
+- https://github.com/ScoopInstaller/Main
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://marketplace.databricks.com/
 source:
 - https://docs.mparticle.com/integrations/databricks/data-warehouse/
 - https://fivetran.com/docs/activations/destinations/available-destinations/databricks
 - https://hightouch.com/docs/destinations/databricks-destination
-marketplace_apps: []
+marketplace_apps:
+- marketplace: own
+  channel: distribution
+  app: databricks
+  url: https://marketplace.databricks.com/
+  adapter: sweep-data-marketplaces.py:databricks
+  listed: 120
+  register_meta:
+    providers: 391
+    listings: 2126
+    providers_with_listings: 391
+    with_website: 383
+    data_publishers: 275
+    linked: 120
+    platform_built: 1
+    in_market: 69
+  note: 'Databricks Marketplace: one edge per linked seller; the platform''s own listings and unlinked sellers are
+    counted, not written'
