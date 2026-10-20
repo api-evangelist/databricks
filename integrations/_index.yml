@@ -27,6 +27,17 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: databricks-llamaindex
+  label: LlamaIndex
+  partner: llamaindex
+  partner_name: LlamaIndex
+  type: coverage
+  channel: partner-built
+  evidence: https://github.com/run-llama/llama_index/tree/main/llama-index-integrations/vector_stores/llama-index-vector-stores-databricks
+  source: edge
+  relationship: system-coverage
+  status: not-a-workflow
+  arazzo: null
 - slug: databricks-mparticle
   label: mParticle
   partner: mparticle
@@ -63,28 +74,6 @@
   relationship: connector-coverage
   status: not-a-workflow
   arazzo: null
-- slug: databricks-litellm
-  label: LiteLLM
-  partner: litellm
-  partner_name: LiteLLM
-  type: coverage
-  channel: partner-built
-  evidence: https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
-  source: edge
-  relationship: system-coverage
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-llamaindex
-  label: LlamaIndex
-  partner: llamaindex
-  partner_name: LlamaIndex
-  type: coverage
-  channel: partner-built
-  evidence: https://github.com/run-llama/llama_index/tree/main/llama-index-integrations/vector_stores/llama-index-vector-stores-databricks
-  source: edge
-  relationship: system-coverage
-  status: not-a-workflow
-  arazzo: null
 - slug: databricks-sps-commerce
   label: SPS Commerce
   partner: sps-commerce
@@ -108,184 +97,7 @@
     - Software Provider
     signal_note: 'participation only: a directory listing, never a count'
     detected_by: sweep-consumer-goods.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-lf-ai-data-landscape
-  label: LF AI & Data (Landscape)
-  partner: lf-ai-data
-  partner_name: LF AI & Data (Landscape)
-  category: AI & data landscape
-  type: register
-  channel: standard-directory
-  evidence: https://github.com/lfai/landscape/blob/95d361b8abfdd04a8c76bf38a012778d13621b5e/landscape.yml
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: LF AI & Data Landscape (github.com/lfai/landscape landscape.yml @95d361b8ab)
-    spec_file: null
-    standard: LF AI & Data
-    role: lfai-member (General)
-    registered_name: Databricks Inc.
-    registered_names:
-    - Databricks Inc.
-    - Databricks Inc. (hosting)
-    website: https://databricks.com/
-    matched_domain: databricks.com
-    matched_by: domain+name-among-holders
-    member_tier: General
-    hosting_company: true
-    lfai_projects: []
-    landscape_categories:
-    - Hosting Companies / Hosting Companies
-    landscape_entries: 1
-    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
-      categories, tier and projects are CONTEXT, never read (breadth is not credit)'
-    detected_by: sweep-mlops.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-zapier
-  label: Zapier
-  partner: zapier
-  partner_name: Zapier
-  type: marketplace
-  marketplace: zapier-directory
-  channel: ipaas-listing
-  evidence: https://zapier.com/apps/databricks/integrations
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Zapier app directory (zapier.com/api/v4/apps)
-    spec_file: null
-    role: ipaas-connector:zapier
-    registered_name: Databricks
-    matched_domain: databricks.com
-    matched_by: domain+name-among-holders
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: databricks
-    beta: false
-    builder: unknown (not in the directory record)
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-n8n
-  label: n8n
-  partner: n8n
-  partner_name: n8n
-  type: marketplace
-  marketplace: n8n-nodes-base
-  channel: open-source-node
-  evidence: https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/Databricks
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: n8n built-in nodes (n8n-io/n8n packages/nodes-base)
-    spec_file: null
-    role: ipaas-connector:n8n-nodes-base
-    registered_name: Databricks
-    matched_domain: databricks.com
-    matched_by: domain+name-among-holders
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    node_path: Databricks
-    trigger: true
-    builder: n8n (built-in node)
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-pipedream
-  label: Pipedream
-  partner: pipedream
-  partner_name: Pipedream
-  type: marketplace
-  marketplace: pipedream-components
-  channel: open-source-node
-  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/databricks
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Pipedream components (PipedreamHQ/pipedream components/)
-    spec_file: null
-    role: ipaas-connector:pipedream
-    registered_name: databricks
-    matched_domain: databricks.com
-    matched_by: domain+name-among-holders
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: databricks
-    actions: true
-    sources: false
-    builder: Pipedream repo (component)
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-fedramp
-  label: FedRAMP
-  partner_name: FedRAMP
-  category: FedRAMP authorization
-  type: contract
-  channel: regulator-register
-  evidence: https://marketplace.fedramp.gov/products/FR1834740315
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
-    standard: FedRAMP
-    spec_file: null
-    role: fedramp-authorized
-    registered_name: Databricks, Inc.
-    register_id: FR1834740315
-    matched_domain: databricks.com
-    matched_by: domain+name-among-holders
-    domain_source: website
-    designations:
-    - Compliant
-    - In Process
-    packages:
-    - Databricks
-    - Databricks on AWS GovCloud
-    service_models:
-    - PaaS
-    - SaaS
-    paths:
-    - Agency
-    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
-      models, paths and leveraging agencies are context, never counted. The register lists current designations
-      only (revoked / expired are removed), so lapsed is always false
-    detected_by: sweep-gov-cloud.py
-    detected: '2026-10-15'
-    certified_products:
-    - product: FedRAMP Moderate
-      impact_level: Moderate
-      lapsed: false
-      latest_authorization: '2022-06-30'
-  status: not-a-workflow
-  arazzo: null
-- slug: databricks-uk-g-cloud-15-digital-marketplace
-  label: UK G-Cloud 15 (Digital Marketplace)
-  partner_name: UK G-Cloud 15 (Digital Marketplace)
-  category: UK public-sector procurement framework
-  type: marketplace
-  marketplace: g-cloud
-  channel: distribution
-  evidence: https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/supplier/720473
-  source: edge
-  relationship: distribution-channel
-  contract_reference:
-    register: UK G-Cloud 15 supplier list (Digital Marketplace)
-    spec_file: null
-    role: g-cloud-supplier
-    registered_name: Databricks Inc.
-    register_id: '720473'
-    matched_domain: databricks.com
-    matched_by: domain+name-among-holders
-    domain_source: contact-email
-    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out
-      of position shares
-    detected_by: sweep-gov-cloud.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
 - slug: databricks-airbyte
@@ -379,6 +191,118 @@
     builder: 'community (Meltano Hub variant maintainers: dron-a)'
   status: not-a-workflow
   arazzo: null
+- slug: databricks-fedramp
+  label: FedRAMP
+  partner_name: FedRAMP
+  category: FedRAMP authorization
+  type: contract
+  channel: regulator-register
+  evidence: https://marketplace.fedramp.gov/products/FR1834740315
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
+    standard: FedRAMP
+    spec_file: null
+    role: fedramp-authorized
+    registered_name: Databricks, Inc.
+    register_id: FR1834740315
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    domain_source: website
+    designations:
+    - Compliant
+    - In Process
+    packages:
+    - Databricks
+    - Databricks on AWS GovCloud
+    service_models:
+    - PaaS
+    - SaaS
+    paths:
+    - Agency
+    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
+      models, paths and leveraging agencies are context, never counted. The register lists current designations
+      only (revoked / expired are removed), so lapsed is always false
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+    certified_products:
+    - product: FedRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2022-06-30'
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-uk-g-cloud-15-digital-marketplace
+  label: UK G-Cloud 15 (Digital Marketplace)
+  partner_name: UK G-Cloud 15 (Digital Marketplace)
+  category: UK public-sector procurement framework
+  type: marketplace
+  marketplace: g-cloud
+  channel: distribution
+  evidence: https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/supplier/720473
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: UK G-Cloud 15 supplier list (Digital Marketplace)
+    spec_file: null
+    role: g-cloud-supplier
+    registered_name: Databricks Inc.
+    register_id: '720473'
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    domain_source: contact-email
+    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out
+      of position shares
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-lf-ai-data-landscape
+  label: LF AI & Data (Landscape)
+  partner: lf-ai-data
+  partner_name: LF AI & Data (Landscape)
+  category: AI & data landscape
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/lfai/landscape/blob/3893e0631e1d12921a9b0ac25ffc78a2ac26239d/landscape.yml
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: LF AI & Data Landscape (github.com/lfai/landscape landscape.yml @3893e0631e)
+    spec_file: null
+    standard: LF AI & Data
+    role: lfai-member (General)
+    registered_name: Databricks Inc.
+    registered_names:
+    - Databricks Inc.
+    - Databricks Inc. (hosting)
+    website: https://databricks.com/
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    member_tier: General
+    hosting_company: true
+    lfai_projects: []
+    landscape_categories:
+    - Hosting Companies / Hosting Companies
+    landscape_entries: 1
+    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
+      categories, tier and projects are CONTEXT, never read (breadth is not credit)'
+    detected_by: sweep-mlops.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-litellm
+  label: LiteLLM
+  partner: litellm
+  partner_name: LiteLLM
+  type: coverage
+  channel: partner-built
+  evidence: https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
+  source: edge
+  relationship: system-coverage
+  status: not-a-workflow
+  arazzo: null
 - slug: databricks-google-workspace-own
   label: Google Workspace (own)
   partner: google-workspace
@@ -405,6 +329,31 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: databricks-n8n-n8n-community
+  label: n8n (n8n-community)
+  partner: n8n
+  partner_name: n8n (n8n-community)
+  type: marketplace
+  marketplace: n8n-community
+  channel: partner-built
+  evidence: https://www.npmjs.com/package/n8n-nodes-databricks
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-power-bi-own
+  label: Power BI (own)
+  partner: power-bi
+  partner_name: Power BI (own)
+  category: Database
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/databricks
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: databricks-slack-own
   label: Slack (own)
   partner: slack
@@ -416,5 +365,94 @@
   evidence: https://slack.com/marketplace/A0AM5QPA0BC-databricks-genie
   source: edge
   relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-tableau-own
+  label: Tableau (own)
+  partner: tableau
+  partner_name: Tableau (own)
+  category: connector
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.tableau.com/products/1019
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-zapier
+  label: Zapier
+  partner: zapier
+  partner_name: Zapier
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  evidence: https://zapier.com/apps/databricks/integrations
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: Databricks
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: databricks
+    beta: false
+    builder: unknown (not in the directory record)
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-n8n
+  label: n8n
+  partner: n8n
+  partner_name: n8n
+  type: marketplace
+  marketplace: n8n-nodes-base
+  channel: open-source-node
+  evidence: https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/Databricks
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: n8n built-in nodes (n8n-io/n8n packages/nodes-base)
+    spec_file: null
+    role: ipaas-connector:n8n-nodes-base
+    registered_name: Databricks
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    node_path: Databricks
+    trigger: true
+    builder: n8n (built-in node)
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-pipedream
+  label: Pipedream
+  partner: pipedream
+  partner_name: Pipedream
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/databricks
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: databricks
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: databricks
+    actions: true
+    sources: false
+    builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
