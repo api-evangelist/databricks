@@ -1,0 +1,45 @@
+{
+  "endpoint": "https://developers.databricks.com/api/mcp",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "devhub-docs",
+    "version": "1.0.0"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "list_docs_resources",
+        "description": "Lists all available Databricks developer documentation pages. Returns the documentation index as markdown with page URLs and titles. Use get_doc_resource to fetch specific pages.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_doc_resource",
+        "description": "Fetches a single Databricks developer documentation or template page as markdown. Use list_docs_resources first to discover available slugs. DevHub doc pages document the AppKit wiring; a page may begin with a compact 'Source of truth' line naming the agent skill(s) to install (`databricks aitools install`) for the current behavior of the product it wires. Load those skills rather than relying on training data.",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "description": "The page slug to fetch, e.g. 'lakehouse/genie' or 'templates/genie-conversational-analytics'. Slugs from list_docs_resources are accepted verbatim, including full URLs and a trailing '.md'. Use list_docs_resources first to discover available slugs."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      }
+    ]
+  }
+}
