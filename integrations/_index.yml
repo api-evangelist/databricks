@@ -456,3 +456,476 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: databricks-booz-allen-hamilton
+  label: Booz Allen Hamilton
+  partner: booz-allen-hamilton
+  partner_name: Booz Allen Hamilton
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Booz Allen Hamilton, INC
+    register_id: '5388'
+    partner_tier: null
+    matched_domain: boozallen.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-celebal-technologies
+  label: Celebal Technologies
+  partner: celebaltech
+  partner_name: Celebal Technologies
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Celebal Technologies
+    register_id: '5393'
+    partner_tier: null
+    matched_domain: celebaltech.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-cognizant-technology-solutions
+  label: Cognizant Technology Solutions
+  partner: cognizant-technology
+  partner_name: Cognizant Technology Solutions
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Cognizant
+    register_id: '5398'
+    partner_tier: null
+    matched_domain: cognizant.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-dxc-technology
+  label: DXC Technology
+  partner: dxc-technology
+  partner_name: DXC Technology
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: DXC
+    register_id: '7742'
+    partner_tier: null
+    matched_domain: dxc.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - Latin America
+      - Middle East and Africa
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-epam-systems
+  label: EPAM Systems
+  partner: epam-systems
+  partner_name: EPAM Systems
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: EPAM
+    register_id: '11616'
+    partner_tier: null
+    matched_domain: epam.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-exlservice-holdings
+  label: ExlService Holdings
+  partner: exlservice-holdings
+  partner_name: ExlService Holdings
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: EXL Service
+    register_id: '9805'
+    partner_tier: null
+    matched_domain: exlservice.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-fractal-analytics
+  label: Fractal Analytics
+  partner: fractal-analytics
+  partner_name: Fractal Analytics
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Fractal
+    register_id: '5498'
+    partner_tier: null
+    matched_domain: fractal.ai
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-globant
+  label: Globant
+  partner: globant
+  partner_name: Globant
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Globant, LLC
+    register_id: '13965'
+    partner_tier: null
+    matched_domain: globant.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - Latin America
+      - Middle East and Africa
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-kyndryl
+  label: Kyndryl
+  partner: kyndryl
+  partner_name: Kyndryl
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Kyndryl Inc (HQ)
+    register_id: '24778'
+    partner_tier: null
+    matched_domain: kyndryl.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - Latin America
+      - Middle East and Africa
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-ntt-data
+  label: NTT DATA
+  partner: ntt-data
+  partner_name: NTT DATA
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: NTT DATA
+    register_id: '5509'
+    partner_tier: null
+    matched_domain: nttdata.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - Latin America
+      - Middle East and Africa
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-slalom
+  label: Slalom
+  partner: slalom
+  partner_name: Slalom
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Slalom
+    register_id: '5459'
+    partner_tier: null
+    matched_domain: slalom.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-tredence
+  label: Tredence
+  partner: tredence
+  partner_name: Tredence
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Tredence
+    register_id: '5471'
+    partner_tier: null
+    matched_domain: tredence.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-unisys
+  label: Unisys
+  partner: unisys
+  partner_name: Unisys
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Unisys Corporation
+    register_id: '29490'
+    partner_tier: null
+    matched_domain: unisys.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - Latin America
+      - Middle East and Africa
+      - North America
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-virtusa
+  label: Virtusa
+  partner: virtusa
+  partner_name: Virtusa
+  category: Services partner
+  type: coverage
+  marketplace: databricks-services-partners
+  channel: standard-directory
+  evidence: https://www.databricks.com/company/partners/consulting-and-si
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Databricks partner directory (en-partners-assets/data/partner/all/en.json)
+    spec_file: null
+    standard: Databricks C&SI partner
+    role: databricks-csi-partner
+    registered_name: Virtusa
+    register_id: '5493'
+    partner_tier: null
+    matched_domain: virtusa.com
+    matched_by: domain
+    identity_source: the register's own website / profile URL for the firm (no lookup)
+    signal_note: listing = participation; certified_products = one entry per designation the program awards the
+      FIRM (lapsed flagged); partner_tier and context are never counted (breadth is not credit)
+    detected_by: sweep-professional-services.py
+    detected: '2026-10-20'
+    context:
+      regions:
+      - Asia-Pacific
+      - Europe
+      - Latin America
+      - North America
+  status: not-a-workflow
+  arazzo: null
