@@ -358,108 +358,6 @@ edges:
   matched_by: verified-token-table
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
-- partner_name: Google Workspace (own)
-  partner: google-workspace
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://workspace.google.com/marketplace/app/databricks_connector_for_google_sheets/465517936903
-  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
-  apps:
-  - Databricks Connector for Google Sheets™
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Google Workspace app
-- partner_name: Microsoft Teams (own)
-  partner: microsoft-teams
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://appsource.microsoft.com/en-us/product/office/WA200011036
-  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
-  apps:
-  - Databricks Genie
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Microsoft Teams app
-  publisher_verified:
-  - Microsoft 365 Publisher Attestation
-- partner_name: n8n (n8n-community)
-  partner: n8n
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: n8n-community
-  evidence: https://www.npmjs.com/package/n8n-nodes-databricks
-  mirror_of: n8n/integrations/n8n-integration-edges.yml
-  apps: []
-  listing_count: 1
-  detected: '2026-10-19'
-  detected_by: mirror-platform-listings.py
-- partner_name: Power BI (own)
-  partner: power-bi
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://learn.microsoft.com/en-us/power-query/connectors/databricks
-  mirror_of: power-bi/integrations/power-bi-integration-edges.yml
-  apps:
-  - Databricks
-  listing_count: 1
-  detected: '2026-10-19'
-  detected_by: mirror-platform-listings.py
-  category: Database
-- partner_name: Slack (own)
-  partner: slack
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://slack.com/marketplace/A0AM5QPA0BC-databricks-genie
-  mirror_of: slack/integrations/slack-integration-edges.yml
-  apps:
-  - Databricks Genie
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Slack app
-- partner_name: Tableau (own)
-  partner: tableau
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://exchange.tableau.com/products/1019
-  mirror_of: tableau/integrations/tableau-integration-edges.yml
-  apps:
-  - Delta Sharing by Databricks - Deprecated
-  listing_count: 1
-  detected: '2026-10-19'
-  detected_by: mirror-platform-listings.py
-  category: connector
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -4607,6 +4505,129 @@ edges:
       ASSET_TYPE_MCP: 1
   detected_by: sweep-data-marketplaces.py
   detected: '2026-10-20'
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/databricks_connector_for_google_sheets/465517936903
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - Databricks Connector for Google Sheets™
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
+- partner_name: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA200011036
+  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+  apps:
+  - Databricks Genie
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Microsoft Teams app
+  publisher_verified:
+  - Microsoft 365 Publisher Attestation
+- partner_name: n8n (n8n-community)
+  partner: n8n
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: n8n-community
+  evidence: https://www.npmjs.com/package/n8n-nodes-databricks
+  mirror_of: n8n/integrations/n8n-integration-edges.yml
+  apps: []
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+- partner_name: Power BI (own)
+  partner: power-bi
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/databricks
+  mirror_of: power-bi/integrations/power-bi-integration-edges.yml
+  apps:
+  - Databricks
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: Database
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A0AM5QPA0BC-databricks-genie
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Databricks Genie
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+- partner_name: Tableau (own)
+  partner: tableau
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://exchange.tableau.com/products/1019
+  mirror_of: tableau/integrations/tableau-integration-edges.yml
+  apps:
+  - Delta Sharing by Databricks - Deprecated
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: connector
+- partner_name: Eclipse Foundation (open-vsx)
+  partner: eclipse
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: open-vsx
+  evidence: https://open-vsx.org/namespace/databricks
+  mirror_of: eclipse/integrations/eclipse-integration-edges.yml
+  apps:
+  - Databricks
+  - Neon - Serverless Postgres
+  - Databricks Driver for SQLTools
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: IDE / developer extension marketplace listing
+  badges:
+  - Verified namespace
 generated: '2026-10-13'
 method: searched
 checked:
@@ -4656,6 +4677,7 @@ checked:
 - https://pypi.org/pypi
 - https://registry.npmjs.org
 - https://marketplace.databricks.com/
+- eclipse/integrations/eclipse-integration-edges.yml
 source:
 - https://docs.mparticle.com/integrations/databricks/data-warehouse/
 - https://fivetran.com/docs/activations/destinations/available-destinations/databricks
