@@ -4453,3 +4453,107 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: databricks-andreessen-horowitz-a16z
+  label: Andreessen Horowitz (a16z)
+  partner: a16z
+  partner_name: Andreessen Horowitz (a16z)
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://a16z.com/companies/databricks/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: a16z portfolio (a16z.com/portfolio/, the page's own data-companies JSON)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Databricks
+    register_id: https://a16z.com/companies/databricks/
+    register_country: null
+    register_website: https://databricks.com
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    year: '2013'
+    status: Active
+    sector: Cultural Leadership Fund;Enterprise;Growth;Infra
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-battery-ventures
+  label: Battery Ventures
+  partner: battery-ventures
+  partner_name: Battery Ventures
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://www.battery.com/company/databricks/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Battery Ventures companies (battery.com/company/, the page's own admin-ajax list + company pages)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Databricks
+    register_id: https://www.battery.com/company/databricks/
+    register_country: San Francisco, California
+    register_website: http://www.databricks.com
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    status: Active
+  status: not-a-workflow
+  arazzo: null
+- slug: databricks-github-secret-scanning-partner-program
+  label: GitHub secret scanning partner program
+  partner: github
+  partner_name: GitHub secret scanning partner program
+  category: GitHub platform partnership (security)
+  type: register
+  channel: standard-directory
+  evidence: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns#supported-provider-patterns
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: GitHub secret scanning partner program (docs.github.com supported-secret-scanning-patterns, 'Partner'
+      column = isPublic in the page's own pattern data)
+    standard: GitHub secret scanning partner program
+    spec_file: null
+    role: secret-scanning-partner
+    registered_name: Databricks
+    register_id: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns#supported-provider-patterns
+    matched_domain: null
+    matched_by: register-name
+    register_name_note: register-name 'databricks' = databricks; wikidata P856 databricks.com agrees or unheld
+    token_types:
+    - databricks_access_token <br/><a href="#token-versions">Token versions</a>
+    - databricks_account_session_token
+    - databricks_federated_account_session_token
+    - databricks_oauth_code
+    - databricks_oauth_refresh_token
+    - databricks_oauth_secret_token
+    - databricks_oauth_single_use_refresh_token_child
+    - databricks_oauth_single_use_refresh_token_parent
+    - databricks_scoped_api_token
+    - databricks_scoped_internal_token
+    - databricks_token
+    - databricks_workspace_session_token
+    context:
+      push_protection: 10
+      validity_check: 1
+    signal_note: 'participation only: GitHub notifies the provider when its token leaks publicly (the provider runs
+      a verification endpoint for the programme); token types and counts are context, never counted'
+    detected_by: sweep-github-marketplace.py
+    detected: '2026-10-21'
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
