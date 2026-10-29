@@ -1,4 +1,4 @@
-# Databricks (databricks)
+# Databricks
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,1159 +66,384 @@
 
 Collection of Databricks REST APIs for managing workspaces, clusters, jobs, and data operations.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/databricks/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/databricks/refs/heads/main/apis.yml)
-
-## Scope
-
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
-
-## Tags
-
-- AI
-- Analytics
-- Apache Spark
-- Big Data
-- Clean Rooms
-- Cloud Computing
-- Data
-- Data Analytics
-- Data Engineering
-- Data Governance
-- Delta Lake
-- Delta Sharing
-- ETL
-- Identity Management
-- Lakehouse
-- Machine Learning
-- MLflow
-- Model Serving
-- Security
-- SQL
-- Unity Catalog
-- Vector Search
-- Visualize
-
-## Timestamps
-
-- **Created:** 2025-01-14
-- **Modified:** 2026-05-19
-
-## APIs
-
-### Databricks
-
-Databricks is a cloud-based data platform that simplifies and accelerates the process of preparing and analyzing large volumes of data. The platform integrates with popular data sources and tools, allowing data engineers and data scientists to collaborate and work more efficiently. Databricks offers powerful features such as data visualization, machine learning, and real-time analytics, helping organizations make data-driven decisions and improve their business outcomes.
-
-- **Human URL:** [ https://www.databricks.com]( https://www.databricks.com)
-
-#### Tags
-
-- Analytics
-- Data
-- Visualize
-
-#### Properties
-
-- [Documentation]( https://www.databricks.com)
-- [API Reference](https://docs.databricks.com/api/workspace/introduction)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Clusters API
-
-The Databricks Clusters API allows you to create, start, edit, list, terminate, and delete clusters. Clusters are managed cloud resources that enable you to run data engineering and data science workloads on Apache Spark in the cloud. The API provides programmatic control over cluster lifecycle management, configuration, and monitoring.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/clusters](https://docs.databricks.com/api/workspace/clusters)
-
-#### Tags
-
-- Clusters
-- Compute
-- Infrastructure
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/clusters)
-- [OpenAPI](openapi/databricks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/databricks-cluster-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-create-cluster-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-edit-cluster-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-cluster-details-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-spark-node-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-auto-scale-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-aws-attributes-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-azure-attributes-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-gcp-attributes-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-init-script-info-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-cluster-event-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-error-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/databricks-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-
-### Databricks Jobs API
-
-The Databricks Jobs API allows you to create, edit, delete, and trigger jobs. Jobs are the primary mechanism for running automated workloads on Databricks, including notebooks, JARs, Python scripts, and Spark submit applications. The API supports complex multi-task workflows with dependencies, scheduling, and monitoring capabilities.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/jobs](https://docs.databricks.com/api/workspace/jobs)
-
-#### Tags
-
-- Jobs
-- Orchestration
-- Scheduling
-- Workflows
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/jobs)
-- [OpenAPI](openapi/databricks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/databricks-job-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-create-job-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-task-settings-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-job-cluster-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-job-email-notifications-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-webhook-notifications-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-cron-schedule-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-git-source-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-library-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-access-control-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-job-settings-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-run-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-run-task-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/databricks-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-
-### Databricks DBFS API
-
-The Databricks File System (DBFS) API is a distributed file system mounted into a Databricks workspace and available on Databricks clusters. The API enables you to interact with object storage using directory and file semantics, allowing you to put, get, list, and delete files and directories programmatically.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/dbfs](https://docs.databricks.com/api/workspace/dbfs)
-
-#### Tags
-
-- Data
-- Files
-- Storage
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/dbfs)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Workspace API
-
-The Databricks Workspace API allows you to list, import, export, and delete notebooks, folders, and libraries in a Databricks workspace. It provides programmatic access to manage workspace objects, enabling automation of notebook deployment and workspace organization.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/workspace](https://docs.databricks.com/api/workspace/workspace)
-
-#### Tags
-
-- Folders
-- Notebooks
-- Workspace
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/workspace)
-- [OpenAPI](openapi/databricks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/databricks-workspace-object-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/databricks-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-
-### Databricks SQL Warehouses API
-
-The Databricks SQL Warehouses API allows you to create, edit, list, start, stop, and delete SQL warehouses. SQL warehouses are compute resources that enable you to run SQL commands on data objects within Databricks SQL, providing serverless or classic compute options for analytical workloads.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/warehouses](https://docs.databricks.com/api/workspace/warehouses)
-
-#### Tags
-
-- Analytics
-- SQL
-- Warehouses
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/warehouses)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Pipelines API
-
-The Databricks Pipelines API allows you to create, edit, delete, start, and stop Delta Live Tables pipelines. Delta Live Tables is a declarative framework for building reliable, maintainable, and testable data processing pipelines. The API provides full lifecycle management of ETL pipelines.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/pipelines](https://docs.databricks.com/api/workspace/pipelines)
-
-#### Tags
-
-- Delta Live Tables
-- ETL
-- Pipelines
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/pipelines)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Serving Endpoints API
-
-The Databricks Serving Endpoints API allows you to create, update, query, and delete model serving endpoints. Mosaic AI Model Serving provides a unified interface to deploy, govern, and query AI models, including custom models, generative AI models, and large language models, with high availability and low latency.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/servingendpoints](https://docs.databricks.com/api/workspace/servingendpoints)
-
-#### Tags
-
-- AI
-- Machine Learning
-- Model Serving
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/servingendpoints)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Secrets API
-
-The Databricks Secrets API allows you to manage secrets, secret scopes, and secret ACLs. Secrets provide a secure way to store and reference credentials and other sensitive information in notebooks and jobs without exposing them in plaintext.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/secrets](https://docs.databricks.com/api/workspace/secrets)
-
-#### Tags
-
-- Credentials
-- Secrets
-- Security
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/secrets)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Instance Pools API
-
-The Databricks Instance Pools API allows you to create, edit, delete, and list instance pools. Instance pools reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances, improving performance and reducing costs for frequently used cluster configurations.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/instancepools](https://docs.databricks.com/api/workspace/instancepools)
-
-#### Tags
-
-- Clusters
-- Compute
-- Infrastructure
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/instancepools)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Token Management API
-
-The Databricks Token Management API enables workspace administrators to manage personal access tokens for users and service principals. It allows creating, listing, and revoking tokens, providing centralized control over API authentication credentials.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/tokenmanagement](https://docs.databricks.com/api/workspace/tokenmanagement)
-
-#### Tags
-
-- Authentication
-- Security
-- Tokens
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/tokenmanagement)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Catalogs API
-
-The Databricks Catalogs API is part of Unity Catalog and allows you to create, update, list, and delete catalogs. Catalogs are the top-level container for data objects in Unity Catalog, providing a three-level namespace (catalog.schema.table) for organizing and governing data assets across workspaces.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/catalogs](https://docs.databricks.com/api/workspace/catalogs)
-
-#### Tags
-
-- Data Governance
-- Metadata
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/catalogs)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Vector Search Indexes API
-
-The Databricks Vector Search Indexes API allows you to create, manage, query, and delete vector search indexes. Vector Search enables you to store vector representations of your data and perform similarity searches, powering retrieval-augmented generation (RAG) applications and other AI use cases.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/vectorsearchindexes](https://docs.databricks.com/api/workspace/vectorsearchindexes)
-
-#### Tags
-
-- AI
-- Embeddings
-- Vector Search
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Model Versions API
-
-The Databricks Model Versions API allows you to manage model versions within the Unity Catalog model registry. It provides programmatic access to create, update, list, and delete model versions, enabling automated ML lifecycle management and model governance.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/modelversions](https://docs.databricks.com/api/workspace/modelversions)
-
-#### Tags
-
-- Machine Learning
-- MLflow
-- Model Registry
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/modelversions)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Permissions API
-
-The Databricks Permissions API allows you to manage permissions on workspace objects such as clusters, jobs, notebooks, and SQL warehouses. It provides programmatic access to get, set, and update access control lists for various Databricks resources, enabling fine-grained authorization management.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/permissions](https://docs.databricks.com/api/workspace/permissions)
-
-#### Tags
-
-- Access Control
-- Authorization
-- Security
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/permissions)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Repos API
-
-The Databricks Repos API allows you to manage Git repositories within a Databricks workspace. It provides programmatic access to create, update, delete, and list repos, as well as perform Git operations like pulling latest changes, enabling version-controlled notebook and code development.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/repos](https://docs.databricks.com/api/workspace/repos)
-
-#### Tags
-
-- Git
-- Repositories
-- Version Control
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/repos)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Git Credentials API
-
-The Databricks Git Credentials API allows you to manage Git credentials for authenticating with Git providers. It provides programmatic access to create, update, delete, and list stored Git credentials, enabling seamless integration with GitHub, GitLab, Bitbucket, and other Git hosting services.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/gitcredentials](https://docs.databricks.com/api/workspace/gitcredentials)
-
-#### Tags
-
-- Authentication
-- Credentials
-- Git
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/gitcredentials)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Cluster Policies API
-
-The Databricks Cluster Policies API allows administrators to create, edit, delete, and list cluster policies. Cluster policies limit the ability to configure clusters based on a set of rules, enabling administrators to enforce cost controls and governance over compute resources.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/clusterpolicies](https://docs.databricks.com/api/workspace/clusterpolicies)
-
-#### Tags
-
-- Clusters
-- Governance
-- Policies
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/clusterpolicies)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Libraries API
-
-The Databricks Libraries API allows you to install, uninstall, and list libraries on clusters. It provides programmatic management of Python, Java, Scala, and R library dependencies for cluster workloads, enabling automated environment configuration.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/libraries](https://docs.databricks.com/api/workspace/libraries)
-
-#### Tags
-
-- Clusters
-- Dependencies
-- Libraries
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/libraries)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Global Init Scripts API
-
-The Databricks Global Init Scripts API enables workspace administrators to manage global initialization scripts that run on every cluster in the workspace. It provides programmatic access to create, update, delete, list, and reorder init scripts for consistent cluster configuration.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/globalinitscripts](https://docs.databricks.com/api/workspace/globalinitscripts)
-
-#### Tags
-
-- Administration
-- Compute
-- Configuration
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/globalinitscripts)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Command Execution API
-
-The Databricks Command Execution API allows you to execute Python, Scala, SQL, or R commands on running Databricks clusters. It provides programmatic access to create execution contexts, run commands, check status, and retrieve results, enabling remote interactive cluster usage.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/commandexecution](https://docs.databricks.com/api/workspace/commandexecution)
-
-#### Tags
-
-- Commands
-- Compute
-- Execution
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/commandexecution)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Statement Execution API
-
-The Databricks Statement Execution API allows you to execute SQL statements on Databricks SQL warehouses and retrieve results. It provides a synchronous and asynchronous interface for running SQL queries, checking execution status, fetching result data, and canceling statements.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/statementexecution](https://docs.databricks.com/api/workspace/statementexecution)
-
-#### Tags
-
-- Queries
-- SQL
-- Warehouses
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/statementexecution)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Queries API
-
-The Databricks Queries API allows you to create, update, delete, list, and run saved SQL queries in Databricks SQL. It provides programmatic management of SQL query objects, enabling automation of analytical workflows and query lifecycle management.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/queries](https://docs.databricks.com/api/workspace/queries)
-
-#### Tags
-
-- Analytics
-- Queries
-- SQL
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/queries)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Alerts API
-
-The Databricks Alerts API allows you to create, update, delete, and list alerts in Databricks SQL. Alerts automate query execution, evaluate custom conditions, and deliver notifications when those conditions are met, enabling proactive monitoring of business data.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/alerts](https://docs.databricks.com/api/workspace/alerts)
-
-#### Tags
-
-- Alerts
-- Monitoring
-- SQL
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/alerts)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Schemas API
-
-The Databricks Schemas API is part of Unity Catalog and allows you to create, update, list, and delete schemas. Schemas, also known as databases, reside within catalogs and contain tables, views, volumes, functions, and models, providing the second level of the three-level namespace for data organization.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/schemas](https://docs.databricks.com/api/workspace/schemas)
-
-#### Tags
-
-- Data Governance
-- Schemas
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/schemas)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Tables API
-
-The Databricks Tables API is part of Unity Catalog and allows you to create, update, list, and delete tables. Tables reside within schemas and represent structured data assets, supporting managed and external table types with full governance and access control through Unity Catalog.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/tables](https://docs.databricks.com/api/workspace/tables)
-
-#### Tags
-
-- Data Governance
-- Tables
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/tables)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Volumes API
-
-The Databricks Volumes API is part of Unity Catalog and allows you to create, update, list, and delete volumes. Volumes provide a governed location for storing and accessing non-tabular data files such as images, documents, and other unstructured data within the Unity Catalog namespace.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/volumes](https://docs.databricks.com/api/workspace/volumes)
-
-#### Tags
-
-- Storage
-- Unity Catalog
-- Volumes
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/volumes)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Functions API
-
-The Databricks Functions API is part of Unity Catalog and allows you to create, list, and delete user-defined functions. Functions reside within schemas and can be used in SQL queries and notebooks, with full governance and access control managed through Unity Catalog.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/functions](https://docs.databricks.com/api/workspace/functions)
-
-#### Tags
-
-- Functions
-- SQL
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/functions)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Grants API
-
-The Databricks Grants API is part of Unity Catalog and allows you to get, update, and manage permissions on Unity Catalog securable objects. It provides programmatic control over access to catalogs, schemas, tables, volumes, and other data assets, enabling fine-grained data governance.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/grants](https://docs.databricks.com/api/workspace/grants)
-
-#### Tags
-
-- Access Control
-- Security
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/grants)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks External Locations API
-
-The Databricks External Locations API is part of Unity Catalog and allows you to create, update, list, and delete external locations. External locations combine a cloud storage path with a storage credential, enabling governed access to data stored in external cloud storage systems.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/externallocations](https://docs.databricks.com/api/workspace/externallocations)
-
-#### Tags
-
-- Cloud Storage
-- Storage
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/externallocations)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Storage Credentials API
-
-The Databricks Storage Credentials API is part of Unity Catalog and allows you to create, update, list, and delete storage credentials. Storage credentials contain long-term cloud credentials that provide access to cloud storage, and are referenced when creating external locations for governing data access.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/storagecredentials](https://docs.databricks.com/api/workspace/storagecredentials)
-
-#### Tags
-
-- Cloud Storage
-- Security
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/storagecredentials)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Metastores API
-
-The Databricks Metastores API is part of Unity Catalog and allows you to create, update, list, and delete metastores. A metastore is the top-level container of objects in Unity Catalog, providing centralized metadata management, access control, and data governance across workspaces.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/metastores](https://docs.databricks.com/api/workspace/metastores)
-
-#### Tags
-
-- Data Governance
-- Metadata
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/metastores)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Connections API
-
-The Databricks Connections API is part of Unity Catalog and allows you to create, update, list, and delete connections to external data sources. Connections enable federated queries across external databases and data systems, extending Unity Catalog governance to data outside the lakehouse.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/connections](https://docs.databricks.com/api/workspace/connections)
-
-#### Tags
-
-- Connections
-- External Data
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/connections)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Registered Models API
-
-The Databricks Registered Models API allows you to create, update, list, and delete registered models in the Unity Catalog model registry. It provides centralized model lifecycle management with versioning, aliasing, and governance capabilities for machine learning models.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/registeredmodels](https://docs.databricks.com/api/workspace/registeredmodels)
-
-#### Tags
-
-- Machine Learning
-- MLflow
-- Model Registry
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/registeredmodels)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Experiments API
-
-The Databricks Experiments API allows you to create, update, list, and manage MLflow experiments. Experiments are the primary unit of organization in MLflow, grouping runs that track parameters, metrics, and artifacts for machine learning model development and comparison.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/experiments](https://docs.databricks.com/api/workspace/experiments)
-
-#### Tags
-
-- Experiments
-- Machine Learning
-- MLflow
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/experiments)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Online Tables API
-
-The Databricks Online Tables API allows you to create, get, and delete online tables. Online tables are materialized copies of Delta tables optimized for low-latency lookups, enabling real-time feature serving and online inference workloads for machine learning applications.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/onlinetables](https://docs.databricks.com/api/workspace/onlinetables)
-
-#### Tags
-
-- Feature Serving
-- Real-Time
-- Tables
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/onlinetables)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Quality Monitors API
-
-The Databricks Quality Monitors API allows you to create, update, get, and delete data quality monitors for tables. Quality monitors enable automated data profiling and anomaly detection, providing continuous monitoring of data quality metrics and statistical properties.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/qualitymonitors](https://docs.databricks.com/api/workspace/qualitymonitors)
-
-#### Tags
-
-- Data Quality
-- Monitoring
-- Observability
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/qualitymonitors)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Vector Search Endpoints API
-
-The Databricks Vector Search Endpoints API allows you to create, list, get, and delete vector search endpoints. Vector search endpoints are compute resources that host vector search indexes, enabling similarity search queries for retrieval-augmented generation and other AI applications.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/vectorsearchendpoints](https://docs.databricks.com/api/workspace/vectorsearchendpoints)
-
-#### Tags
-
-- AI
-- Compute
-- Vector Search
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Shares API
-
-The Databricks Shares API is part of Delta Sharing and allows you to create, update, list, and delete shares. A share is a read-only logical collection of tables and table partitions that a data provider wants to share with one or more recipients for secure cross-organization data sharing.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/shares](https://docs.databricks.com/api/workspace/shares)
-
-#### Tags
-
-- Collaboration
-- Data Sharing
-- Delta Sharing
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/shares)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Recipients API
-
-The Databricks Recipients API is part of Delta Sharing and allows you to create, update, list, and delete recipients. A recipient is an entity that receives shared data from a provider, and can be either a Databricks workspace or an open-protocol recipient using bearer tokens.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/recipients](https://docs.databricks.com/api/workspace/recipients)
-
-#### Tags
-
-- Access Control
-- Data Sharing
-- Delta Sharing
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/recipients)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Providers API
-
-The Databricks Providers API is part of Delta Sharing and allows you to create, update, list, and delete data providers. Providers represent organizations that share data through Delta Sharing, enabling secure and governed cross-organization data exchange.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/providers](https://docs.databricks.com/api/workspace/providers)
-
-#### Tags
-
-- Data Sharing
-- Delta Sharing
-- Marketplace
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/providers)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Clean Rooms API
-
-The Databricks Clean Rooms API allows you to create, update, list, and delete clean rooms. Clean rooms use Delta Sharing and serverless compute to provide a secure and privacy-protecting environment where multiple parties can collaborate on sensitive enterprise data without exposing raw data.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/cleanrooms](https://docs.databricks.com/api/workspace/cleanrooms)
-
-#### Tags
-
-- Clean Rooms
-- Collaboration
-- Privacy
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/cleanrooms)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Notification Destinations API
-
-The Databricks Notification Destinations API allows you to create, update, list, and delete notification destinations for a workspace. Notification destinations define where alerts and notifications are sent, supporting integrations with email, Slack, PagerDuty, webhooks, and other channels.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/notificationdestinations](https://docs.databricks.com/api/workspace/notificationdestinations)
-
-#### Tags
-
-- Alerts
-- Integration
-- Notifications
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/notificationdestinations)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Apps API
-
-The Databricks Apps API allows you to create, deploy, manage, and delete Databricks Apps. Apps run directly on a Databricks workspace, integrating with workspace data and services to build custom data applications, dashboards, and tools with built-in authentication and authorization.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/apps](https://docs.databricks.com/api/workspace/apps)
-
-#### Tags
-
-- Applications
-- Deployment
-- Development
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/apps)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Lakeview API
-
-The Databricks Lakeview API allows you to create, update, get, list, and delete AI/BI dashboards. Lakeview dashboards provide a modern visualization experience built on top of Databricks SQL, enabling interactive data exploration and business intelligence reporting.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/lakeview](https://docs.databricks.com/api/workspace/lakeview)
-
-#### Tags
-
-- Analytics
-- Dashboards
-- Visualization
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/lakeview)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Files API
-
-The Databricks Files API provides a standard HTTP interface for reading, writing, listing, and deleting files and directories in Unity Catalog volumes and other workspace storage locations. It supports direct file access by URI, enabling seamless file management for data and ML workloads.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/files](https://docs.databricks.com/api/workspace/files)
-
-#### Tags
-
-- Files
-- Storage
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/files)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Tokens API
-
-The Databricks Tokens API allows you to create, list, and revoke personal access tokens. Personal access tokens are used to authenticate with the Databricks REST API and integrations, providing an alternative to OAuth for programmatic access.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/tokens](https://docs.databricks.com/api/workspace/tokens)
-
-#### Tags
-
-- Authentication
-- Security
-- Tokens
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/tokens)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks IP Access Lists API
-
-The Databricks IP Access Lists API allows administrators to configure IP allow lists and block lists for a workspace. It provides programmatic management of network security rules to restrict access to the workspace based on IP addresses or CIDR ranges.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/ipaccesslists](https://docs.databricks.com/api/workspace/ipaccesslists)
-
-#### Tags
-
-- Access Control
-- Networking
-- Security
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/ipaccesslists)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Current User API
-
-The Databricks Current User API allows you to retrieve information about the currently authenticated user or service principal. It returns identity details including username, display name, and group memberships for the caller making the API request.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/currentuser](https://docs.databricks.com/api/workspace/currentuser)
-
-#### Tags
-
-- Authentication
-- Identity
-- Users
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/currentuser)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Groups API
-
-The Databricks Groups API allows you to create, update, list, and delete groups in a workspace. Groups simplify identity management by enabling administrators to assign access permissions to collections of users and service principals rather than managing them individually.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/groups](https://docs.databricks.com/api/workspace/groups)
-
-#### Tags
-
-- Access Control
-- Groups
-- Identity
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/groups)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Service Principals API
-
-The Databricks Service Principals API allows you to create, update, list, and delete service principals in a workspace. Service principals are identities for automated tools, jobs, scripts, apps, and CI/CD platforms, enabling secure non-interactive authentication with Databricks resources.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/serviceprincipals](https://docs.databricks.com/api/workspace/serviceprincipals)
-
-#### Tags
-
-- Automation
-- Identity
-- Service Principals
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/serviceprincipals)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Users API
-
-The Databricks Users API allows you to create, update, list, and delete users in a workspace. It provides programmatic management of user identities and their workspace access, supporting SCIM protocol for identity provider integration and automated user provisioning.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/users](https://docs.databricks.com/api/workspace/users)
-
-#### Tags
-
-- Administration
-- Identity
-- Users
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/users)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Dashboards API
-
-The Databricks Dashboards API allows you to create, update, list, and delete legacy SQL dashboards. Dashboards provide visual representations of query results, enabling business intelligence reporting and data visualization directly within Databricks SQL.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/dashboards](https://docs.databricks.com/api/workspace/dashboards)
-
-#### Tags
-
-- Dashboards
-- SQL
-- Visualization
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/dashboards)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Model Registry API
-
-The Databricks Model Registry API provides the workspace model registry for managing the full lifecycle of ML models. It enables creating registered models, managing model versions, transitioning stages, and setting permissions for collaborative model governance and deployment.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/modelregistry](https://docs.databricks.com/api/workspace/modelregistry)
-
-#### Tags
-
-- Machine Learning
-- MLflow
-- Model Registry
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/modelregistry)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Workspace Bindings API
-
-The Databricks Workspace Bindings API allows you to manage the binding of Unity Catalog securables to specific workspaces. It enables configuring whether catalogs and other objects are available across all workspaces or isolated to specific ones, supporting multi-workspace governance.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/workspacebindings](https://docs.databricks.com/api/workspace/workspacebindings)
-
-#### Tags
-
-- Governance
-- Unity Catalog
-- Workspace
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/workspacebindings)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks System Schemas API
-
-The Databricks System Schemas API allows you to enable, disable, and list system schemas within a metastore. System schemas contain system tables that provide operational data about your Databricks account, including audit logs, billing usage, lineage, and access history.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/systemschemas](https://docs.databricks.com/api/workspace/systemschemas)
-
-#### Tags
-
-- Monitoring
-- System Tables
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/systemschemas)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Databricks Table Constraints API
-
-The Databricks Table Constraints API allows you to create and delete primary key and foreign key constraints on Unity Catalog tables. Table constraints define relationships between tables, supporting data integrity and enabling query optimization across the lakehouse.
-
-- **Human URL:** [https://docs.databricks.com/api/workspace/tableconstraints](https://docs.databricks.com/api/workspace/tableconstraints)
-
-#### Tags
-
-- Data Quality
-- Tables
-- Unity Catalog
-
-#### Properties
-
-- [Documentation](https://docs.databricks.com/api/workspace/tableconstraints)
-- [Postman Collection](collections/databricks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/databricks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Authentication](https://docs.databricks.com/dev-tools/auth.html)
-- [Getting Started](https://docs.databricks.com/getting-started/index.html)
-- [S D Ks](https://docs.databricks.com/dev-tools/sdks.html)
-- [Status Page](https://status.databricks.com/)
-- [Support](https://help.databricks.com/)
-- [API Reference](https://docs.databricks.com/api/workspace/introduction)
+**Areas:** Cleanroom · Databricks · Artificial Intelligence · Analytics · Apache Spark · Big Data · Cloud Computing · Data · Data Analytics · Data Engineering · Data Governance · Delta Lake
+
+## Databricks on APIs.io
+
+Everything profiled for Databricks is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/databricks/](https://apis.io/providers/databricks/)** — or go straight to one of the APIs or properties below.
+
+### APIs (57)
+
+- [Databricks](https://apis.io/apis/databricks/databricks/) — Databricks is a cloud-based data platform that simplifies and accelerates the process of preparing and analyzing large volumes of data. The platform…
+- [Databricks DBFS API](https://apis.io/apis/databricks/dbfs-api/) — The Databricks File System (DBFS) API is a distributed file system mounted into a Databricks workspace and available on Databricks clusters. The API enables…
+- [Databricks SQL Warehouses API](https://apis.io/apis/databricks/sql-warehouses-api/) — The Databricks SQL Warehouses API allows you to create, edit, list, start, stop, and delete SQL warehouses. SQL warehouses are compute resources that enable…
+- [Databricks Pipelines API](https://apis.io/apis/databricks/pipelines-api/) — The Databricks Pipelines API allows you to create, edit, delete, start, and stop Delta Live Tables pipelines. Delta Live Tables is a declarative framework…
+- [Databricks Serving Endpoints API](https://apis.io/apis/databricks/serving-endpoints-api/) — The Databricks Serving Endpoints API allows you to create, update, query, and delete model serving endpoints. Mosaic AI Model Serving provides a unified…
+- [Databricks Secrets API](https://apis.io/apis/databricks/secrets-api/) — The Databricks Secrets API allows you to manage secrets, secret scopes, and secret ACLs. Secrets provide a secure way to store and reference credentials and…
+- [Databricks Instance Pools API](https://apis.io/apis/databricks/instance-pools-api/) — The Databricks Instance Pools API allows you to create, edit, delete, and list instance pools. Instance pools reduce cluster start and auto-scaling times by…
+- [Databricks Token Management API](https://apis.io/apis/databricks/token-management-api/) — The Databricks Token Management API enables workspace administrators to manage personal access tokens for users and service principals. It allows creating,…
+- [Databricks Catalogs API](https://apis.io/apis/databricks/catalogs-api/) — The Databricks Catalogs API is part of Unity Catalog and allows you to create, update, list, and delete catalogs. Catalogs are the top-level container for…
+- [Databricks Vector Search Indexes API](https://apis.io/apis/databricks/vector-search-indexes-api/) — The Databricks Vector Search Indexes API allows you to create, manage, query, and delete vector search indexes. Vector Search enables you to store vector…
+- [Databricks Model Versions API](https://apis.io/apis/databricks/model-versions-api/) — The Databricks Model Versions API allows you to manage model versions within the Unity Catalog model registry. It provides programmatic access to create,…
+- [Databricks Permissions API](https://apis.io/apis/databricks/permissions-api/) — The Databricks Permissions API allows you to manage permissions on workspace objects such as clusters, jobs, notebooks, and SQL warehouses. It provides…
+- [Databricks Repos API](https://apis.io/apis/databricks/repos-api/) — The Databricks Repos API allows you to manage Git repositories within a Databricks workspace. It provides programmatic access to create, update, delete, and…
+- [Databricks Git Credentials API](https://apis.io/apis/databricks/git-credentials-api/) — The Databricks Git Credentials API allows you to manage Git credentials for authenticating with Git providers. It provides programmatic access to create,…
+- [Databricks Cluster Policies API](https://apis.io/apis/databricks/cluster-policies-api/) — The Databricks Cluster Policies API allows administrators to create, edit, delete, and list cluster policies. Cluster policies limit the ability to…
+- [Databricks Libraries API](https://apis.io/apis/databricks/libraries-api/) — The Databricks Libraries API allows you to install, uninstall, and list libraries on clusters. It provides programmatic management of Python, Java, Scala,…
+- [Databricks Global Init Scripts API](https://apis.io/apis/databricks/global-init-scripts-api/) — The Databricks Global Init Scripts API enables workspace administrators to manage global initialization scripts that run on every cluster in the workspace.…
+- [Databricks Command Execution API](https://apis.io/apis/databricks/command-execution-api/) — The Databricks Command Execution API allows you to execute Python, Scala, SQL, or R commands on running Databricks clusters. It provides programmatic access…
+- [Databricks Statement Execution API](https://apis.io/apis/databricks/statement-execution-api/) — The Databricks Statement Execution API allows you to execute SQL statements on Databricks SQL warehouses and retrieve results. It provides a synchronous and…
+- [Databricks Queries API](https://apis.io/apis/databricks/queries-api/) — The Databricks Queries API allows you to create, update, delete, list, and run saved SQL queries in Databricks SQL. It provides programmatic management of…
+- [Databricks Alerts API](https://apis.io/apis/databricks/alerts-api/) — The Databricks Alerts API allows you to create, update, delete, and list alerts in Databricks SQL. Alerts automate query execution, evaluate custom…
+- [Databricks Schemas API](https://apis.io/apis/databricks/schemas-api/) — The Databricks Schemas API is part of Unity Catalog and allows you to create, update, list, and delete schemas. Schemas, also known as databases, reside…
+- [Databricks Tables API](https://apis.io/apis/databricks/tables-api/) — The Databricks Tables API is part of Unity Catalog and allows you to create, update, list, and delete tables. Tables reside within schemas and represent…
+- [Databricks Volumes API](https://apis.io/apis/databricks/volumes-api/) — The Databricks Volumes API is part of Unity Catalog and allows you to create, update, list, and delete volumes. Volumes provide a governed location for…
+- [Databricks Functions API](https://apis.io/apis/databricks/functions-api/) — The Databricks Functions API is part of Unity Catalog and allows you to create, list, and delete user-defined functions. Functions reside within schemas and…
+- [Databricks Grants API](https://apis.io/apis/databricks/grants-api/) — The Databricks Grants API is part of Unity Catalog and allows you to get, update, and manage permissions on Unity Catalog securable objects. It provides…
+- [Databricks External Locations API](https://apis.io/apis/databricks/external-locations-api/) — The Databricks External Locations API is part of Unity Catalog and allows you to create, update, list, and delete external locations. External locations…
+- [Databricks Storage Credentials API](https://apis.io/apis/databricks/storage-credentials-api/) — The Databricks Storage Credentials API is part of Unity Catalog and allows you to create, update, list, and delete storage credentials. Storage credentials…
+- [Databricks Metastores API](https://apis.io/apis/databricks/metastores-api/) — The Databricks Metastores API is part of Unity Catalog and allows you to create, update, list, and delete metastores. A metastore is the top-level container…
+- [Databricks Connections API](https://apis.io/apis/databricks/connections-api/) — The Databricks Connections API is part of Unity Catalog and allows you to create, update, list, and delete connections to external data sources. Connections…
+- [Databricks Registered Models API](https://apis.io/apis/databricks/registered-models-api/) — The Databricks Registered Models API allows you to create, update, list, and delete registered models in the Unity Catalog model registry. It provides…
+- [Databricks Experiments API](https://apis.io/apis/databricks/experiments-api/) — The Databricks Experiments API allows you to create, update, list, and manage MLflow experiments. Experiments are the primary unit of organization in…
+- [Databricks Online Tables API](https://apis.io/apis/databricks/online-tables-api/) — The Databricks Online Tables API allows you to create, get, and delete online tables. Online tables are materialized copies of Delta tables optimized for…
+- [Databricks Quality Monitors API](https://apis.io/apis/databricks/quality-monitors-api/) — The Databricks Quality Monitors API allows you to create, update, get, and delete data quality monitors for tables. Quality monitors enable automated data…
+- [Databricks Vector Search Endpoints API](https://apis.io/apis/databricks/vector-search-endpoints-api/) — The Databricks Vector Search Endpoints API allows you to create, list, get, and delete vector search endpoints. Vector search endpoints are compute…
+- [Databricks Shares API](https://apis.io/apis/databricks/shares-api/) — The Databricks Shares API is part of Delta Sharing and allows you to create, update, list, and delete shares. A share is a read-only logical collection of…
+- [Databricks Recipients API](https://apis.io/apis/databricks/recipients-api/) — The Databricks Recipients API is part of Delta Sharing and allows you to create, update, list, and delete recipients. A recipient is an entity that receives…
+- [Databricks Providers API](https://apis.io/apis/databricks/providers-api/) — The Databricks Providers API is part of Delta Sharing and allows you to create, update, list, and delete data providers. Providers represent organizations…
+- [Databricks Clean Rooms API](https://apis.io/apis/databricks/clean-rooms-api/) — The Databricks Clean Rooms API allows you to create, update, list, and delete clean rooms. Clean rooms use Delta Sharing and serverless compute to provide a…
+- [Databricks Notification Destinations API](https://apis.io/apis/databricks/notification-destinations-api/) — The Databricks Notification Destinations API allows you to create, update, list, and delete notification destinations for a workspace. Notification…
+- [Databricks Apps API](https://apis.io/apis/databricks/apps-api/) — The Databricks Apps API allows you to create, deploy, manage, and delete Databricks Apps. Apps run directly on a Databricks workspace, integrating with…
+- [Databricks Lakeview API](https://apis.io/apis/databricks/lakeview-api/) — The Databricks Lakeview API allows you to create, update, get, list, and delete AI/BI dashboards. Lakeview dashboards provide a modern visualization…
+- [Databricks Files API](https://apis.io/apis/databricks/files-api/) — The Databricks Files API provides a standard HTTP interface for reading, writing, listing, and deleting files and directories in Unity Catalog volumes and…
+- [Databricks Tokens API](https://apis.io/apis/databricks/tokens-api/) — The Databricks Tokens API allows you to create, list, and revoke personal access tokens. Personal access tokens are used to authenticate with the Databricks…
+- [Databricks IP Access Lists API](https://apis.io/apis/databricks/ip-access-lists-api/) — The Databricks IP Access Lists API allows administrators to configure IP allow lists and block lists for a workspace. It provides programmatic management of…
+- [Databricks Current User API](https://apis.io/apis/databricks/current-user-api/) — The Databricks Current User API allows you to retrieve information about the currently authenticated user or service principal. It returns identity details…
+- [Databricks Groups API](https://apis.io/apis/databricks/groups-api/) — The Databricks Groups API allows you to create, update, list, and delete groups in a workspace. Groups simplify identity management by enabling…
+- [Databricks Service Principals API](https://apis.io/apis/databricks/service-principals-api/) — The Databricks Service Principals API allows you to create, update, list, and delete service principals in a workspace. Service principals are identities…
+- [Databricks Users API](https://apis.io/apis/databricks/users-api/) — The Databricks Users API allows you to create, update, list, and delete users in a workspace. It provides programmatic management of user identities and…
+- [Databricks Dashboards API](https://apis.io/apis/databricks/dashboards-api/) — The Databricks Dashboards API allows you to create, update, list, and delete legacy SQL dashboards. Dashboards provide visual representations of query…
+- [Databricks Model Registry API](https://apis.io/apis/databricks/model-registry-api/) — The Databricks Model Registry API provides the workspace model registry for managing the full lifecycle of ML models. It enables creating registered models,…
+- [Databricks Workspace Bindings API](https://apis.io/apis/databricks/workspace-bindings-api/) — The Databricks Workspace Bindings API allows you to manage the binding of Unity Catalog securables to specific workspaces. It enables configuring whether…
+- [Databricks System Schemas API](https://apis.io/apis/databricks/system-schemas-api/) — The Databricks System Schemas API allows you to enable, disable, and list system schemas within a metastore. System schemas contain system tables that…
+- [Databricks Table Constraints API](https://apis.io/apis/databricks/table-constraints-api/) — The Databricks Table Constraints API allows you to create and delete primary key and foreign key constraints on Unity Catalog tables. Table constraints…
+- [Databricks Clusters API](https://apis.io/apis/databricks/databricks-clusters-api/) — Manage Databricks clusters for running data engineering and data science workloads on Apache Spark.
+- [Databricks Jobs API](https://apis.io/apis/databricks/databricks-jobs-api/) — Create and manage automated workloads including notebooks, JARs, Python scripts, and multi-task workflows.
+- [Databricks Workspace API](https://apis.io/apis/databricks/databricks-workspace-api/) — Manage workspace objects such as notebooks, folders, and libraries.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (23)
+
+Multi-step workflows that chain operations into a business task.
+
+- [Databricks Audit Cluster Lifecycle Events](https://apis.io/arazzos/databricks/databricks-audit-cluster-events-workflow/)
+- [Databricks Cancel a Job's Active Run](https://apis.io/arazzos/databricks/databricks-cancel-all-active-runs-workflow/)
+- [Databricks Cancel Job Run and Confirm Terminal](https://apis.io/arazzos/databricks/databricks-cancel-run-and-confirm-workflow/)
+- [Databricks Inspect and Recursively Delete a Directory](https://apis.io/arazzos/databricks/databricks-cleanup-workspace-directory-workflow/)
+- [Databricks Clone a Job From an Existing One](https://apis.io/arazzos/databricks/databricks-clone-job-settings-workflow/)
+- [Databricks Create Job and Trigger First Run](https://apis.io/arazzos/databricks/databricks-create-and-run-job-workflow/)
+- [Databricks Drain Active Runs Then Delete Job](https://apis.io/arazzos/databricks/databricks-delete-job-and-cleanup-runs-workflow/)
+- [Databricks Edit Cluster Configuration and Verify](https://apis.io/arazzos/databricks/databricks-edit-cluster-and-verify-workflow/)
+- [Databricks Export a Notebook and Re-Import as a Copy](https://apis.io/arazzos/databricks/databricks-export-and-reimport-notebook-workflow/)
+- [Databricks Find Terminated Cluster by Name and Start It](https://apis.io/arazzos/databricks/databricks-find-cluster-and-start-workflow/)
+- [Databricks Find Job by Name and Run It](https://apis.io/arazzos/databricks/databricks-find-job-and-run-workflow/)
+- [Databricks Create Directory and Import Notebook](https://apis.io/arazzos/databricks/databricks-import-notebook-and-verify-workflow/)
+- [Databricks Fetch Latest Completed Run Output for a Job](https://apis.io/arazzos/databricks/databricks-latest-run-output-workflow/)
+- [Databricks Provision Cluster Then Create Job On It](https://apis.io/arazzos/databricks/databricks-provision-cluster-and-create-job-workflow/)
+- [Databricks Provision Cluster and Wait Until Running](https://apis.io/arazzos/databricks/databricks-provision-cluster-workflow/)
+- [Databricks Restart Cluster and Verify Running](https://apis.io/arazzos/databricks/databricks-restart-cluster-and-verify-workflow/)
+- [Databricks Run Job, Wait, Then Export the Notebook](https://apis.io/arazzos/databricks/databricks-run-job-and-export-notebook-workflow/)
+- [Databricks Trigger Job Run and Wait for Output](https://apis.io/arazzos/databricks/databricks-run-job-and-wait-workflow/)
+- [Databricks Run Job and Branch on Success or Failure](https://apis.io/arazzos/databricks/databricks-run-job-on-failure-export-output-workflow/)
+- [Databricks Stage Notebook Then Create and Run a Job](https://apis.io/arazzos/databricks/databricks-stage-notebook-and-create-job-workflow/)
+- [Databricks Start Cluster Then Run Job](https://apis.io/arazzos/databricks/databricks-start-cluster-and-run-job-workflow/)
+- [Databricks Terminate Then Permanently Delete Cluster](https://apis.io/arazzos/databricks/databricks-terminate-and-delete-cluster-workflow/)
+- [Databricks Update Job Settings and Re-Run](https://apis.io/arazzos/databricks/databricks-update-job-and-rerun-workflow/)
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Databricks Webhooks](https://apis.io/asyncapis/databricks/databricks-webhooks/)
+
+#### GraphQL (1)
+
+GraphQL schemas.
+
+- [Moved to /providers/databricks/](https://apis.io/graphqls/databricks/databricks-graphql/)
+
+#### MCP servers (2)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [databricks](https://apis.io/servers/databricks/databricks/)
+- [MCP Server](https://apis.io/servers/databricks/mcp-server/)
+
+#### Agent skills (26)
+
+Agent skills built on the API.
+
+- [databricks-agent-bricks](https://apis.io/agent-skills/databricks/databricks-agent-bricks/)
+- [databricks-ai-functions](https://apis.io/agent-skills/databricks/databricks-ai-functions/)
+- [databricks-aibi-dashboards](https://apis.io/agent-skills/databricks/databricks-aibi-dashboards/)
+- [databricks-apps](https://apis.io/agent-skills/databricks/databricks-apps/)
+- [databricks-apps-python](https://apis.io/agent-skills/databricks/databricks-apps-python/)
+- [databricks-core](https://apis.io/agent-skills/databricks/databricks-core/)
+- [databricks-dabs](https://apis.io/agent-skills/databricks/databricks-dabs/)
+- [databricks-dbsql](https://apis.io/agent-skills/databricks/databricks-dbsql/)
+- [databricks-docs](https://apis.io/agent-skills/databricks/databricks-docs/)
+- [databricks-execution-compute](https://apis.io/agent-skills/databricks/databricks-execution-compute/)
+- [databricks-iceberg](https://apis.io/agent-skills/databricks/databricks-iceberg/)
+- [databricks-jobs](https://apis.io/agent-skills/databricks/databricks-jobs/)
+- [databricks-lakebase](https://apis.io/agent-skills/databricks/databricks-lakebase/)
+- [databricks-metric-views](https://apis.io/agent-skills/databricks/databricks-metric-views/)
+- [databricks-mlflow-evaluation](https://apis.io/agent-skills/databricks/databricks-mlflow-evaluation/)
+- [databricks-model-serving](https://apis.io/agent-skills/databricks/databricks-model-serving/)
+- [databricks-pipelines](https://apis.io/agent-skills/databricks/databricks-pipelines/)
+- [databricks-python-sdk](https://apis.io/agent-skills/databricks/databricks-python-sdk/)
+- [databricks-serverless-migration](https://apis.io/agent-skills/databricks/databricks-serverless-migration/)
+- [databricks-spark-structured-streaming](https://apis.io/agent-skills/databricks/databricks-spark-structured-streaming/)
+- [databricks-synthetic-data-gen](https://apis.io/agent-skills/databricks/databricks-synthetic-data-gen/)
+- [databricks-unity-catalog](https://apis.io/agent-skills/databricks/databricks-unity-catalog/)
+- [databricks-unstructured-pdf-generation](https://apis.io/agent-skills/databricks/databricks-unstructured-pdf-generation/)
+- [databricks-vector-search](https://apis.io/agent-skills/databricks/databricks-vector-search/)
+- [databricks-zerobus-ingest](https://apis.io/agent-skills/databricks/databricks-zerobus-ingest/)
+- …and 1 more published on APIs.io
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Databricks Agentic Access](https://apis.io/agentic-access/databricks/databricks-agentic-access/)
+
+#### JSON Schema (48)
+
+The data models the API reads and writes.
+
+- [AccessControlRequest](https://apis.io/schemas/databricks/databricks-access-control-request/)
+- [AccessControlRequest](https://apis.io/schemas/databricks/databricks-accesscontrolrequest/)
+- [AutoScale](https://apis.io/schemas/databricks/databricks-auto-scale/)
+- [AutoScale](https://apis.io/schemas/databricks/databricks-autoscale/)
+- [AwsAttributes](https://apis.io/schemas/databricks/databricks-aws-attributes/)
+- [AwsAttributes](https://apis.io/schemas/databricks/databricks-awsattributes/)
+- [AzureAttributes](https://apis.io/schemas/databricks/databricks-azure-attributes/)
+- [AzureAttributes](https://apis.io/schemas/databricks/databricks-azureattributes/)
+- [Databricks Cluster](https://apis.io/schemas/databricks/databricks-cluster/)
+- [ClusterDetails](https://apis.io/schemas/databricks/databricks-cluster-details/)
+- [ClusterEvent](https://apis.io/schemas/databricks/databricks-cluster-event/)
+- [ClusterDetails](https://apis.io/schemas/databricks/databricks-clusterdetails/)
+- [ClusterEvent](https://apis.io/schemas/databricks/databricks-clusterevent/)
+- [CreateClusterRequest](https://apis.io/schemas/databricks/databricks-create-cluster-request/)
+- [CreateJobRequest](https://apis.io/schemas/databricks/databricks-create-job-request/)
+- [CreateClusterRequest](https://apis.io/schemas/databricks/databricks-createclusterrequest/)
+- [CreateJobRequest](https://apis.io/schemas/databricks/databricks-createjobrequest/)
+- [CronSchedule](https://apis.io/schemas/databricks/databricks-cron-schedule/)
+- [CronSchedule](https://apis.io/schemas/databricks/databricks-cronschedule/)
+- [EditClusterRequest](https://apis.io/schemas/databricks/databricks-edit-cluster-request/)
+- [EditClusterRequest](https://apis.io/schemas/databricks/databricks-editclusterrequest/)
+- [ErrorResponse](https://apis.io/schemas/databricks/databricks-error-response/)
+- [ErrorResponse](https://apis.io/schemas/databricks/databricks-errorresponse/)
+- [GcpAttributes](https://apis.io/schemas/databricks/databricks-gcp-attributes/)
+- [GcpAttributes](https://apis.io/schemas/databricks/databricks-gcpattributes/)
+- …and 23 more published on APIs.io
+
+#### JSON Structure (26)
+
+Data models expressed in JSON Structure.
+
+- [Databricks Access Control Request Structure](https://apis.io/json-structure/databricks/databricks-access-control-request-structure/)
+- [Databricks Auto Scale Structure](https://apis.io/json-structure/databricks/databricks-auto-scale-structure/)
+- [Databricks Aws Attributes Structure](https://apis.io/json-structure/databricks/databricks-aws-attributes-structure/)
+- [Databricks Azure Attributes Structure](https://apis.io/json-structure/databricks/databricks-azure-attributes-structure/)
+- [Databricks Cluster Details Structure](https://apis.io/json-structure/databricks/databricks-cluster-details-structure/)
+- [Databricks Cluster Event Structure](https://apis.io/json-structure/databricks/databricks-cluster-event-structure/)
+- [Databricks Create Cluster Request Structure](https://apis.io/json-structure/databricks/databricks-create-cluster-request-structure/)
+- [Databricks Create Job Request Structure](https://apis.io/json-structure/databricks/databricks-create-job-request-structure/)
+- [Databricks Cron Schedule Structure](https://apis.io/json-structure/databricks/databricks-cron-schedule-structure/)
+- [Databricks Edit Cluster Request Structure](https://apis.io/json-structure/databricks/databricks-edit-cluster-request-structure/)
+- [Databricks Error Response Structure](https://apis.io/json-structure/databricks/databricks-error-response-structure/)
+- [Databricks Gcp Attributes Structure](https://apis.io/json-structure/databricks/databricks-gcp-attributes-structure/)
+- [Databricks Git Source Structure](https://apis.io/json-structure/databricks/databricks-git-source-structure/)
+- [Databricks Init Script Info Structure](https://apis.io/json-structure/databricks/databricks-init-script-info-structure/)
+- [Databricks Job Cluster Structure](https://apis.io/json-structure/databricks/databricks-job-cluster-structure/)
+- [Databricks Job Email Notifications Structure](https://apis.io/json-structure/databricks/databricks-job-email-notifications-structure/)
+- [Databricks Job Settings Structure](https://apis.io/json-structure/databricks/databricks-job-settings-structure/)
+- [Databricks Job Structure](https://apis.io/json-structure/databricks/databricks-job-structure/)
+- [Databricks Library Structure](https://apis.io/json-structure/databricks/databricks-library-structure/)
+- [Databricks Run Structure](https://apis.io/json-structure/databricks/databricks-run-structure/)
+- [Databricks Run Task Structure](https://apis.io/json-structure/databricks/databricks-run-task-structure/)
+- [Databricks Spark Node Structure](https://apis.io/json-structure/databricks/databricks-spark-node-structure/)
+- [Databricks Structure](https://apis.io/json-structure/databricks/databricks-structure/)
+- [Databricks Task Settings Structure](https://apis.io/json-structure/databricks/databricks-task-settings-structure/)
+- [Databricks Webhook Notifications Structure](https://apis.io/json-structure/databricks/databricks-webhook-notifications-structure/)
+- …and 1 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Databricks Context](https://apis.io/jsonld/databricks/databricks-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Databricks Domain Vocabulary](https://apis.io/vocabularies/databricks/databricks-vocabulary/)
+
+#### Examples (50)
+
+Example requests and responses.
+
+- [Databricks Access Control Request Example](https://apis.io/examples/databricks/databricks-access-control-request-example/)
+- [Databricks Auto Scale Example](https://apis.io/examples/databricks/databricks-auto-scale-example/)
+- [Databricks Aws Attributes Example](https://apis.io/examples/databricks/databricks-aws-attributes-example/)
+- [Databricks Azure Attributes Example](https://apis.io/examples/databricks/databricks-azure-attributes-example/)
+- [Databricks Canceljobrun Example](https://apis.io/examples/databricks/databricks-canceljobrun-example/)
+- [Databricks Cluster Details Example](https://apis.io/examples/databricks/databricks-cluster-details-example/)
+- [Databricks Cluster Event Example](https://apis.io/examples/databricks/databricks-cluster-event-example/)
+- [Databricks Create Cluster Request Example](https://apis.io/examples/databricks/databricks-create-cluster-request-example/)
+- [Databricks Create Job Request Example](https://apis.io/examples/databricks/databricks-create-job-request-example/)
+- [Databricks Createcluster Example](https://apis.io/examples/databricks/databricks-createcluster-example/)
+- [Databricks Createjob Example](https://apis.io/examples/databricks/databricks-createjob-example/)
+- [Databricks Createworkspacedirectory Example](https://apis.io/examples/databricks/databricks-createworkspacedirectory-example/)
+- [Databricks Cron Schedule Example](https://apis.io/examples/databricks/databricks-cron-schedule-example/)
+- [Databricks Deletejob Example](https://apis.io/examples/databricks/databricks-deletejob-example/)
+- [Databricks Deleteworkspaceobject Example](https://apis.io/examples/databricks/databricks-deleteworkspaceobject-example/)
+- [Databricks Edit Cluster Request Example](https://apis.io/examples/databricks/databricks-edit-cluster-request-example/)
+- [Databricks Editcluster Example](https://apis.io/examples/databricks/databricks-editcluster-example/)
+- [Databricks Error Response Example](https://apis.io/examples/databricks/databricks-error-response-example/)
+- [Databricks Exportworkspaceobject Example](https://apis.io/examples/databricks/databricks-exportworkspaceobject-example/)
+- [Databricks Gcp Attributes Example](https://apis.io/examples/databricks/databricks-gcp-attributes-example/)
+- [Databricks Getcluster Example](https://apis.io/examples/databricks/databricks-getcluster-example/)
+- [Databricks Getjob Example](https://apis.io/examples/databricks/databricks-getjob-example/)
+- [Databricks Getjobrun Example](https://apis.io/examples/databricks/databricks-getjobrun-example/)
+- [Databricks Getjobrunoutput Example](https://apis.io/examples/databricks/databricks-getjobrunoutput-example/)
+- [Databricks Getworkspaceobjectstatus Example](https://apis.io/examples/databricks/databricks-getworkspaceobjectstatus-example/)
+- …and 25 more published on APIs.io
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Databricks REST API](https://apis.io/collections/databricks/open-databricks/)
+- [Databricks REST Clusters API](https://apis.io/collections/databricks/open-databricks-clusters-api/)
+- [Databricks REST Clusters Jobs API](https://apis.io/collections/databricks/open-databricks-jobs-api/)
+- [Databricks REST Clusters Workspace API](https://apis.io/collections/databricks/open-databricks-workspace-api/)
+- [Databricks REST API](https://apis.io/collections/databricks/postman-databricks/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Databricks Clusters Api Overlay](https://apis.io/overlays/databricks/databricks-clusters-api-overlay/)
+
+#### Governance rules (3)
+
+Spectral rulesets for the provider's contracts.
+
+- [Databricks — jsonschema rules](https://apis.io/rules/databricks/databricks-jsonschema-spectral-rules/)
+- [Databricks API Rules](https://apis.io/rules/databricks/databricks-rules/)
+- [Databricks API Rules](https://apis.io/rules/databricks/databricks-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Databricks Authentication](https://apis.io/security/databricks/databricks-authentication/)
+- [Databricks Domain Security](https://apis.io/security/databricks/databricks-domain-security/)
+- [Databricks Vulnerability Disclosure](https://apis.io/security/databricks/databricks-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Databricks Plans Pricing](https://apis.io/plans/databricks/databricks-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Databricks Rate Limits](https://apis.io/rate-limits/databricks/databricks-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Databricks Finops](https://apis.io/finops/databricks/databricks-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.databricks.com/)
 - [Documentation](https://docs.databricks.com/aws/en/reference/api)
+- [Getting started](https://docs.databricks.com/getting-started/index.html)
+- [API reference](https://docs.databricks.com/api/workspace/introduction)
 - [Pricing](https://www.databricks.com/product/pricing)
-- [Sign Up](https://www.databricks.com/try-databricks)
-- [Privacy Policy](https://www.databricks.com/legal/privacynotice)
-- [Terms of Service](https://www.databricks.com/legal/terms-of-use)
-- [Security](https://www.databricks.com/trust)
-- [Rate Limits](https://docs.databricks.com/aws/en/resources/limits)
+- [Support](https://help.databricks.com/)
 - [Changelog](https://docs.databricks.com/aws/en/release-notes/)
 - [Blog](https://www.databricks.com/blog)
-- [Support](https://community.databricks.com/)
-- [GitHub Organization](https://github.com/databricks)
-- [SDK](https://github.com/databricks/databricks-sdk-py)
-- [SDK](https://github.com/databricks/databricks-sdk-go)
-- [C L I](https://github.com/databricks/cli)
-- [Documentation](https://docs.databricks.com/aws/en/dev-tools/cli)
-- [X (Twitter)](https://twitter.com/databricks)
-- [LinkedIn](https://www.linkedin.com/company/databricks)
-- [Login](https://login.databricks.com/)
-- [Contact](https://www.databricks.com/company/contact)
-- [Training](https://www.databricks.com/learn/training/home)
-- [Academy](https://customer-academy.databricks.com/learn)
-- [SDK](https://github.com/databricks/databricks-sdk-java)
-- [SDK](https://github.com/databricks/databricks-sql-python)
-- [SDK](https://github.com/databricks/terraform-provider-databricks)
-- [API Reference](https://docs.databricks.com/aws/en/reference/mlflow-api)
-- [Security](https://www.databricks.com/trust/security-features)
-- [Authentication](https://docs.databricks.com/aws/en/dev-tools/auth)
-- [API Reference](https://api-docs.databricks.com/)
-- [OpenAPI](openapi/databricks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/databricks-cluster-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/databricks-job-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/databricks-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/databricks-spectral-rules.yml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Integrations](https://docs.databricks.com/aws/en/integrations)
-- [Agent Skill](https://github.com/databricks/databricks-agent-skills)
-- [L L Ms Txt](https://docs.databricks.com/llms.txt)
+- [Security](https://www.databricks.com/trust)
+- [Terms of service](https://www.databricks.com/legal/terms-of-use)
+- [Privacy policy](https://www.databricks.com/legal/privacynotice)
+- [GitHub](https://github.com/databricks)
+- [Status](https://status.databricks.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**Email:** support@databricks.com
-**URL:** https://www.databricks.com/
+**Kin Score 57.1** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 58.3 |
+| Contract quality | 62.8 |
+| Contract governance | 18.2 |
+| Operational transparency | 55.3 |
+| Developer ergonomics | 74.4 |
+| Access clarity | 44.7 |
+
+**Agent readiness 58.3** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | verified |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 28.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/databricks/](https://apis.io/providers/databricks/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Databricks: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/databricks/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
